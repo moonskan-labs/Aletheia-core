@@ -47,40 +47,25 @@ class Providers:
 
     def model_value(self, schema, data):
         o = self.options
-        if schema == "ClaimPlan":
+        if schema == "ClaimInterpretation":
             claim = data.get("claim", "The Archive opened in 2000.")
             return {
-                "analysis": {
-                    "primary_type": "direct_fact",
-                    "scope": "missing" if o["ambiguous"] else "complete",
-                    "required_method": "record_lookup",
-                    "supported": True,
-                    "reason": "An opening date is a recorded fact.",
-                    "missing_scope": ["archive identity"] if o["ambiguous"] else [],
-                    "components": [
-                        {
-                            "id": "c1",
-                            "text": claim,
-                            "role": "essential",
-                            "subject": "Archive",
-                            "predicate": "opened",
-                            "timeframe": "2000",
-                            "location_or_population": None,
-                            "comparison": None,
-                        }
-                    ],
-                },
-                "assertions": []
-                if o["ambiguous"]
-                else [
+                "method": "record_lookup",
+                "reason": "An opening date is a recorded fact.",
+                "missing_scope": ["archive identity"] if o["ambiguous"] else [],
+                "components": [
                     {
-                        "id": "a1",
+                        "id": "c1",
                         "text": claim,
-                        "kind": "direct_record",
-                        "consequential": o["deep"],
-                        "recommended_route": "quick",
+                        "role": "essential",
+                        "subject": "Archive",
+                        "predicate": "opened",
+                        "timeframe": "2000",
+                        "location_or_population": None,
+                        "comparison": None,
                     }
                 ],
+                "recommended_route": "deep" if o["deep"] else "quick",
                 "questions": ["Which archive do you mean?"] if o["ambiguous"] else [],
                 "clarification_reason": "missing_scope" if o["ambiguous"] else None,
                 "scope_note": "Opening year of the named Archive.",
@@ -275,3 +260,14 @@ async def terminal(client, run_id):
             if value["status"] not in {"queued", "running"}:
                 return value
             await asyncio.sleep(0.01)
+
+
+def propose_analysis(result, analysis):
+    """Supply model-owned fields; production derives the saved routing envelope."""
+    result.update(
+        method=analysis.required_method,
+        components=[c.model_dump() for c in analysis.components],
+        missing_scope=analysis.missing_scope,
+        reason=analysis.reason,
+    )
+    return result

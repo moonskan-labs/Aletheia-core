@@ -125,7 +125,9 @@ class RunBudget(CallBudget):
         self.route = "quick"
         self.reserve_seconds = 45.0
         self.reserve_model_attempts = 4
-        super().__init__(8, 4, 4, self.started + 120)
+        # Interpretation + planning + two source assessments, with two bounded
+        # repair attempts, while preserving four finalization attempts.
+        super().__init__(10, 4, 4, self.started + 120)
 
     def escalate(self):
         self.route = "deep"

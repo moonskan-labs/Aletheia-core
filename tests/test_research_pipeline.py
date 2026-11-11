@@ -204,7 +204,7 @@ async def test_extraction_provider_failure_stops_research(settings, status):
         assert saved["stop_reason"] == "provider_failure"
         assert saved["result"] is None
         assert providers.calls.count("/extract") == 1
-        assert [name for name, _ in providers.model_inputs] == ["ClaimPlan", "SearchPlan"]
+        assert [name for name, _ in providers.model_inputs] == ["ClaimInterpretation", "SearchPlan"]
 
 
 async def test_truncated_source_is_saved_and_changes_evidence_comparison(settings):
@@ -237,14 +237,14 @@ async def test_truncated_source_is_saved_and_changes_evidence_comparison(setting
 def test_finalization_reserve_and_escalation_are_shared():
     budget = RunBudget()
     start = budget.started
-    for _ in range(4):
+    for _ in range(6):
         budget.reserve("nebius", "model", 1)
     with pytest.raises(ProviderError) as error:
         budget.reserve("nebius", "model", 1)
     assert error.value.code == ErrorCode.BUDGET
     budget.escalate()
-    assert budget.used["model"] == 4 and budget.deadline == start + 240
-    for _ in range(8):
+    assert budget.used["model"] == 6 and budget.deadline == start + 240
+    for _ in range(6):
         budget.reserve("nebius", "model", 1)
     with pytest.raises(ProviderError):
         budget.reserve("nebius", "model", 1)

@@ -1,7 +1,7 @@
 """Regression checks for the four adversarial Phase 1 review findings; offline only."""
 
 import pytest
-from research_fixtures import Providers, terminal
+from research_fixtures import Providers, propose_analysis, terminal
 from test_phase_one import analysis, assertion, comparison_spec, value
 from test_research_integrity import judgment, source
 from test_research_pipeline import running
@@ -53,10 +53,10 @@ class BalanceProviders(Providers):
             population="accounts",
             definition="account balance",
         )
-        if schema == "ClaimPlan":
-            result["analysis"] = analysis(
-                data["claim"], kind="direct_comparison", comparison=spec
-            ).model_dump()
+        if schema == "ClaimInterpretation":
+            propose_analysis(
+                result, analysis(data["claim"], kind="direct_comparison", comparison=spec)
+            )
         if schema == "AssessmentBatch":
             item = result["assessments"][0]
             item["values"] = [
@@ -106,10 +106,10 @@ async def test_self_comparison_must_not_publish_false_superlative(settings):
         def model_value(self, schema, data):
             result = super().model_value(schema, data)
             spec = comparison_spec(left="Mercury", right="all other planets", exhaustive=True)
-            if schema == "ClaimPlan":
-                result["analysis"] = analysis(
-                    data["claim"], kind="direct_comparison", comparison=spec
-                ).model_dump()
+            if schema == "ClaimInterpretation":
+                propose_analysis(
+                    result, analysis(data["claim"], kind="direct_comparison", comparison=spec)
+                )
             if schema == "AssessmentBatch":
                 result["assessments"][0]["values"] = [
                     value(side, "58", entity="Mercury").model_dump() for side in ["left", "right"]
@@ -168,10 +168,11 @@ async def test_supported_single_operand_records_can_be_joined(settings):
 
         def model_value(self, schema, data):
             result = super().model_value(schema, data)
-            if schema == "ClaimPlan":
-                result["analysis"] = analysis(
-                    data["claim"], kind="direct_comparison", comparison=comparison_spec()
-                ).model_dump()
+            if schema == "ClaimInterpretation":
+                propose_analysis(
+                    result,
+                    analysis(data["claim"], kind="direct_comparison", comparison=comparison_spec()),
+                )
             if schema == "AssessmentBatch":
                 side, number = ("left", "108") if data["url"].endswith("/0") else ("right", "58")
                 result["assessments"][0]["values"] = [value(side, number).model_dump()]

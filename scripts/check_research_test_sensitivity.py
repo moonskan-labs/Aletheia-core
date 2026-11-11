@@ -10,6 +10,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MUTATIONS = (
     (
+        "quick budget prevents repairs of two independent source assessments",
+        "budgets.py",
+        "super().__init__(10, 4, 4, self.started + 120)",
+        "super().__init__(8, 4, 4, self.started + 120)",
+        "tests/test_model_boundaries.py::test_two_sources_each_get_one_repair_without_spending_finalization_reserve",
+    ),
+    (
         "numeric grounding trusts a cropped source fragment",
         "direct.py",
         "extracted = decimal_value(value.value)",
@@ -98,7 +105,7 @@ MUTATIONS = (
         "orchestrator.py",
         "baseline_sources if round_index == 0 else (),",
         "(),",
-        "tests/test_step4_review.py::test_refresh_rechecks_cited_pages_when_rankings_shift[False]",
+        "tests/test_step4_review.py::test_refresh_rechecks_cited_pages_when_rankings_shift[False-8]",
     ),
     (
         "rejected rationale reaches planning",

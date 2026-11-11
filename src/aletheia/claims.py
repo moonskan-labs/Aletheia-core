@@ -2,7 +2,9 @@
 
 import re
 
-from aletheia.task_contracts import ClaimPlan
+from aletheia.phase_one_contracts import ClaimAnalysis
+from aletheia.research_contracts import Assertion
+from aletheia.task_contracts import ClaimInterpretation, ClaimPlan
 from aletheia.tasks import TaskValidationError
 
 
@@ -25,34 +27,74 @@ def validate_claim(plan, original=None):
             raise TaskValidationError("phase_one_scope")
         if original is not None:
             if any(c.text not in original for c in analysis.components):
-                raise TaskValidationError("component_wording")
+                raise TaskValidationError("component_text")
             # Dates and quantities in descriptive modifiers cannot disappear during parsing.
             numbers = set(re.findall(r"\b\d+(?:[.,]\d+)*\b", original))
             retained = set(
                 re.findall(r"\b\d+(?:[.,]\d+)*\b", " ".join(c.text for c in analysis.components))
             )
             if not numbers <= retained:
-                raise TaskValidationError("component_wording")
+                raise TaskValidationError("component_numbers")
             if plan.assertions and plan.assertions[0].text != original:
-                raise TaskValidationError("component_wording")
+                raise TaskValidationError("assertion_wording")
+
+
+def materialize(proposal, original):
+    """Build the saved contract without asking the model to copy or derive it."""
+    if proposal.method == "record_comparison" and not any(
+        c.comparison for c in proposal.components
+    ):
+        raise TaskValidationError("comparison_missing")
+    if proposal.method == "record_lookup" and any(c.comparison for c in proposal.components):
+        raise TaskValidationError("comparison_method")
+    analysis = ClaimAnalysis(
+        primary_type={"record_lookup": "direct_fact", "record_comparison": "direct_comparison"}.get(
+            proposal.method, proposal.method
+        ),
+        required_method=proposal.method,
+        supported=proposal.method in {"record_lookup", "record_comparison"},
+        scope="missing" if proposal.missing_scope else "complete",
+        reason=proposal.reason,
+        missing_scope=proposal.missing_scope,
+        components=proposal.components,
+    )
+    plan = ClaimPlan(
+        analysis=analysis,
+        assertions=[]
+        if proposal.questions
+        else [
+            Assertion(
+                text=original,
+                kind="direct_record" if analysis.supported else "generalized",
+                consequential=proposal.recommended_route == "deep",
+                recommended_route=proposal.recommended_route,
+                analysis=analysis,
+            )
+        ],
+        questions=proposal.questions,
+        clarification_reason=proposal.clarification_reason,
+        scope_note=proposal.scope_note,
+    )
+    validate_claim(plan, original)
+    return plan
 
 
 async def interpret(tasks, investigation):
-    plan = await tasks.call(
+    proposal = await tasks.call(
         "interpret",
         "Preserve the submitted claim EXACTLY, including all descriptive modifiers, dates, "
-        "negation and quantities. Do not correct from memory or decide truth. Return separate "
-        "analysis fields for primary_type, scope, required_method and supported. Direct facts "
+        "negation and quantities. Do not correct from memory or decide truth. Choose ONE method; "
+        "Python derives support, scope and the saved assertion from your response. Direct facts "
         "use record_lookup; direct comparisons use record_comparison. Other types use the "
         "corresponding unsupported method: causal, prediction, counterfactual, "
         "scientific_inference, interpretive or mixed. Topics are metadata, not methods. "
         "An unknown answer or unavailable record is not missing scope. A scientific existence "
         "hypothesis may require inference; a general existence assertion does not need an "
         "invented region or habitat. Do not route by expected truth or search success. "
-        "Unsupported claims retain one assertion and all components, with questions=[] when "
+        "Unsupported claims retain all components, with questions=[] and missing_scope=[] when "
         "scope is complete; never disguise a method limitation as a clarification. Mixed "
         "methods or independent propositions require mixed, never silently drop a part. "
-        "Only genuinely missing essential scope permits questions, assertions=[], "
+        "Only genuinely missing essential scope permits nonempty questions and missing_scope, "
         "clarification_reason=missing_scope. Identify what the user must supply. Resolve "
         "relative dates only from supplied absolute context. For complete scope use null "
         "clarification_reason. Components must be exact substrings of the original claim, "
@@ -62,13 +104,26 @@ async def interpret(tasks, investigation):
         "operands, metric, operator, units, period, population, definition and whether the "
         "claim is an exhaustive superlative. Use explicit 'not applicable' for fields that "
         "do not constrain the comparison; never invent an unspecified period or definition. "
+        "A component is a proposition, not an isolated noun or entity. For example, in "
+        '"The Museum, opened in 1974, houses the city archive.", the essential component '
+        'text is "houses the city archive" (subject: The Museum), and its modifier is '
+        '"opened in 1974". Copy these contiguous substrings without adding the subject '
+        "or changing capitalization/punctuation; the subject belongs in the subject field. "
+        "Causal/efficacy claims (X causes Y, treatment improves Y, policy reduces Y) require "
+        "causal even if papers report results or a comparison group is named. A recorded "
+        "measurement in a named dataset is record_lookup; attributing an effect to a "
+        "treatment is causal. Superlatives and comparisons of recorded values use "
+        "record_comparison, with comparison fields. A scientific existence hypothesis "
+        "requires scientific_inference. A claim about what a named document says can be "
+        "record_lookup even when the document discusses causation. "
         "For superlatives preserve the full comparison set as right; a counterexample can "
-        "refute it, but a pair alone cannot prove it. Use direct_record assertion kind for "
-        "supported claims. Research depth changes effort only, never the evidence standard.",
+        "refute it, but a pair alone cannot prove it. Research depth changes effort only, "
+        "never the evidence standard.",
         {"claim": investigation.claim, "context": investigation.context},
-        ClaimPlan,
-        lambda value: validate_claim(value, investigation.claim),
+        ClaimInterpretation,
+        lambda value: materialize(value, investigation.claim),
     )
+    plan = materialize(proposal, investigation.claim)
     if not plan.analysis.supported or plan.questions:
         reviewed = await tasks.call(
             "review_route",
@@ -77,17 +132,20 @@ async def interpret(tasks, investigation):
             "change the proposition. Unknown truth and unsupported inference are not missing "
             "scope; do not invent regions for a general existence claim. Preserve all material "
             "components and exact original assertion wording. Return the complete corrected "
-            "plan, or the same plan if justified. Explain any changed "
-            "classification in analysis.reason. "
+            "interpretation, or the same interpretation if justified. Explain any changed "
+            "classification in reason. Judge the required METHOD rather than the availability "
+            "of papers: treatment/policy effects require causal inference; a direct quote "
+            "about what a named record states is record_lookup. "
             "No external evidence or expected answer is available.",
             {
                 "claim": investigation.claim,
                 "context": investigation.context,
-                "proposed_plan": plan.model_dump(),
+                "proposed_plan": proposal.model_dump(),
             },
-            ClaimPlan,
-            lambda value: validate_claim(value, investigation.claim),
+            ClaimInterpretation,
+            lambda value: materialize(value, investigation.claim),
         )
+        reviewed = materialize(reviewed, investigation.claim)
         if reviewed.analysis != plan.analysis:
             await tasks.emit(
                 "route_revised",

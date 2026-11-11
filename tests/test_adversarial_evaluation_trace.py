@@ -62,8 +62,8 @@ async def test_invalid_completion_keeps_usage_and_safe_reason_not_private_keys(s
         async def handle(self, request):
             if request.url.path.endswith("completions"):
                 self.calls.append(request.url.path)
-                value = self.model_value("ClaimPlan", {})
-                value["assertions"][0]["text"] = 17
+                value = self.model_value("ClaimInterpretation", {})
+                value["scope_note"] = 17
                 value["private-field-name"] = "private-field-value"
                 content = json.dumps(value) if kind == "schema" else '{"private-json":'
                 return httpx.Response(
@@ -103,7 +103,7 @@ async def test_invalid_completion_keeps_usage_and_safe_reason_not_private_keys(s
             assert payload["finish_reason"] == "stop"
             assert int(payload["output_chars"]) > 0
             if kind == "schema":
-                assert payload["schema_fields"] == "assertions"
+                assert payload["schema_fields"] == "scope_note"
                 assert payload["schema_error_types"] == "extra_forbidden,string_type"
         assert "private-" not in (await client.get(saved["links"]["events"])).text
 
@@ -288,9 +288,8 @@ async def test_truth_question_with_inconsistent_scope_analysis_is_rejected(setti
     class Misclassified(Providers):
         def model_value(self, schema, data):
             value = super().model_value(schema, data)
-            if schema == "ClaimPlan":
+            if schema == "ClaimInterpretation":
                 value.update(
-                    assertions=[],
                     questions=["Did the Archive open in 2000?"],
                     clarification_reason="missing_scope",
                 )

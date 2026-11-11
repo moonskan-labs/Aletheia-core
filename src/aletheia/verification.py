@@ -3,7 +3,7 @@
 from aletheia.direct import validate_component_assessment
 from aletheia.evidence import admit
 from aletheia.passages import select_passages
-from aletheia.task_contracts import AssessmentBatch
+from aletheia.task_contracts import AssessmentBatch, RecordAssessmentBatch
 
 
 async def assess(tasks, assertion, source):
@@ -23,13 +23,20 @@ async def assess(tasks, assertion, source):
         "assess",
         "Assess the exact assertion against the supplied numbered source spans. Cite only "
         "this snapshot and supplied span IDs, in increasing order without duplicates. "
-        "Never write quotations. Distinguish support, contradiction, context and irrelevance. "
+        "Use citation IDs; do not invent quotation fields. Distinguish support, contradiction, "
+        "context and irrelevance. For every component with comparison=null, values MUST be []: "
+        "this includes dates, quantities and properties in ordinary record claims. Establish "
+        "those facts through cited spans and the relation/rationale, not operand extraction. "
         "Assess each material component separately using its component_id. A different date "
         "or quantity for the SAME entity and event is contradiction with scope_match=true; "
         "a different entity, population or definition is scope_match=false. Never merge a "
         "campaign date with a discovery date or use partial support for the entire claim. "
-        "For comparison components, extract both values with exact literal source_text, "
+        "Only for components with a comparison object, extract available operands with exact "
+        "literal source_text (the exception to not writing quotations), "
         "entity, metric, units, period, population and definition, and mark uncertainty. "
+        "Copy metric, units, period, population and definition exactly from the comparison "
+        "specification ONLY when the passage establishes those same meanings. If only one "
+        "operand is available, use relation=context with that value; do not invent the other. "
         "Do not invent operands, convert units silently, or infer a superlative from one pair. "
         "A publisher name or different domain alone is not proof of "
         "independence. Set independence=unknown unless cited provenance establishes an "
@@ -59,7 +66,9 @@ async def assess(tasks, assertion, source):
             "source_truncated": limited,
             "spans": [s.model_dump() for s in selected],
         },
-        AssessmentBatch,
+        AssessmentBatch
+        if assertion.analysis and any(c.comparison for c in assertion.analysis.components)
+        else RecordAssessmentBatch,
         validate,
     )
     evidence = [admit(a, source, supplied) for a in result.assessments]

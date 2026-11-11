@@ -51,7 +51,7 @@ def test_unverified_thinking_control_fails_before_network_and_env_is_explicit(mo
     assert "private-invalid-setting" not in str(error.value)
 
 
-@pytest.mark.parametrize("task", ["ClaimPlan", "AssessmentBatch", "Synthesis"])
+@pytest.mark.parametrize("task", ["ClaimInterpretation", "AssessmentBatch", "Synthesis"])
 async def test_truncated_task_retains_safe_diagnostics_and_replays(settings, task):
     class Truncated(Providers):
         async def handle(self, request):
@@ -119,11 +119,10 @@ async def test_factual_uncertainty_is_repaired_or_failed_not_asked_of_user(setti
 
         def model_value(self, schema, data):
             value = super().model_value(schema, data)
-            if schema == "ClaimPlan":
+            if schema == "ClaimInterpretation":
                 self.count += 1
                 if self.count == 1 or not repair:
                     value.update(
-                        assertions=[],
                         questions=["Did the Archive open in 2000?"],
                         clarification_reason="factual_uncertainty",
                     )

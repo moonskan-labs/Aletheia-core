@@ -70,10 +70,10 @@ def validate_component_assessment(assessment, assertion, source, supplied):
     component = components[assessment.component_id]
     quoted = "\n".join(e.text for e in excerpts(source, assessment.citation.span_ids, supplied))
     if len({v.side for v in assessment.values}) != len(assessment.values):
-        raise TaskValidationError("comparison_values")
+        raise TaskValidationError("comparison_duplicate_side")
     for value in assessment.values:
         if value.source_text not in quoted:
-            raise TaskValidationError("comparison_values")
+            raise TaskValidationError("comparison_source_anchor")
         # Do not accept an invented number inside a genuine but unrelated quote.
         if value.kind == "number":
             try:
@@ -92,10 +92,10 @@ def validate_component_assessment(assessment, assertion, source, supplied):
                 ):
                     raise ValueError("No complete matching numeric token in the cited anchor.")
             except (ValueError, InvalidOperation):
-                raise TaskValidationError("comparison_values") from None
+                raise TaskValidationError("comparison_numeric_anchor") from None
         if value.kind in {"date", "property"} and value.value not in value.source_text:
             # Non-ISO dates remain available as contextual evidence; no implicit conversion.
-            raise TaskValidationError("comparison_values")
+            raise TaskValidationError("comparison_literal_value")
     if component.comparison:
         relation = comparison_relation(component.comparison, assessment.values)
         if assessment.relation in {"supports", "contradicts"} and (
@@ -103,7 +103,7 @@ def validate_component_assessment(assessment, assertion, source, supplied):
         ):
             raise TaskValidationError("comparison_relation")
     elif assessment.values:
-        raise TaskValidationError("comparison_values")
+        raise TaskValidationError("comparison_unexpected_values")
 
 
 def component_findings(assertion, evidence, sources, sufficient):

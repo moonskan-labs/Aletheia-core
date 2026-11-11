@@ -11,19 +11,19 @@ from uuid import UUID
 
 import pytest
 from httpx import ASGITransport, AsyncClient
-from research_fixtures import Providers, terminal
+from research_fixtures import Providers, propose_analysis, terminal
 from test_research_integrity import judgment, source
 from test_research_pipeline import running, submit
 
 from aletheia.api import create_app
-from aletheia.claims import validate_claim
+from aletheia.claims import materialize
 from aletheia.direct import comparison_relation, validate_component_assessment
 from aletheia.evidence import admit
 from aletheia.passages import select_passages
 from aletheia.phase_one_contracts import ClaimAnalysis, ComparisonSpec, RecordedValue
 from aletheia.planning import validate_plan
 from aletheia.research_contracts import Assertion, Evidence, SearchPlan, SnapshotMetadata, Span
-from aletheia.task_contracts import ClaimPlan
+from aletheia.task_contracts import ClaimInterpretation
 from aletheia.tasks import TaskValidationError
 from aletheia.verdicts import finding
 
@@ -111,8 +111,8 @@ class PlannedProviders(Providers):
 
     def model_value(self, schema, data):
         result = super().model_value(schema, data)
-        if schema == "ClaimPlan":
-            result["analysis"] = self.parsed.model_dump()
+        if schema == "ClaimInterpretation":
+            propose_analysis(result, self.parsed)
         return result
 
 
@@ -363,10 +363,10 @@ def test_over_capacity_search_plan_fails_before_any_search():
 
 def test_parser_cannot_drop_or_rewrite_date_modifier():
     claim = pilot("b0023")["investigation"]["claim"]
-    plan = Providers().model_value("ClaimPlan", {"claim": claim})
-    plan["analysis"]["components"][0]["text"] = "helped scholars decipher Egyptian hieroglyphs"
+    plan = Providers().model_value("ClaimInterpretation", {"claim": claim})
+    plan["components"][0]["text"] = "helped scholars decipher Egyptian hieroglyphs"
     with pytest.raises(TaskValidationError, match="material detail"):
-        validate_claim(ClaimPlan.model_validate(plan), claim)
+        materialize(ClaimInterpretation.model_validate(plan), claim)
 
 
 async def test_route_review_can_correct_initial_method_with_audit_reason(settings):
@@ -375,12 +375,10 @@ async def test_route_review_can_correct_initial_method_with_audit_reason(setting
 
         def model_value(self, schema, data):
             result = super().model_value(schema, data)
-            if schema == "ClaimPlan":
+            if schema == "ClaimInterpretation":
                 self.interpretations += 1
                 if self.interpretations == 1:
-                    result["analysis"] = analysis(
-                        data["claim"], kind="scientific_inference"
-                    ).model_dump()
+                    propose_analysis(result, analysis(data["claim"], kind="scientific_inference"))
             return result
 
     providers = Revised()
