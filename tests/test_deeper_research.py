@@ -272,7 +272,7 @@ async def test_no_followup_planning_when_no_pages_can_be_extracted(settings):
         assert saved["result"]["explanation"]
 
 
-async def test_repeated_followup_queries_are_repaired_once_then_fail_without_search(settings):
+async def test_repeated_followup_queries_are_dropped_without_a_repair_call(settings):
     class Repeating(Providers):
         def model_value(self, schema, data):
             value = super().model_value(schema, data)
@@ -282,11 +282,13 @@ async def test_repeated_followup_queries_are_repaired_once_then_fail_without_sea
 
     providers = Repeating(deep=True, followups=True, authoritative=False)
     async with running(settings, providers) as (_, client):
-        saved = await submit(client)
-        assert saved["status"] == "failed"
-        assert saved["result"] is None
-        assert providers.calls.count("/search") == 2
-        assert len([v for name, v in providers.model_inputs if name == "SearchPlan"]) == 3
+        await submit(client)
+        assert providers.calls.count("/search") >= 2
+        # fit_plan removes the repeated query in code. A repair call would re-send the same
+        # previous_queries, so every planning input must see a strictly larger searched set.
+        plans = [v for name, v in providers.model_inputs if name == "SearchPlan"]
+        seen = [len(v["previous_queries"]) for v in plans]
+        assert seen == sorted(set(seen))
 
 
 def test_blank_followup_gap_is_rejected():

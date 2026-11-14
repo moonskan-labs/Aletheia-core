@@ -39,6 +39,60 @@ def validate_claim(plan, original=None):
                 raise TaskValidationError("assertion_wording")
 
 
+_NUMBER = r"\b\d+(?:[.,]\d+)*\b"
+
+
+def _locate(text, original):
+    """Exact substring of the original that matches text, ignoring case and outer spaces."""
+    probe = text.strip()
+    if not probe:
+        return None
+    if probe in original:
+        return probe
+    folded = original.casefold()
+    if len(folded) != len(original):
+        return None
+    start = folded.find(probe.casefold())
+    return original[start : start + len(probe)] if start >= 0 else None
+
+
+def normalize_interpretation(proposal, original):
+    """Repair component shape in code; the submitted wording always wins.
+
+    Components the model reworded or invented are not substrings of the claim, so they
+    are dropped (a comparison specification is kept and anchored to the whole claim).
+    If anything was dropped, no essential component survives, or a number or date from
+    the claim is no longer covered, one essential component is widened to the whole
+    claim so no part of the proposition is lost. This never adds model text and never
+    narrows what must be supported. Method, scope and questions are left to the model
+    and to materialize().
+    """
+    lookup = proposal.method == "record_lookup"
+    kept, dropped = [], False
+    for component in proposal.components:
+        text = _locate(component.text, original)
+        comparison = None if lookup else component.comparison
+        if text is None:
+            if comparison is None:
+                dropped = True
+                continue
+            text = original
+        kept.append(component.model_copy(update={"text": text, "comparison": comparison}))
+    numbers = set(re.findall(_NUMBER, original))
+    retained = set(re.findall(_NUMBER, " ".join(c.text for c in kept)))
+    if dropped or not any(c.role == "essential" for c in kept) or not numbers <= retained:
+        target = next((c for c in kept if c.role == "essential"), None)
+        if target is None:
+            target = (kept or list(proposal.components))[0]
+            target = target.model_copy(update={"comparison": None if lookup else target.comparison})
+            kept = [target] + [c for c in kept if c.id != target.id]
+        whole = target.model_copy(update={"text": original, "role": "essential"})
+        kept = [whole if c.id == target.id else c for c in kept]
+    if kept == list(proposal.components):
+        return proposal
+    return proposal.model_copy(update={"components": kept})
+
+
 def materialize(proposal, original):
     """Build the saved contract without asking the model to copy or derive it."""
     if proposal.method == "record_comparison" and not any(
@@ -121,8 +175,11 @@ async def interpret(tasks, investigation):
         "never the evidence standard.",
         {"claim": investigation.claim, "context": investigation.context},
         ClaimInterpretation,
-        lambda value: materialize(value, investigation.claim),
+        lambda value: materialize(
+            normalize_interpretation(value, investigation.claim), investigation.claim
+        ),
     )
+    proposal = normalize_interpretation(proposal, investigation.claim)
     plan = materialize(proposal, investigation.claim)
     if not plan.analysis.supported or plan.questions:
         reviewed = await tasks.call(
@@ -143,9 +200,13 @@ async def interpret(tasks, investigation):
                 "proposed_plan": proposal.model_dump(),
             },
             ClaimInterpretation,
-            lambda value: materialize(value, investigation.claim),
+            lambda value: materialize(
+                normalize_interpretation(value, investigation.claim), investigation.claim
+            ),
         )
-        reviewed = materialize(reviewed, investigation.claim)
+        reviewed = materialize(
+            normalize_interpretation(reviewed, investigation.claim), investigation.claim
+        )
         if reviewed.analysis != plan.analysis:
             await tasks.emit(
                 "route_revised",

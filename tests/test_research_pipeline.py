@@ -179,7 +179,7 @@ async def test_refresh_idempotency_comparison_and_no_old_verdict_in_prompts(sett
         assert mismatch.status_code == 409
 
 
-async def test_limits_preserve_valid_partial_and_no_unbudgeted_calls(settings):
+async def test_limits_trim_the_plan_and_never_exceed_the_search_budget(settings):
     class SmallBudget(RunBudget):
         def __init__(self):
             super().__init__()
@@ -188,11 +188,10 @@ async def test_limits_preserve_valid_partial_and_no_unbudgeted_calls(settings):
     providers = Providers()
     async with running(settings, providers, budget_factory=SmallBudget) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed", saved
-        assert saved["stop_reason"] == "invalid_task_output"
-        assert saved["result"] is None
-        assert providers.calls.count("/search") == 0
-        assert "/extract" not in providers.calls
+        # The two-query plan is trimmed in code to the one remaining search instead of
+        # being rejected, so the run no longer dies with invalid_task_output.
+        assert saved["stop_reason"] != "invalid_task_output"
+        assert providers.calls.count("/search") == 1
 
 
 @pytest.mark.parametrize("status", [401, 402])

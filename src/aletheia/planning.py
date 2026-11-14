@@ -8,6 +8,36 @@ def query_key(text):
     return " ".join(text.casefold().split())
 
 
+def fit_plan(plan, seen, initial, capacity=3):
+    """Trim a proposal in code so a fixable shape error does not cost a repair call.
+
+    Blank, repeated and already-searched queries are dropped, then the list is cut to
+    the remaining search capacity. Model wording is never rewritten and nothing is
+    added, so validate_plan still decides whether the fitted plan is acceptable.
+    """
+    capacity = max(0, capacity)
+    queries, keys = [], set(seen)
+    for query in plan.queries:
+        key = query_key(query.text)
+        if key and key not in keys:
+            keys.add(key)
+            queries.append(query)
+    if len(queries) > capacity:
+        # Keep counterevidence coverage when two or more searches remain.
+        keep = []
+        if capacity >= 2:
+            for purpose in ("support", "contradiction"):
+                first = next((q for q in queries if q.purpose == purpose), None)
+                if first is not None:
+                    keep.append(first)
+        keep += [q for q in queries if all(q is not k for k in keep)]
+        keep = keep[:capacity]
+        queries = [q for q in queries if any(q is k for k in keep)]
+    if len(queries) == len(plan.queries):
+        return plan
+    return plan.model_copy(update={"queries": queries})
+
+
 def validate_plan(plan, seen, initial, capacity=3):
     if len(plan.queries) > max(0, capacity):
         raise TaskValidationError("query_capacity")
@@ -26,7 +56,15 @@ def validate_plan(plan, seen, initial, capacity=3):
 
 
 async def plan_search(tasks, assertion, route, seen, gap=None, evidence_context=None):
-    return await tasks.call(
+    fitted = []
+
+    def check(value):
+        capacity = tasks.budget.search_attempts - tasks.budget.used["search"]
+        plan = fit_plan(value, seen, gap is None, capacity)
+        validate_plan(plan, seen, gap is None, capacity)
+        fitted.append(plan)
+
+    await tasks.call(
         "plan",
         "Propose at most three precise search queries for a1. A nonempty initial plan MUST include "
         "both support and contradiction searches; look for primary records and corrections. "
@@ -51,7 +89,6 @@ async def plan_search(tasks, assertion, route, seen, gap=None, evidence_context=
             "evidence_context": evidence_context or {"summaries": [], "omitted_assessments": 0},
         },
         SearchPlan,
-        lambda value: validate_plan(
-            value, seen, gap is None, tasks.budget.search_attempts - tasks.budget.used["search"]
-        ),
+        check,
     )
+    return fitted[-1]
