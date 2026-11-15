@@ -337,11 +337,12 @@ async def test_b0006_final_check_diagnostics_and_bounded_repair(settings, recove
         initial = await client.post("/investigations", json={"claim": text})
         result = await terminal(client, initial.json()["id"])
         assert providers.checks == 2
-        assert result["status"] == ("completed" if recover else "failed")
+        assert result["status"] == ("completed" if recover else "partial")
         if recover:
             assert result["result"]["verdict"] == "true"
         else:
-            assert result["result"] is None and result["stop_reason"] == "semantic_rejection"
+            assert result["result"]["verdict"] is None
+            assert result["stop_reason"] == "semantic_rejection"
         assert (await client.get(result["links"]["evidence"])).json()["evidence"]
         artifacts = list(settings.database_path.parent.glob("*.diagnostics/*.json"))
         assert len(artifacts) == (1 if recover else 2)
@@ -425,7 +426,9 @@ async def test_failed_decision_check_never_publishes_true(settings):
     providers = RejectedDecision()
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["result"] is None
+        assert saved["status"] == "partial"
+        assert saved["result"]["verdict"] is None
+        assert saved["result"]["outcome"] == "unable_to_decide"
         assert saved["stop_reason"] == "semantic_rejection"
         assert len([n for n, _ in providers.model_inputs if n == "ExplanationCheck"]) == 2
         records = [
@@ -447,7 +450,8 @@ async def test_diagnostic_write_failure_does_not_replace_semantic_failure(settin
     monkeypatch.setattr(Path, "mkdir", fail_diagnostics)
     async with running(settings, Providers(invalid_explanation=True)) as (_, client):
         saved = await submit(client)
-        assert saved["result"] is None and saved["stop_reason"] == "semantic_rejection"
+        assert saved["result"]["verdict"] is None
+        assert saved["stop_reason"] == "semantic_rejection"
         assert "synthetic-private-path" not in json.dumps(saved)
 
 

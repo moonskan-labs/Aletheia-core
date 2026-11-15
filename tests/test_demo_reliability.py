@@ -4,7 +4,11 @@ The component shapes below are copied from saved replay proposals
 (experiments/pipeline-replay-20261111): every one failed interpretation there.
 """
 
+from uuid import UUID
+
 import pytest
+from research_fixtures import Providers
+from test_research_pipeline import running, submit
 
 from aletheia.claims import materialize, normalize_interpretation
 from aletheia.planning import fit_plan, validate_plan
@@ -229,3 +233,43 @@ def test_fitting_never_invents_missing_counterevidence():
     with pytest.raises(TaskValidationError) as error:
         validate_plan(fitted, set(), True, capacity=3)
     assert error.value.code == "query_coverage"
+
+
+class RejectedFollowup(Providers):
+    """Round one finds weak support; every follow-up plan then omits its evidence gap."""
+
+    def __init__(self, **options):
+        super().__init__(authoritative=False, followups=True, **options)
+
+    def model_value(self, schema, data):
+        value = super().model_value(schema, data)
+        if schema == "SearchPlan" and data["previous_queries"]:
+            value["gap"] = None
+        return value
+
+
+async def test_rejected_followup_plan_keeps_the_collected_evidence(settings):
+    providers = RejectedFollowup()
+    async with running(settings, providers) as (app, client):
+        saved = await submit(client)
+        assert saved["status"] == "partial", saved
+        assert saved["stop_reason"] == "invalid_task_output"
+        # No verdict is invented: the weak round-one evidence is reported as it stands.
+        assert saved["result"]["verdict"] is None
+        assert saved["result"]["outcome"] == "unable_to_decide"
+        assert any("Follow-up search planning" in note for note in saved["result"]["limitations"])
+        assert (await client.get(saved["links"]["evidence"])).json()["evidence"]
+        # One initial plan, then the follow-up proposal and its single repair.
+        assert len([n for n, _ in providers.model_inputs if n == "SearchPlan"]) == 3
+        assert providers.calls.count("/search") == 2
+        events = await app.state.storage.events(UUID(saved["id"]))
+        gates = [e.payload for e in events if e.type == "research_gate"]
+        assert gates[-1]["action"] == "stop" and gates[-1]["reason"] == "invalid_task_output"
+        assert not any(e.type == "followup_planned" for e in events)
+
+
+async def test_rejected_initial_plan_still_fails_without_a_result(settings):
+    async with running(settings, Providers(invalid_plan=True)) as (_, client):
+        saved = await submit(client)
+        assert saved["status"] == "failed" and saved["result"] is None
+        assert saved["stop_reason"] == "invalid_task_output"

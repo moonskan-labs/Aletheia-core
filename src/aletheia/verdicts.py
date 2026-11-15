@@ -109,6 +109,21 @@ def finding(assertion, route, evidence, sources):
     ), dropped
 
 
+def withhold(computed):
+    """Remove a verdict the final check did not confirm; evidence and components stay."""
+    if computed.verdict is None:
+        return computed
+    return Finding(
+        **{
+            **computed.model_dump(),
+            "outcome": "unable_to_decide",
+            "verdict": None,
+            "unable_to_decide_reason": "insufficient_evidence",
+            "almost_correction": None,
+        }
+    )
+
+
 def correction_eligible(computed, evidence, route, sources):
     return computed.unable_to_decide_reason != "conflicting_evidence" and sufficient(
         evidence, route, sources

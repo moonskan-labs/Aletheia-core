@@ -235,7 +235,9 @@ async def test_internal_exception_is_not_mislabeled_as_remote_provider_failure(s
 async def test_task_contract_rejections_have_specific_codes(settings, options, code):
     async with running(settings, Providers(**options)) as (app, client):
         saved = await submit(client)
-        assert saved["status"] == "failed"
+        # A rejected initial plan has no evidence; a rejected correction keeps its evidence.
+        assert saved["status"] == ("failed" if "invalid_plan" in options else "partial")
+        assert saved["result"] is None or saved["result"]["verdict"] is None
         trace = await events(app, saved)
         rejected = [
             e.payload

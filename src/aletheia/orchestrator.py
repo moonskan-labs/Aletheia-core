@@ -13,7 +13,7 @@ from aletheia.research import gather, refresh_sources
 from aletheia.research_contracts import Evidence, InvestigationResult, Snapshot
 from aletheia.research_gate import evaluate, planning_context
 from aletheia.tasks import PROMPT_VERSION, InvalidTask, Tasks
-from aletheia.verdicts import SemanticRejection, finding, synthesize
+from aletheia.verdicts import SemanticRejection, finding, synthesize, withhold
 
 APPLICATION_VERSION = "direct-research-v1"
 MAX_FOLLOWUP_ROUNDS = 2
@@ -145,14 +145,34 @@ class Pipeline:
                     budget.check("tavily", "search", 1)
                     budget.check("tavily", "extract", 1)
                 await emit("stage_started", {"stage": "planning"}, stage="planning")
-                search_plan = await plan_search(
-                    tasks,
-                    assertion,
-                    assigned_route,
-                    seen,
-                    gap,
-                    planning_context(evidence, sources),
-                )
+                try:
+                    search_plan = await plan_search(
+                        tasks,
+                        assertion,
+                        assigned_route,
+                        seen,
+                        gap,
+                        planning_context(evidence, sources),
+                    )
+                except InvalidTask:
+                    if not round_index:
+                        raise
+                    # Earlier rounds are already saved. A follow-up plan that fails
+                    # validation ends research, not the run: the collected evidence
+                    # still goes through the normal finding and final check.
+                    stop_reason, partial = "invalid_task_output", True
+                    limitations.append(
+                        "Follow-up search planning failed validation; coverage is incomplete."
+                    )
+                    await emit(
+                        "research_gate",
+                        {
+                            "action": "stop",
+                            "reason": "invalid_task_output",
+                            "round": str(round_index),
+                        },
+                    )
+                    break
                 if not search_plan.queries:
                     await emit(
                         "research_gate",
@@ -311,15 +331,19 @@ class Pipeline:
                     "The explanation could not be finalized within the investigation limits."
                 )
             except InvalidTask as exc:
-                await self.storage.finish(
-                    investigation.id,
-                    status="failed",
-                    stop_reason="semantic_rejection"
+                # Synthesis only runs over admitted evidence, so evidence exists here.
+                # Keep it and say why the run stopped, but publish no unconfirmed verdict.
+                computed = withhold(computed)
+                partial = True
+                stop_reason = (
+                    "semantic_rejection"
                     if isinstance(exc, SemanticRejection)
-                    else "invalid_task_output",
-                    error="Final explanation failed validation; no factual verdict was published.",
+                    else "invalid_task_output"
                 )
-                return
+                limitations.append(
+                    "The final check did not confirm a decision from the collected evidence; "
+                    "no verdict is published."
+                )
         else:
             if computed.verdict is not None:
                 await self.storage.finish(

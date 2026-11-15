@@ -77,9 +77,11 @@ async def test_each_failed_correction_check_prevents_almost(settings, check_fiel
     providers = RejectedCorrection(relation="contradicts", almost=True)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed"
-        assert saved["result"] is None
-        assert "validation" in saved["error"]["message"]
+        assert saved["status"] == "partial"
+        assert saved["result"]["verdict"] is None
+        assert saved["result"]["almost_correction"] is None
+        assert saved["stop_reason"] == "semantic_rejection"
+        assert any("final check" in note for note in saved["result"]["limitations"])
 
 
 @pytest.mark.parametrize(
@@ -106,7 +108,9 @@ async def test_invalid_correction_has_one_repair_then_fails(settings, defect):
     providers = BadCorrection(relation="contradicts", almost=True)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed" and saved["result"] is None
+        assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+        assert saved["result"]["almost_correction"] is None
+        assert saved["stop_reason"] == "invalid_task_output"
         assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
         assert [name for name, _ in providers.model_inputs].count("ExplanationCheck") == 0
 
@@ -130,7 +134,8 @@ async def test_almost_cannot_bypass_conflict_truth_or_per_part_evidence_bar(sett
     providers = Providers(almost=True, **options)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed" and saved["result"] is None
+        assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+        assert saved["result"]["almost_correction"] is None
         # In the two-origin case the whole set is adequate, but each correction part
         # cites only one origin. Individual support requirements must still be enforced.
         assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2

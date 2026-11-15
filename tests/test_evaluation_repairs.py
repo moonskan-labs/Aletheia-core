@@ -246,7 +246,8 @@ async def test_explanation_checker_receives_explicit_zero_based_indices(settings
 async def test_final_semantic_rejection_is_auditable(settings, options, reason):
     async with running(settings, Providers(**options)) as (app, client):
         saved = await submit(client)
-        assert saved["status"] == "failed" and saved["result"] is None
+        assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+        assert saved["result"]["almost_correction"] is None
         events = await app.state.storage.events(UUID(saved["id"]))
         assert any(
             e.type == "task_output_rejected"
