@@ -273,3 +273,28 @@ async def test_rejected_initial_plan_still_fails_without_a_result(settings):
         saved = await submit(client)
         assert saved["status"] == "failed" and saved["result"] is None
         assert saved["stop_reason"] == "invalid_task_output"
+
+
+async def test_final_check_that_omits_its_decision_field_is_repaired_not_read_as_rejection(
+    settings,
+):
+    """Measured Nov 15: 28 of 111 rejected final checks failed only on the omitted field."""
+    from aletheia.verdicts import ExplanationCheck
+
+    assert "decision_supported" in ExplanationCheck.model_json_schema()["required"]
+
+    class OmitsOnce(Providers):
+        omitted = 0
+
+        def model_value(self, schema, data):
+            value = super().model_value(schema, data)
+            if schema == "ExplanationCheck" and not self.omitted:
+                self.omitted += 1
+                del value["decision_supported"]
+            return value
+
+    providers = OmitsOnce()
+    async with running(settings, providers) as (_, client):
+        saved = await submit(client)
+    assert saved["status"] == "completed" and saved["result"]["verdict"] == "true"
+    assert [name for name, _ in providers.model_inputs].count("ExplanationCheck") == 2

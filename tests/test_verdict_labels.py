@@ -77,17 +77,17 @@ async def test_each_failed_correction_check_prevents_almost(settings, check_fiel
     providers = RejectedCorrection(relation="contradicts", almost=True)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "partial"
-        assert saved["result"]["verdict"] is None
+        # The rejected correction is dropped, never published; the checked False stays.
+        assert saved["status"] == "completed"
+        assert saved["result"]["verdict"] == "false"
         assert saved["result"]["almost_correction"] is None
-        assert saved["stop_reason"] == "semantic_rejection"
-        assert any("final check" in note for note in saved["result"]["limitations"])
+        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
 
 
 @pytest.mark.parametrize(
     "defect", ["missing_part", "blank", "invented_id", "no_citations", "unchanged"]
 )
-async def test_invalid_correction_has_one_repair_then_fails(settings, defect):
+async def test_invalid_correction_is_never_published(settings, defect):
     class BadCorrection(Providers):
         def model_value(self, schema, data):
             value = super().model_value(schema, data)
@@ -108,11 +108,17 @@ async def test_invalid_correction_has_one_repair_then_fails(settings, defect):
     providers = BadCorrection(relation="contradicts", almost=True)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "partial" and saved["result"]["verdict"] is None
         assert saved["result"]["almost_correction"] is None
-        assert saved["stop_reason"] == "invalid_task_output"
-        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
-        assert [name for name, _ in providers.model_inputs].count("ExplanationCheck") == 0
+        names = [name for name, _ in providers.model_inputs]
+        if defect in {"invented_id", "unchanged"}:
+            # A well-formed but invalid correction is dropped; the checked False stays.
+            assert saved["status"] == "completed" and saved["result"]["verdict"] == "false"
+            assert names.count("Synthesis") == 1 and names.count("ExplanationCheck") == 1
+        else:
+            # A malformed response still gets one repair and then withholds the verdict.
+            assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+            assert saved["stop_reason"] == "invalid_task_output"
+            assert names.count("Synthesis") == 2 and names.count("ExplanationCheck") == 0
 
 
 @pytest.mark.parametrize(
@@ -134,11 +140,16 @@ async def test_almost_cannot_bypass_conflict_truth_or_per_part_evidence_bar(sett
     providers = Providers(almost=True, **options)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+        # The ineligible correction is dropped and the decision is exactly what the same
+        # evidence gives without it: no Almost, and no verdict lost to the bad proposal.
+        assert saved["status"] == "completed"
         assert saved["result"]["almost_correction"] is None
+        assert saved["result"]["verdict"] == (
+            "true" if options == {"relation": "supports"} else None
+        )
         # In the two-origin case the whole set is adequate, but each correction part
         # cites only one origin. Individual support requirements must still be enforced.
-        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
+        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 1
 
 
 async def test_deadline_before_correction_check_never_publishes_candidate(settings):

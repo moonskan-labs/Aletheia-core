@@ -1,0 +1,3180 @@
+{
+  "id": "f-19",
+  "live": true,
+  "investigation": {
+    "id": "d1003274-83db-46f2-820c-eaf2f4242772",
+    "claim": "Georgia earned its first Winter Olympic medal in ice hockey during the 2026 Games in Italy.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-15T21:29:17.888914Z",
+    "started_at": "2026-11-15T21:29:18.000250Z",
+    "finished_at": "2026-11-15T21:30:37.495046Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Georgia earned its first Winter Olympic medal in ice hockey during the 2026 Games in Italy.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "The claim makes a factual assertion about a specific Olympic event and medal award that can be verified against records.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "Georgia earned its first Winter Olympic medal in ice hockey",
+              "role": "essential",
+              "subject": "Georgia",
+              "predicate": "earned its first Winter Olympic medal in ice hockey",
+              "timeframe": "2026",
+              "location_or_population": "Italy",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "during the 2026 Games in Italy",
+              "role": "modifier",
+              "subject": "Georgia",
+              "predicate": "during the 2026 Games in Italy",
+              "timeframe": "2026",
+              "location_or_population": "Italy",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Verification of Georgia's first Winter Olympic ice hockey medal at the 2026 Games in Italy.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "5a47e07c-2267-4f26-9aca-39deb7aa42fb"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "7708d5e3-6605-4fbc-ac69-c0c589dee7b3"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "5a47e07c-2267-4f26-9aca-39deb7aa42fb",
+          "7708d5e3-6605-4fbc-ac69-c0c589dee7b3"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Spans specify figure skating pairs as the medal sport, not ice hockey",
+        "No data on Georgian athletes or teams in the source",
+        "No mention of Georgia or Georgian ice hockey in the tournament data",
+        "Some selected pages were unavailable or exceeded the text limit.",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v3",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 239.99999999999977,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 10,
+        "search": 5,
+        "extract": 4
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.24014209500001,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6027392769999551,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 4.255705121999881,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.8708232229998885,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 41.232094524000104,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 3.2083117069998934,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.5640733160000764,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.055770245999838,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.9932485439999255,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.3193522660001236,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.09000124099998175,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.065316480000092,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.922768238000117,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.38376354499996523,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.3497679469999184,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.988494988999946,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5728272809999453,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.905591475999927,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.4826453069999843,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 38882,
+        "completion_tokens": 2883,
+        "total_tokens": 41765
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "The claim makes a factual assertion about a specific Olympic event and medal award that can be verified against records.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "Georgia earned its first Winter Olympic medal in ice hockey",
+          "role": "essential",
+          "subject": "Georgia",
+          "predicate": "earned its first Winter Olympic medal in ice hockey",
+          "timeframe": "2026",
+          "location_or_population": "Italy",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "during the 2026 Games in Italy",
+          "role": "modifier",
+          "subject": "Georgia",
+          "predicate": "during the 2026 Games in Italy",
+          "timeframe": "2026",
+          "location_or_population": "Italy",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/d1003274-83db-46f2-820c-eaf2f4242772",
+      "events": "/investigations/d1003274-83db-46f2-820c-eaf2f4242772/events",
+      "evidence": "/investigations/d1003274-83db-46f2-820c-eaf2f4242772/evidence",
+      "comparison": "/investigations/d1003274-83db-46f2-820c-eaf2f4242772/comparison",
+      "refresh": "/investigations/d1003274-83db-46f2-820c-eaf2f4242772/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "url": "https://en.wikipedia.org/wiki/Georgia_at_the_2026_Winter_Olympics",
+        "canonical_url": "https://en.wikipedia.org/wiki/Georgia_at_the_2026_Winter_Olympics",
+        "title": "Georgia at the 2026 Winter Olympics - Wikipedia",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:30:20.635776Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "72f4bc8a02479ba68764e7261384bef02b66771c03e80584e398e45450920d02",
+        "duplicate_group": "72f4bc8a02479ba68764e7261384bef02b66771c03e80584e398e45450920d02",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "url": "https://teamusa.usahockey.com/2026olympicmen",
+        "canonical_url": "https://teamusa.usahockey.com/2026olympicmen",
+        "title": "2026 Milan-Cortina Olympic Winter Games | Men's Tournament",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:30:27.084064Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "c2bfb9320f5a523a245ad7d3fa76c69f5d3038c08e895842bfa2b9a42c75da4b",
+        "duplicate_group": "c2bfb9320f5a523a245ad7d3fa76c69f5d3038c08e895842bfa2b9a42c75da4b",
+        "limitations": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "5a47e07c-2267-4f26-9aca-39deb7aa42fb",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+            "span_ids": [
+              76,
+              131
+            ]
+          },
+          "rationale": "Spans 76 and 131 confirm that on 16 February 2026, Luka Berulava and Anastasiia Metelkina won the silver medal in the pairs event, marking Georgia's first ever Winter Olympic medal. The event is in figure skating pairs, not ice hockey.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Reuters via span 131; Wikipedia via span 76",
+          "independence": "established",
+          "provenance_span_ids": [
+            76,
+            131
+          ],
+          "provenance_note": "Both spans report Georgia's first Winter Olympic medal was in figure skating pairs, not ice hockey.",
+          "limitations": [
+            "Spans specify figure skating pairs as the medal sport, not ice hockey"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "sport",
+              "explanation": "Medal was in figure skating pairs, not ice hockey as claimed"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              76
+            ],
+            "start": 10618,
+            "end": 11158,
+            "text": "On 16 February, [Luka Berulava](https://en.wikipedia.org/wiki/Luka_Berulava \"Luka Berulava\") and [Anastasiia Metelkina](https://en.wikipedia.org/wiki/Anastasiia_Metelkina \"Anastasiia Metelkina\") won the silver medal in the [figure skating pairs event](https://en.wikipedia.org/wiki/Figure_skating_at_the_2026_Winter_Olympics_–_Pair_skating \"Figure skating at the 2026 Winter Olympics – Pair skating\"), marking the country's first ever [Winter Olympic](https://en.wikipedia.org/wiki/Winter_Olympic \"Winter Olympic\") medal.[[6]](#cite_note-6)",
+            "quote_hash": "fbb80ade5ca3bdc3890adf3674cef751db2034b3f7958200350376c8f9c6493d"
+          },
+          {
+            "span_ids": [
+              131
+            ],
+            "start": 20831,
+            "end": 21203,
+            "text": "6. [↑](#cite_ref-6) Carroll, Rory (16 February 2026). [\"Figure skating-Metelkina and Berulava win Georgia's first ever Winter Olympic medal\"](https://www.reuters.com/sports/figure-skating-metelkina-berulava-win-georgias-first-ever-winter-olympic-medal-2026-02-17/). *[Reuters](https://en.wikipedia.org/wiki/Reuters \"Reuters\")*. London, England. Retrieved 16 February 2026.",
+            "quote_hash": "d8ef1ac8fa20b107d48ba76d91e3737dfeb9f44ef8e1d0ef7f13fdfecb284d09"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "85d540d2-2995-4ecb-bf5a-16a6edeec702",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+            "span_ids": [
+              6,
+              13
+            ]
+          },
+          "rationale": "Spans 6 and 13 detail the 2026 Milan-Cortina Olympic Winter Games men's ice hockey tournament results. The passage reports Team USA's gold medal but contains no mention of Georgia or any Georgian ice hockey medal. No evidence in the spans supports Georgia winning an ice hockey medal.",
+          "relation": "contradicts",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            6,
+            13
+          ],
+          "provenance_note": "Spans confirm the 2026 Games details and U.S. gold; Georgia's participation or medal is absent.",
+          "limitations": [
+            "No data on Georgian athletes or teams in the source"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              6
+            ],
+            "start": 168,
+            "end": 453,
+            "text": "The men's ice hockey tournament of the [2026 Olympic Winter Games](https://milanocortina2026.olympics.com/en/) took place Feb. 6-22, 2026, in Milan, Italy, where Team USA captured its third gold medal ever and first since the 1980 \"Miracle On Ice\" team did so in Lake Placid, New York.",
+            "quote_hash": "9d4e75ef5ed226181e2c7707a0f08682b912b241f6a6426c22670db99e213447"
+          },
+          {
+            "span_ids": [
+              13
+            ],
+            "start": 1235,
+            "end": 1336,
+            "text": "### [Olympic Review](https://cdn4.sportngin.com/attachments/document/1218-3543997/MOLY_RECAP2026.pdf)",
+            "quote_hash": "b131098e7e6f8758c8be4bb00b621bc1e5d5c1d7548c1d6acfda707c283bfdde"
+          }
+        ],
+        "admissible": false,
+        "rejection_reason": "scope_mismatch_or_irrelevant"
+      },
+      {
+        "id": "7708d5e3-6605-4fbc-ac69-c0c589dee7b3",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+            "span_ids": [
+              6,
+              13
+            ]
+          },
+          "rationale": "Spans 6 and 13 describe the 2026 Milan-Cortina Games schedule and results for the men's ice hockey tournament in Italy. The text specifies Team USA's performance but provides no information about Georgia's participation, record, or medal outcome during those Games.",
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            6,
+            13
+          ],
+          "provenance_note": "Spans establish the 2026 Games context and U.S. results; Georgia's involvement is not addressed.",
+          "limitations": [
+            "No mention of Georgia or Georgian ice hockey in the tournament data"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              6
+            ],
+            "start": 168,
+            "end": 453,
+            "text": "The men's ice hockey tournament of the [2026 Olympic Winter Games](https://milanocortina2026.olympics.com/en/) took place Feb. 6-22, 2026, in Milan, Italy, where Team USA captured its third gold medal ever and first since the 1980 \"Miracle On Ice\" team did so in Lake Placid, New York.",
+            "quote_hash": "9d4e75ef5ed226181e2c7707a0f08682b912b241f6a6426c22670db99e213447"
+          },
+          {
+            "span_ids": [
+              13
+            ],
+            "start": 1235,
+            "end": 1336,
+            "text": "### [Olympic Review](https://cdn4.sportngin.com/attachments/document/1218-3543997/MOLY_RECAP2026.pdf)",
+            "quote_hash": "b131098e7e6f8758c8be4bb00b621bc1e5d5c1d7548c1d6acfda707c283bfdde"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 1,
+      "timestamp": "2026-11-15T21:29:17.888914Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 2,
+      "timestamp": "2026-11-15T21:29:18.000250Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 3,
+      "timestamp": "2026-11-15T21:29:18.004676Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v3",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 4,
+      "timestamp": "2026-11-15T21:29:18.007682Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 5,
+      "timestamp": "2026-11-15T21:29:18.010320Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.994",
+        "hard_remaining_seconds": "119.994",
+        "attempt": "1",
+        "input_chars": "119"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 6,
+      "timestamp": "2026-11-15T21:29:18.015246Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.989",
+        "hard_remaining_seconds": "119.989",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10710"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 7,
+      "timestamp": "2026-11-15T21:29:21.259158Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.745",
+        "hard_remaining_seconds": "116.745",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10710",
+        "elapsed_seconds": "3.240",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1812"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 8,
+      "timestamp": "2026-11-15T21:29:21.264139Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.740",
+        "hard_remaining_seconds": "116.740",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "877",
+        "elapsed_seconds": "3.254",
+        "finish_reason": "stop",
+        "prompt_tokens": "1741",
+        "completion_tokens": "242",
+        "total_tokens": "1983"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 9,
+      "timestamp": "2026-11-15T21:29:21.270472Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 10,
+      "timestamp": "2026-11-15T21:29:21.273427Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 11,
+      "timestamp": "2026-11-15T21:29:21.276551Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 12,
+      "timestamp": "2026-11-15T21:29:21.279583Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.724",
+        "hard_remaining_seconds": "116.724",
+        "attempt": "1",
+        "input_chars": "1304"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 13,
+      "timestamp": "2026-11-15T21:29:21.283642Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.720",
+        "hard_remaining_seconds": "116.720",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4417"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 14,
+      "timestamp": "2026-11-15T21:29:21.889493Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.115",
+        "hard_remaining_seconds": "116.115",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4417",
+        "elapsed_seconds": "0.603",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1123"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 15,
+      "timestamp": "2026-11-15T21:29:21.893036Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.111",
+        "hard_remaining_seconds": "116.111",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "248",
+        "elapsed_seconds": "0.613",
+        "finish_reason": "stop",
+        "prompt_tokens": "829",
+        "completion_tokens": "79",
+        "total_tokens": "908"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 16,
+      "timestamp": "2026-11-15T21:29:21.895320Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia Winter Olympic ice hockey medal 2026 results",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 17,
+      "timestamp": "2026-11-15T21:29:21.898216Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.106",
+        "hard_remaining_seconds": "116.106",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "260"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 18,
+      "timestamp": "2026-11-15T21:29:26.157098Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.847",
+        "hard_remaining_seconds": "111.847",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "260",
+        "elapsed_seconds": "4.256",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7763"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 19,
+      "timestamp": "2026-11-15T21:29:26.160397Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia Winter Olympic ice hockey medal 2026 results",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 20,
+      "timestamp": "2026-11-15T21:29:26.163484Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia Winter Olympic ice hockey medalists 2026",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 21,
+      "timestamp": "2026-11-15T21:29:26.166335Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.838",
+        "hard_remaining_seconds": "111.838",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "256"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 22,
+      "timestamp": "2026-11-15T21:29:28.040757Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.964",
+        "hard_remaining_seconds": "109.964",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "256",
+        "elapsed_seconds": "1.871",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6345"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 23,
+      "timestamp": "2026-11-15T21:29:28.045201Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia Winter Olympic ice hockey medalists 2026",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 24,
+      "timestamp": "2026-11-15T21:29:28.048617Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "4",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 25,
+      "timestamp": "2026-11-15T21:29:28.051561Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "url": "https://www.olympics.com/en/news/winter-olympics-figure-skating-pairs-georgia-silver-metelkina-berulava-only-the-beginning",
+        "slot": "1",
+        "query_ids": "q5,q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 26,
+      "timestamp": "2026-11-15T21:29:28.054804Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 27,
+      "timestamp": "2026-11-15T21:29:28.058181Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.946",
+        "hard_remaining_seconds": "109.946",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "249"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 28,
+      "timestamp": "2026-11-15T21:30:09.301175Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "23.711",
+        "hard_remaining_seconds": "68.711",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "249",
+        "elapsed_seconds": "41.232",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "292"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 29,
+      "timestamp": "2026-11-15T21:30:09.305393Z",
+      "type": "source_rejected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.olympics.com/en/news/winter-olympics-figure-skating-pairs-georgia-silver-metelkina-berulava-only-the-beginning",
+        "candidate_id": "c9",
+        "reason": "extraction_failed"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 30,
+      "timestamp": "2026-11-15T21:30:09.308945Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.facebook.com/theredandblack/posts/following-a-gold-medal-win-for-the-us-womens-ice-hockey-team-at-the-2026-winter-/1689701889834775",
+        "slot": "2",
+        "query_ids": "q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 31,
+      "timestamp": "2026-11-15T21:30:09.313201Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 32,
+      "timestamp": "2026-11-15T21:30:09.317981Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "23.687",
+        "hard_remaining_seconds": "68.687",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "270"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 33,
+      "timestamp": "2026-11-15T21:30:12.530091Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "20.475",
+        "hard_remaining_seconds": "65.475",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "270",
+        "elapsed_seconds": "3.208",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "312"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 34,
+      "timestamp": "2026-11-15T21:30:12.533528Z",
+      "type": "source_rejected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.facebook.com/theredandblack/posts/following-a-gold-medal-win-for-the-us-womens-ice-hockey-team-at-the-2026-winter-/1689701889834775",
+        "candidate_id": "c11",
+        "reason": "extraction_failed"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 35,
+      "timestamp": "2026-11-15T21:30:12.535842Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "missing_evidence"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 36,
+      "timestamp": "2026-11-15T21:30:12.538425Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 37,
+      "timestamp": "2026-11-15T21:30:12.541003Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "140.463",
+        "hard_remaining_seconds": "185.463",
+        "attempt": "1",
+        "input_chars": "1454"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 38,
+      "timestamp": "2026-11-15T21:30:12.544229Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "140.460",
+        "hard_remaining_seconds": "185.460",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4573"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 39,
+      "timestamp": "2026-11-15T21:30:14.111441Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "138.893",
+        "hard_remaining_seconds": "183.893",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4573",
+        "elapsed_seconds": "1.564",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1459"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 40,
+      "timestamp": "2026-11-15T21:30:14.114611Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "138.889",
+        "hard_remaining_seconds": "183.889",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "568",
+        "elapsed_seconds": "1.574",
+        "finish_reason": "stop",
+        "prompt_tokens": "871",
+        "completion_tokens": "155",
+        "total_tokens": "1026"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 41,
+      "timestamp": "2026-11-15T21:30:14.116923Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "missing_evidence",
+        "gap": "Some selected sources could not be retrieved.",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 42,
+      "timestamp": "2026-11-15T21:30:14.119329Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Some selected sources could not be retrieved.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 43,
+      "timestamp": "2026-11-15T21:30:14.122425Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia ice hockey medal results at 2026 Winter Olympics in Italy",
+        "purpose": "support",
+        "query_id": "q15"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 44,
+      "timestamp": "2026-11-15T21:30:14.124830Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q15",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "138.879",
+        "hard_remaining_seconds": "183.879",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "273"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 45,
+      "timestamp": "2026-11-15T21:30:16.183972Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q15",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "136.821",
+        "hard_remaining_seconds": "181.821",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "273",
+        "elapsed_seconds": "2.056",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9144"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 46,
+      "timestamp": "2026-11-15T21:30:16.187344Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia ice hockey medal results at 2026 Winter Olympics in Italy",
+        "query_id": "q15",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 47,
+      "timestamp": "2026-11-15T21:30:16.189994Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "List of ice hockey medalists at 2026 Winter Olympics Italy",
+        "purpose": "contradiction",
+        "query_id": "q17"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 48,
+      "timestamp": "2026-11-15T21:30:16.192846Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q17",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "136.811",
+        "hard_remaining_seconds": "181.811",
+        "provider_call_id": "p18",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 49,
+      "timestamp": "2026-11-15T21:30:18.189570Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q17",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "134.815",
+        "hard_remaining_seconds": "179.815",
+        "provider_call_id": "p18",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266",
+        "elapsed_seconds": "1.993",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10027"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 50,
+      "timestamp": "2026-11-15T21:30:18.192927Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "List of ice hockey medalists at 2026 Winter Olympics Italy",
+        "query_id": "q17",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 51,
+      "timestamp": "2026-11-15T21:30:18.195895Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia first Winter Olympic ice hockey medal any Games before 2026",
+        "purpose": "context",
+        "query_id": "q19"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 52,
+      "timestamp": "2026-11-15T21:30:18.198538Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q19",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "134.806",
+        "hard_remaining_seconds": "179.806",
+        "provider_call_id": "p20",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "275"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 53,
+      "timestamp": "2026-11-15T21:30:20.522154Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q19",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "132.483",
+        "hard_remaining_seconds": "177.483",
+        "provider_call_id": "p20",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "275",
+        "elapsed_seconds": "2.319",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8343"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 54,
+      "timestamp": "2026-11-15T21:30:20.526253Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Georgia first Winter Olympic ice hockey medal any Games before 2026",
+        "query_id": "q19",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 55,
+      "timestamp": "2026-11-15T21:30:20.530034Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "9",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 56,
+      "timestamp": "2026-11-15T21:30:20.532964Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c21",
+        "url": "https://en.wikipedia.org/wiki/Georgia_at_the_2026_Winter_Olympics",
+        "slot": "1",
+        "query_ids": "q15,q19",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 57,
+      "timestamp": "2026-11-15T21:30:20.536205Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 58,
+      "timestamp": "2026-11-15T21:30:20.539590Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c21",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "132.465",
+        "hard_remaining_seconds": "177.465",
+        "provider_call_id": "p22",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "192"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 59,
+      "timestamp": "2026-11-15T21:30:20.633068Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c21",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "132.372",
+        "hard_remaining_seconds": "177.372",
+        "provider_call_id": "p22",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "192",
+        "elapsed_seconds": "0.090",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "40953"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 60,
+      "timestamp": "2026-11-15T21:30:20.647953Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "url": "https://en.wikipedia.org/wiki/Georgia_at_the_2026_Winter_Olympics",
+        "candidate_id": "c21",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 61,
+      "timestamp": "2026-11-15T21:30:20.650511Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 62,
+      "timestamp": "2026-11-15T21:30:20.657019Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "132.347",
+        "hard_remaining_seconds": "177.347",
+        "attempt": "1",
+        "input_chars": "15243"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 63,
+      "timestamp": "2026-11-15T21:30:20.662542Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "132.342",
+        "hard_remaining_seconds": "177.342",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30734"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 64,
+      "timestamp": "2026-11-15T21:30:24.731326Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "128.273",
+        "hard_remaining_seconds": "173.273",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30734",
+        "elapsed_seconds": "4.065",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2578"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 65,
+      "timestamp": "2026-11-15T21:30:24.735144Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "128.269",
+        "hard_remaining_seconds": "173.269",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1623",
+        "elapsed_seconds": "4.078",
+        "finish_reason": "stop",
+        "prompt_tokens": "7656",
+        "completion_tokens": "526",
+        "total_tokens": "8182"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 66,
+      "timestamp": "2026-11-15T21:30:24.738630Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 67,
+      "timestamp": "2026-11-15T21:30:24.741664Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "128.263",
+        "hard_remaining_seconds": "173.263",
+        "attempt": "2",
+        "input_chars": "15243"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 68,
+      "timestamp": "2026-11-15T21:30:24.748639Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "128.256",
+        "hard_remaining_seconds": "173.256",
+        "provider_call_id": "p25",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30935"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 69,
+      "timestamp": "2026-11-15T21:30:26.677062Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "126.329",
+        "hard_remaining_seconds": "171.329",
+        "provider_call_id": "p25",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30935",
+        "elapsed_seconds": "1.923",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1966"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 70,
+      "timestamp": "2026-11-15T21:30:26.680189Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "126.324",
+        "hard_remaining_seconds": "171.324",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1047",
+        "elapsed_seconds": "1.939",
+        "finish_reason": "stop",
+        "prompt_tokens": "7690",
+        "completion_tokens": "326",
+        "total_tokens": "8016"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 71,
+      "timestamp": "2026-11-15T21:30:26.685474Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "5a47e07c-2267-4f26-9aca-39deb7aa42fb",
+        "snapshot_id": "db1fc7cc-0248-4428-a1a6-d0d2800f80ca",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 72,
+      "timestamp": "2026-11-15T21:30:26.687656Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "url": "https://teamusa.usahockey.com/2026olympicmen",
+        "slot": "2",
+        "query_ids": "q17",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 73,
+      "timestamp": "2026-11-15T21:30:26.690349Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 74,
+      "timestamp": "2026-11-15T21:30:26.694549Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "126.310",
+        "hard_remaining_seconds": "171.310",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "171"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 75,
+      "timestamp": "2026-11-15T21:30:27.081363Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "125.923",
+        "hard_remaining_seconds": "170.923",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "171",
+        "elapsed_seconds": "0.384",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9847"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 76,
+      "timestamp": "2026-11-15T21:30:27.089354Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "url": "https://teamusa.usahockey.com/2026olympicmen",
+        "candidate_id": "c26",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 77,
+      "timestamp": "2026-11-15T21:30:27.092328Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 78,
+      "timestamp": "2026-11-15T21:30:27.096435Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "125.908",
+        "hard_remaining_seconds": "170.907",
+        "attempt": "1",
+        "input_chars": "12191"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 79,
+      "timestamp": "2026-11-15T21:30:27.102152Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "125.902",
+        "hard_remaining_seconds": "170.902",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "27618"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 80,
+      "timestamp": "2026-11-15T21:30:30.455136Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "122.549",
+        "hard_remaining_seconds": "167.549",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "27618",
+        "elapsed_seconds": "3.350",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2877"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 81,
+      "timestamp": "2026-11-15T21:30:30.458232Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "122.546",
+        "hard_remaining_seconds": "167.546",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1920",
+        "elapsed_seconds": "3.362",
+        "finish_reason": "stop",
+        "prompt_tokens": "8222",
+        "completion_tokens": "557",
+        "total_tokens": "8779"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 82,
+      "timestamp": "2026-11-15T21:30:30.463135Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "85d540d2-2995-4ecb-bf5a-16a6edeec702",
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "admissible": "false",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 83,
+      "timestamp": "2026-11-15T21:30:30.465390Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "7708d5e3-6605-4fbc-ac69-c0c589dee7b3",
+        "snapshot_id": "2fbd111f-73a2-4e76-85b3-d6928e9dc880",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 84,
+      "timestamp": "2026-11-15T21:30:30.467844Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 85,
+      "timestamp": "2026-11-15T21:30:30.470577Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "5a47e07c-2267-4f26-9aca-39deb7aa42fb"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 86,
+      "timestamp": "2026-11-15T21:30:30.476245Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 87,
+      "timestamp": "2026-11-15T21:30:30.479397Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t30",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "167.525",
+        "hard_remaining_seconds": "167.525",
+        "attempt": "1",
+        "input_chars": "5679"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 88,
+      "timestamp": "2026-11-15T21:30:30.482748Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t30",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "167.521",
+        "hard_remaining_seconds": "167.521",
+        "provider_call_id": "p31",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10459"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 89,
+      "timestamp": "2026-11-15T21:30:33.474197Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t30",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "164.530",
+        "hard_remaining_seconds": "164.530",
+        "provider_call_id": "p31",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10459",
+        "elapsed_seconds": "2.988",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2027"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 90,
+      "timestamp": "2026-11-15T21:30:33.481494Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t30",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "164.526",
+        "hard_remaining_seconds": "164.526",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1126",
+        "elapsed_seconds": "2.999",
+        "finish_reason": "stop",
+        "prompt_tokens": "2750",
+        "completion_tokens": "401",
+        "total_tokens": "3151"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 91,
+      "timestamp": "2026-11-15T21:30:33.486219Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t32",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "164.518",
+        "hard_remaining_seconds": "164.518",
+        "attempt": "1",
+        "input_chars": "6788"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 92,
+      "timestamp": "2026-11-15T21:30:33.490635Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t32",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "164.514",
+        "hard_remaining_seconds": "164.514",
+        "provider_call_id": "p33",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11616"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 93,
+      "timestamp": "2026-11-15T21:30:34.067531Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t32",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "163.937",
+        "hard_remaining_seconds": "163.937",
+        "provider_call_id": "p33",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11616",
+        "elapsed_seconds": "0.573",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1033"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 94,
+      "timestamp": "2026-11-15T21:30:34.071108Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t32",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "163.933",
+        "hard_remaining_seconds": "163.933",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "171",
+        "elapsed_seconds": "0.585",
+        "finish_reason": "stop",
+        "prompt_tokens": "3115",
+        "completion_tokens": "51",
+        "total_tokens": "3166"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 95,
+      "timestamp": "2026-11-15T21:30:34.073573Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision,core_supported,preserves_core",
+        "affected_units": "1"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 96,
+      "timestamp": "2026-11-15T21:30:34.076426Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "163.928",
+        "hard_remaining_seconds": "163.928",
+        "attempt": "1",
+        "input_chars": "5908"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 97,
+      "timestamp": "2026-11-15T21:30:34.079646Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "163.924",
+        "hard_remaining_seconds": "163.924",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10702"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 98,
+      "timestamp": "2026-11-15T21:30:36.988826Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "161.016",
+        "hard_remaining_seconds": "161.016",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10702",
+        "elapsed_seconds": "2.906",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2204"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 99,
+      "timestamp": "2026-11-15T21:30:36.992665Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "161.011",
+        "hard_remaining_seconds": "161.011",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1299",
+        "elapsed_seconds": "2.916",
+        "finish_reason": "stop",
+        "prompt_tokens": "2799",
+        "completion_tokens": "495",
+        "total_tokens": "3294"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 100,
+      "timestamp": "2026-11-15T21:30:36.995542Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t36",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "161.009",
+        "hard_remaining_seconds": "161.009",
+        "attempt": "1",
+        "input_chars": "6961"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 101,
+      "timestamp": "2026-11-15T21:30:36.999235Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t36",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "161.005",
+        "hard_remaining_seconds": "161.005",
+        "provider_call_id": "p37",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11793"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 102,
+      "timestamp": "2026-11-15T21:30:37.485133Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t36",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "160.519",
+        "hard_remaining_seconds": "160.519",
+        "provider_call_id": "p37",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11793",
+        "elapsed_seconds": "0.483",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1036"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 103,
+      "timestamp": "2026-11-15T21:30:37.488430Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t36",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "160.516",
+        "hard_remaining_seconds": "160.516",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "174",
+        "elapsed_seconds": "0.493",
+        "finish_reason": "stop",
+        "prompt_tokens": "3209",
+        "completion_tokens": "51",
+        "total_tokens": "3260"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 104,
+      "timestamp": "2026-11-15T21:30:37.491757Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision,core_supported,correction_supported,corrected_claim_supported,preserves_core,no_unresolved_conflict",
+        "affected_units": "1"
+      }
+    },
+    {
+      "investigation_id": "d1003274-83db-46f2-820c-eaf2f4242772",
+      "sequence": 105,
+      "timestamp": "2026-11-15T21:30:37.495046Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 79.86761279999996,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.239
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.602
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.254
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.87
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 41.231
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.207
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.563
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.055
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.992
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.318
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.069
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.064
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.921
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.372
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.349
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.987
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.572
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.905
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.482
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.24014209500001,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6027392769999551,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 4.255705121999881,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.8708232229998885,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 41.232094524000104,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 3.2083117069998934,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.5640733160000764,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.055770245999838,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.9932485439999255,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.3193522660001236,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.09000124099998175,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.065316480000092,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.922768238000117,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.38376354499996523,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.3497679469999184,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.988494988999946,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5728272809999453,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.905591475999927,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.4826453069999843,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

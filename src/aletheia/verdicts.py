@@ -15,7 +15,9 @@ from aletheia.tasks import InvalidTask, TaskValidationError
 
 
 class ExplanationCheck(Record):
-    decision_supported: bool | None = None
+    # Required: a small model leaves an optional field out, and an omitted answer used
+    # to be read as "decision not supported".
+    decision_supported: bool
     rejected_component_ids: Annotated[list[ComponentId], Field(max_length=8)] = Field(
         default_factory=list
     )
@@ -151,20 +153,22 @@ def validate_correction(correction, assertion, computed, available, route, sourc
             raise TaskValidationError("correction_insufficient")
 
 
-async def _synthesize_once(tasks, assertion, computed, evidence, route, sources, repair=None):
+async def _synthesize_once(
+    tasks, assertion, computed, evidence, route, sources, repair=None, allow_correction=True
+):
     available = {e.id: e for e in evidence if e.admissible and e.assertion_id == assertion.id}
     if not available:
         return computed, []
-    eligible = correction_eligible(computed, list(available.values()), route, sources)
+    eligible = allow_correction and correction_eligible(
+        computed, list(available.values()), route, sources
+    )
 
     def validate(value):
+        # Only the explanation is validated here. A bad optional Almost proposal is
+        # dropped below; it must not cost the run its checked True or False verdict.
         for unit in value.units:
             if not unit.text.strip() or not set(unit.evidence_ids) <= available.keys():
                 raise TaskValidationError("explanation_reference")
-        if value.almost_correction:
-            validate_correction(
-                value.almost_correction, assertion, computed, available, route, sources
-            )
 
     result = await tasks.call(
         "synthesize",
@@ -193,6 +197,20 @@ async def _synthesize_once(tasks, assertion, computed, evidence, route, sources,
         Synthesis,
         validate,
     )
+
+    correction = result.almost_correction
+    if correction:
+        try:
+            if not eligible:
+                raise TaskValidationError("correction_ineligible")
+            validate_correction(correction, assertion, computed, available, route, sources)
+        except TaskValidationError as exc:
+            correction = None
+            await emit_diagnostic(
+                tasks.emit,
+                "task_output_rejected",
+                {"task": "almost_correction", "reason": exc.code, "action": "dropped"},
+            )
 
     def check_indices(value):
         if assertion.analysis and not set(value.rejected_component_ids) <= {
@@ -228,9 +246,7 @@ async def _synthesize_once(tasks, assertion, computed, evidence, route, sources,
             "assertion": assertion.model_dump(),
             "finding": computed.model_dump(),
             "units": [{"index": index, **u.model_dump()} for index, u in enumerate(result.units)],
-            "almost_correction": result.almost_correction.model_dump()
-            if result.almost_correction
-            else None,
+            "almost_correction": correction.model_dump() if correction else None,
             "evidence": [e.model_dump() for e in available.values()],
         },
         ExplanationCheck,
@@ -244,7 +260,7 @@ async def _synthesize_once(tasks, assertion, computed, evidence, route, sources,
         check.decision_supported is not True or check.rejected_component_ids
     ):
         failed.append("unsupported_decision")
-    if result.almost_correction:
+    if correction:
         failed.extend(
             name
             for name in (
@@ -278,8 +294,8 @@ async def _synthesize_once(tasks, assertion, computed, evidence, route, sources,
         )
         if getattr(tasks, "save_diagnostic", None):
             await tasks.save_diagnostic(diagnostic)
-        raise SemanticRejection(failed)
-    if result.almost_correction:
+        raise SemanticRejection(failed, had_correction=correction is not None)
+    if correction:
         # Construct a validated new finding only after BOTH reference and semantic checks.
         computed = Finding(
             **{
@@ -287,7 +303,7 @@ async def _synthesize_once(tasks, assertion, computed, evidence, route, sources,
                 "outcome": "decided",
                 "verdict": "almost",
                 "unable_to_decide_reason": None,
-                "almost_correction": result.almost_correction,
+                "almost_correction": correction,
                 "limitations": [],
             }
         )
@@ -295,8 +311,9 @@ async def _synthesize_once(tasks, assertion, computed, evidence, route, sources,
 
 
 class SemanticRejection(InvalidTask):
-    def __init__(self, conditions):
+    def __init__(self, conditions, had_correction=False):
         self.conditions = conditions
+        self.had_correction = had_correction
         super().__init__("Final explanation or decision failed semantic validation.")
 
 
@@ -304,19 +321,26 @@ async def synthesize(tasks, assertion, computed, evidence, route, sources):
     if assertion.analysis:
         route = "quick"
     repair = None
+    allow_correction = True
     for attempt in range(2):
         try:
             return await _synthesize_once(
-                tasks, assertion, computed, evidence, route, sources, repair
+                tasks, assertion, computed, evidence, route, sources, repair, allow_correction
             )
         except SemanticRejection as exc:
             if attempt:
                 raise
+            # A rejected Almost proposal is not retried: the second attempt explains the
+            # preliminary decision, so a sound True or False can still be confirmed.
+            allow_correction = not exc.had_correction
             repair = {
                 "failed_conditions": exc.conditions,
                 "instruction": (
                     "Repair the affected explanation or propose a justified bounded "
                     "correction. Do not repeat rejected prose."
+                    if allow_correction
+                    else "The proposed correction was rejected. Return almost_correction=null "
+                    "and explain the preliminary decision only. Do not repeat rejected prose."
                 ),
             }
     raise AssertionError("Unreachable")

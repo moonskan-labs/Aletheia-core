@@ -246,7 +246,11 @@ async def test_explanation_checker_receives_explicit_zero_based_indices(settings
 async def test_final_semantic_rejection_is_auditable(settings, options, reason):
     async with running(settings, Providers(**options)) as (app, client):
         saved = await submit(client)
-        assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+        if reason == "unsupported_correction":
+            # The rejected correction is dropped on the retry; the checked False stays.
+            assert saved["status"] == "completed" and saved["result"]["verdict"] == "false"
+        else:
+            assert saved["status"] == "partial" and saved["result"]["verdict"] is None
         assert saved["result"]["almost_correction"] is None
         events = await app.state.storage.events(UUID(saved["id"]))
         assert any(

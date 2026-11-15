@@ -229,14 +229,13 @@ async def test_internal_exception_is_not_mislabeled_as_remote_provider_failure(s
     "options,code",
     [
         ({"invalid_plan": True}, "query_coverage"),
-        ({"almost": True}, "correction_ineligible"),
     ],
 )
 async def test_task_contract_rejections_have_specific_codes(settings, options, code):
     async with running(settings, Providers(**options)) as (app, client):
         saved = await submit(client)
-        # A rejected initial plan has no evidence; a rejected correction keeps its evidence.
-        assert saved["status"] == ("failed" if "invalid_plan" in options else "partial")
+        # A rejected initial plan has no evidence.
+        assert saved["status"] == "failed"
         assert saved["result"] is None or saved["result"]["verdict"] is None
         trace = await events(app, saved)
         rejected = [
@@ -246,6 +245,18 @@ async def test_task_contract_rejections_have_specific_codes(settings, options, c
         ]
         assert len(rejected) == 2
         assert {p["validation_code"] for p in rejected} == {code}
+
+
+async def test_dropped_correction_is_traced_and_keeps_the_checked_verdict(settings):
+    async with running(settings, Providers(almost=True)) as (app, client):
+        saved = await submit(client)
+        assert saved["status"] == "completed" and saved["result"]["verdict"] == "true"
+        assert saved["result"]["almost_correction"] is None
+        trace = await events(app, saved)
+        dropped = [e.payload for e in trace if e.payload.get("task") == "almost_correction"]
+        assert [(p["reason"], p["action"]) for p in dropped] == [
+            ("correction_ineligible", "dropped")
+        ]
 
 
 @pytest.mark.parametrize("expire_on", ["provider_attempt_started", "provider_retry_scheduled"])
