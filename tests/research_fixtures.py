@@ -159,6 +159,11 @@ class Providers:
                     }
                 ],
             }
+        if schema == "FalseExplanationCheck":
+            return {
+                "claim_is_false": True,
+                "supported_units": [] if o["invalid_explanation"] else [0],
+            }
         if schema == "ExplanationCheck":
             return {
                 "decision_supported": True,

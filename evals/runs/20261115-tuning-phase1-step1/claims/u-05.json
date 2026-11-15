@@ -1,0 +1,2061 @@
+{
+  "id": "u-05",
+  "live": true,
+  "investigation": {
+    "id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+    "claim": "Exactly 87 hikers reached Mount Whitney’s California summit on July 1, 2001.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-15T23:21:27.257786Z",
+    "started_at": "2026-11-15T23:21:27.268489Z",
+    "finished_at": "2026-11-15T23:21:49.103247Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "false",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Exactly 87 hikers reached Mount Whitney’s California summit on July 1, 2001.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Direct assertion of a specific attendance count for a named event.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "Exactly 87 hikers reached Mount Whitney’s California summit on July 1, 2001.",
+              "role": "essential",
+              "subject": "87 hikers",
+              "predicate": "reached",
+              "timeframe": "July 1, 2001",
+              "location_or_population": "California summit of Mount Whitney",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "Exactly",
+              "role": "modifier",
+              "subject": "87 hikers",
+              "predicate": "reached",
+              "timeframe": "July 1, 2001",
+              "location_or_population": "California summit of Mount Whitney",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The claim specifies an exact count of hikers reaching a specific summit on a specific date. No additional comparative, causal, or contextual claims are present.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "false",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "8ea4cd1a-c6dc-4007-8a0f-3fe54965b50c"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "ebbf3bbb-7b90-4643-b5fb-156efe634974"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "8ea4cd1a-c6dc-4007-8a0f-3fe54965b50c",
+          "ebbf3bbb-7b90-4643-b5fb-156efe634974"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "The Mount Whitney Climber's Log pagination ('1-20 of 1172') does not list or verify 87 hikers on July 1, 2001.",
+          "evidence_ids": [
+            "8ea4cd1a-c6dc-4007-8a0f-3fe54965b50c",
+            "ebbf3bbb-7b90-4643-b5fb-156efe634974"
+          ]
+        },
+        {
+          "text": "No authoritative record confirms the exact count of 87 hikers reaching the summit on that date.",
+          "evidence_ids": [
+            "8ea4cd1a-c6dc-4007-8a0f-3fe54965b50c",
+            "ebbf3bbb-7b90-4643-b5fb-156efe634974"
+          ]
+        }
+      ],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "page_text_truncated",
+        "Source is a user-generated climbing log, not an official attendance registry.",
+        "Covers only logged entries, not real-time or systematic counts.",
+        "Source is a forum discussion with no verified attendance records for the specified date",
+        "No primary permit or tally data cited for July 1, 2001",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 6,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.771348249996663,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9836116250007763,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.8970927500049584,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.7876335839973763,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.9279933750003693,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.15229524999449495,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.9195805830022437,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 3.81270983399736,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.6813641670014476,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.2798896250023972,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.46300337499997113,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 25056,
+        "completion_tokens": 1656,
+        "total_tokens": 26712
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Direct assertion of a specific attendance count for a named event.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "Exactly 87 hikers reached Mount Whitney’s California summit on July 1, 2001.",
+          "role": "essential",
+          "subject": "87 hikers",
+          "predicate": "reached",
+          "timeframe": "July 1, 2001",
+          "location_or_population": "California summit of Mount Whitney",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "Exactly",
+          "role": "modifier",
+          "subject": "87 hikers",
+          "predicate": "reached",
+          "timeframe": "July 1, 2001",
+          "location_or_population": "California summit of Mount Whitney",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "events": "/investigations/21b72b2b-4f9e-49e4-aea6-96b799db8b12/events",
+      "evidence": "/investigations/21b72b2b-4f9e-49e4-aea6-96b799db8b12/evidence",
+      "comparison": "/investigations/21b72b2b-4f9e-49e4-aea6-96b799db8b12/comparison",
+      "refresh": "/investigations/21b72b2b-4f9e-49e4-aea6-96b799db8b12/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "url": "https://www.summitpost.org/mount-whitney/climbers-log/150227/d-108",
+        "canonical_url": "https://www.summitpost.org/mount-whitney/climbers-log/150227/d-108",
+        "title": "Mount Whitney Climber's Log : Climbing, Hiking & Mountaineering : SummitPost",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T23:21:36.847055Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "3b329779340e6cc90e9e98f45780bfa7ec54881a6a07449fc152126dcc2871b6",
+        "duplicate_group": "3b329779340e6cc90e9e98f45780bfa7ec54881a6a07449fc152126dcc2871b6",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "url": "https://www.mountwhitneyforum.com/ubbthreads.php?ubb=showflat&Number=86573",
+        "canonical_url": "https://www.mountwhitneyforum.com/ubbthreads.php?ubb=showflat&Number=86573",
+        "title": "Percentage of hikers that summit Whitney - Mt Whitney Forum",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T23:21:44.619736Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "de64294ce575a3a8193f66cdc899eac9469d0641def7fe089dd8728d00272507",
+        "duplicate_group": "de64294ce575a3a8193f66cdc899eac9469d0641def7fe089dd8728d00272507",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "8ea4cd1a-c6dc-4007-8a0f-3fe54965b50c",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+            "span_ids": [
+              24,
+              25
+            ]
+          },
+          "rationale": "The log shows total entries of 1-20 of 1172, with paginated navigation. No entry records the date July 1, 2001 or the exact count of 87 hikers on that date.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "summitpost.org Mount Whitney Climber's Log",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            24,
+            25
+          ],
+          "provenance_note": "Pagination indicator '1-20 of 1172' shows log size but no July 1, 2001 count of 87.",
+          "limitations": [
+            "Source is a user-generated climbing log, not an official attendance registry.",
+            "Covers only logged entries, not real-time or systematic counts."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              24,
+              25
+            ],
+            "start": 738,
+            "end": 1136,
+            "text": "Viewing: 1-20 of 1172\n\n**1**[2](/mount-whitney/climbers-log/150227/p2 \"Page # 2\")[3](/mount-whitney/climbers-log/150227/p3 \"Page # 3\")[4](/mount-whitney/climbers-log/150227/p4 \"Page # 4\")[5](/mount-whitney/climbers-log/150227/p5 \"Page # 5\")[6](/mount-whitney/climbers-log/150227/p6 \"Page # 6\")[7](/mount-whitney/climbers-log/150227/p7 \"Page # 7\")...[59](/mount-whitney/climbers-log/150227/p59 \"59\")",
+            "quote_hash": "75e4f5822164e393be63ea15c4f3d66c73e7f55be77bae7d7f04373c1b75f39f"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "ebbf3bbb-7b90-4643-b5fb-156efe634974",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+            "span_ids": [
+              24,
+              25
+            ]
+          },
+          "rationale": "The log's pagination and total count '1-20 of 1172' do not support the exact figure of 87 hikers on July 1, 2001.",
+          "relation": "context",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "summitpost.org Mount Whitney Climber's Log",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            24,
+            25
+          ],
+          "provenance_note": "Pagination indicator '1-20 of 1172' shows log size but no July 1, 2001 count of 87.",
+          "limitations": [
+            "Source is a user-generated climbing log, not an official attendance registry.",
+            "Covers only logged entries, not real-time or systematic counts."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              24,
+              25
+            ],
+            "start": 738,
+            "end": 1136,
+            "text": "Viewing: 1-20 of 1172\n\n**1**[2](/mount-whitney/climbers-log/150227/p2 \"Page # 2\")[3](/mount-whitney/climbers-log/150227/p3 \"Page # 3\")[4](/mount-whitney/climbers-log/150227/p4 \"Page # 4\")[5](/mount-whitney/climbers-log/150227/p5 \"Page # 5\")[6](/mount-whitney/climbers-log/150227/p6 \"Page # 6\")[7](/mount-whitney/climbers-log/150227/p7 \"Page # 7\")...[59](/mount-whitney/climbers-log/150227/p59 \"59\")",
+            "quote_hash": "75e4f5822164e393be63ea15c4f3d66c73e7f55be77bae7d7f04373c1b75f39f"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "ee33751f-6fa0-4800-b3c5-7a75bbd3ff82",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+            "span_ids": [
+              90,
+              93
+            ]
+          },
+          "rationale": "The forum spans 90-93 contain discussions about yearly attempt and summit totals (30,000 attempts, 10,000 summits), percentage calculations, and a study reporting 81% summit rate, but provide no record of exactly 87 hikers on July 1, 2001. The claim of a precise single-date count of 87 is not found.",
+          "relation": "contradicts",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Mt Whitney Forum thread",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            90,
+            93
+          ],
+          "provenance_note": "Forum discussion references yearly aggregates and a study; no date-specific count of 87.",
+          "limitations": [
+            "Source is a forum discussion with no verified attendance records for the specified date",
+            "No primary permit or tally data cited for July 1, 2001"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "timeframe",
+              "explanation": "Forum discusses annual totals (30k attempts, 10k summits), not a single-day count of 87 on July 1, 2001"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              90
+            ],
+            "start": 91491,
+            "end": 93213,
+            "text": "| | | | | | | | | | --- | --- | --- | --- | --- | --- | --- | | | | | | --- | --- | | [Re: Percentage of hikers that summit Whitney](/ubbthreads.php?ubb=showflat&Number=86579#Post86579) [63ChevyII](/ubbthreads.php?ubb=showflat&Number=86573#Post86573 \"in reply to\") #[86579](/ubbthreads.php?ubb=showflat&Number=86579#Post86579) 08/25/11 10:56 AM | | | Joined: Jan 2003 Posts: 2,447 Likes: 1 [Studio City, Ca](https://maps.google.com/maps?q=Studio+City%2C+Ca) [Ken](/ubbthreads.php?ubb=showprofile&User=213) Member | | | [Ken](javascript:void(0);) Member Joined: Jan 2003 Posts: 2,447 Likes: 1 [Studio City, Ca](https://maps.google.com/maps?q=Studio+City%2C+Ca) | This is the problem with selection bias: How do you measure something? It is easy to measure the number of permits issued (although, you don't know how many people ACTUALLY went, some bail at the last moment, and some pirates don't get a permit), and how do you measure the success rate? Some have used the number of signatures in the book, but some don't sign. The study had drawbacks, although it had the virtue of actually talking to people in person, one-by-one. Some refused, however. Some sneaked by off trail, some on the old trail, some in the middle of the night (although I'd speculate that most of those would be more experienced people for the first two, and thus, would have a higher success rate, but thats a wild-ass guess, and have no idea of numbers, although not large.) But the beautiful style of the study, it's lyrical prose-almost poetic, set the bar pretty high in terms of establishing some actual real information, instead of just speculation, which seemed to be all that was out there before. But, uh, ahem, I'm probably biased. | | |",
+            "quote_hash": "14d96636ebe1e8ca1f810ac59531cbeec249be765528d35f590c693978953fcf"
+          },
+          {
+            "span_ids": [
+              93
+            ],
+            "start": 93275,
+            "end": 94933,
+            "text": "| | | | | --- | --- | | [Re: Percentage of hikers that summit Whitney](/ubbthreads.php?ubb=showflat&Number=86579#Post86579) [63ChevyII](/ubbthreads.php?ubb=showflat&Number=86573#Post86573 \"in reply to\") #[86579](/ubbthreads.php?ubb=showflat&Number=86579#Post86579) 08/25/11 10:56 AM | | | Joined: Jan 2003 Posts: 2,447 Likes: 1 [Studio City, Ca](https://maps.google.com/maps?q=Studio+City%2C+Ca) [Ken](/ubbthreads.php?ubb=showprofile&User=213) Member | | | [Ken](javascript:void(0);) Member Joined: Jan 2003 Posts: 2,447 Likes: 1 [Studio City, Ca](https://maps.google.com/maps?q=Studio+City%2C+Ca) | This is the problem with selection bias: How do you measure something? It is easy to measure the number of permits issued (although, you don't know how many people ACTUALLY went, some bail at the last moment, and some pirates don't get a permit), and how do you measure the success rate? Some have used the number of signatures in the book, but some don't sign. The study had drawbacks, although it had the virtue of actually talking to people in person, one-by-one. Some refused, however. Some sneaked by off trail, some on the old trail, some in the middle of the night (although I'd speculate that most of those would be more experienced people for the first two, and thus, would have a higher success rate, but thats a wild-ass guess, and have no idea of numbers, although not large.) But the beautiful style of the study, it's lyrical prose-almost poetic, set the bar pretty high in terms of establishing some actual real information, instead of just speculation, which seemed to be all that was out there before. But, uh, ahem, I'm probably biased. | |",
+            "quote_hash": "d891ffbc7b2b05e6f314c1d163ded3b9eabf2c5c89d42db54a7b840b0d88c74b"
+          }
+        ],
+        "admissible": false,
+        "rejection_reason": "scope_mismatch_or_irrelevant"
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 1,
+      "timestamp": "2026-11-15T23:21:27.257786Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 2,
+      "timestamp": "2026-11-15T23:21:27.268489Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 3,
+      "timestamp": "2026-11-15T23:21:27.269837Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 4,
+      "timestamp": "2026-11-15T23:21:27.270966Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 5,
+      "timestamp": "2026-11-15T23:21:27.272105Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.998",
+        "hard_remaining_seconds": "119.998",
+        "attempt": "1",
+        "input_chars": "104"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 6,
+      "timestamp": "2026-11-15T23:21:27.273929Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10697"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 7,
+      "timestamp": "2026-11-15T23:21:29.046941Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.224",
+        "hard_remaining_seconds": "118.224",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10697",
+        "elapsed_seconds": "1.771",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1765"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 8,
+      "timestamp": "2026-11-15T23:21:29.048969Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.221",
+        "hard_remaining_seconds": "118.221",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "830",
+        "elapsed_seconds": "1.777",
+        "finish_reason": "stop",
+        "prompt_tokens": "1744",
+        "completion_tokens": "234",
+        "total_tokens": "1978"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 9,
+      "timestamp": "2026-11-15T23:21:29.051696Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 10,
+      "timestamp": "2026-11-15T23:21:29.052957Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 11,
+      "timestamp": "2026-11-15T23:21:29.054190Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 12,
+      "timestamp": "2026-11-15T23:21:29.055590Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.214",
+        "hard_remaining_seconds": "118.214",
+        "attempt": "1",
+        "input_chars": "1240"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 13,
+      "timestamp": "2026-11-15T23:21:29.057217Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.213",
+        "hard_remaining_seconds": "118.213",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4357"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 14,
+      "timestamp": "2026-11-15T23:21:30.043742Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.228",
+        "hard_remaining_seconds": "117.228",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4357",
+        "elapsed_seconds": "0.984",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1348"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 15,
+      "timestamp": "2026-11-15T23:21:30.046165Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.224",
+        "hard_remaining_seconds": "117.224",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "458",
+        "elapsed_seconds": "0.990",
+        "finish_reason": "stop",
+        "prompt_tokens": "834",
+        "completion_tokens": "143",
+        "total_tokens": "977"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 16,
+      "timestamp": "2026-11-15T23:21:30.047820Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "July 1 2001 Mount Whitney hikers reached summit count",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 17,
+      "timestamp": "2026-11-15T23:21:30.049489Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.221",
+        "hard_remaining_seconds": "117.221",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "261"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 18,
+      "timestamp": "2026-11-15T23:21:31.949503Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.322",
+        "hard_remaining_seconds": "115.322",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "261",
+        "elapsed_seconds": "1.897",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "4240"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 19,
+      "timestamp": "2026-11-15T23:21:31.951734Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "July 1 2001 Mount Whitney hikers reached summit count",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 20,
+      "timestamp": "2026-11-15T23:21:31.953414Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "July 1 2001 Mount Whitney hikers reached summit contradictory count",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 21,
+      "timestamp": "2026-11-15T23:21:31.954912Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.315",
+        "hard_remaining_seconds": "115.315",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "275"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 22,
+      "timestamp": "2026-11-15T23:21:34.745594Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.526",
+        "hard_remaining_seconds": "112.526",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "275",
+        "elapsed_seconds": "2.788",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5804"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 23,
+      "timestamp": "2026-11-15T23:21:34.748152Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "July 1 2001 Mount Whitney hikers reached summit contradictory count",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 24,
+      "timestamp": "2026-11-15T23:21:34.749991Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Mount Whitney July 2001 climbing permit records hikers",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 25,
+      "timestamp": "2026-11-15T23:21:34.751495Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.519",
+        "hard_remaining_seconds": "112.519",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "262"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 26,
+      "timestamp": "2026-11-15T23:21:36.681692Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.589",
+        "hard_remaining_seconds": "110.589",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "262",
+        "elapsed_seconds": "1.928",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7239"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 27,
+      "timestamp": "2026-11-15T23:21:36.683802Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Mount Whitney July 2001 climbing permit records hikers",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 28,
+      "timestamp": "2026-11-15T23:21:36.685873Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "10",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 29,
+      "timestamp": "2026-11-15T23:21:36.687549Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.summitpost.org/mount-whitney/climbers-log/150227/d-108",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 30,
+      "timestamp": "2026-11-15T23:21:36.688994Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 31,
+      "timestamp": "2026-11-15T23:21:36.690549Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.579",
+        "hard_remaining_seconds": "110.579",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "193"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 32,
+      "timestamp": "2026-11-15T23:21:36.844908Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.426",
+        "hard_remaining_seconds": "110.426",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "193",
+        "elapsed_seconds": "0.152",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11270"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 33,
+      "timestamp": "2026-11-15T23:21:36.851291Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "url": "https://www.summitpost.org/mount-whitney/climbers-log/150227/d-108",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 34,
+      "timestamp": "2026-11-15T23:21:36.853010Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 35,
+      "timestamp": "2026-11-15T23:21:36.863702Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.413",
+        "hard_remaining_seconds": "110.413",
+        "attempt": "1",
+        "input_chars": "18385"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 36,
+      "timestamp": "2026-11-15T23:21:36.870862Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.401",
+        "hard_remaining_seconds": "110.401",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35184"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 37,
+      "timestamp": "2026-11-15T23:21:40.792347Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.478",
+        "hard_remaining_seconds": "106.478",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35184",
+        "elapsed_seconds": "3.920",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2853"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 38,
+      "timestamp": "2026-11-15T23:21:40.794475Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.476",
+        "hard_remaining_seconds": "106.476",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1883",
+        "elapsed_seconds": "3.937",
+        "finish_reason": "stop",
+        "prompt_tokens": "9892",
+        "completion_tokens": "612",
+        "total_tokens": "10504"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 39,
+      "timestamp": "2026-11-15T23:21:40.797615Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "8ea4cd1a-c6dc-4007-8a0f-3fe54965b50c",
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 40,
+      "timestamp": "2026-11-15T23:21:40.798897Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "ebbf3bbb-7b90-4643-b5fb-156efe634974",
+        "snapshot_id": "4824aac9-e8b5-4ae3-b9b4-18d84b88ce0a",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 41,
+      "timestamp": "2026-11-15T23:21:40.800184Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://www.mountwhitneyforum.com/ubbthreads.php?ubb=showflat&Number=86573",
+        "slot": "2",
+        "query_ids": "q7,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 42,
+      "timestamp": "2026-11-15T23:21:40.801574Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 43,
+      "timestamp": "2026-11-15T23:21:40.802882Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.467",
+        "hard_remaining_seconds": "106.467",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "201"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 44,
+      "timestamp": "2026-11-15T23:21:44.618033Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.653",
+        "hard_remaining_seconds": "102.653",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "201",
+        "elapsed_seconds": "3.813",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "183559"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 45,
+      "timestamp": "2026-11-15T23:21:44.630793Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "url": "https://www.mountwhitneyforum.com/ubbthreads.php?ubb=showflat&Number=86573",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 46,
+      "timestamp": "2026-11-15T23:21:44.632532Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 47,
+      "timestamp": "2026-11-15T23:21:44.642182Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.628",
+        "hard_remaining_seconds": "102.628",
+        "attempt": "1",
+        "input_chars": "15088"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 48,
+      "timestamp": "2026-11-15T23:21:44.645279Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.625",
+        "hard_remaining_seconds": "102.625",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30523"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 49,
+      "timestamp": "2026-11-15T23:21:47.328742Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "54.942",
+        "hard_remaining_seconds": "99.942",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30523",
+        "elapsed_seconds": "2.681",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2330"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 50,
+      "timestamp": "2026-11-15T23:21:47.331145Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "54.939",
+        "hard_remaining_seconds": "99.939",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1407",
+        "elapsed_seconds": "2.689",
+        "finish_reason": "stop",
+        "prompt_tokens": "7586",
+        "completion_tokens": "425",
+        "total_tokens": "8011"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 51,
+      "timestamp": "2026-11-15T23:21:47.334435Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "ee33751f-6fa0-4800-b3c5-7a75bbd3ff82",
+        "snapshot_id": "42744745-4d43-4acc-8170-3f72d0aa6c3f",
+        "admissible": "false",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 52,
+      "timestamp": "2026-11-15T23:21:47.336086Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 53,
+      "timestamp": "2026-11-15T23:21:47.337593Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "ee33751f-6fa0-4800-b3c5-7a75bbd3ff82"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 54,
+      "timestamp": "2026-11-15T23:21:47.340310Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 55,
+      "timestamp": "2026-11-15T23:21:47.341725Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.928",
+        "hard_remaining_seconds": "99.928",
+        "attempt": "1",
+        "input_chars": "4643"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 56,
+      "timestamp": "2026-11-15T23:21:47.343958Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.926",
+        "hard_remaining_seconds": "99.926",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9486"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 57,
+      "timestamp": "2026-11-15T23:21:48.627617Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.645",
+        "hard_remaining_seconds": "98.645",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9486",
+        "elapsed_seconds": "1.280",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1342"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 58,
+      "timestamp": "2026-11-15T23:21:48.629986Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.641",
+        "hard_remaining_seconds": "98.641",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "467",
+        "elapsed_seconds": "1.288",
+        "finish_reason": "stop",
+        "prompt_tokens": "2575",
+        "completion_tokens": "223",
+        "total_tokens": "2798"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 59,
+      "timestamp": "2026-11-15T23:21:48.631875Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.638",
+        "hard_remaining_seconds": "98.638",
+        "attempt": "1",
+        "input_chars": "5092"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 60,
+      "timestamp": "2026-11-15T23:21:48.633256Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.637",
+        "hard_remaining_seconds": "98.637",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7808"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 61,
+      "timestamp": "2026-11-15T23:21:49.098832Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.172",
+        "hard_remaining_seconds": "98.172",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7808",
+        "elapsed_seconds": "0.463",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "905"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 62,
+      "timestamp": "2026-11-15T23:21:49.101443Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.169",
+        "hard_remaining_seconds": "98.169",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "51",
+        "elapsed_seconds": "0.470",
+        "finish_reason": "stop",
+        "prompt_tokens": "2425",
+        "completion_tokens": "19",
+        "total_tokens": "2444"
+      }
+    },
+    {
+      "investigation_id": "21b72b2b-4f9e-49e4-aea6-96b799db8b12",
+      "sequence": 63,
+      "timestamp": "2026-11-15T23:21:49.103247Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 21.890539791995252,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.771
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.982
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.894
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.784
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.919
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.15
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.919
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.71
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.68
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.279
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.461
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.771348249996663,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9836116250007763,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.8970927500049584,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.7876335839973763,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.9279933750003693,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.15229524999449495,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.9195805830022437,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 3.81270983399736,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.6813641670014476,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.2798896250023972,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.46300337499997113,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

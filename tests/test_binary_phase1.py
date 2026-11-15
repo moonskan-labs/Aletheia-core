@@ -50,3 +50,27 @@ def test_audit_scoring_keeps_arguable_labels_and_corrects_c01():
     assert sum(claims[i].split == "tuning" for i in ARGUABLE_LABELS) == 11
     assert claims["a-03"].expected_verdict == "almost"
     assert score_claim(claims["a-03"], {})["arguable_label"] is True
+
+
+@pytest.mark.parametrize("confirmed", [True, False])
+async def test_false_check_asks_about_falsity_and_can_still_withhold(settings, confirmed):
+    from aletheia.verdicts import FalseExplanationCheck
+
+    class Checker(Providers):
+        def model_value(self, schema, data):
+            result = super().model_value(schema, data)
+            if schema == "FalseExplanationCheck":
+                result["claim_is_false"] = confirmed
+            return result
+
+    fields = FalseExplanationCheck.model_json_schema()["properties"]
+    assert "rejected_component_ids" not in fields
+    assert "decision_supported" not in fields
+    assert "claim is false" in fields["claim_is_false"]["description"]
+    providers = Checker(relation="contradicts")
+    async with running(settings, providers) as (_, client):
+        saved = await submit(client)
+        assert saved["result"]["verdict"] == ("false" if confirmed else None)
+        assert saved["status"] == ("completed" if confirmed else "partial")
+        names = [name for name, _ in providers.model_inputs]
+        assert names.count("FalseExplanationCheck") == (1 if confirmed else 2)

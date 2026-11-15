@@ -184,7 +184,7 @@ async def test_refresh_idempotency_comparison_and_no_old_verdict_in_prompts(sett
         assert comparison["consistency_status"] == "inconsistent"
         assert comparison["recheck_status"] == "disabled"
         for name, data in providers.model_inputs[input_count:]:
-            if name not in {"Synthesis", "ExplanationCheck"}:
+            if name not in {"Synthesis", "ExplanationCheck", "FalseExplanationCheck"}:
                 assert "verdict" not in json.dumps(data)
             else:
                 assert data["finding"]["verdict"] == "false"
