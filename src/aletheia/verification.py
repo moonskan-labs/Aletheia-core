@@ -21,7 +21,13 @@ async def assess(tasks, assertion, source):
 
     result = await tasks.call(
         "assess",
-        "Assess the exact assertion against the supplied numbered source spans. Cite only "
+        "Assess the exact assertion against the supplied numbered source spans. For each "
+        "assessment write the rationale first, then choose the relation that the rationale "
+        "describes. If the spans state the component as written, relation=supports. If the "
+        "spans state a different value, date, name, place or count for the same thing, or "
+        "say it is not so, relation=contradicts with scope_match=true: a passage that shows "
+        "the claim is wrong is a contradiction, never context. Use context only when the "
+        "spans do not show whether the component is right or wrong. Cite only "
         "this snapshot and supplied span IDs, in increasing order without duplicates. "
         "Use citation IDs; do not invent quotation fields. Distinguish support, contradiction, "
         "context and irrelevance. For every component with comparison=null, values MUST be []: "

@@ -95,6 +95,8 @@ class Assessment(Record):
     component_id: str | None = None
     values: list[RecordedValue] = Field(default_factory=list)
     citation: Citation
+    # Generated before the labels below: the model says what the passage states, then labels it.
+    rationale: Text
     relation: Relation
     scope_match: bool
     authoritative_record: bool
@@ -107,7 +109,6 @@ class Assessment(Record):
         list[Annotated[int, Field(strict=True, ge=1)]], Field(max_length=20)
     ]
     provenance_note: Text | None
-    rationale: Text
     limitations: Annotated[list[Short], Field(max_length=8)]
     flags: Annotated[list[ProposedFlag], Field(max_length=8)]
 

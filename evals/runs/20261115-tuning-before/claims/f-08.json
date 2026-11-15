@@ -1,0 +1,5121 @@
+{
+  "id": "f-08",
+  "live": true,
+  "investigation": {
+    "id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+    "claim": "The Louisiana Purchase treaty signed in Paris, France, on April 30, 1803, priced the territory at $10 million.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-15T21:01:28.605310Z",
+    "started_at": "2026-11-15T21:01:28.723498Z",
+    "finished_at": "2026-11-15T21:02:27.038519Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "The Louisiana Purchase treaty signed in Paris, France, on April 30, 1803, priced the territory at $10 million.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Direct factual claim about a historical treaty price",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "The Louisiana Purchase treaty signed in Paris, France, on April 30, 1803, priced the territory at $10 million.",
+              "role": "essential",
+              "subject": "Louisiana Purchase treaty",
+              "predicate": "signed",
+              "timeframe": "April 30, 1803",
+              "location_or_population": "Paris, France",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "priced the territory at $10 million",
+              "role": "essential",
+              "subject": "Louisiana Purchase treaty",
+              "predicate": "priced the territory at",
+              "timeframe": "April 30, 1803",
+              "location_or_population": "Paris, France",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The claim asserts a specific price of $10 million for the Louisiana Purchase treaty signed on April 30, 1803, in Paris, France. Historical records indicate the actual purchase price was $15 million (not $10 million), though the treaty negotiation may have referenced different initial figures. The price discrepancy requires factual verification against primary source treaty documents.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "1ad5b69a-46cc-4a00-a3b6-43157b1e5344",
+              "b8ca46c9-fe99-4b98-a57a-2e37f29f79c2",
+              "08056180-e8f1-45d2-b5fd-6b3a96c807d2",
+              "b9939241-ea30-44c5-80bb-56dd1f5831f1",
+              "66c7f93e-2e7c-4f34-b209-53f55f96a20f"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "not_established",
+            "evidence_ids": []
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "1ad5b69a-46cc-4a00-a3b6-43157b1e5344",
+          "b8ca46c9-fe99-4b98-a57a-2e37f29f79c2",
+          "08056180-e8f1-45d2-b5fd-6b3a96c807d2",
+          "b9939241-ea30-44c5-80bb-56dd1f5831f1",
+          "66c7f93e-2e7c-4f34-b209-53f55f96a20f"
+        ],
+        "qualification_flags": [
+          {
+            "type": "narrow_scope",
+            "dimension": "units",
+            "explanation": "Source lists $15 million as the purchase price, not $10 million",
+            "evidence_ids": [
+              "b8ca46c9-fe99-4b98-a57a-2e37f29f79c2"
+            ]
+          },
+          {
+            "type": "narrow_scope",
+            "dimension": "timeframe",
+            "explanation": "Span 23 only addresses signing date, not monetary terms",
+            "evidence_ids": [
+              "b9939241-ea30-44c5-80bb-56dd1f5831f1"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": [
+          "Some material components are not established as written."
+        ]
+      },
+      "explanation": [],
+      "limitations": [
+        "The follow-up round limit was reached.",
+        "Only a relevant bounded selection of source spans was assessed.",
+        "page_text_truncated",
+        "Source does not state treaty price was exactly $10 million",
+        "Document does not list $10 million as the purchase price",
+        "Source truncated and lacks treaty text",
+        "No price information in this span",
+        "Only one source span provided; does not resolve discrepancy with other potential sources",
+        "Source describes Jefferson's internal bid limit, not the final treaty price",
+        "Some planned evidence checks could not be completed; coverage is incomplete.",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published.",
+        "Some material components are not established as written."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v2",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 240.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 16,
+        "search": 8,
+        "extract": 6
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.923133266000036,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.7270743889999949,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.298226469000042,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.199307217000012,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.2576898789999973,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.10700423200000841,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.6887390640000035,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.22686013600002752,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.7529899699999874,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7813625439999896,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.7871181739999997,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.2083299630000397,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.13624961799996527,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.747394087000032,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 6.078070179000008,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.47146076600000697,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.8062740960000383,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.456437517999973,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1027366050000182,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.0179034600000136,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.347940589000018,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.07558074400003534,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.953000836000001,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.926994288000003,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.3680324320000068,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.2798462599999993,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.8180198690000111,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6172599120000086,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.413355796000019,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9100741830000061,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 78941,
+        "completion_tokens": 5656,
+        "total_tokens": 84597
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Direct factual claim about a historical treaty price",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "The Louisiana Purchase treaty signed in Paris, France, on April 30, 1803, priced the territory at $10 million.",
+          "role": "essential",
+          "subject": "Louisiana Purchase treaty",
+          "predicate": "signed",
+          "timeframe": "April 30, 1803",
+          "location_or_population": "Paris, France",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "priced the territory at $10 million",
+          "role": "essential",
+          "subject": "Louisiana Purchase treaty",
+          "predicate": "priced the territory at",
+          "timeframe": "April 30, 1803",
+          "location_or_population": "Paris, France",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "events": "/investigations/e622ab12-d336-4023-ab0a-ffb60f77714f/events",
+      "evidence": "/investigations/e622ab12-d336-4023-ab0a-ffb60f77714f/evidence",
+      "comparison": "/investigations/e622ab12-d336-4023-ab0a-ffb60f77714f/comparison",
+      "refresh": "/investigations/e622ab12-d336-4023-ab0a-ffb60f77714f/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "url": "https://www.census.gov/about/history/stories/monthly/2023/april-2023.html",
+        "canonical_url": "https://www.census.gov/about/history/stories/monthly/2023/april-2023.html",
+        "title": "April 2023: The 1803 Louisiana Purchase",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:01:42.363802Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "958645fa957da5993d13012165a0299d74a445638962d60205470c058189cad2",
+        "duplicate_group": "958645fa957da5993d13012165a0299d74a445638962d60205470c058189cad2",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "url": "https://www.archives.gov/milestone-documents/louisiana-purchase-treaty",
+        "canonical_url": "https://www.archives.gov/milestone-documents/louisiana-purchase-treaty",
+        "title": "Louisiana Purchase Treaty (1803) | National Archives",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:01:45.363850Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "2451a733314738291aa9d49a46f1fe4e6e5226fdc9b6814b77a88aaae387f8b6",
+        "duplicate_group": "2451a733314738291aa9d49a46f1fe4e6e5226fdc9b6814b77a88aaae387f8b6",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "url": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+        "canonical_url": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+        "title": "Louisiana Purchase - Wikipedia",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:01:52.156383Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "3a89ad470fd179ae4e4b4f01416d4af92f088fdc14b9e485b51e013d95bd4f47",
+        "duplicate_group": "3a89ad470fd179ae4e4b4f01416d4af92f088fdc14b9e485b51e013d95bd4f47",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "url": "https://archivesfoundation.org/newsletter/louisiana-purchase",
+        "canonical_url": "https://archivesfoundation.org/newsletter/louisiana-purchase",
+        "title": "Westward Bound - National Archives Foundation",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:02:01.549028Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "b409acbe0f4868259f5f8fbdb7b9bb101fd39a71ac74e74793963a2c4a4b322e",
+        "duplicate_group": "b409acbe0f4868259f5f8fbdb7b9bb101fd39a71ac74e74793963a2c4a4b322e",
+        "limitations": []
+      },
+      {
+        "id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "url": "https://guides.loc.gov/louisiana-purchase",
+        "canonical_url": "https://guides.loc.gov/louisiana-purchase",
+        "title": "Introduction - Louisiana Purchase: Primary Documents in American History - Research Guides at Library of Congress",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:02:12.481567Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "519a647e0cd98e81e8dd826f1dca5999eec72f9c2dd273cea769a90ee4a69217",
+        "duplicate_group": "519a647e0cd98e81e8dd826f1dca5999eec72f9c2dd273cea769a90ee4a69217",
+        "limitations": []
+      },
+      {
+        "id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "url": "https://www.senate.gov/about/powers-procedures/treaties/senate-approves-louisiana-purchase-treaty.htm",
+        "canonical_url": "https://www.senate.gov/about/powers-procedures/treaties/senate-approves-louisiana-purchase-treaty.htm",
+        "title": "U.S. Senate: The Senate Approves for Ratification the Louisiana Purchase Treaty",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:02:19.801985Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "2b4bea39def25287f453077dd96429c5ad89a57fd43ddb74ad6efe526792c3b4",
+        "duplicate_group": "2b4bea39def25287f453077dd96429c5ad89a57fd43ddb74ad6efe526792c3b4",
+        "limitations": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "1ad5b69a-46cc-4a00-a3b6-43157b1e5344",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+            "span_ids": [
+              21,
+              22,
+              23,
+              48,
+              50
+            ]
+          },
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Census Bureau (April 2023 history story)",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            21,
+            22,
+            23,
+            48,
+            50
+          ],
+          "provenance_note": "Multiple spans confirm signing date and Jefferson's $10 million authorization; span 23 reports French offer of $15 million, contradicting exact $10 million claim.",
+          "rationale": "Spans 21-23 establish treaty signed April 30, 1803, and Jefferson's $10 million authorization. Span 48 and 50 confirm Livingston was authorized $10 million for New Orleans. Span 23 explicitly states French offer was $15 million, creating contradiction for the $10 million price. The source spans both",
+          "limitations": [
+            "Source does not state treaty price was exactly $10 million"
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "price",
+              "explanation": "Source records Jefferson's $10 million authorization but also records French offer of $15 million; exact treaty price not stated as $10 million."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              21,
+              22,
+              23
+            ],
+            "start": 1112,
+            "end": 1606,
+            "text": "On April 30, 1803, representatives of the United States and France signed the Louisiana Purchase Treaty. Authorized by President Thomas Jefferson to purchase the vital Mississippi River city of New Orleans, LA, for no more than $10 million, the American delegates Robert R. Livingston and James Monroe were stunned by a French offer to sell more than 828,000 square miles of land bordered by Canada in the north and the Rocky Mountains in the west for $15 million dollars—just 3 cents per acre!",
+            "quote_hash": "d145d767c9dc552bf994e5fa3c66324189eb7162afdb9d41a84fcd99eb99f446"
+          },
+          {
+            "span_ids": [
+              48
+            ],
+            "start": 5001,
+            "end": 5188,
+            "text": "Authorized to spend no more than $10 million to purchase the city of New Orleans, he now had the opportunity to nearly double the size of the United States for less than 3 cents per acre!",
+            "quote_hash": "a872f02b3d047771a2e47a3ae1423c73eed6fe73207ea5fb0839a0d30b368af1"
+          },
+          {
+            "span_ids": [
+              50
+            ],
+            "start": 5386,
+            "end": 5446,
+            "text": "They signed the Louisiana Purchase Treaty on April 30, 1803.",
+            "quote_hash": "8311d0a1a389caa67cc841c4234969a4c274af8e0f953c2cc76a11610b01a15a"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "b8ca46c9-fe99-4b98-a57a-2e37f29f79c2",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+            "span_ids": [
+              67,
+              76,
+              87
+            ]
+          },
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "National Archives",
+          "origin": "National Archives website",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            67,
+            76,
+            87
+          ],
+          "provenance_note": "Signed on April 30, 1803, in Paris; records the treaty's occurrence but does not state the purchase price of $10 million in the signed text",
+          "rationale": "The treaty signing date and location are confirmed, but the document's cited financial terms reference $15 million and $11.25 million, not $10 million",
+          "limitations": [
+            "Document does not list $10 million as the purchase price"
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "units",
+              "explanation": "Source lists $15 million as the purchase price, not $10 million"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              67
+            ],
+            "start": 12857,
+            "end": 12968,
+            "text": "Done at Paris the tenth day of Floreal in the eleventh year of the French Republic; and the 30th of April 1803.",
+            "quote_hash": "f15f55b9f08d34680541d0495947230e5694a74c26332fe6a11a3464d67f1e5e"
+          },
+          {
+            "span_ids": [
+              76
+            ],
+            "start": 13131,
+            "end": 13651,
+            "text": "The President of the United States of America and the First Consul of the French Republic in the name of the French people, in consequence of the treaty of cession of Louisiana which has been Signed this day; wishing to regulate definitively every thing which has relation to the Said cession have authorized to this effect the Plenipotentiaries, that is to say the President of the United States has, by and with the advice and consent of the Senate of the Said States, nominated for their Plenipoten tiaries, Robert R.",
+            "quote_hash": "e82a626f5fca8a977fbaaba3320e7a9e586ecb6b496099675d8ee911d0a1ddee"
+          },
+          {
+            "span_ids": [
+              87
+            ],
+            "start": 16469,
+            "end": 16541,
+            "text": "Done at Paris the tenth of Floreal eleventh year of the french Republic ",
+            "quote_hash": "f210be7d69c4fbcad05cdce1181fec264215f32c0df131da79e20e4834647a17"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "08056180-e8f1-45d2-b5fd-6b3a96c807d2",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+            "span_ids": [
+              25,
+              31
+            ]
+          },
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "National Archives Foundation",
+          "origin": "newsletter article on archivesfoundation.org",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            25,
+            31
+          ],
+          "provenance_note": "Span 25 states Monroe and Livingston negotiated a price of $15 million; Span 31 states the total allocation was $11.25 million for land plus $3.75 million for citizen claims. Neither span confirms $10 million or April 30, 1803 signing location. The source is truncated and does not provide the treaty",
+          "rationale": "The source does not assert the treaty was signed on April 30, 1803, at $10 million. Span 25 reports a negotiated price of $15 million; Span 31 reports a total payment of $11.25M + $3.75M. No span matches the assertion's price or signing date.",
+          "limitations": [
+            "Source truncated and lacks treaty text"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "price",
+              "explanation": "Source reports negotiated price of $15 million and total allocation of $14.0 million, contradicting the $10 million claim"
+            },
+            {
+              "type": "narrow_scope",
+              "dimension": "signing_date",
+              "explanation": "Source does not state the treaty was signed on April 30, 1803, in Paris; content focuses on negotiation and ratification process without specifying the signing date or location"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              25
+            ],
+            "start": 2602,
+            "end": 2750,
+            "text": "Without a way to quickly get permission from Jefferson, Livingston and Monroe made a daring diplomatic gamble and negotiated a price of $15 million.",
+            "quote_hash": "390c607c506c1e3764d02d24e71d0a16e17453e549ad2ff832593ba6561f3c72"
+          },
+          {
+            "span_ids": [
+              31
+            ],
+            "start": 3087,
+            "end": 3290,
+            "text": "Under these agreements, the United States allocated $11.25 million to acquire the land outright, while the remaining $3.75 million was designated to assume the claims of American citizens against France.",
+            "quote_hash": "1cdcad069b638a0b0e0422349efbfecffe9c2b12fc99010091fdfd72b59cff63"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "b9939241-ea30-44c5-80bb-56dd1f5831f1",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+            "span_ids": [
+              23
+            ]
+          },
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "Library of Congress",
+          "origin": "LOC research guide",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            23
+          ],
+          "provenance_note": "Senate ratification date given; does not specify signing price",
+          "rationale": "Span 23 confirms treaty signed April 30, 1803 in Paris, but does not state the price of $10 million.",
+          "limitations": [
+            "No price information in this span"
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "timeframe",
+              "explanation": "Span 23 only addresses signing date, not monetary terms"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              23
+            ],
+            "start": 1742,
+            "end": 1810,
+            "text": "The Louisiana Purchase Treaty was signed in Paris on April 30, 1803.",
+            "quote_hash": "573d7ead7c0b49b9450485f6ccb5a507e2f882709d7cc4aa54b961c0720795e3"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "56b62f62-61b4-48fb-94ec-4ef2cd04e991",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+            "span_ids": [
+              22
+            ]
+          },
+          "relation": "contradicts",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "Library of Congress",
+          "origin": "LOC research guide",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            22
+          ],
+          "provenance_note": "Span 22 states price was $15 million, contradicting the $10 million assertion",
+          "rationale": "Span 22 explicitly states purchase price was $15 million, not $10 million as claimed",
+          "limitations": [
+            "Only one source span provided; does not resolve discrepancy with other potential sources"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "value",
+              "explanation": "Asserted $10 million conflicts with source stating $15 million"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              22
+            ],
+            "start": 1614,
+            "end": 1741,
+            "text": "The United States purchased the Louisiana Territory from France at a price of $15 million, or approximately four cents an acre.",
+            "quote_hash": "368333e10dcb3979e951df4292fa7d243481459581a5db29d670aa3f5ab6cd89"
+          }
+        ],
+        "admissible": false,
+        "rejection_reason": "scope_mismatch_or_irrelevant"
+      },
+      {
+        "id": "66c7f93e-2e7c-4f34-b209-53f55f96a20f",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+            "span_ids": [
+              33,
+              34
+            ]
+          },
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "U.S. Senate",
+          "origin": "senate.gov",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            33,
+            34
+          ],
+          "provenance_note": "Spans 33 and 34 describe Jefferson's initial offer limit of $10 million, but the treaty settled on $15 million.",
+          "rationale": "Span 33: 'Jefferson instructed the American minister in Paris to try to purchase the city of New Orleans and the Florida Panhandle, for which Congress had appropriated $2 million.' Span 34: 'Jefferson advised the minister that he could bid as high as $10 million.' Neither span records the treaty's $",
+          "limitations": [
+            "Source describes Jefferson's internal bid limit, not the final treaty price"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "value",
+              "explanation": "Source records Jefferson's $10 million bid ceiling and final $15 million treaty price; assertion of $10 million as treaty price is unsupported"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              33,
+              34
+            ],
+            "start": 4183,
+            "end": 4425,
+            "text": "Jefferson instructed the American minister in Paris to try to purchase the city of New Orleans and the Florida Panhandle, for which Congress had appropriated $2 million. Jefferson advised the minister that he could bid as high as $10 million.",
+            "quote_hash": "bd0794329b561b95e8cc7ce0a19fba6cfad71a347ab1384bd98f87a2f43be2c5"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 1,
+      "timestamp": "2026-11-15T21:01:28.605310Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 2,
+      "timestamp": "2026-11-15T21:01:28.723498Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 3,
+      "timestamp": "2026-11-15T21:01:28.727082Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v2",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 4,
+      "timestamp": "2026-11-15T21:01:28.729945Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 5,
+      "timestamp": "2026-11-15T21:01:28.733094Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.994",
+        "hard_remaining_seconds": "119.994",
+        "attempt": "1",
+        "input_chars": "138"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 6,
+      "timestamp": "2026-11-15T21:01:28.738611Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.989",
+        "hard_remaining_seconds": "119.989",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10729"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 7,
+      "timestamp": "2026-11-15T21:01:32.672448Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.060",
+        "hard_remaining_seconds": "116.060",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10729",
+        "elapsed_seconds": "3.923",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2031"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 8,
+      "timestamp": "2026-11-15T21:01:32.676112Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.051",
+        "hard_remaining_seconds": "116.051",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1096",
+        "elapsed_seconds": "3.943",
+        "finish_reason": "stop",
+        "prompt_tokens": "1751",
+        "completion_tokens": "284",
+        "total_tokens": "2035"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 9,
+      "timestamp": "2026-11-15T21:01:32.682873Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 10,
+      "timestamp": "2026-11-15T21:01:32.686065Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 11,
+      "timestamp": "2026-11-15T21:01:32.688961Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 12,
+      "timestamp": "2026-11-15T21:01:32.692012Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.035",
+        "hard_remaining_seconds": "116.035",
+        "attempt": "1",
+        "input_chars": "1327"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 13,
+      "timestamp": "2026-11-15T21:01:32.695863Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.031",
+        "hard_remaining_seconds": "116.031",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4440"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 14,
+      "timestamp": "2026-11-15T21:01:34.426326Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.301",
+        "hard_remaining_seconds": "114.301",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4440",
+        "elapsed_seconds": "1.727",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1525"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 15,
+      "timestamp": "2026-11-15T21:01:34.429985Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.297",
+        "hard_remaining_seconds": "114.297",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "634",
+        "elapsed_seconds": "1.738",
+        "finish_reason": "stop",
+        "prompt_tokens": "847",
+        "completion_tokens": "168",
+        "total_tokens": "1015"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 16,
+      "timestamp": "2026-11-15T21:01:34.433065Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty signed in Paris France April 30 1803 price ten million dollars",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 17,
+      "timestamp": "2026-11-15T21:01:34.435761Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.291",
+        "hard_remaining_seconds": "114.291",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "296"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 18,
+      "timestamp": "2026-11-15T21:01:37.737714Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.990",
+        "hard_remaining_seconds": "110.990",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "296",
+        "elapsed_seconds": "3.298",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10619"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 19,
+      "timestamp": "2026-11-15T21:01:37.741619Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty signed in Paris France April 30 1803 price ten million dollars",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 20,
+      "timestamp": "2026-11-15T21:01:37.744145Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty 1803 total cost eleven million twenty-five thousand dollars",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 21,
+      "timestamp": "2026-11-15T21:01:37.747150Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.980",
+        "hard_remaining_seconds": "110.980",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "293"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 22,
+      "timestamp": "2026-11-15T21:01:39.949340Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.778",
+        "hard_remaining_seconds": "108.778",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "293",
+        "elapsed_seconds": "2.199",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10047"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 23,
+      "timestamp": "2026-11-15T21:01:39.952262Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty 1803 total cost eleven million twenty-five thousand dollars",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 24,
+      "timestamp": "2026-11-15T21:01:39.954639Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty signing location Paris France date April 30 1803 official document",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 25,
+      "timestamp": "2026-11-15T21:01:39.956955Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.770",
+        "hard_remaining_seconds": "108.770",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "300"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 26,
+      "timestamp": "2026-11-15T21:01:42.224769Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "61.510",
+        "hard_remaining_seconds": "106.510",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "300",
+        "elapsed_seconds": "2.258",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7154"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 27,
+      "timestamp": "2026-11-15T21:01:42.229814Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty signing location Paris France date April 30 1803 official document",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 28,
+      "timestamp": "2026-11-15T21:01:42.234890Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "9",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 29,
+      "timestamp": "2026-11-15T21:01:42.239199Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.census.gov/about/history/stories/monthly/2023/april-2023.html",
+        "slot": "1",
+        "query_ids": "q5,q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 30,
+      "timestamp": "2026-11-15T21:01:42.243797Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 31,
+      "timestamp": "2026-11-15T21:01:42.248292Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.479",
+        "hard_remaining_seconds": "106.479",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "200"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 32,
+      "timestamp": "2026-11-15T21:01:42.361430Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.368",
+        "hard_remaining_seconds": "106.368",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "200",
+        "elapsed_seconds": "0.107",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "42465"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 33,
+      "timestamp": "2026-11-15T21:01:42.385151Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "url": "https://www.census.gov/about/history/stories/monthly/2023/april-2023.html",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 34,
+      "timestamp": "2026-11-15T21:01:42.388897Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 35,
+      "timestamp": "2026-11-15T21:01:42.399641Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.328",
+        "hard_remaining_seconds": "106.328",
+        "attempt": "1",
+        "input_chars": "18407"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 36,
+      "timestamp": "2026-11-15T21:01:42.413017Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.314",
+        "hard_remaining_seconds": "106.314",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32376"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 37,
+      "timestamp": "2026-11-15T21:01:45.111108Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "58.616",
+        "hard_remaining_seconds": "103.616",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32376",
+        "elapsed_seconds": "2.689",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2349"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 38,
+      "timestamp": "2026-11-15T21:01:45.114578Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "58.613",
+        "hard_remaining_seconds": "103.613",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1428",
+        "elapsed_seconds": "2.715",
+        "finish_reason": "stop",
+        "prompt_tokens": "8028",
+        "completion_tokens": "422",
+        "total_tokens": "8450"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 39,
+      "timestamp": "2026-11-15T21:01:45.121117Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "1ad5b69a-46cc-4a00-a3b6-43157b1e5344",
+        "snapshot_id": "72f5472f-c69e-4fa3-ae0e-6a54ba099faf",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 40,
+      "timestamp": "2026-11-15T21:01:45.123946Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://www.archives.gov/milestone-documents/louisiana-purchase-treaty",
+        "slot": "2",
+        "query_ids": "q5,q7,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 41,
+      "timestamp": "2026-11-15T21:01:45.126973Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 42,
+      "timestamp": "2026-11-15T21:01:45.130099Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.597",
+        "hard_remaining_seconds": "103.597",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "197"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 43,
+      "timestamp": "2026-11-15T21:01:45.360476Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.367",
+        "hard_remaining_seconds": "103.367",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "197",
+        "elapsed_seconds": "0.227",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "25510"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 44,
+      "timestamp": "2026-11-15T21:01:45.372273Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "url": "https://www.archives.gov/milestone-documents/louisiana-purchase-treaty",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 45,
+      "timestamp": "2026-11-15T21:01:45.375025Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 46,
+      "timestamp": "2026-11-15T21:01:45.382525Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.344",
+        "hard_remaining_seconds": "103.344",
+        "attempt": "1",
+        "input_chars": "18136"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 47,
+      "timestamp": "2026-11-15T21:01:45.396374Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.334",
+        "hard_remaining_seconds": "103.334",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32007"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 48,
+      "timestamp": "2026-11-15T21:01:47.155661Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "56.572",
+        "hard_remaining_seconds": "101.572",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32007",
+        "elapsed_seconds": "1.753",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2035"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 49,
+      "timestamp": "2026-11-15T21:01:47.159473Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "56.568",
+        "hard_remaining_seconds": "101.568",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1112",
+        "elapsed_seconds": "1.777",
+        "finish_reason": "stop",
+        "prompt_tokens": "7511",
+        "completion_tokens": "340",
+        "total_tokens": "7851"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 50,
+      "timestamp": "2026-11-15T21:01:47.164498Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "b8ca46c9-fe99-4b98-a57a-2e37f29f79c2",
+        "snapshot_id": "3338b431-997a-40de-9176-e060aa6a657d",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 51,
+      "timestamp": "2026-11-15T21:01:47.167298Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "scope_mismatch"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 52,
+      "timestamp": "2026-11-15T21:01:47.170226Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 53,
+      "timestamp": "2026-11-15T21:01:47.172981Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "176.554",
+        "hard_remaining_seconds": "221.554",
+        "attempt": "1",
+        "input_chars": "4314"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 54,
+      "timestamp": "2026-11-15T21:01:47.178223Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "176.549",
+        "hard_remaining_seconds": "221.549",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7513"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 55,
+      "timestamp": "2026-11-15T21:01:47.962560Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "175.765",
+        "hard_remaining_seconds": "220.765",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7513",
+        "elapsed_seconds": "0.781",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1389"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 56,
+      "timestamp": "2026-11-15T21:01:47.965835Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "175.761",
+        "hard_remaining_seconds": "220.761",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "508",
+        "elapsed_seconds": "0.792",
+        "finish_reason": "stop",
+        "prompt_tokens": "1719",
+        "completion_tokens": "133",
+        "total_tokens": "1852"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 57,
+      "timestamp": "2026-11-15T21:01:47.969048Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "scope_mismatch",
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 58,
+      "timestamp": "2026-11-15T21:01:47.972585Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 59,
+      "timestamp": "2026-11-15T21:01:47.975471Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty price $10 million 1803 France US dollars per acre stated in negotiation records",
+        "purpose": "support",
+        "query_id": "q21"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 60,
+      "timestamp": "2026-11-15T21:01:47.978522Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q21",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "175.749",
+        "hard_remaining_seconds": "220.749",
+        "provider_call_id": "p22",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "313"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 61,
+      "timestamp": "2026-11-15T21:01:49.769521Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q21",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "173.958",
+        "hard_remaining_seconds": "218.958",
+        "provider_call_id": "p22",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "313",
+        "elapsed_seconds": "1.787",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10376"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 62,
+      "timestamp": "2026-11-15T21:01:49.773634Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty price $10 million 1803 France US dollars per acre stated in negotiation records",
+        "query_id": "q21",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 63,
+      "timestamp": "2026-11-15T21:01:49.776739Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase total cost $11.25 million as recorded in official ratification documents",
+        "purpose": "contradiction",
+        "query_id": "q23"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 64,
+      "timestamp": "2026-11-15T21:01:49.779920Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q23",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "173.947",
+        "hard_remaining_seconds": "218.947",
+        "provider_call_id": "p24",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "299"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 65,
+      "timestamp": "2026-11-15T21:01:51.991610Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q23",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "171.736",
+        "hard_remaining_seconds": "216.736",
+        "provider_call_id": "p24",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "299",
+        "elapsed_seconds": "2.208",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7600"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 66,
+      "timestamp": "2026-11-15T21:01:51.997062Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase total cost $11.25 million as recorded in official ratification documents",
+        "query_id": "q23",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 67,
+      "timestamp": "2026-11-15T21:01:52.000229Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "4",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 68,
+      "timestamp": "2026-11-15T21:01:52.004819Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c25",
+        "url": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+        "slot": "1",
+        "query_ids": "q21,q23",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 69,
+      "timestamp": "2026-11-15T21:01:52.008173Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 70,
+      "timestamp": "2026-11-15T21:01:52.014293Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c25",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "171.714",
+        "hard_remaining_seconds": "216.714",
+        "provider_call_id": "p26",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "175"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 71,
+      "timestamp": "2026-11-15T21:01:52.154385Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c25",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "171.573",
+        "hard_remaining_seconds": "216.573",
+        "provider_call_id": "p26",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "175",
+        "elapsed_seconds": "0.136",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "206926"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 72,
+      "timestamp": "2026-11-15T21:01:52.173188Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "url": "https://en.wikipedia.org/wiki/Louisiana_Purchase",
+        "candidate_id": "c25",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 73,
+      "timestamp": "2026-11-15T21:01:52.177604Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 74,
+      "timestamp": "2026-11-15T21:01:52.196333Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "171.531",
+        "hard_remaining_seconds": "216.531",
+        "attempt": "1",
+        "input_chars": "16467"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 75,
+      "timestamp": "2026-11-15T21:01:52.204073Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "171.525",
+        "hard_remaining_seconds": "216.525",
+        "provider_call_id": "p28",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30176"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 76,
+      "timestamp": "2026-11-15T21:01:54.954690Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "168.773",
+        "hard_remaining_seconds": "213.773",
+        "provider_call_id": "p28",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30176",
+        "elapsed_seconds": "2.747",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2101"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 77,
+      "timestamp": "2026-11-15T21:01:54.960718Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "168.767",
+        "hard_remaining_seconds": "213.767",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1166",
+        "elapsed_seconds": "2.764",
+        "finish_reason": "stop",
+        "prompt_tokens": "7483",
+        "completion_tokens": "365",
+        "total_tokens": "7848"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 78,
+      "timestamp": "2026-11-15T21:01:54.964058Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 79,
+      "timestamp": "2026-11-15T21:01:54.966624Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "168.760",
+        "hard_remaining_seconds": "213.760",
+        "attempt": "2",
+        "input_chars": "16467"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 80,
+      "timestamp": "2026-11-15T21:01:54.973139Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "168.754",
+        "hard_remaining_seconds": "213.754",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30377"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 81,
+      "timestamp": "2026-11-15T21:02:01.055144Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "162.672",
+        "hard_remaining_seconds": "207.672",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30377",
+        "elapsed_seconds": "6.078",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "4299"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 82,
+      "timestamp": "2026-11-15T21:02:01.058320Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "162.669",
+        "hard_remaining_seconds": "207.669",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "3309",
+        "elapsed_seconds": "6.092",
+        "finish_reason": "stop",
+        "prompt_tokens": "7517",
+        "completion_tokens": "971",
+        "total_tokens": "8488"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 83,
+      "timestamp": "2026-11-15T21:02:01.060744Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 84,
+      "timestamp": "2026-11-15T21:02:01.063049Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "bfa7dddd-6cba-4262-9108-d1f146f83d76",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 85,
+      "timestamp": "2026-11-15T21:02:01.066055Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c30",
+        "url": "https://archivesfoundation.org/newsletter/louisiana-purchase",
+        "slot": "2",
+        "query_ids": "q23",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 86,
+      "timestamp": "2026-11-15T21:02:01.069073Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 87,
+      "timestamp": "2026-11-15T21:02:01.071891Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c30",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "162.655",
+        "hard_remaining_seconds": "207.655",
+        "provider_call_id": "p31",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "187"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 88,
+      "timestamp": "2026-11-15T21:02:01.546114Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c30",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "162.181",
+        "hard_remaining_seconds": "207.181",
+        "provider_call_id": "p31",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "187",
+        "elapsed_seconds": "0.471",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7784"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 89,
+      "timestamp": "2026-11-15T21:02:01.556198Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "url": "https://archivesfoundation.org/newsletter/louisiana-purchase",
+        "candidate_id": "c30",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 90,
+      "timestamp": "2026-11-15T21:02:01.561901Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 91,
+      "timestamp": "2026-11-15T21:02:01.566753Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t32",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "162.160",
+        "hard_remaining_seconds": "207.160",
+        "attempt": "1",
+        "input_chars": "12442"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 92,
+      "timestamp": "2026-11-15T21:02:01.571488Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t32",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "162.156",
+        "hard_remaining_seconds": "207.156",
+        "provider_call_id": "p33",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "26257"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 93,
+      "timestamp": "2026-11-15T21:02:04.381339Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t32",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "159.346",
+        "hard_remaining_seconds": "204.346",
+        "provider_call_id": "p33",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "26257",
+        "elapsed_seconds": "2.806",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2855"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 94,
+      "timestamp": "2026-11-15T21:02:04.384894Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t32",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "159.342",
+        "hard_remaining_seconds": "204.342",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1920",
+        "elapsed_seconds": "2.818",
+        "finish_reason": "stop",
+        "prompt_tokens": "6145",
+        "completion_tokens": "552",
+        "total_tokens": "6697"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 95,
+      "timestamp": "2026-11-15T21:02:04.390295Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "08056180-e8f1-45d2-b5fd-6b3a96c807d2",
+        "snapshot_id": "ed9514c5-5e7b-4466-817f-e35bd8bfe6a6",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 96,
+      "timestamp": "2026-11-15T21:02:04.393621Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 97,
+      "timestamp": "2026-11-15T21:02:04.396291Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "159.331",
+        "hard_remaining_seconds": "204.330",
+        "attempt": "1",
+        "input_chars": "5520"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 98,
+      "timestamp": "2026-11-15T21:02:04.399393Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "159.328",
+        "hard_remaining_seconds": "204.328",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8761"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 99,
+      "timestamp": "2026-11-15T21:02:05.859408Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "157.868",
+        "hard_remaining_seconds": "202.868",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8761",
+        "elapsed_seconds": "1.456",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1652"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 100,
+      "timestamp": "2026-11-15T21:02:05.862489Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "157.864",
+        "hard_remaining_seconds": "202.864",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "759",
+        "elapsed_seconds": "1.466",
+        "finish_reason": "stop",
+        "prompt_tokens": "2092",
+        "completion_tokens": "188",
+        "total_tokens": "2280"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 101,
+      "timestamp": "2026-11-15T21:02:05.865042Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "scope_mismatch",
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 102,
+      "timestamp": "2026-11-15T21:02:05.867716Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "2"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 103,
+      "timestamp": "2026-11-15T21:02:05.869929Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty official signing document price ten million dollars April 30 1803 Paris",
+        "purpose": "support",
+        "query_id": "q36"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 104,
+      "timestamp": "2026-11-15T21:02:05.872382Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q36",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "157.854",
+        "hard_remaining_seconds": "202.854",
+        "provider_call_id": "p37",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "305"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 105,
+      "timestamp": "2026-11-15T21:02:07.977891Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q36",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "155.749",
+        "hard_remaining_seconds": "200.749",
+        "provider_call_id": "p37",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "305",
+        "elapsed_seconds": "2.103",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11670"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 106,
+      "timestamp": "2026-11-15T21:02:07.982869Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty official signing document price ten million dollars April 30 1803 Paris",
+        "query_id": "q36",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 107,
+      "timestamp": "2026-11-15T21:02:07.985808Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty negotiated price fifteen million dollars 1803 French offer documented in ratification records",
+        "purpose": "contradiction",
+        "query_id": "q38"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 108,
+      "timestamp": "2026-11-15T21:02:07.988953Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q38",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "7",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "155.738",
+        "hard_remaining_seconds": "200.738",
+        "provider_call_id": "p39",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "327"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 109,
+      "timestamp": "2026-11-15T21:02:10.010306Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q38",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "7",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "153.717",
+        "hard_remaining_seconds": "198.717",
+        "provider_call_id": "p39",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "327",
+        "elapsed_seconds": "2.018",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11676"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 110,
+      "timestamp": "2026-11-15T21:02:10.013486Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty negotiated price fifteen million dollars 1803 French offer documented in ratification records",
+        "query_id": "q38",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 111,
+      "timestamp": "2026-11-15T21:02:10.016175Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty total cost eleven million two hundred fifty thousand dollars 1803 US records",
+        "purpose": "context",
+        "query_id": "q40"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 112,
+      "timestamp": "2026-11-15T21:02:10.023235Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q40",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "153.707",
+        "hard_remaining_seconds": "198.707",
+        "provider_call_id": "p41",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "310"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 113,
+      "timestamp": "2026-11-15T21:02:12.377909Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q40",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "151.350",
+        "hard_remaining_seconds": "196.350",
+        "provider_call_id": "p41",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "310",
+        "elapsed_seconds": "2.348",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9523"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 114,
+      "timestamp": "2026-11-15T21:02:12.381504Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Louisiana Purchase treaty total cost eleven million two hundred fifty thousand dollars 1803 US records",
+        "query_id": "q40",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 115,
+      "timestamp": "2026-11-15T21:02:12.385063Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "6",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 116,
+      "timestamp": "2026-11-15T21:02:12.388328Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c42",
+        "url": "https://guides.loc.gov/louisiana-purchase",
+        "slot": "1",
+        "query_ids": "q36",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 117,
+      "timestamp": "2026-11-15T21:02:12.391597Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 118,
+      "timestamp": "2026-11-15T21:02:12.394637Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c42",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "151.332",
+        "hard_remaining_seconds": "196.332",
+        "provider_call_id": "p43",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "168"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 119,
+      "timestamp": "2026-11-15T21:02:12.478887Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c42",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "151.252",
+        "hard_remaining_seconds": "196.252",
+        "provider_call_id": "p43",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "168",
+        "elapsed_seconds": "0.076",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5307"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 120,
+      "timestamp": "2026-11-15T21:02:12.486681Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "url": "https://guides.loc.gov/louisiana-purchase",
+        "candidate_id": "c42",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 121,
+      "timestamp": "2026-11-15T21:02:12.489672Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 122,
+      "timestamp": "2026-11-15T21:02:12.493019Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "151.234",
+        "hard_remaining_seconds": "196.234",
+        "attempt": "1",
+        "input_chars": "6855"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 123,
+      "timestamp": "2026-11-15T21:02:12.499101Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "151.228",
+        "hard_remaining_seconds": "196.228",
+        "provider_call_id": "p45",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "20264"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 124,
+      "timestamp": "2026-11-15T21:02:16.455066Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "147.272",
+        "hard_remaining_seconds": "192.272",
+        "provider_call_id": "p45",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "20264",
+        "elapsed_seconds": "3.953",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3089"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 125,
+      "timestamp": "2026-11-15T21:02:16.458935Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "147.268",
+        "hard_remaining_seconds": "192.268",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2110",
+        "elapsed_seconds": "3.965",
+        "finish_reason": "stop",
+        "prompt_tokens": "4506",
+        "completion_tokens": "592",
+        "total_tokens": "5098"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 126,
+      "timestamp": "2026-11-15T21:02:16.462212Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 127,
+      "timestamp": "2026-11-15T21:02:16.465396Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "147.262",
+        "hard_remaining_seconds": "192.262",
+        "attempt": "2",
+        "input_chars": "6855"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 128,
+      "timestamp": "2026-11-15T21:02:16.471460Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "147.256",
+        "hard_remaining_seconds": "192.256",
+        "provider_call_id": "p46",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "20465"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 129,
+      "timestamp": "2026-11-15T21:02:19.401874Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "144.326",
+        "hard_remaining_seconds": "189.326",
+        "provider_call_id": "p46",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "20465",
+        "elapsed_seconds": "2.927",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2754"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 130,
+      "timestamp": "2026-11-15T21:02:19.410263Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t44",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "144.317",
+        "hard_remaining_seconds": "189.317",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1765",
+        "elapsed_seconds": "2.945",
+        "finish_reason": "stop",
+        "prompt_tokens": "4540",
+        "completion_tokens": "536",
+        "total_tokens": "5076"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 131,
+      "timestamp": "2026-11-15T21:02:19.416497Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "b9939241-ea30-44c5-80bb-56dd1f5831f1",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 132,
+      "timestamp": "2026-11-15T21:02:19.419133Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "56b62f62-61b4-48fb-94ec-4ef2cd04e991",
+        "snapshot_id": "5622012b-b454-40da-8cc9-7ef2178a0b6e",
+        "admissible": "false",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 133,
+      "timestamp": "2026-11-15T21:02:19.421886Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c47",
+        "url": "https://www.senate.gov/about/powers-procedures/treaties/senate-approves-louisiana-purchase-treaty.htm",
+        "slot": "2",
+        "query_ids": "q38",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 134,
+      "timestamp": "2026-11-15T21:02:19.424482Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 135,
+      "timestamp": "2026-11-15T21:02:19.428923Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c47",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "144.298",
+        "hard_remaining_seconds": "189.298",
+        "provider_call_id": "p48",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "228"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 136,
+      "timestamp": "2026-11-15T21:02:19.799931Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c47",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "143.927",
+        "hard_remaining_seconds": "188.927",
+        "provider_call_id": "p48",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "228",
+        "elapsed_seconds": "0.368",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7538"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 137,
+      "timestamp": "2026-11-15T21:02:19.807190Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "url": "https://www.senate.gov/about/powers-procedures/treaties/senate-approves-louisiana-purchase-treaty.htm",
+        "candidate_id": "c47",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 138,
+      "timestamp": "2026-11-15T21:02:19.809889Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 139,
+      "timestamp": "2026-11-15T21:02:19.814010Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t49",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "143.913",
+        "hard_remaining_seconds": "188.913",
+        "attempt": "1",
+        "input_chars": "11842"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 140,
+      "timestamp": "2026-11-15T21:02:19.818967Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t49",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "143.908",
+        "hard_remaining_seconds": "188.908",
+        "provider_call_id": "p50",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "25567"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 141,
+      "timestamp": "2026-11-15T21:02:22.103148Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t49",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "141.625",
+        "hard_remaining_seconds": "186.625",
+        "provider_call_id": "p50",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "25567",
+        "elapsed_seconds": "2.280",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2163"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 142,
+      "timestamp": "2026-11-15T21:02:22.113278Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t49",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "141.616",
+        "hard_remaining_seconds": "186.616",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1240",
+        "elapsed_seconds": "2.297",
+        "finish_reason": "stop",
+        "prompt_tokens": "5692",
+        "completion_tokens": "362",
+        "total_tokens": "6054"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 143,
+      "timestamp": "2026-11-15T21:02:22.139592Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "66c7f93e-2e7c-4f34-b209-53f55f96a20f",
+        "snapshot_id": "f9c57565-b8ef-436f-85b0-dd18caa5451f",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 144,
+      "timestamp": "2026-11-15T21:02:22.148901Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "followup_round_limit",
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "2"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 145,
+      "timestamp": "2026-11-15T21:02:22.156736Z",
+      "type": "budget_reached",
+      "stage": null,
+      "payload": {
+        "reason": "followup_round_limit"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 146,
+      "timestamp": "2026-11-15T21:02:22.180219Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "1ad5b69a-46cc-4a00-a3b6-43157b1e5344"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 147,
+      "timestamp": "2026-11-15T21:02:22.184764Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "08056180-e8f1-45d2-b5fd-6b3a96c807d2"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 148,
+      "timestamp": "2026-11-15T21:02:22.189389Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "08056180-e8f1-45d2-b5fd-6b3a96c807d2"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 149,
+      "timestamp": "2026-11-15T21:02:22.192897Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "56b62f62-61b4-48fb-94ec-4ef2cd04e991"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 150,
+      "timestamp": "2026-11-15T21:02:22.196251Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "66c7f93e-2e7c-4f34-b209-53f55f96a20f"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 151,
+      "timestamp": "2026-11-15T21:02:22.203313Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 152,
+      "timestamp": "2026-11-15T21:02:22.207149Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "186.520",
+        "hard_remaining_seconds": "186.520",
+        "attempt": "1",
+        "input_chars": "12246"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 153,
+      "timestamp": "2026-11-15T21:02:22.212187Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "186.515",
+        "hard_remaining_seconds": "186.515",
+        "provider_call_id": "p52",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17398"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 154,
+      "timestamp": "2026-11-15T21:02:24.033460Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.694",
+        "hard_remaining_seconds": "184.694",
+        "provider_call_id": "p52",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17398",
+        "elapsed_seconds": "1.818",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1679"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 155,
+      "timestamp": "2026-11-15T21:02:24.036336Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.691",
+        "hard_remaining_seconds": "184.691",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "796",
+        "elapsed_seconds": "1.830",
+        "finish_reason": "stop",
+        "prompt_tokens": "5130",
+        "completion_tokens": "338",
+        "total_tokens": "5468"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 156,
+      "timestamp": "2026-11-15T21:02:24.039152Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.688",
+        "hard_remaining_seconds": "184.688",
+        "attempt": "1",
+        "input_chars": "13036"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 157,
+      "timestamp": "2026-11-15T21:02:24.042240Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.685",
+        "hard_remaining_seconds": "184.685",
+        "provider_call_id": "p54",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18220"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 158,
+      "timestamp": "2026-11-15T21:02:24.662420Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.065",
+        "hard_remaining_seconds": "184.065",
+        "provider_call_id": "p54",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18220",
+        "elapsed_seconds": "0.617",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1042"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 159,
+      "timestamp": "2026-11-15T21:02:24.666112Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.061",
+        "hard_remaining_seconds": "184.061",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "180",
+        "elapsed_seconds": "0.626",
+        "finish_reason": "stop",
+        "prompt_tokens": "5438",
+        "completion_tokens": "57",
+        "total_tokens": "5495"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 160,
+      "timestamp": "2026-11-15T21:02:24.671340Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 161,
+      "timestamp": "2026-11-15T21:02:24.678991Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.049",
+        "hard_remaining_seconds": "184.049",
+        "attempt": "1",
+        "input_chars": "12412"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 162,
+      "timestamp": "2026-11-15T21:02:24.683070Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "184.044",
+        "hard_remaining_seconds": "184.044",
+        "provider_call_id": "p56",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17572"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 163,
+      "timestamp": "2026-11-15T21:02:26.100331Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "182.627",
+        "hard_remaining_seconds": "182.627",
+        "provider_call_id": "p56",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17572",
+        "elapsed_seconds": "1.413",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1564"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 164,
+      "timestamp": "2026-11-15T21:02:26.104111Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "182.623",
+        "hard_remaining_seconds": "182.623",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "683",
+        "elapsed_seconds": "1.426",
+        "finish_reason": "stop",
+        "prompt_tokens": "5163",
+        "completion_tokens": "279",
+        "total_tokens": "5442"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 165,
+      "timestamp": "2026-11-15T21:02:26.107856Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "182.619",
+        "hard_remaining_seconds": "182.619",
+        "attempt": "1",
+        "input_chars": "12923"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 166,
+      "timestamp": "2026-11-15T21:02:26.113868Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "16",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "182.615",
+        "hard_remaining_seconds": "182.615",
+        "provider_call_id": "p58",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18105"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 167,
+      "timestamp": "2026-11-15T21:02:27.027052Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "16",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "181.700",
+        "hard_remaining_seconds": "181.700",
+        "provider_call_id": "p58",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18105",
+        "elapsed_seconds": "0.910",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1100"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 168,
+      "timestamp": "2026-11-15T21:02:27.030622Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "16",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "181.697",
+        "hard_remaining_seconds": "181.697",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "234",
+        "elapsed_seconds": "0.923",
+        "finish_reason": "stop",
+        "prompt_tokens": "5379",
+        "completion_tokens": "69",
+        "total_tokens": "5448"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 169,
+      "timestamp": "2026-11-15T21:02:27.035103Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation",
+        "affected_units": "0"
+      }
+    },
+    {
+      "investigation_id": "e622ab12-d336-4023-ab0a-ffb60f77714f",
+      "sequence": 170,
+      "timestamp": "2026-11-15T21:02:27.038519Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 58.60864024599999,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.921
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.726
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.297
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.198
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.256
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.085
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.688
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.207
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.752
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.78
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.786
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.207
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.075
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.746
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 6.077
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.47
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.805
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.455
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.084
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.999
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.347
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.074
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.952
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.926
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.367
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.279
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.817
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.616
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.412
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.909
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.923133266000036,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.7270743889999949,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.298226469000042,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.199307217000012,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.2576898789999973,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.10700423200000841,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.6887390640000035,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.22686013600002752,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.7529899699999874,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7813625439999896,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.7871181739999997,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.2083299630000397,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.13624961799996527,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.747394087000032,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 6.078070179000008,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.47146076600000697,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.8062740960000383,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.456437517999973,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1027366050000182,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.0179034600000136,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.347940589000018,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.07558074400003534,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.953000836000001,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.926994288000003,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.3680324320000068,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.2798462599999993,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.8180198690000111,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6172599120000086,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.413355796000019,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9100741830000061,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

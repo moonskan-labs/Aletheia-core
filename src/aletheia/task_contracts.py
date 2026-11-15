@@ -51,6 +51,30 @@ class Assessment(saved.Assessment):
     component_id: ComponentId
     values: Annotated[list[RecordedValue], Field(max_length=2)]
     citation: Citation
+    rationale: Annotated[
+        Brief,
+        Field(
+            description="Write this first. Say what the cited spans state about this "
+            "component: the same thing, something incompatible, or nothing decisive."
+        ),
+    ]
+    relation: Annotated[
+        saved.Relation,
+        Field(
+            description="Must agree with the rationale. supports: the spans state the "
+            "component as written. contradicts: the spans give a different value, date, "
+            "name, place or count for the same thing, or say it is not so. context: related, "
+            "but does not show the component right or wrong. irrelevant: unrelated."
+        ),
+    ]
+    scope_match: Annotated[
+        bool,
+        Field(
+            description="true when the spans are about the same entity, event, period and "
+            "measure as the component, even when the value they give differs from the "
+            "claim. false only for a different entity, population, period or definition."
+        ),
+    ]
     synthesis_coverage: Brief | None
     publisher: Label | None
     origin: Label | None
@@ -58,7 +82,6 @@ class Assessment(saved.Assessment):
         list[Annotated[int, Field(strict=True, ge=1)]], Field(max_length=6)
     ]
     provenance_note: Brief | None
-    rationale: Brief
     limitations: Annotated[list[Brief], Field(max_length=3)]
     flags: Annotated[list[ProposedFlag], Field(max_length=3)]
 
