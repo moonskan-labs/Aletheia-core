@@ -1,0 +1,92 @@
+{
+  "id": "f-05",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "The June 2022 HTTP standard (RFC 9110, RFC 9111, RFC 9112) is the worldwide standard, and RFC 9112 confirms the authority-form of request-target applies only to CONNECT requests. No evidence in the supplied sources states that a DELETE request establishes a tunnel per this standard.",
+      "citations": [
+        {
+          "evidence_id": "85e2f31e-a4fb-4255-89d7-ebe7741e75dd",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "71376692-50d8-4782-868c-e7e5fa3cde92",
+          "url": "https://tex2e.github.io/rfc-translater/html/rfc9112.html",
+          "title": "RFC 9112 - HTTP/1.1 日本語訳",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "6fb099a9-4c2f-491f-b65f-eceed52958ea",
+          "url": "https://tex2e.github.io/rfc-translater/html/rfc9112.html",
+          "title": "RFC 9112 - HTTP/1.1 日本語訳",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passages identify RFC 9110/9111/9112 as the June 2022 HTTP standards, RFC 9112 states the authority-form is only used for CONNECT requests, and no passage says a DELETE request establishes a tunnel."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "CONNECT method (RFC 7231 §4.3.6) is the HTTP method that requests establishing a tunnel, as documented in the same RFC lineage. DELETE is a state-changing method unrelated to tunnel establishment.",
+      "citations": [
+        {
+          "evidence_id": "87cbad08-f368-4dbf-aea6-c88b46f14b15",
+          "url": "https://law.resource.org/pub/us/cfr/regulations.gov.aera.case/gov.uscourts.dcd.166323.70.72.pdf",
+          "title": "RFC 7231 - Hypertext Transfer Protocol †HTTP/1.1",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "9bbc529e-28f5-4a73-9c66-90d17b187cd5",
+          "url": "https://law.resource.org/pub/us/cfr/regulations.gov.aera.case/gov.uscourts.dcd.166323.70.72.pdf",
+          "title": "RFC 7231 - Hypertext Transfer Protocol †HTTP/1.1",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passages support that CONNECT requests establishing a tunnel, but they do not mention RFC 7231 §4.3.6 or DELETE being a state-changing method unrelated to tunnel establishment."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "Tunnel behavior is defined as a blind relay between connections (RFC 9110 §3.7), but no cited source associates initiating a tunnel with a DELETE request under the June 2022 HTTP standard.",
+      "citations": [
+        {
+          "evidence_id": "bb3fbc59-9b0c-49df-bc06-8d2b7b61c381",
+          "url": "https://www.rfc-editor.org/info/rfc9110",
+          "title": "RFC 9110: HTTP Semantics | RFC Editor",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "4f9b6d25-4789-4294-bbbb-1fa28079a230",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The RFC 9110 passage defines a tunnel as a blind relay between two connections and only says a tunnel might be initiated by an HTTP request, while the other passage attributes tunnel initiation to CONNECT; no cited passage associates it with DELETE."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": {
+    "relation": "agrees",
+    "reason": "Both the reference and the system account identify CONNECT, not DELETE, as the method that establishes a tunnel."
+  }
+}

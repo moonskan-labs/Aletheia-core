@@ -1,0 +1,71 @@
+{
+  "id": "c-03",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "The 2022 HTTP standard defines HEAD responses as always having no message body, while 200 GET responses can carry a body for nonempty resources, making GET carry more body bytes than HEAD for such resources.",
+      "citations": [
+        {
+          "evidence_id": "7f24f811-24d2-45d3-bba7-6071986417c1",
+          "url": "https://httpwg.org/specs/rfc9112.html",
+          "title": "RFC 9112 - HTTP/1.1",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "e28223e7-1041-4d2e-9e13-1e370c4151ce",
+          "url": "https://realguess.net/2014/01/19/difference-between-http-head-and-get",
+          "title": "Difference between HTTP HEAD and GET - realguess",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The RFC passage supports that HEAD responses have no message body, but the passed excerpts do not explicitly state that 200 GET responses to nonempty resources can carry a body; that part is only implied."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "RFC 9112 Section 6.3 explicitly states that any response to a HEAD request cannot contain a message body, and HEAD is terminated by the first empty line after header fields.",
+      "citations": [
+        {
+          "evidence_id": "6674e103-98e1-49e7-9088-6825184674ba",
+          "url": "https://www.rfc-editor.org/info/rfc9112",
+          "title": "RFC 9112: HTTP/1.1 | RFC Editor",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passage explicitly states that any response to a HEAD request is always terminated by the first empty line after header fields and thus cannot contain a message body or trailer section."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "Apidog blog (2026) states HEAD only requests headers, does not return content, while GET returns the content of the resource, with a table showing HEAD=No body, GET=Yes body.",
+      "citations": [
+        {
+          "evidence_id": "3eae162d-b03e-4100-a152-c4cee8f8d587",
+          "url": "https://apidog.com/blog/http-head-vs-get",
+          "title": "What are the Differences Between HTTP HEAD and GET Methods?",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passages support the HEAD/GET headers-vs-content differences, but they do not include the 2026 date and the table lacks column labels to confirm the 'No body'/'Yes body' mapping."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": {
+    "relation": "agrees",
+    "reason": "The system's account that HEAD responses have no body while GET responses can include a representation body matches the MDN reference."
+  }
+}

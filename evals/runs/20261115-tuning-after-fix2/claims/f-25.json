@@ -1,0 +1,2471 @@
+{
+  "id": "f-25",
+  "live": true,
+  "investigation": {
+    "id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+    "claim": "Apple’s fiscal 2025 effective tax rate was 21%, as reported from Cupertino, California.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-15T21:51:00.069216Z",
+    "started_at": "2026-11-15T21:51:00.133692Z",
+    "finished_at": "2026-11-15T21:51:23.540814Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Apple’s fiscal 2025 effective tax rate was 21%, as reported from Cupertino, California.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Apple's fiscal 2025 effective tax rate is a recorded financial figure, suitable for record_lookup.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "Apple’s fiscal 2025 effective tax rate was 21%",
+              "role": "essential",
+              "subject": "Apple",
+              "predicate": "effective tax rate was 21%",
+              "timeframe": "fiscal 2025",
+              "location_or_population": "Cupertino, California",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "as reported",
+              "role": "modifier",
+              "subject": "Apple",
+              "predicate": "as reported",
+              "timeframe": null,
+              "location_or_population": null,
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Apple's fiscal 2025 effective tax rate was 21%, as reported from Cupertino, California.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "88f1cdd9-406e-48ee-a32c-157876436259",
+              "88de27f9-8c27-4d0e-bbb3-2315e9f7fe8b"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "301655cb-aa61-4d8f-a39f-4e03afc10226"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "88f1cdd9-406e-48ee-a32c-157876436259",
+          "301655cb-aa61-4d8f-a39f-4e03afc10226",
+          "88de27f9-8c27-4d0e-bbb3-2315e9f7fe8b"
+        ],
+        "qualification_flags": [
+          {
+            "type": "misleading_comparison",
+            "dimension": "timeframe",
+            "explanation": "Source reports fiscal years through September 2022; assertion references fiscal 2025 which is not covered.",
+            "evidence_ids": [
+              "88f1cdd9-406e-48ee-a32c-157876436259"
+            ]
+          },
+          {
+            "type": "narrow_scope",
+            "dimension": "timeframe",
+            "explanation": "Scope is limited to Apple’s 10-K fiscal 2025 ending September 27, 2025; no broader fiscal-year context beyond the filing.",
+            "evidence_ids": [
+              "88de27f9-8c27-4d0e-bbb3-2315e9f7fe8b"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [],
+      "limitations": [
+        "page_text_truncated",
+        "Only a relevant bounded selection of source spans was assessed.",
+        "No fiscal 2025 effective tax rate figure in source",
+        "Source covers fiscal years ended September 2022, not fiscal 2025",
+        "No tax rate information in these spans",
+        "Source covers fiscal years through September 2022",
+        "Source only reports the rate as 15.6%, not 21%",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v3",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 8,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.5403946010001164,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9593543300002239,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.188900270999966,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.0004984560000594,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.2512087879999854,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.14564373300027,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.49402950700005,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.18844902899991212,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.8327362139998513,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.349163539000074,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8909322389999943,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.4875837699996737,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7031038479999552,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 36347,
+        "completion_tokens": 2698,
+        "total_tokens": 39045
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Apple's fiscal 2025 effective tax rate is a recorded financial figure, suitable for record_lookup.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "Apple’s fiscal 2025 effective tax rate was 21%",
+          "role": "essential",
+          "subject": "Apple",
+          "predicate": "effective tax rate was 21%",
+          "timeframe": "fiscal 2025",
+          "location_or_population": "Cupertino, California",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "as reported",
+          "role": "modifier",
+          "subject": "Apple",
+          "predicate": "as reported",
+          "timeframe": null,
+          "location_or_population": null,
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "events": "/investigations/50b6fdc7-93ac-47d0-a600-5cd8c53f31e2/events",
+      "evidence": "/investigations/50b6fdc7-93ac-47d0-a600-5cd8c53f31e2/evidence",
+      "comparison": "/investigations/50b6fdc7-93ac-47d0-a600-5cd8c53f31e2/comparison",
+      "refresh": "/investigations/50b6fdc7-93ac-47d0-a600-5cd8c53f31e2/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+        "canonical_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+        "title": "aapl-20220924",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:51:10.336364Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "33ee6b92d0caa853acfb2784c41c661b18a61c3d8268ce17895869386dc2c019",
+        "duplicate_group": "33ee6b92d0caa853acfb2784c41c661b18a61c3d8268ce17895869386dc2c019",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "canonical_url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "title": "Apple SEC filings: What Apple’s 2025 10-K Reveals",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:51:15.105105Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "83a2114b6fee5c062082def2303d7f765a9fbad699c170d72aeb643e9d9e943b",
+        "duplicate_group": "83a2114b6fee5c062082def2303d7f765a9fbad699c170d72aeb643e9d9e943b",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "88f1cdd9-406e-48ee-a32c-157876436259",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+            "span_ids": [
+              617,
+              618,
+              620,
+              621,
+              641,
+              647
+            ]
+          },
+          "rationale": "Spans 617-621 discuss Apple's tax rates, exposure to tax law changes, and jurisdiction (Ireland, U.S.). Span 641 states headquarters in Cupertino, California. None of these spans provide the fiscal 2025 effective tax rate figure of 21%.",
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Apple Inc. 2022 Form 10-K (SEC filing)",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            617,
+            618,
+            619,
+            620,
+            621,
+            641
+          ],
+          "provenance_note": "Tax rate discussion and headquarters location found in 10-K; no effective tax rate figure for fiscal 2025 is present.",
+          "limitations": [
+            "No fiscal 2025 effective tax rate figure in source",
+            "Source covers fiscal years ended September 2022, not fiscal 2025"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "timeframe",
+              "explanation": "Source reports fiscal years through September 2022; assertion references fiscal 2025 which is not covered."
+            },
+            {
+              "type": "narrow_scope",
+              "dimension": "entity",
+              "explanation": "Source identifies Apple Inc. and subsidiaries but does not state an effective tax rate for fiscal 2025."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              617,
+              618
+            ],
+            "start": 90667,
+            "end": 90976,
+            "text": "The Company is subject to changes in tax rates, the adoption of new U.S. or international tax legislation and exposure to additional tax liabilities.\n\nThe Company is subject to taxes in the U.S. and numerous foreign jurisdictions, including Ireland, where a number of the Company’s subsidiaries are organized.",
+            "quote_hash": "c1dd9aa88ac7c64e5f3fbb232baccf7aec53f82e6fcee17969bc76f46b33855c"
+          },
+          {
+            "span_ids": [
+              620,
+              621
+            ],
+            "start": 91149,
+            "end": 91577,
+            "text": "The Company’s effective tax rates are affected by changes in the mix of earnings in countries with differing statutory tax rates, changes in the valuation of deferred tax assets and liabilities, the introduction of new taxes, or changes in tax laws or their interpretation, including in the U.S. and Ireland. The application of tax laws may be uncertain, require significant judgment and be subject to differing interpretations.",
+            "quote_hash": "235f2d33ec353fe83b5e1485717ce2f3b741aef147beea9e86b75db2bc32f099"
+          },
+          {
+            "span_ids": [
+              641
+            ],
+            "start": 93794,
+            "end": 93858,
+            "text": "The Company’s headquarters are located in Cupertino, California.",
+            "quote_hash": "ad067d3c440fb1054a2d272f1121868d34dec5ea3fddc18113c3fb4b0d3802d3"
+          },
+          {
+            "span_ids": [
+              647
+            ],
+            "start": 94300,
+            "end": 94353,
+            "text": "Epic Games, Inc. (“Epic”) filed a lawsuit in the U.S.",
+            "quote_hash": "72166990cdaa59216ffadd96730b5fa19e8e5047f37bd0824a94262d1c366afb"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "301655cb-aa61-4d8f-a39f-4e03afc10226",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+            "span_ids": [
+              18,
+              19,
+              21,
+              22,
+              23
+            ]
+          },
+          "rationale": "Spans 18-23 contain the company name, state of incorporation (California), address (One Apple Park Way, Cupertino, California 95014), and clause label. They confirm the registrant is incorporated in California and headquarters location, but contain no reporting qualifier or tax rate data.",
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Apple Inc. 2022 Form 10-K (SEC filing)",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            18,
+            19,
+            21,
+            22,
+            23
+          ],
+          "provenance_note": "Corporate identification details; no tax rate or reporting modifier found.",
+          "limitations": [
+            "No tax rate information in these spans",
+            "Source covers fiscal years through September 2022"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "content",
+              "explanation": "Spans provide corporate address and incorporation state, not tax rate or reporting qualifier."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              18,
+              19
+            ],
+            "start": 477,
+            "end": 518,
+            "text": "| California | 94-2404110 |\n| --- | --- |",
+            "quote_hash": "c28cb32bae3df14c14097668bbd846da747e6753af6a2256e25f11ee1cf0227c"
+          },
+          {
+            "span_ids": [
+              21,
+              22,
+              23
+            ],
+            "start": 625,
+            "end": 741,
+            "text": "| One Apple Park Way | |\n| Cupertino, California | 95014 |\n| (Address of principal executive offices) | (Zip Code) |",
+            "quote_hash": "79eeb04368ead5e0a2325ad6fc8d84cc702e247ee2a15410d877ea4d19dd7624"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "88de27f9-8c27-4d0e-bbb3-2315e9f7fe8b",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+            "span_ids": [
+              53,
+              54
+            ]
+          },
+          "rationale": "Spans 53 and 54 state Apple’s effective income tax rate was 15.6% for fiscal 2025, down from 24.1% in fiscal 2024, with the year-over-year difference attributed to a $10.7 billion decrease in tax provision related to the European Commission’s State Aid Decision.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "secfilingdata.com",
+          "origin": "Apple 2025 Form 10-K on SEC EDGAR",
+          "independence": "shared",
+          "provenance_span_ids": [
+            53,
+            54
+          ],
+          "provenance_note": "Span 53 extracts the rate from the 10-K’s income tax note; Span 54 provides the context of the $10.7 billion decrease.",
+          "limitations": [
+            "Source only reports the rate as 15.6%, not 21%"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "tax_rate",
+              "explanation": "Claim asserts 21%; source states 15.6%. The 21% figure likely reflects a different metric (e.g., statutory rate or prior-year effective rate) not matching the 10-K's reported effective rate."
+            },
+            {
+              "type": "narrow_scope",
+              "dimension": "timeframe",
+              "explanation": "Scope is limited to Apple’s 10-K fiscal 2025 ending September 27, 2025; no broader fiscal-year context beyond the filing."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              53,
+              54
+            ],
+            "start": 4844,
+            "end": 5100,
+            "text": "Its effective income tax rate was 15.6%, down from 24.1%. The filing says the year-over-year difference primarily reflected a $10.7 billion decrease in the tax provision related to the European Commission’s State Aid Decision, along with other tax factors.",
+            "quote_hash": "1ce61a44c4b4d5ab9969e946e5d48cdd2558670eda8044fe5589f3a92248d8de"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 1,
+      "timestamp": "2026-11-15T21:51:00.069216Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 2,
+      "timestamp": "2026-11-15T21:51:00.133692Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 3,
+      "timestamp": "2026-11-15T21:51:00.138924Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v3",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 4,
+      "timestamp": "2026-11-15T21:51:00.141689Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 5,
+      "timestamp": "2026-11-15T21:51:00.144282Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.995",
+        "hard_remaining_seconds": "119.995",
+        "attempt": "1",
+        "input_chars": "115"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 6,
+      "timestamp": "2026-11-15T21:51:00.149779Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.989",
+        "hard_remaining_seconds": "119.989",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10708"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 7,
+      "timestamp": "2026-11-15T21:51:01.693823Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.446",
+        "hard_remaining_seconds": "118.446",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10708",
+        "elapsed_seconds": "1.540",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1722"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 8,
+      "timestamp": "2026-11-15T21:51:01.697537Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.442",
+        "hard_remaining_seconds": "118.442",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "789",
+        "elapsed_seconds": "1.553",
+        "finish_reason": "stop",
+        "prompt_tokens": "1745",
+        "completion_tokens": "234",
+        "total_tokens": "1979"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 9,
+      "timestamp": "2026-11-15T21:51:01.703349Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 10,
+      "timestamp": "2026-11-15T21:51:01.705803Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 11,
+      "timestamp": "2026-11-15T21:51:01.708531Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 12,
+      "timestamp": "2026-11-15T21:51:01.712595Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.427",
+        "hard_remaining_seconds": "118.427",
+        "attempt": "1",
+        "input_chars": "1216"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 13,
+      "timestamp": "2026-11-15T21:51:01.716615Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.422",
+        "hard_remaining_seconds": "118.422",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4329"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 14,
+      "timestamp": "2026-11-15T21:51:02.679230Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.460",
+        "hard_remaining_seconds": "117.460",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4329",
+        "elapsed_seconds": "0.959",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1445"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 15,
+      "timestamp": "2026-11-15T21:51:02.682882Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.456",
+        "hard_remaining_seconds": "117.456",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "555",
+        "elapsed_seconds": "0.971",
+        "finish_reason": "stop",
+        "prompt_tokens": "821",
+        "completion_tokens": "152",
+        "total_tokens": "973"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 16,
+      "timestamp": "2026-11-15T21:51:02.685856Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal year 2025 effective tax rate SEC filing Form 10-K Cupertino California",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 17,
+      "timestamp": "2026-11-15T21:51:02.688551Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.450",
+        "hard_remaining_seconds": "117.450",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 18,
+      "timestamp": "2026-11-15T21:51:05.881341Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.258",
+        "hard_remaining_seconds": "114.258",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291",
+        "elapsed_seconds": "3.189",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9882"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 19,
+      "timestamp": "2026-11-15T21:51:05.884607Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal year 2025 effective tax rate SEC filing Form 10-K Cupertino California",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 20,
+      "timestamp": "2026-11-15T21:51:05.887350Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple effective tax rate 2025 quarterly earnings press release Cupertino California",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 21,
+      "timestamp": "2026-11-15T21:51:05.889673Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.249",
+        "hard_remaining_seconds": "114.249",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 22,
+      "timestamp": "2026-11-15T21:51:07.893292Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.246",
+        "hard_remaining_seconds": "112.246",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291",
+        "elapsed_seconds": "2.000",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9631"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 23,
+      "timestamp": "2026-11-15T21:51:07.901480Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple effective tax rate 2025 quarterly earnings press release Cupertino California",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 24,
+      "timestamp": "2026-11-15T21:51:07.904563Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 tax expense effective rate reconciliation Apple Inc annual report",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 25,
+      "timestamp": "2026-11-15T21:51:07.906992Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.232",
+        "hard_remaining_seconds": "112.232",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 26,
+      "timestamp": "2026-11-15T21:51:10.161387Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.978",
+        "hard_remaining_seconds": "109.978",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291",
+        "elapsed_seconds": "2.251",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9575"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 27,
+      "timestamp": "2026-11-15T21:51:10.171807Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 tax expense effective rate reconciliation Apple Inc annual report",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 28,
+      "timestamp": "2026-11-15T21:51:10.175354Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "8",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 29,
+      "timestamp": "2026-11-15T21:51:10.178764Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+        "slot": "1",
+        "query_ids": "q5,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 30,
+      "timestamp": "2026-11-15T21:51:10.181595Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 31,
+      "timestamp": "2026-11-15T21:51:10.184604Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.954",
+        "hard_remaining_seconds": "109.954",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "210"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 32,
+      "timestamp": "2026-11-15T21:51:10.333799Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.806",
+        "hard_remaining_seconds": "109.806",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "210",
+        "elapsed_seconds": "0.146",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "230550"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 33,
+      "timestamp": "2026-11-15T21:51:10.362530Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 34,
+      "timestamp": "2026-11-15T21:51:10.365536Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 35,
+      "timestamp": "2026-11-15T21:51:10.385678Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.754",
+        "hard_remaining_seconds": "109.754",
+        "attempt": "1",
+        "input_chars": "18627"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 36,
+      "timestamp": "2026-11-15T21:51:10.392345Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.748",
+        "hard_remaining_seconds": "109.748",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34572"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 37,
+      "timestamp": "2026-11-15T21:51:14.890142Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.249",
+        "hard_remaining_seconds": "105.249",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34572",
+        "elapsed_seconds": "4.494",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3701"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 38,
+      "timestamp": "2026-11-15T21:51:14.894298Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.245",
+        "hard_remaining_seconds": "105.245",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2700",
+        "elapsed_seconds": "4.509",
+        "finish_reason": "stop",
+        "prompt_tokens": "7767",
+        "completion_tokens": "840",
+        "total_tokens": "8607"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 39,
+      "timestamp": "2026-11-15T21:51:14.900308Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "88f1cdd9-406e-48ee-a32c-157876436259",
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 40,
+      "timestamp": "2026-11-15T21:51:14.903132Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "301655cb-aa61-4d8f-a39f-4e03afc10226",
+        "snapshot_id": "5fac9a1b-887f-44d0-982d-9aabb9975f80",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 41,
+      "timestamp": "2026-11-15T21:51:14.905634Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "slot": "2",
+        "query_ids": "q5,q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 42,
+      "timestamp": "2026-11-15T21:51:14.908133Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 43,
+      "timestamp": "2026-11-15T21:51:14.911175Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.228",
+        "hard_remaining_seconds": "105.228",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "195"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 44,
+      "timestamp": "2026-11-15T21:51:15.102900Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.036",
+        "hard_remaining_seconds": "105.036",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "195",
+        "elapsed_seconds": "0.188",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "29189"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 45,
+      "timestamp": "2026-11-15T21:51:15.114222Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 46,
+      "timestamp": "2026-11-15T21:51:15.117089Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 47,
+      "timestamp": "2026-11-15T21:51:15.123372Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.016",
+        "hard_remaining_seconds": "105.016",
+        "attempt": "1",
+        "input_chars": "20236"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 48,
+      "timestamp": "2026-11-15T21:51:15.131841Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.008",
+        "hard_remaining_seconds": "105.008",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "36729"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 49,
+      "timestamp": "2026-11-15T21:51:17.967917Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.171",
+        "hard_remaining_seconds": "102.171",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "36729",
+        "elapsed_seconds": "2.833",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2526"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 50,
+      "timestamp": "2026-11-15T21:51:17.972146Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.167",
+        "hard_remaining_seconds": "102.167",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1582",
+        "elapsed_seconds": "2.848",
+        "finish_reason": "stop",
+        "prompt_tokens": "9630",
+        "completion_tokens": "513",
+        "total_tokens": "10143"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 51,
+      "timestamp": "2026-11-15T21:51:17.979220Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "88de27f9-8c27-4d0e-bbb3-2315e9f7fe8b",
+        "snapshot_id": "bc050ce1-38ce-479c-872a-533481c1757d",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 52,
+      "timestamp": "2026-11-15T21:51:17.982388Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 53,
+      "timestamp": "2026-11-15T21:51:17.985299Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "88f1cdd9-406e-48ee-a32c-157876436259"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 54,
+      "timestamp": "2026-11-15T21:51:17.987765Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "301655cb-aa61-4d8f-a39f-4e03afc10226"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 55,
+      "timestamp": "2026-11-15T21:51:17.990842Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "88de27f9-8c27-4d0e-bbb3-2315e9f7fe8b"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 56,
+      "timestamp": "2026-11-15T21:51:17.996388Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 57,
+      "timestamp": "2026-11-15T21:51:18.000408Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "102.139",
+        "hard_remaining_seconds": "102.139",
+        "attempt": "1",
+        "input_chars": "8665"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 58,
+      "timestamp": "2026-11-15T21:51:18.005683Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "102.134",
+        "hard_remaining_seconds": "102.134",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13640"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 59,
+      "timestamp": "2026-11-15T21:51:20.358428Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.781",
+        "hard_remaining_seconds": "99.781",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13640",
+        "elapsed_seconds": "2.349",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2219"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 60,
+      "timestamp": "2026-11-15T21:51:20.367300Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.776",
+        "hard_remaining_seconds": "99.776",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1304",
+        "elapsed_seconds": "2.362",
+        "finish_reason": "stop",
+        "prompt_tokens": "3901",
+        "completion_tokens": "535",
+        "total_tokens": "4436"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 61,
+      "timestamp": "2026-11-15T21:51:20.371310Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.768",
+        "hard_remaining_seconds": "99.768",
+        "attempt": "1",
+        "input_chars": "9964"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 62,
+      "timestamp": "2026-11-15T21:51:20.375299Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.764",
+        "hard_remaining_seconds": "99.764",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14945"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 63,
+      "timestamp": "2026-11-15T21:51:21.269850Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.869",
+        "hard_remaining_seconds": "98.869",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14945",
+        "elapsed_seconds": "0.891",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1116"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 64,
+      "timestamp": "2026-11-15T21:51:21.273230Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.866",
+        "hard_remaining_seconds": "98.866",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "246",
+        "elapsed_seconds": "0.902",
+        "finish_reason": "stop",
+        "prompt_tokens": "4395",
+        "completion_tokens": "79",
+        "total_tokens": "4474"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 65,
+      "timestamp": "2026-11-15T21:51:21.276496Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision,core_supported,no_unresolved_conflict",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 66,
+      "timestamp": "2026-11-15T21:51:21.280722Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.858",
+        "hard_remaining_seconds": "98.858",
+        "attempt": "1",
+        "input_chars": "8912"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 67,
+      "timestamp": "2026-11-15T21:51:21.284643Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.854",
+        "hard_remaining_seconds": "98.854",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13899"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 68,
+      "timestamp": "2026-11-15T21:51:22.781920Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.364",
+        "hard_remaining_seconds": "97.364",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13899",
+        "elapsed_seconds": "1.488",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1627"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 69,
+      "timestamp": "2026-11-15T21:51:22.786771Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.352",
+        "hard_remaining_seconds": "97.352",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "748",
+        "elapsed_seconds": "1.506",
+        "finish_reason": "stop",
+        "prompt_tokens": "3954",
+        "completion_tokens": "274",
+        "total_tokens": "4228"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 70,
+      "timestamp": "2026-11-15T21:51:22.791913Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t25",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.347",
+        "hard_remaining_seconds": "97.347",
+        "attempt": "1",
+        "input_chars": "9408"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 71,
+      "timestamp": "2026-11-15T21:51:22.795597Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t25",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.343",
+        "hard_remaining_seconds": "97.343",
+        "provider_call_id": "p26",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14353"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 72,
+      "timestamp": "2026-11-15T21:51:23.502040Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t25",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.637",
+        "hard_remaining_seconds": "96.637",
+        "provider_call_id": "p26",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14353",
+        "elapsed_seconds": "0.703",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1111"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 73,
+      "timestamp": "2026-11-15T21:51:23.506037Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t25",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.633",
+        "hard_remaining_seconds": "96.633",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "241",
+        "elapsed_seconds": "0.714",
+        "finish_reason": "stop",
+        "prompt_tokens": "4134",
+        "completion_tokens": "71",
+        "total_tokens": "4205"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 74,
+      "timestamp": "2026-11-15T21:51:23.536728Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision",
+        "affected_units": "0,1,2"
+      }
+    },
+    {
+      "investigation_id": "50b6fdc7-93ac-47d0-a600-5cd8c53f31e2",
+      "sequence": 75,
+      "timestamp": "2026-11-15T21:51:23.540814Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 23.519415207000293,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.539
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.958
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.188
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.999
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.25
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.086
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.493
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.187
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.831
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.348
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.89
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.486
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.702
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.5403946010001164,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9593543300002239,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.188900270999966,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.0004984560000594,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.2512087879999854,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.14564373300027,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.49402950700005,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.18844902899991212,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.8327362139998513,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.349163539000074,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8909322389999943,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.4875837699996737,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7031038479999552,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

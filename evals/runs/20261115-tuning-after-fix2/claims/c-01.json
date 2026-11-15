@@ -1,0 +1,2655 @@
+{
+  "id": "c-01",
+  "live": true,
+  "investigation": {
+    "id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+    "claim": "Worldwide SI prefixes outnumber SI base units under the 2026 NIST listing.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "invalid_task_output",
+    "reused": true,
+    "created_at": "2026-11-15T21:38:50.893773Z",
+    "started_at": "2026-11-15T21:38:50.914856Z",
+    "finished_at": "2026-11-15T21:39:36.120826Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "true",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Worldwide SI prefixes outnumber SI base units under the 2026 NIST listing.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Claim structured as a factual lookup regarding SI prefix and unit counts under a specific listing.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "Worldwide SI prefixes outnumber SI base units",
+              "role": "essential",
+              "subject": "Worldwide SI prefixes",
+              "predicate": "outnumber",
+              "timeframe": null,
+              "location_or_population": null,
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "under the 2026 NIST listing",
+              "role": "modifier",
+              "subject": "Worldwide SI prefixes",
+              "predicate": "outnumber",
+              "timeframe": null,
+              "location_or_population": "under the 2026 NIST listing",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Assessment requires verifying the count of SI prefixes versus base units as listed by NIST in its 2026 publication.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "true",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "supported",
+            "evidence_ids": [
+              "d6ee7d9e-7632-41da-a663-10602595a85a"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "supported",
+            "evidence_ids": [
+              "09a15786-eda9-4c08-b70f-f343bf3b99f9"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "d6ee7d9e-7632-41da-a663-10602595a85a",
+          "09a15786-eda9-4c08-b70f-f343bf3b99f9"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "The 2026 NIST listing records 24 total SI prefixes, confirmed by NIST historical data showing additions up to 2022. Spans 32-37 of evidence d6ee7d9e list six new prefixes (quetta, ronna, yotta, zetta, exa, peta). Spans 76-82 of evidence 09a15786 document the progression from 8 original prefixes (188",
+          "evidence_ids": [
+            "d6ee7d9e-7632-41da-a663-10602595a85a",
+            "09a15786-eda9-4c08-b70f-f343bf3b99f9"
+          ]
+        }
+      ],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Source table stops at 10^-30; does not enumerate base units in same table",
+        "No explicit count of base units in same listing",
+        "Some planned evidence checks could not be completed; coverage is incomplete.",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v3",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 10,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.341892702000223,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.340140455999972,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.927787816000091,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.712812655000107,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1968380839998645,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.133348305999789,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.0862660840002718,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 7.770651631999954,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.35338813700036553,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 8.893307717000425,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 6.01813117499978,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.5417671780001,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6036428060001526,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.3313071729999137,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5439159289999225,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 42065,
+        "completion_tokens": 4146,
+        "total_tokens": 46211
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Claim structured as a factual lookup regarding SI prefix and unit counts under a specific listing.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "Worldwide SI prefixes outnumber SI base units",
+          "role": "essential",
+          "subject": "Worldwide SI prefixes",
+          "predicate": "outnumber",
+          "timeframe": null,
+          "location_or_population": null,
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "under the 2026 NIST listing",
+          "role": "modifier",
+          "subject": "Worldwide SI prefixes",
+          "predicate": "outnumber",
+          "timeframe": null,
+          "location_or_population": "under the 2026 NIST listing",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "events": "/investigations/480dfe51-6a8b-44b3-9da7-610bec9438c8/events",
+      "evidence": "/investigations/480dfe51-6a8b-44b3-9da7-610bec9438c8/evidence",
+      "comparison": "/investigations/480dfe51-6a8b-44b3-9da7-610bec9438c8/comparison",
+      "refresh": "/investigations/480dfe51-6a8b-44b3-9da7-610bec9438c8/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+        "canonical_url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+        "title": "Metric (SI) Prefixes | NIST",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:39:04.853694Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "7789528c79a4c41b08739bb3d38ae85cfd710beb28c126c87d3e0f8b26672dd3",
+        "duplicate_group": "7789528c79a4c41b08739bb3d38ae85cfd710beb28c126c87d3e0f8b26672dd3",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "url": "https://www.nist.gov/news-events/news/2023/01/si-prefix-progress",
+        "canonical_url": "https://www.nist.gov/news-events/news/2023/01/si-prefix-progress",
+        "title": "SI Prefix Progress | NIST",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:39:13.031618Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "85c0da4a6457fc0e8a53c4da1aeb662fe96e5b30edae802e206ae974a2bccc06",
+        "duplicate_group": "85c0da4a6457fc0e8a53c4da1aeb662fe96e5b30edae802e206ae974a2bccc06",
+        "limitations": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "d6ee7d9e-7632-41da-a663-10602595a85a",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+            "span_ids": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37
+            ]
+          },
+          "rationale": "Spans 32-37 list 6 prefix names and symbols (quetta Q 10^30, ronna R 10^27, yotta Y 10^24, zetta Z 10^21, exa E 10^18, peta P 10^15). These are the newest prefixes added in 2022. The table in spans 30-56 presents all SI prefixes. The listing shows 24 total prefixes: 6 new (2022), 14 earlier (pre-202",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "NIST",
+          "origin": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+          "independence": "established",
+          "provenance_span_ids": [
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ],
+          "provenance_note": "NIST listing of SI prefixes under 2026 revision",
+          "limitations": [
+            "Source table stops at 10^-30; does not enumerate base units in same table"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37
+            ],
+            "start": 2681,
+            "end": 2917,
+            "text": "| larger quantities or whole units | quetta | Q | 1030 | nonillion |\n| ronna | R | 1027 | octillion |\n| yotta | Y | 1024 | septillion |\n| zetta | Z | 1021 | sextillion |\n| exa | E | 1018 | quintillion |\n| peta | P | 1015 | quadrillion |",
+            "quote_hash": "8a85d801c8ea2149566fc01e6fe38eaf929e34e190dd71287aca1baafb2218f4"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "09a15786-eda9-4c08-b70f-f343bf3b99f9",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+            "span_ids": [
+              76,
+              77,
+              78,
+              79,
+              80,
+              81
+            ]
+          },
+          "rationale": "Spans 76-82 document the historical addition of SI prefixes. Span 76 states 8 original prefixes adopted in 1889. Spans 77-82 show progressive additions: 1889→8, 1960→12, 1964→14, 1975→16, 1991→20, 2022→24. These records confirm the prefix total under the current NIST listing is 24. The 2026 NIST SI-",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "NIST",
+          "origin": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+          "independence": "established",
+          "provenance_span_ids": [
+            76,
+            77,
+            78,
+            79,
+            80,
+            81
+          ],
+          "provenance_note": "NIST historical prefix additions under 2026 revision",
+          "limitations": [
+            "No explicit count of base units in same listing"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              76,
+              77,
+              78,
+              79,
+              80,
+              81
+            ],
+            "start": 5753,
+            "end": 6667,
+            "text": "| 1795 | Eight original SI prefixes were officially adopted: deca, hecto, kilo, myria, deci, centi, milli, and myrio, derived from Greek and Latin numbers. Initially, all prefixes were represented by lowercase symbols. | 8 |\n| 1889 | The first General Conference on Weights and Measures (CGPM) approves the 8 prefixes for use. | 8 |\n| 1960 | Two prefixes were made obsolete: myria and myrio. Six prefixes were added. Three for forming multiples: mega, giga, and tera. Three for forming submultiples: micro, nano, and pico. | 12 |\n| 1964 | Two prefixes for forming submultiples were added: femto and atto. This created an imbalanced situation, where there were *more* prefixes for small quantities. | 14 |\n| 1975 | Two prefixes for forming multiples were added: peta and exa. | 16 |\n| 1991 | Four prefixes were added. Two for forming multiples: zetta and yotta. Two for forming submultiples: zepto and yocto. | 20 |",
+            "quote_hash": "31235283d029a47ec3515688d24d4eae037c37f9608a1fd99d770e96d4bbf045"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 1,
+      "timestamp": "2026-11-15T21:38:50.893773Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 2,
+      "timestamp": "2026-11-15T21:38:50.914856Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 3,
+      "timestamp": "2026-11-15T21:38:50.933456Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v3",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 4,
+      "timestamp": "2026-11-15T21:38:50.946713Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 5,
+      "timestamp": "2026-11-15T21:38:50.964055Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.975",
+        "hard_remaining_seconds": "119.975",
+        "attempt": "1",
+        "input_chars": "102"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 6,
+      "timestamp": "2026-11-15T21:38:50.994432Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.953",
+        "hard_remaining_seconds": "119.953",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10693"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 7,
+      "timestamp": "2026-11-15T21:38:55.345057Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.584",
+        "hard_remaining_seconds": "115.584",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10693",
+        "elapsed_seconds": "4.342",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2199"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 8,
+      "timestamp": "2026-11-15T21:38:55.349312Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.579",
+        "hard_remaining_seconds": "115.579",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "clarification_shape",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1238",
+        "elapsed_seconds": "4.396",
+        "finish_reason": "stop",
+        "prompt_tokens": "1740",
+        "completion_tokens": "350",
+        "total_tokens": "2090"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 9,
+      "timestamp": "2026-11-15T21:38:55.353083Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "interpret",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 10,
+      "timestamp": "2026-11-15T21:38:55.356931Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.571",
+        "hard_remaining_seconds": "115.571",
+        "attempt": "2",
+        "input_chars": "102"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 11,
+      "timestamp": "2026-11-15T21:38:55.362225Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.566",
+        "hard_remaining_seconds": "115.566",
+        "provider_call_id": "p3",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10876"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 12,
+      "timestamp": "2026-11-15T21:38:56.706549Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.222",
+        "hard_remaining_seconds": "114.222",
+        "provider_call_id": "p3",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10876",
+        "elapsed_seconds": "1.340",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1771"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 13,
+      "timestamp": "2026-11-15T21:38:56.710373Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.218",
+        "hard_remaining_seconds": "114.218",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "842",
+        "elapsed_seconds": "1.353",
+        "finish_reason": "stop",
+        "prompt_tokens": "1771",
+        "completion_tokens": "230",
+        "total_tokens": "2001"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 14,
+      "timestamp": "2026-11-15T21:38:56.716399Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 15,
+      "timestamp": "2026-11-15T21:38:56.719449Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 16,
+      "timestamp": "2026-11-15T21:38:56.721907Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 17,
+      "timestamp": "2026-11-15T21:38:56.724535Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t4",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.203",
+        "hard_remaining_seconds": "114.203",
+        "attempt": "1",
+        "input_chars": "1228"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 18,
+      "timestamp": "2026-11-15T21:38:56.727810Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t4",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.200",
+        "hard_remaining_seconds": "114.200",
+        "provider_call_id": "p5",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4335"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 19,
+      "timestamp": "2026-11-15T21:38:57.659463Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t4",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.269",
+        "hard_remaining_seconds": "113.269",
+        "provider_call_id": "p5",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4335",
+        "elapsed_seconds": "0.928",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1437"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 20,
+      "timestamp": "2026-11-15T21:38:57.665948Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t4",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.262",
+        "hard_remaining_seconds": "113.262",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "547",
+        "elapsed_seconds": "0.941",
+        "finish_reason": "stop",
+        "prompt_tokens": "811",
+        "completion_tokens": "158",
+        "total_tokens": "969"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 21,
+      "timestamp": "2026-11-15T21:38:57.668911Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Count of SI prefixes versus SI base units in the 2026 NIST publication or authoritative reference",
+        "purpose": "support",
+        "query_id": "q6"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 22,
+      "timestamp": "2026-11-15T21:38:57.671780Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q6",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.256",
+        "hard_remaining_seconds": "113.256",
+        "provider_call_id": "p7",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "305"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 23,
+      "timestamp": "2026-11-15T21:39:00.387557Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q6",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.540",
+        "hard_remaining_seconds": "110.540",
+        "provider_call_id": "p7",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "305",
+        "elapsed_seconds": "2.713",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11062"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 24,
+      "timestamp": "2026-11-15T21:39:00.390918Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Count of SI prefixes versus SI base units in the 2026 NIST publication or authoritative reference",
+        "query_id": "q6",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 25,
+      "timestamp": "2026-11-15T21:39:00.393959Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "List of all SI base units as defined in the 2026 NIST or BIPM standards",
+        "purpose": "support",
+        "query_id": "q8"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 26,
+      "timestamp": "2026-11-15T21:39:00.396581Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q8",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.531",
+        "hard_remaining_seconds": "110.531",
+        "provider_call_id": "p9",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "279"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 27,
+      "timestamp": "2026-11-15T21:39:02.596606Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q8",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.332",
+        "hard_remaining_seconds": "108.332",
+        "provider_call_id": "p9",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "279",
+        "elapsed_seconds": "2.197",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9981"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 28,
+      "timestamp": "2026-11-15T21:39:02.601852Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "List of all SI base units as defined in the 2026 NIST or BIPM standards",
+        "query_id": "q8",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 29,
+      "timestamp": "2026-11-15T21:39:02.605272Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Any NIST correction or erratum regarding SI prefix and base unit counts published before 2026",
+        "purpose": "contradiction",
+        "query_id": "q10"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 30,
+      "timestamp": "2026-11-15T21:39:02.608442Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q10",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.320",
+        "hard_remaining_seconds": "108.320",
+        "provider_call_id": "p11",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "301"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 31,
+      "timestamp": "2026-11-15T21:39:04.745519Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q10",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "61.183",
+        "hard_remaining_seconds": "106.183",
+        "provider_call_id": "p11",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "301",
+        "elapsed_seconds": "2.133",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10285"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 32,
+      "timestamp": "2026-11-15T21:39:04.749666Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Any NIST correction or erratum regarding SI prefix and base unit counts published before 2026",
+        "query_id": "q10",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 33,
+      "timestamp": "2026-11-15T21:39:04.752963Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "11",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 34,
+      "timestamp": "2026-11-15T21:39:04.756529Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c12",
+        "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+        "slot": "1",
+        "query_ids": "q6,q10",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 35,
+      "timestamp": "2026-11-15T21:39:04.759159Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 36,
+      "timestamp": "2026-11-15T21:39:04.762154Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c12",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.166",
+        "hard_remaining_seconds": "106.166",
+        "provider_call_id": "p13",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "174"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 37,
+      "timestamp": "2026-11-15T21:39:04.851578Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c12",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.077",
+        "hard_remaining_seconds": "106.077",
+        "provider_call_id": "p13",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "174",
+        "elapsed_seconds": "0.086",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "12476"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 38,
+      "timestamp": "2026-11-15T21:39:04.858990Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+        "candidate_id": "c12",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 39,
+      "timestamp": "2026-11-15T21:39:04.861808Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 40,
+      "timestamp": "2026-11-15T21:39:04.867714Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.060",
+        "hard_remaining_seconds": "106.060",
+        "attempt": "1",
+        "input_chars": "19058"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 41,
+      "timestamp": "2026-11-15T21:39:04.874204Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.054",
+        "hard_remaining_seconds": "106.054",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35461"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 42,
+      "timestamp": "2026-11-15T21:39:12.649042Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "53.280",
+        "hard_remaining_seconds": "98.280",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35461",
+        "elapsed_seconds": "7.771",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2851"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 43,
+      "timestamp": "2026-11-15T21:39:12.653805Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "53.275",
+        "hard_remaining_seconds": "98.275",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1875",
+        "elapsed_seconds": "7.786",
+        "finish_reason": "stop",
+        "prompt_tokens": "9495",
+        "completion_tokens": "751",
+        "total_tokens": "10246"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 44,
+      "timestamp": "2026-11-15T21:39:12.660244Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "d6ee7d9e-7632-41da-a663-10602595a85a",
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 45,
+      "timestamp": "2026-11-15T21:39:12.663777Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "09a15786-eda9-4c08-b70f-f343bf3b99f9",
+        "snapshot_id": "0f08b82b-9f0a-49ce-bc34-d2c119d6be5c",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 46,
+      "timestamp": "2026-11-15T21:39:12.667138Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "url": "https://www.nist.gov/news-events/news/2023/01/si-prefix-progress",
+        "slot": "2",
+        "query_ids": "q10",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 47,
+      "timestamp": "2026-11-15T21:39:12.670271Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 48,
+      "timestamp": "2026-11-15T21:39:12.673057Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "53.255",
+        "hard_remaining_seconds": "98.255",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "191"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 49,
+      "timestamp": "2026-11-15T21:39:13.029599Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "52.899",
+        "hard_remaining_seconds": "97.899",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "191",
+        "elapsed_seconds": "0.353",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7655"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 50,
+      "timestamp": "2026-11-15T21:39:13.038816Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "url": "https://www.nist.gov/news-events/news/2023/01/si-prefix-progress",
+        "candidate_id": "c16",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 51,
+      "timestamp": "2026-11-15T21:39:13.041790Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 52,
+      "timestamp": "2026-11-15T21:39:13.047809Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "52.881",
+        "hard_remaining_seconds": "97.881",
+        "attempt": "1",
+        "input_chars": "15886"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 53,
+      "timestamp": "2026-11-15T21:39:13.058809Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "52.871",
+        "hard_remaining_seconds": "97.871",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32259"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 54,
+      "timestamp": "2026-11-15T21:39:21.958422Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "43.972",
+        "hard_remaining_seconds": "88.972",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32259",
+        "elapsed_seconds": "8.893",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3289"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 55,
+      "timestamp": "2026-11-15T21:39:21.961666Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "43.966",
+        "hard_remaining_seconds": "88.966",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "provenance",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2320",
+        "elapsed_seconds": "8.915",
+        "finish_reason": "stop",
+        "prompt_tokens": "8479",
+        "completion_tokens": "815",
+        "total_tokens": "9294"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 56,
+      "timestamp": "2026-11-15T21:39:21.964180Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 57,
+      "timestamp": "2026-11-15T21:39:21.966642Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "43.961",
+        "hard_remaining_seconds": "88.961",
+        "attempt": "2",
+        "input_chars": "15886"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 58,
+      "timestamp": "2026-11-15T21:39:21.971724Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "43.956",
+        "hard_remaining_seconds": "88.956",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32471"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 59,
+      "timestamp": "2026-11-15T21:39:27.992806Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "37.935",
+        "hard_remaining_seconds": "82.935",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32471",
+        "elapsed_seconds": "6.018",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2664"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 60,
+      "timestamp": "2026-11-15T21:39:27.996503Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "37.932",
+        "hard_remaining_seconds": "82.932",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "scope_flag",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1727",
+        "elapsed_seconds": "6.029",
+        "finish_reason": "stop",
+        "prompt_tokens": "8513",
+        "completion_tokens": "552",
+        "total_tokens": "9065"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 61,
+      "timestamp": "2026-11-15T21:39:28.000161Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 62,
+      "timestamp": "2026-11-15T21:39:28.003642Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "b0453aef-6752-45d8-8255-1b9dfdc7938f",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 63,
+      "timestamp": "2026-11-15T21:39:28.006714Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 64,
+      "timestamp": "2026-11-15T21:39:28.011269Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 65,
+      "timestamp": "2026-11-15T21:39:28.014709Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "82.913",
+        "hard_remaining_seconds": "82.913",
+        "attempt": "1",
+        "input_chars": "5166"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 66,
+      "timestamp": "2026-11-15T21:39:28.018593Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "82.910",
+        "hard_remaining_seconds": "82.910",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9894"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 67,
+      "timestamp": "2026-11-15T21:39:32.564213Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "78.364",
+        "hard_remaining_seconds": "78.364",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9894",
+        "elapsed_seconds": "4.542",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2395"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 68,
+      "timestamp": "2026-11-15T21:39:32.567935Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "78.360",
+        "hard_remaining_seconds": "78.360",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1478",
+        "elapsed_seconds": "4.553",
+        "finish_reason": "stop",
+        "prompt_tokens": "2704",
+        "completion_tokens": "663",
+        "total_tokens": "3367"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 69,
+      "timestamp": "2026-11-15T21:39:32.570588Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "almost_correction",
+        "reason": "correction_ineligible",
+        "action": "dropped"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 70,
+      "timestamp": "2026-11-15T21:39:32.573286Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "78.355",
+        "hard_remaining_seconds": "78.355",
+        "attempt": "1",
+        "input_chars": "5833"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 71,
+      "timestamp": "2026-11-15T21:39:32.576075Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "78.352",
+        "hard_remaining_seconds": "78.352",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10533"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 72,
+      "timestamp": "2026-11-15T21:39:33.182381Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "77.746",
+        "hard_remaining_seconds": "77.746",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10533",
+        "elapsed_seconds": "0.604",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1069"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 73,
+      "timestamp": "2026-11-15T21:39:33.185767Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "77.742",
+        "hard_remaining_seconds": "77.742",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "205",
+        "elapsed_seconds": "0.612",
+        "finish_reason": "stop",
+        "prompt_tokens": "2961",
+        "completion_tokens": "62",
+        "total_tokens": "3023"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 74,
+      "timestamp": "2026-11-15T21:39:33.188929Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision",
+        "affected_units": "2"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 75,
+      "timestamp": "2026-11-15T21:39:33.192017Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "77.736",
+        "hard_remaining_seconds": "77.736",
+        "attempt": "1",
+        "input_chars": "5359"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 76,
+      "timestamp": "2026-11-15T21:39:33.196149Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "77.732",
+        "hard_remaining_seconds": "77.732",
+        "provider_call_id": "p26",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10097"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 77,
+      "timestamp": "2026-11-15T21:39:35.531825Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "75.398",
+        "hard_remaining_seconds": "75.398",
+        "provider_call_id": "p26",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10097",
+        "elapsed_seconds": "2.331",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1916"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 78,
+      "timestamp": "2026-11-15T21:39:35.537423Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "75.393",
+        "hard_remaining_seconds": "75.393",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1015",
+        "elapsed_seconds": "2.343",
+        "finish_reason": "stop",
+        "prompt_tokens": "2743",
+        "completion_tokens": "499",
+        "total_tokens": "3242"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 79,
+      "timestamp": "2026-11-15T21:39:35.543931Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "almost_correction",
+        "reason": "correction_ineligible",
+        "action": "dropped"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 80,
+      "timestamp": "2026-11-15T21:39:35.552733Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "75.379",
+        "hard_remaining_seconds": "75.379",
+        "attempt": "1",
+        "input_chars": "5587"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 81,
+      "timestamp": "2026-11-15T21:39:35.558154Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "75.370",
+        "hard_remaining_seconds": "75.370",
+        "provider_call_id": "p28",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10267"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 82,
+      "timestamp": "2026-11-15T21:39:36.106386Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "74.823",
+        "hard_remaining_seconds": "74.823",
+        "provider_call_id": "p28",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10267",
+        "elapsed_seconds": "0.544",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1094"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 83,
+      "timestamp": "2026-11-15T21:39:36.113933Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "74.815",
+        "hard_remaining_seconds": "74.815",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "228",
+        "elapsed_seconds": "0.564",
+        "finish_reason": "stop",
+        "prompt_tokens": "2848",
+        "completion_tokens": "66",
+        "total_tokens": "2914"
+      }
+    },
+    {
+      "investigation_id": "480dfe51-6a8b-44b3-9da7-610bec9438c8",
+      "sequence": 84,
+      "timestamp": "2026-11-15T21:39:36.120826Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "invalid_task_output"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 45.47927794799989,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.34
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.339
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.927
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.688
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.195
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.127
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.085
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 7.769
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.352
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 8.892
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 6.017
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.54
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.603
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.33
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.543
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.341892702000223,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.340140455999972,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.927787816000091,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.712812655000107,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1968380839998645,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.133348305999789,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.0862660840002718,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 7.770651631999954,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.35338813700036553,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 8.893307717000425,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 6.01813117499978,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.5417671780001,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6036428060001526,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.3313071729999137,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5439159289999225,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}
