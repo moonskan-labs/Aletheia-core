@@ -3,6 +3,7 @@
 import argparse
 import asyncio
 import json
+import os
 import subprocess
 import time
 from contextlib import asynccontextmanager
@@ -15,10 +16,24 @@ from pydantic import ValidationError
 
 from aletheia.api import create_app
 from aletheia.config import ConfigurationError, ProviderSettings, Settings
-from aletheia.evaluation import capture, dataset_hash, load_cases, score, summarize, write_json
+from aletheia.evaluation import (
+    capture,
+    claims_from_cases,
+    dataset_hash,
+    load_cases,
+    load_claims_csv,
+    score,
+    score_claim,
+    select_claims,
+    summarize,
+    write_json,
+)
 from aletheia.providers.errors import ProviderError
 from aletheia.providers.nebius import NebiusProvider
 from aletheia.providers.tavily import TavilyProvider
+from aletheia.research_contracts import Snapshot
+
+STOP_STATUS_CODES = {400, 401, 402, 403, 404, 422, 432, 433}
 
 
 class MeteredTransport(httpx.AsyncBaseTransport):
@@ -27,7 +42,9 @@ class MeteredTransport(httpx.AsyncBaseTransport):
     def __init__(self, provider, attempts):
         self.provider = provider
         self.attempts = attempts
-        self.inner = httpx.AsyncHTTPTransport()
+        # An explicit transport ignores proxy variables, so pass the proxy through here.
+        proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+        self.inner = httpx.AsyncHTTPTransport(proxy=proxy) if proxy else httpx.AsyncHTTPTransport()
 
     async def handle_async_request(self, request):
         record = {"provider": self.provider, "status_code": None}
@@ -47,8 +64,8 @@ class MeteredTransport(httpx.AsyncBaseTransport):
 class DiagnosticModel(NebiusProvider):
     """Keep safe budget outcomes even when no final result can be saved."""
 
-    def __init__(self, settings, *, attempts, budgets):
-        super().__init__(settings, transport=MeteredTransport("nebius", attempts))
+    def __init__(self, settings, *, attempts, budgets, transport=None):
+        super().__init__(settings, transport=transport or MeteredTransport("nebius", attempts))
         self.budgets = budgets
 
     async def generate(self, **kwargs):
@@ -225,9 +242,183 @@ async def run(args, cases, *, settings=None):
     )
 
 
+def git_state():
+    revision = subprocess.run(
+        ["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True
+    ).stdout.strip()
+    dirty = bool(
+        subprocess.run(
+            ["git", "status", "--porcelain"], capture_output=True, text=True, check=True
+        ).stdout
+    )
+    return revision, dirty
+
+
+async def run_batch(args, claims, *, settings=None):
+    """Run many claims in parallel lanes. One JSON per claim; finished claims are never rerun.
+
+    Each lane owns a database, a worker and provider clients, so runs cannot share or
+    reuse research. Labels stay in this process: only `claim.request()` is submitted.
+    """
+    if settings is None:
+        settings = ProviderSettings.from_environment(dotenv_path=args.dotenv)
+    if args.model:
+        settings = ProviderSettings.model_validate(
+            {**settings.model_dump(), "nebius_model": args.model}
+        )
+    if not settings.nebius_api_key or not settings.tavily_api_key or not settings.nebius_model:
+        raise ConfigurationError("Provider configuration is incomplete")
+    settings.validate_model_controls()
+    revision, dirty = await asyncio.to_thread(git_state)
+    identity = {
+        "revision": revision,
+        "dataset_sha256": dataset_hash(claims),
+        "model": settings.nebius_model,
+        "nebius_thinking": settings.nebius_thinking,
+        "response_format": settings.nebius_response_format,
+        "max_output_tokens": settings.max_output_tokens,
+    }
+    output = args.output
+    manifest_path = output / "manifest.json"
+    if args.resume and manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        # A batch is one code revision, one dataset and one model. Anything else is a new batch.
+        if any(manifest.get(key) != value for key, value in identity.items()):
+            raise ConfigurationError("Resume requires the same revision, dataset and model.")
+    else:
+        # A fresh directory means no overwrite and no silent reuse of earlier evaluations.
+        output.mkdir(parents=True, exist_ok=False)
+        manifest = {
+            **identity,
+            "started_at": datetime.now(UTC).isoformat(),
+            "working_tree_dirty": dirty,
+            "provider_timeout_seconds": settings.timeout_seconds,
+            "max_retries": settings.max_retries,
+            "claim_ids": [c.id for c in claims],
+            "split": args.split,
+            "parallel": args.parallel,
+            "cost": "unknown; no pricing estimate substituted for billed cost",
+            "live": True,
+            "sessions": [],
+        }
+    # Labels are kept beside the results for the source check and report; never in prompts.
+    write_json(output / "labels.json", [c.model_dump() for c in claims])
+    (output / "claims").mkdir(exist_ok=True)
+    (output / "snapshots").mkdir(exist_ok=True)
+    (output / "db").mkdir(exist_ok=True)
+    done = {p.stem for p in (output / "claims").glob("*.json")}
+    pending = [c for c in claims if c.id not in done]
+    session = len(manifest["sessions"]) + 1
+    record = {"session": session, "started_at": datetime.now(UTC).isoformat()}
+    manifest["sessions"].append(record)
+    manifest.pop("stopped_early", None)
+    write_json(manifest_path, manifest)
+    queue = asyncio.Queue()
+    for claim in pending:
+        queue.put_nowait(claim)
+    stop = asyncio.Event()
+    finished = 0
+
+    async def lane(number):
+        nonlocal finished
+        attempts, budgets = [], []
+
+        @asynccontextmanager
+        async def providers():
+            async with (
+                DiagnosticModel(
+                    settings,
+                    attempts=attempts,
+                    budgets=budgets,
+                    transport=MeteredTransport("nebius", attempts),
+                ) as model,
+                TavilyProvider(settings, transport=MeteredTransport("tavily", attempts)) as search,
+            ):
+                yield model, search, settings.nebius_model
+
+        database = output / "db" / f"session-{session}-lane-{number}.sqlite3"
+        app = create_app(
+            Settings(database_path=database, research_enabled=True), provider_factory=providers
+        )
+        async with (
+            app.router.lifespan_context(app),
+            httpx.AsyncClient(
+                transport=httpx.ASGITransport(app=app), base_url="http://test"
+            ) as client,
+        ):
+            while not stop.is_set():
+                try:
+                    claim = queue.get_nowait()
+                except asyncio.QueueEmpty:
+                    return
+                before, budget_start = len(attempts), len(budgets)
+                snapshots = []
+                try:
+                    artifact = await capture(client, claim, call_count=lambda: len(attempts))
+                    snapshots = await app.state.storage.records(
+                        artifact["investigation"]["id"], "snapshot", Snapshot
+                    )
+                except Exception:
+                    # Retain attempted claims without exception text or provider bodies.
+                    artifact = {"id": claim.id, "live": True, "runner_error": "capture_failed"}
+                artifact["network_attempts"] = attempts[before:]
+                artifact["budget_attempts"] = [
+                    [asdict(attempt) for attempt in budget.attempts]
+                    for budget in budgets[budget_start:]
+                ]
+                # Page text is saved apart from the claim record so reports stay small.
+                write_json(
+                    output / "snapshots" / f"{claim.id}.json",
+                    [s.model_dump(mode="json") for s in snapshots],
+                )
+                write_json(output / "claims" / f"{claim.id}.json", artifact)
+                finished += 1
+                row = score_claim(claim, artifact)
+                print(
+                    json.dumps(
+                        {
+                            "n": f"{finished}/{len(pending)}",
+                            **{k: row[k] for k in ("id", "end_state", "actual", "match")},
+                            "seconds": row["elapsed_seconds"],
+                        }
+                    ),
+                    flush=True,
+                )
+                # Do not keep charging after an account or configuration failure.
+                if artifact.get("runner_error") or any(
+                    a["status_code"] in STOP_STATUS_CODES for a in attempts[before:]
+                ):
+                    manifest["stopped_early"] = "runner_or_provider_configuration_failure"
+                    stop.set()
+
+    try:
+        await asyncio.gather(*(lane(n) for n in range(1, min(args.parallel, len(pending)) + 1)))
+    except asyncio.CancelledError:
+        manifest["stopped_early"] = "cancelled"
+        raise
+    finally:
+        rows = []
+        for claim in claims:
+            path = output / "claims" / f"{claim.id}.json"
+            if path.exists():
+                rows.append(score_claim(claim, json.loads(path.read_text(encoding="utf-8"))))
+        record["finished_at"] = datetime.now(UTC).isoformat()
+        record["claims_finished"] = finished
+        manifest.update(recorded=len(rows), not_run=len(claims) - len(rows))
+        write_json(output / "scores.json", rows)
+        write_json(manifest_path, manifest)
+    return "stopped_early" not in manifest and len(rows) == len(claims)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--cases", type=Path, required=True)
+    parser.add_argument("--cases", type=Path)
+    parser.add_argument("--claims-csv", type=Path, help="batch input; removes the 20-case cap")
+    parser.add_argument("--batch", action="store_true", help="run --cases through the batch runner")
+    parser.add_argument("--split", choices=["tuning", "heldout"])
+    parser.add_argument("--ids", help="comma-separated claim IDs")
+    parser.add_argument("--parallel", type=int, default=4)
+    parser.add_argument("--resume", action="store_true", help="continue an interrupted batch")
     parser.add_argument("--live", action="store_true")
     parser.add_argument("--dotenv", type=Path)
     parser.add_argument("--model")
@@ -236,6 +427,24 @@ def main(argv=None):
     parser.add_argument("--refresh-first", action="store_true")
     args = parser.parse_args(argv)
     try:
+        if args.claims_csv or args.batch:
+            ids = [i for i in (args.ids or "").split(",") if i] or None
+            if not 1 <= args.parallel <= 12:
+                parser.error("--parallel must be 1 to 12")
+            if args.claims_csv:
+                claims = load_claims_csv(args.claims_csv, split=args.split, ids=ids)
+            elif args.cases:
+                claims = select_claims(claims_from_cases(load_cases(args.cases)), ids=ids)
+            else:
+                parser.error("--batch requires --cases or --claims-csv")
+            if not args.live:
+                print(json.dumps({"valid_claims": len(claims), "live": False}))
+                return 0
+            if args.output is None:
+                parser.error("--live requires an --output directory")
+            return 0 if asyncio.run(run_batch(args, claims)) else 1
+        if args.cases is None:
+            parser.error("--cases or --claims-csv is required")
         cases = load_cases(args.cases)
         if not 1 <= args.limit <= 20:
             parser.error("--limit must be 1 to 20")

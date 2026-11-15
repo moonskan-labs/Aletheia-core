@@ -292,3 +292,170 @@ async def capture(client: AsyncClient, case, *, call_count, refresh=False):
 def dataset_hash(cases):
     payload = json.dumps([c.model_dump() for c in cases], sort_keys=True).encode()
     return hashlib.sha256(payload).hexdigest()
+
+
+# --- Batch evaluation over a claims CSV -------------------------------------------------
+
+CLAIM_COLUMNS = (
+    "id",
+    "split",
+    "claim",
+    "case_type",
+    "expected_outcome",
+    "expected_verdict",
+    "unable_reason",
+    "what_is_correct",
+    "what_needs_correction",
+    "corrected_claim",
+    "source_url_1",
+    "source_shows_1",
+    "source_url_2",
+    "source_shows_2",
+    "as_of",
+    "domain",
+    "note",
+)
+
+
+class BatchClaim(EvaluationRecord):
+    """One labelled claim. Only `claim` ever leaves this record for a research request."""
+
+    id: str = Field(pattern=r"^[a-z][a-z0-9-]{1,39}$")
+    split: Literal["tuning", "heldout"]
+    claim: str = Field(min_length=10, max_length=500)
+    case_type: Literal["direct_fact", "comparison", "causal", "conflict", "insufficient"]
+    expected_outcome: Literal["decided", "unable_to_decide"]
+    expected_verdict: Literal["true", "false", "almost"] | None
+    unable_reason: Literal["insufficient_evidence", "conflicting_evidence"] | None
+    what_is_correct: str = ""
+    what_needs_correction: str = ""
+    corrected_claim: str = ""
+    sources: list[KeySource] = Field(max_length=3)
+    as_of: str = ""
+    domain: str = ""
+    note: str = ""
+
+    @model_validator(mode="after")
+    def consistent(self):
+        decided = self.expected_outcome == "decided"
+        if decided != (self.expected_verdict is not None) or decided == (
+            self.unable_reason is not None
+        ):
+            raise ValueError("Inconsistent expected decision")
+        InvestigationRequest(claim=self.claim)
+        return self
+
+    @property
+    def expected(self):
+        return (self.expected_outcome, self.expected_verdict, self.unable_reason)
+
+    def request(self):
+        # Deliberate allowlist: labels, sources and notes never enter prompts.
+        return {"claim": self.claim}
+
+
+def load_claims_csv(path: Path, *, split=None, ids=None):
+    import csv
+
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if tuple(reader.fieldnames or ()) != CLAIM_COLUMNS:
+            raise ValueError("Unexpected claims CSV columns")
+        rows = list(reader)
+    claims = []
+    for row in rows:
+        sources = [
+            {"url": row[f"source_url_{n}"], "shows": row[f"source_shows_{n}"]}
+            for n in (1, 2)
+            if row[f"source_url_{n}"]
+        ]
+        claims.append(
+            BatchClaim(
+                **{k: row[k] for k in ("id", "split", "claim", "case_type", "expected_outcome")},
+                expected_verdict=row["expected_verdict"] or None,
+                unable_reason=row["unable_reason"] or None,
+                what_is_correct=row["what_is_correct"],
+                what_needs_correction=row["what_needs_correction"],
+                corrected_claim=row["corrected_claim"],
+                sources=sources,
+                as_of=row["as_of"],
+                domain=row["domain"],
+                note=row["note"],
+            )
+        )
+    return select_claims(claims, split=split, ids=ids)
+
+
+def claims_from_cases(cases):
+    """Reuse reviewed-format JSON cases in a batch (for example a model comparison)."""
+    return [
+        BatchClaim(
+            id=c.id,
+            split=c.split,
+            claim=c.claim,
+            case_type=c.case_type if c.case_type != "interpretive" else "direct_fact",
+            expected_outcome=c.expected.outcome,
+            expected_verdict=c.expected.verdict,
+            unable_reason=c.expected.unable_to_decide_reason,
+            sources=[s.model_dump() for s in c.key_sources],
+            as_of=c.as_of,
+            note=c.reviewer_note,
+        )
+        for c in cases
+    ]
+
+
+def select_claims(claims, *, split=None, ids=None):
+    if not claims:
+        raise ValueError("Evaluation requires at least one claim")
+    if len({c.id for c in claims}) != len(claims):
+        raise ValueError("Duplicate claim IDs")
+    keys = [InvestigationRequest.model_validate(c.request()).request_key() for c in claims]
+    if len(set(keys)) != len(keys):
+        raise ValueError("Duplicate requests would reuse research")
+    if split:
+        claims = [c for c in claims if c.split == split]
+    if ids:
+        missing = set(ids) - {c.id for c in claims}
+        if missing:
+            raise ValueError("Unknown claim IDs")
+        claims = [c for c in claims if c.id in set(ids)]
+    if not claims:
+        raise ValueError("No claims selected")
+    return claims
+
+
+def end_state(artifact):
+    """How one run ended, in one word the report can count."""
+    investigation = artifact.get("investigation") or {}
+    status = investigation.get("status") or "runner_failed"
+    if status == "completed" and investigation.get("method_limitation"):
+        return "unsupported_method"
+    return status
+
+
+def score_claim(claim, artifact):
+    investigation = artifact.get("investigation") or {}
+    result = investigation.get("result") or {}
+    actual = decision_key(result) if result else (None, None, None)
+    events = artifact.get("events") or []
+    calls = Counter(
+        e["payload"].get("operation") for e in events if e["type"] == "provider_attempt_finished"
+    )
+    used = result.get("budget_used") or {}
+    return {
+        "id": claim.id,
+        "split": claim.split,
+        "case_type": claim.case_type,
+        "expected": "/".join(v for v in claim.expected if v),
+        "end_state": end_state(artifact),
+        "stop_reason": investigation.get("stop_reason"),
+        "actual": "/".join(v for v in actual if v) or "none",
+        "match": bool(result) and actual == claim.expected,
+        "elapsed_seconds": round(artifact.get("elapsed_seconds") or 0, 1),
+        "model_calls": used.get("model", calls.get("model", 0)),
+        "search_calls": used.get("search", calls.get("search", 0)),
+        "extract_calls": used.get("extract", calls.get("extract", 0)),
+        "total_tokens": (result.get("token_usage") or {}).get("total_tokens"),
+        "network_attempts": len(artifact.get("network_attempts") or []),
+    }
