@@ -189,7 +189,7 @@ async def test_refresh_reserves_old_evidence_and_fresh_search_slots(settings):
 
 async def test_conflict_takes_priority_over_retrieval_gap_and_can_stop_honestly(settings):
     providers = RoundProviders(
-        [[{}, {"relation": "contradicts"}, {"error": True}]], deep=True, authoritative=False
+        [[{}, {"relation": "contradicts"}, {"error": True}]], deep=True, authoritative=True
     )
     async with running(settings, providers) as (app, client):
         saved = await submit(client)
@@ -213,7 +213,7 @@ async def test_counterevidence_in_followup_prevents_true_even_with_more_support(
     providers = RoundProviders(
         [
             [independent("one")],
-            [independent("two"), {"relation": "contradicts"}],
+            [independent("two"), {"relation": "contradicts", "authoritative_record": True}],
             [independent("three")],
         ],
         deep=True,

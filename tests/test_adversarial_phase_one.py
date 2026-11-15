@@ -126,14 +126,15 @@ async def test_self_comparison_must_not_publish_false_superlative(settings):
         assert not (saved["status"] == "completed" and saved["result"]["verdict"] == "false"), saved
 
 
-def test_comparison_does_not_silently_drop_admitted_counterevidence():
+@pytest.mark.parametrize("counterevidence_strong", [False, True])
+def test_comparison_retains_counterevidence_and_gates_conflict_on_quality(counterevidence_strong):
     claim = assertion(
         "Venus is closer than Mercury.", kind="direct_comparison", comparison=comparison_spec()
     )
     sources, evidence = [], []
     for a, b, authoritative, relation in [
         ("50", "58", True, "supports"),
-        ("108", "58", False, "contradicts"),
+        ("108", "58", counterevidence_strong, "contradicts"),
     ]:
         src = source(f"Venus: {a}; Mercury: {b}.")
         item = judgment(
@@ -148,8 +149,11 @@ def test_comparison_does_not_silently_drop_admitted_counterevidence():
         evidence.append(admit(item, src, {1}))
     assert all(e.admissible for e in evidence)
     computed = finding(claim, "quick", evidence, sources)[0]
-    assert computed.verdict is None, computed
-    assert computed.unable_to_decide_reason == "conflicting_evidence"
+    assert computed.verdict == (None if counterevidence_strong else "true"), computed
+    assert computed.unable_to_decide_reason == (
+        "conflicting_evidence" if counterevidence_strong else None
+    )
+    assert set(computed.components[0].evidence_ids) == {e.id for e in evidence}
 
 
 def test_evidence_heading_is_not_navigation_boilerplate():

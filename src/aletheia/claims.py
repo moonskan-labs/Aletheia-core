@@ -88,6 +88,27 @@ def normalize_interpretation(proposal, original):
             kept = [target] + [c for c in kept if c.id != target.id]
         whole = target.model_copy(update={"text": original, "role": "essential"})
         kept = [whole if c.id == target.id else c for c in kept]
+    # One passage must not be assessed twice as both a proposition and its fragment.
+    # Keep the longest enclosing text; identical copies retain their original order.
+    containers = []
+    for index, component in enumerate(kept):
+        if any(
+            component.text in other.text
+            and (len(component.text) < len(other.text) or index > other_index)
+            for other_index, other in enumerate(kept)
+            if index != other_index
+        ):
+            continue
+        contained = [c for c in kept if c.text in component.text]
+        updates = {}
+        if any(c.role == "essential" for c in contained):
+            updates["role"] = "essential"
+        if component.comparison is None:
+            comparisons = [c.comparison for c in contained if c.comparison]
+            if comparisons:
+                updates["comparison"] = comparisons[0]
+        containers.append(component.model_copy(update=updates) if updates else component)
+    kept = containers
     if kept == list(proposal.components):
         return proposal
     return proposal.model_copy(update={"components": kept})

@@ -144,7 +144,7 @@ def test_dropping_a_reworded_proposition_never_leaves_only_a_noun_fragment():
 def test_dropped_number_widens_an_essential_component_to_the_whole_claim():
     fixed = normalize_interpretation(interpretation(REPLAY_FAILURES[2][1]), PYTHON)
     assert fixed.components[0].text == PYTHON and fixed.components[0].role == "essential"
-    assert fixed.components[1].text == "first publicly released"
+    assert len(fixed.components) == 1
 
 
 def test_corrected_from_memory_component_falls_back_to_submitted_wording():

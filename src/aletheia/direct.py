@@ -116,12 +116,11 @@ def component_findings(assertion, evidence, sources, sufficient):
         if component.comparison:
             # Operands can come from different documents. Each value requires its own
             # adequate evidence; unrelated values cannot borrow another source's authority.
-            grounded, observed = [], []
+            grounded = []
             for item in items:
                 if not item.assessment.scope_match:
                     continue
                 for value in item.assessment.values:
-                    observed.append(value)
                     matching = [
                         e
                         for e in items
@@ -144,16 +143,16 @@ def component_findings(assertion, evidence, sources, sufficient):
                     if right.side == "right"
                 } - {None}
 
-            # Evidence quality gates a verdict, not whether an admitted opposing
-            # observation exists. Do not silently resolve a contradiction by filtering it.
+            # A conflict requires adequate evidence for both incompatible conclusions.
+            # Retain weak observations in the record without letting them veto a verdict.
             relations = relations_for(grounded)
-            if relations_for(observed) == {"supports", "contradicts"}:
+            if relations == {"supports", "contradicts"}:
                 outcome = "conflicting"
             elif relations == {"supports"}:
                 outcome = "supported"
             elif relations == {"contradicts"}:
                 outcome = "contradicted"
-        elif support and contra:
+        elif sufficient(support, "quick", sources) and sufficient(contra, "quick", sources):
             outcome = "conflicting"
         elif sufficient(support, "quick", sources):
             outcome = "supported"
