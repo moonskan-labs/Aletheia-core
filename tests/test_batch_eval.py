@@ -161,9 +161,11 @@ async def test_judge_sees_statement_and_passages_but_no_labels(finished):
     checked = await check_claim(item, artifact, snapshots, Judge())
     assert all(u["judgement"]["verdict"] == "supported" for u in checked["units"])
     assert checked["labelled_source"] == "absent"
-    assert checked["labelled_source_agreement"]["relation"] == "agrees"
+    assert checked["labelled_source_agreement"] is None
     support_calls = [text for text in seen if '"statement"' in text]
     assert support_calls and not any("Secret" in text for text in support_calls)
+    assert len(seen) == len(support_calls)
+    assert not any("Secret" in text or "secret-label" in text for text in seen)
 
 
 async def test_report_scores_against_labels_and_keeps_conflict_out_of_the_headline(finished):

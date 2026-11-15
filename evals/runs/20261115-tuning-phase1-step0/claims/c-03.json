@@ -1,0 +1,492 @@
+{
+  "id": "c-03",
+  "live": true,
+  "investigation": {
+    "id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+    "claim": "For the same nonempty resource, a 200 GET response carries more body bytes than a 200 HEAD response under the 2022 HTTP standard worldwide.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "needs_clarification",
+    "stage": null,
+    "route": null,
+    "stop_reason": null,
+    "reused": true,
+    "created_at": "2026-11-15T23:01:27.180900Z",
+    "started_at": "2026-11-15T23:01:27.311989Z",
+    "finished_at": "2026-11-15T23:01:32.319678Z",
+    "result": null,
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_comparison",
+      "scope": "missing",
+      "required_method": "record_comparison",
+      "supported": true,
+      "reason": "Comparing the specification behavior of 200 GET vs 200 HEAD responses regarding body byte size under the 2022 HTTP standard (RFC 7231). The claim is a direct specification comparison. Missing scope items address implementation-specific edge cases not part of the base protocol definition.",
+      "missing_scope": [
+        "body byte sizes for specific edge cases (e.g., chunked encoding, transfer coding)",
+        "global deployment specifics of 2022 implementations"
+      ],
+      "components": [
+        {
+          "id": "c2",
+          "text": "For the same nonempty resource, a 200 GET response carries more body bytes than a 200 HEAD response under the 2022 HTTP standard worldwide.",
+          "role": "essential",
+          "subject": "a 200 GET response",
+          "predicate": "carries more body bytes",
+          "timeframe": "2022",
+          "location_or_population": "worldwide",
+          "comparison": {
+            "left": "a 200 GET response body",
+            "right": "a 200 HEAD response body",
+            "metric": "body bytes",
+            "operator": "gt",
+            "units": "bytes",
+            "period": "2022",
+            "population": "nonempty resource",
+            "definition": "RFC 7231 HTTP/1.1 Semantics and Content",
+            "exhaustive": false
+          }
+        },
+        {
+          "id": "c3",
+          "text": "the same nonempty resource",
+          "role": "essential",
+          "subject": "the same nonempty resource",
+          "predicate": "requested",
+          "timeframe": "2022",
+          "location_or_population": "worldwide",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": [
+      "What is the exact byte-level difference between a 200 GET and 200 HEAD response for a given nonempty resource under the 2022 HTTP standard?",
+      "Are there documented exceptions where a 200 HEAD response may carry a body under the 2022 standard?"
+    ],
+    "error": null,
+    "links": {
+      "self": "/investigations/5f16689d-a72d-465a-a96c-071e3df9a370",
+      "events": "/investigations/5f16689d-a72d-465a-a96c-071e3df9a370/events",
+      "evidence": "/investigations/5f16689d-a72d-465a-a96c-071e3df9a370/evidence",
+      "comparison": "/investigations/5f16689d-a72d-465a-a96c-071e3df9a370/comparison",
+      "refresh": null
+    }
+  },
+  "evidence": {
+    "sources": [],
+    "evidence": []
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 1,
+      "timestamp": "2026-11-15T23:01:27.180900Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 2,
+      "timestamp": "2026-11-15T23:01:27.311989Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 3,
+      "timestamp": "2026-11-15T23:01:27.313457Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 4,
+      "timestamp": "2026-11-15T23:01:27.315018Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 5,
+      "timestamp": "2026-11-15T23:01:27.316086Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.997",
+        "hard_remaining_seconds": "119.997",
+        "attempt": "1",
+        "input_chars": "167"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 6,
+      "timestamp": "2026-11-15T23:01:27.318249Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.995",
+        "hard_remaining_seconds": "119.995",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10758"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 7,
+      "timestamp": "2026-11-15T23:01:29.870022Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.445",
+        "hard_remaining_seconds": "117.445",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10758",
+        "elapsed_seconds": "2.549",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2988"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 8,
+      "timestamp": "2026-11-15T23:01:29.873134Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.441",
+        "hard_remaining_seconds": "117.441",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1979",
+        "elapsed_seconds": "2.556",
+        "finish_reason": "stop",
+        "prompt_tokens": "1757",
+        "completion_tokens": "563",
+        "total_tokens": "2320"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 9,
+      "timestamp": "2026-11-15T23:01:29.875238Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "review_route",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.439",
+        "hard_remaining_seconds": "117.439",
+        "attempt": "1",
+        "input_chars": "2036"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 10,
+      "timestamp": "2026-11-15T23:01:29.880600Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "review_route",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.433",
+        "hard_remaining_seconds": "117.433",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10584"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 11,
+      "timestamp": "2026-11-15T23:01:32.307642Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "review_route",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.011",
+        "hard_remaining_seconds": "115.011",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10584",
+        "elapsed_seconds": "2.420",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3037"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 12,
+      "timestamp": "2026-11-15T23:01:32.313252Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "review_route",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.002",
+        "hard_remaining_seconds": "115.002",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2058",
+        "elapsed_seconds": "2.437",
+        "finish_reason": "stop",
+        "prompt_tokens": "1835",
+        "completion_tokens": "556",
+        "total_tokens": "2391"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 13,
+      "timestamp": "2026-11-15T23:01:32.315189Z",
+      "type": "route_revised",
+      "stage": null,
+      "payload": {
+        "previous_method": "record_comparison",
+        "method": "record_comparison",
+        "previous_scope": "missing",
+        "scope": "missing",
+        "reason": "Comparing the specification behavior of 200 GET vs 200 HEAD responses regarding body byte size under the 2022 HTTP standard (RFC 7231). The claim is a direct specification comparison. Missing scope items address implementation-specific edge cases not part of the base protocol definition."
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 14,
+      "timestamp": "2026-11-15T23:01:32.318479Z",
+      "type": "clarification_decision",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.995",
+        "hard_remaining_seconds": "114.995",
+        "reason": "missing_scope",
+        "question_count": "2"
+      }
+    },
+    {
+      "investigation_id": "5f16689d-a72d-465a-a96c-071e3df9a370",
+      "sequence": 15,
+      "timestamp": "2026-11-15T23:01:32.319678Z",
+      "type": "clarification_required",
+      "stage": null,
+      "payload": {}
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 5.407829291994858,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.548
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.417
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.54899991700222,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.42010958299943,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

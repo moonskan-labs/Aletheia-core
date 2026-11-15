@@ -167,7 +167,6 @@ async def ask(judge, instructions, data, schema):
 
 
 async def check_claim(claim, artifact, snapshots, judge=None):
-    result = (artifact.get("investigation") or {}).get("result") or {}
     units = check_units(artifact, snapshots)
     agreement = None
     if judge is not None:
@@ -182,19 +181,8 @@ async def check_claim(claim, artifact, snapshots, judge=None):
                 if unit["passages"]
                 else {"verdict": "not_supported", "reason": "No valid cited passage."}
             )
-        if result.get("explanation") and claim.sources:
-            agreement = await ask(
-                judge,
-                AGREEMENT_PROMPT,
-                {
-                    "claim": claim.claim,
-                    "reference": [s.shows for s in claim.sources],
-                    "system_decision": result.get("verdict")
-                    or result.get("unable_to_decide_reason"),
-                    "system_explanation": [u["text"] for u in result["explanation"]],
-                },
-                Agreement,
-            )
+        # Dataset source summaries must never enter any model prompt, including the
+        # evaluator's. URL overlap remains a deterministic, local-only comparison.
     for unit in units:
         del unit["passages"]
     return {
@@ -295,6 +283,7 @@ REPORT_COLUMNS = (
     "unjudged",
     "labelled_source",
     "labelled_source_agreement",
+    "arguable_label",
 )
 
 
@@ -341,15 +330,24 @@ def fraction(part, whole):
 def report_summary(rows, manifest, planned):
     """Short plain-text summary. The conflict group is reported apart from the headline."""
     headline = [r for r in rows if r["case_type"] != "conflict"]
+    unarguable = [r for r in headline if not r.get("arguable_label")]
+    arguable = [r for r in rows if r.get("arguable_label")]
     lines = [
         f"# Batch report: {manifest.get('model')}",
         "",
         f"- Revision {str(manifest.get('revision'))[:7]}, {len(rows)} of {planned} claims run.",
         "- Labels are unreviewed AI proposals; a miss can be a label error.",
+        "- Phase 1 scoring: Almost labels count as False; c-01 is corrected to True.",
         f"- Verdict matches label (conflict group excluded): "
         f"{fraction(sum(r['match'] for r in headline), len(headline))}.",
         f"- Verdict matches label (all claims): "
         f"{fraction(sum(r['match'] for r in rows), len(rows))}.",
+        f"- Excluding conflict and arguable labels: "
+        f"{fraction(sum(r['match'] for r in unarguable), len(unarguable))}.",
+        f"- Arguable labels, reported separately: "
+        f"{fraction(sum(r['match'] for r in arguable), len(arguable))} "
+        f"({', '.join(r['id'] for r in arguable)}).",
+        "- Labelled-source agreement is not model-judged: dataset sources never enter prompts.",
         "",
         "## How runs ended",
         "",

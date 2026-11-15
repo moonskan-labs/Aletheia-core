@@ -247,7 +247,7 @@ async def test_final_semantic_rejection_is_auditable(settings, options, reason):
     async with running(settings, Providers(**options)) as (app, client):
         saved = await submit(client)
         if reason == "unsupported_correction":
-            # The rejected correction is dropped on the retry; the checked False stays.
+            # Phase 1 drops every correction before semantic checking; False stays.
             assert saved["status"] == "completed" and saved["result"]["verdict"] == "false"
         else:
             assert saved["status"] == "partial" and saved["result"]["verdict"] is None
@@ -259,7 +259,7 @@ async def test_final_semantic_rejection_is_auditable(settings, options, reason):
                 reason in e.payload.get("failed_conditions", "")
                 or (
                     reason == "unsupported_correction"
-                    and "corrected_claim_supported" in e.payload.get("failed_conditions", "")
+                    and e.payload.get("reason") == "correction_ineligible"
                 )
             )
             for e in events

@@ -347,7 +347,9 @@ class BatchClaim(EvaluationRecord):
 
     @property
     def expected(self):
-        return (self.expected_outcome, self.expected_verdict, self.unable_reason)
+        # Phase 1 scores the statement as written; retain original labels on disk.
+        verdict = "false" if self.expected_verdict == "almost" else self.expected_verdict
+        return (self.expected_outcome, verdict, self.unable_reason)
 
     def request(self):
         # Deliberate allowlist: labels, sources and notes never enter prompts.
@@ -447,6 +449,7 @@ def score_claim(claim, artifact):
         "id": claim.id,
         "split": claim.split,
         "case_type": claim.case_type,
+        "arguable_label": claim.id in ARGUABLE_LABELS,
         "expected": "/".join(v for v in claim.expected if v),
         "end_state": end_state(artifact),
         "stop_reason": investigation.get("stop_reason"),
@@ -459,3 +462,9 @@ def score_claim(claim, artifact):
         "total_tokens": (result.get("token_usage") or {}).get("total_tokens"),
         "network_attempts": len(artifact.get("network_attempts") or []),
     }
+
+
+# Audit annotations are evaluator metadata, never research/model inputs.
+ARGUABLE_LABELS = frozenset(
+    ["a-03", "a-04", "a-05", "a-13", "a-17", "f-16", "x-10"] + [f"x-{n:02}" for n in range(1, 9)]
+)

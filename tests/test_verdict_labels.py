@@ -17,6 +17,16 @@ from aletheia.research_contracts import Decision, InvestigationResult
 from aletheia.storage import Storage, StorageError
 
 
+@pytest.fixture(autouse=True)
+def legacy_almost_contract(monkeypatch):
+    """Retain the existing historical Almost contract checks; production disables it.
+
+    Current Phase 1 behavior is exercised without this override in test_binary_phase1.
+    This is not the deferred correction/reverification loop.
+    """
+    monkeypatch.setattr("aletheia.verdicts.ALMOST_ENABLED", True)
+
+
 @pytest.mark.parametrize(
     "options",
     [

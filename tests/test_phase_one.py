@@ -558,7 +558,8 @@ def test_dates_properties_superlatives_and_forged_values():
         validate_component_assessment(item, claim, src, {1})
 
 
-async def test_b0023_cited_date_correction_can_finish_as_almost(settings):
+async def test_b0023_legacy_cited_date_correction_contract(settings, monkeypatch):
+    monkeypatch.setattr("aletheia.verdicts.ALMOST_ENABLED", True)
     saved = pilot("b0023")
     claim = saved["investigation"]["claim"]
     passage = next(

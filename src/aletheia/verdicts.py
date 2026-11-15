@@ -1,4 +1,4 @@
-"""True/False/Almost decisions; uncertainty is an outcome, never a truth verdict."""
+"""Phase 1 True/False decisions; uncertainty remains a separate outcome."""
 
 from itertools import combinations
 from typing import Annotated
@@ -12,6 +12,8 @@ from aletheia.phase_one_contracts import ComponentId, FinalCheckDiagnostic
 from aletheia.research_contracts import Finding, QualificationFlag, Record
 from aletheia.task_contracts import Synthesis
 from aletheia.tasks import InvalidTask, TaskValidationError
+
+ALMOST_ENABLED = False
 
 
 class ExplanationCheck(Record):
@@ -159,8 +161,10 @@ async def _synthesize_once(
     available = {e.id: e for e in evidence if e.admissible and e.assertion_id == assertion.id}
     if not available:
         return computed, []
-    eligible = allow_correction and correction_eligible(
-        computed, list(available.values()), route, sources
+    eligible = (
+        ALMOST_ENABLED
+        and allow_correction
+        and correction_eligible(computed, list(available.values()), route, sources)
     )
 
     def validate(value):
@@ -172,7 +176,12 @@ async def _synthesize_once(
 
     result = await tasks.call(
         "synthesize",
-        "Explain the supplied preliminary decision using only the cited evidence. True means "
+        (
+            "Phase 1: Almost is disabled. Always return almost_correction=null. "
+            if not ALMOST_ENABLED
+            else ""
+        )
+        + "Explain the supplied preliminary decision using only the cited evidence. True means "
         "supported as written; False means contradicted as written. Unable to decide is a "
         "separate outcome for insufficient or conflicting evidence, never Almost. "
         "Only if almost_eligible=true, you MAY propose almost_correction when the essential "
@@ -321,7 +330,7 @@ async def synthesize(tasks, assertion, computed, evidence, route, sources):
     if assertion.analysis:
         route = "quick"
     repair = None
-    allow_correction = True
+    allow_correction = ALMOST_ENABLED
     for attempt in range(2):
         try:
             return await _synthesize_once(
@@ -332,7 +341,7 @@ async def synthesize(tasks, assertion, computed, evidence, route, sources):
                 raise
             # A rejected Almost proposal is not retried: the second attempt explains the
             # preliminary decision, so a sound True or False can still be confirmed.
-            allow_correction = not exc.had_correction
+            allow_correction = ALMOST_ENABLED and not exc.had_correction
             repair = {
                 "failed_conditions": exc.conditions,
                 "instruction": (
