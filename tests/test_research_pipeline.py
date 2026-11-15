@@ -126,7 +126,8 @@ async def test_outcomes(settings, options, status, verdict):
         assert "synthetic-provider-secret" not in json.dumps(saved)
 
 
-async def test_flags_drop_invalid_and_preserve_multiple(settings):
+@pytest.mark.parametrize("new_dimensions", [False, True])
+async def test_flags_drop_invalid_and_preserve_multiple(settings, new_dimensions):
     flags = [
         {"type": "narrow_scope", "dimension": "timeframe", "explanation": "Only 2000 records."},
         {
@@ -134,12 +135,26 @@ async def test_flags_drop_invalid_and_preserve_multiple(settings):
             "dimension": "baseline",
             "explanation": "Different baselines.",
         },
+        {
+            "type": "misleading_comparison",
+            "dimension": "evaluation_setup",
+            "explanation": "5-shot against chain-of-thought with 32 samples.",
+        },
+        {
+            "type": "narrow_scope",
+            "dimension": "benchmark_subset",
+            "explanation": "Verified subset reported as the full benchmark.",
+        },
         {"type": "unknown", "dimension": "timeframe", "explanation": "Invalid flag."},
     ]
+    # Each response stays within the compact generation contract's three-flag cap.
+    # Cover both original and newly merged dimensions, retaining invalid-flag coverage.
+    flags = (flags[2:4] if new_dimensions else flags[:2]) + flags[-1:]
     providers = Providers(flags=flags, relation="context", scope_match=False)
     async with running(settings, providers) as (app, client):
         saved = await submit(client)
-        assert len(saved["result"]["finding"]["qualification_flags"]) == 2
+        kept = saved["result"]["finding"]["qualification_flags"]
+        assert [f["dimension"] for f in kept] == [f["dimension"] for f in flags[:-1]]
         events = await app.state.storage.events(UUID(saved["id"]))
         assert sum(e.type == "qualification_flag_dropped" for e in events) == 1
 

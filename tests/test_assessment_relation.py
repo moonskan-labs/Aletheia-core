@@ -27,7 +27,7 @@ def test_relation_and_scope_fields_tell_the_model_what_a_contradiction_is():
     assert "different value" in fields["relation"]["description"]
     assert "even when the value they give differs" in fields["scope_match"]["description"]
     assert "Write this first" in fields["rationale"]["description"]
-    assert PROMPT_VERSION == "direct-claims-v3"
+    assert PROMPT_VERSION == "direct-claims-v4"
 
 
 def test_records_saved_in_the_old_field_order_still_load():

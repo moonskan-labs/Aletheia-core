@@ -1,8 +1,11 @@
 """Assess bounded source passages; validate every supplied reference before admission."""
 
+from typing import get_args
+
 from aletheia.direct import validate_component_assessment
 from aletheia.evidence import admit
 from aletheia.passages import select_passages
+from aletheia.research_contracts import Dimension
 from aletheia.task_contracts import AssessmentBatch, RecordAssessmentBatch
 
 
@@ -50,8 +53,11 @@ async def assess(tasks, assertion, source):
         "and provenance_note. Set authoritative_record only for a relevant original record. "
         "Use credible_synthesis only for an appropriate synthesis and explain relevance and "
         "coverage. Report documented limitations. Propose flags misleading_comparison "
-        "or narrow_scope with dimension population/timeframe/units/baseline/condition/"
-        "jurisdiction/definition. Name a concrete remaining gap, or null. "
+        f"or narrow_scope with dimension {'/'.join(get_args(Dimension))}. "
+        "evaluation_setup means results obtained under different evaluation methods "
+        "(prompting, sampling, tool access or scoring harness); benchmark_subset means a "
+        "result on part or a modified version of a benchmark presented as the full one. "
+        "Name a concrete remaining gap, or null. "
         "When evidence establishes a relevant narrower fact about a "
         "different scope, retain it as context "
         "and explain the scope/quantity difference in the rationale. Do not call it direct "
