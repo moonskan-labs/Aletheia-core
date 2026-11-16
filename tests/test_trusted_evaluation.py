@@ -11,6 +11,7 @@ import httpx
 import pytest
 from research_fixtures import Providers
 
+from aletheia import trusted_evaluation as trusted
 from aletheia.budgets import CallBudget, RunBudget
 from aletheia.config import ProviderSettings
 from aletheia.evaluation import KeySource
@@ -208,7 +209,9 @@ async def test_baseline_validates_quotes_in_one_call_without_label_metadata(
     claim = trusted_claims(ids=["t-02"])[0]
     claim.note = "SECRET_NOTE"
     claim.sources = [KeySource(url="https://label.invalid/SECRET_SOURCE", shows="SECRET_QUOTE")]
-    model = FakeModel({"verdict": "true", "quotes": [quote], "reason": "A short reason."})
+    model = FakeModel(
+        {"comparison": None, "verdict": "true", "quotes": [quote], "reason": "A short reason."}
+    )
     result = await baseline.evaluate_claim(claim, [page()], model, 30)
     assert result["verdict"] == verdict and result["downgraded"] == downgraded
     assert result["original_answer"]["verdict"] == "true"
@@ -223,7 +226,7 @@ async def test_baseline_validates_quotes_in_one_call_without_label_metadata(
 
 def test_quote_spanning_sentences_is_valid_but_joining_distant_passages_is_not():
     answer = baseline.Answer(
-        verdict="false", quotes=[{"page": 1, "text": "First. Last."}], reason="r"
+        comparison=None, verdict="false", quotes=[{"page": 1, "text": "First. Last."}], reason="r"
     )
     offered = [{"page": 1, "passages": ["First.", "Last."]}]
     assert not baseline.validate_answer(answer, offered, ["First.\nLast."])["downgraded"]
@@ -381,6 +384,7 @@ async def test_baseline_success_records_totals_and_label_changes_do_not_change_r
                     "verdict": "true",
                     "quotes": [{"page": 1, "text": "The Archive opened in 2000."}],
                     "reason": "Recorded date.",
+                    "comparison": None,
                 }
             )
             models.append(self)
@@ -451,3 +455,88 @@ def test_trusted_score_cli_keeps_77_denominator_and_refuses_to_overwrite(tmp_pat
     (folder / "manifest.json").write_text('{"claim_ids": ["t-01"]}')
     assert scoring.main([str(folder)]) == 2
     capsys.readouterr()
+
+
+def side(value, text, unit="feet", page=1):
+    return {
+        "what": "a height",
+        "value": value,
+        "unit": unit,
+        "quote": {"page": page, "text": text} if text else None,
+    }
+
+
+def compared_answer(first, second, relation, verdict, kind="number"):
+    return baseline.Answer(
+        comparison={"kind": kind, "first": first, "second": second, "relation": relation},
+        verdict=verdict,
+        quotes=[],
+        reason="The model's own reading.",
+    )
+
+
+COMPARED = [{"page": 1, "passages": ["Alpha is 405 feet.", "Beta is 501 feet."]}]
+COMPARED_ORIGINAL = ["Alpha is 405 feet.\nBeta is 501 feet."]
+
+
+@pytest.mark.parametrize(
+    "relation,model_verdict,expected",
+    [
+        ("first_greater", "true", "false"),
+        ("first_less", "false", "true"),
+        ("equal", "true", "false"),
+    ],
+)
+def test_comparison_is_decided_in_code_and_overrides_the_model_verdict(
+    relation, model_verdict, expected
+):
+    answer = compared_answer(
+        side("405", "Alpha is 405 feet."), side("501", "Beta is 501 feet."), relation, model_verdict
+    )
+    result = baseline.validate_answer(answer, COMPARED, COMPARED_ORIGINAL)
+    assert result["verdict"] == expected and result["compared_in_code"]
+    assert not result["downgraded"] and len(result["quotes"]) == 2
+    assert result["original_answer"]["verdict"] == model_verdict
+
+
+@pytest.mark.parametrize(
+    "first,second",
+    [
+        (side(None, None), side("501", "Beta is 501 feet.")),
+        (side("405", "Alpha is 405 feet."), side("501", "Beta is 999 feet.")),
+        (side("405", "Alpha is 405 feet."), side("501", None)),
+        (side("405", "Alpha is 405 feet."), side("501", "Beta is 501 feet.", unit="metres")),
+        (side("about 405", "Alpha is 405 feet."), side("501", "Beta is 501 feet.")),
+    ],
+)
+def test_comparison_with_a_missing_unquoted_or_mismatched_side_cannot_be_settled(first, second):
+    answer = compared_answer(first, second, "first_less", "true")
+    result = baseline.validate_answer(answer, COMPARED, COMPARED_ORIGINAL)
+    assert result["verdict"] == "cannot_settle" and not result["downgraded"]
+
+
+def test_dates_compare_by_calendar_order_and_commas_in_numbers_are_accepted():
+    assert trusted.compare_values("date", "2025-09-24", "2025-08-01", "", "", "first_greater") == (
+        "true"
+    )
+    assert trusted.compare_values("date", "2025-09-24", "2025-08-01", "", "", "first_less") == (
+        "false"
+    )
+    assert trusted.compare_values("date", "24 Sept 2025", "2025-08-01", "", "", "first_less") == (
+        "cannot_settle"
+    )
+    assert trusted.compare_values("number", "15,000,000", "10000000", "USD", " usd ", "equal") == (
+        "false"
+    )
+    assert trusted.compare_values("number", "nan", "1", "", "", "equal") == "cannot_settle"
+
+
+def test_an_answer_without_a_comparison_is_judged_exactly_as_before():
+    quote = {"page": 1, "text": "Alpha is 405 feet."}
+    for verdict in ("true", "false", "cannot_settle"):
+        answer = baseline.Answer(comparison=None, verdict=verdict, quotes=[quote], reason="r")
+        result = baseline.validate_answer(answer, COMPARED, COMPARED_ORIGINAL)
+        assert result["verdict"] == verdict and result["reason"] == "r"
+        assert not result["compared_in_code"] and not result["downgraded"]
+    unquoted = baseline.Answer(comparison=None, verdict="true", quotes=[], reason="r")
+    assert baseline.validate_answer(unquoted, COMPARED, COMPARED_ORIGINAL)["downgraded"]

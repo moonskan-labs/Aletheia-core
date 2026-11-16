@@ -8,6 +8,7 @@ import csv
 import gzip
 import json
 from dataclasses import replace
+from datetime import date
 from pathlib import Path
 
 import httpx
@@ -77,6 +78,38 @@ def load_pages(directory, claim_id):
 
 def collapse(text):
     return " ".join(text.split())
+
+
+def _number(text):
+    value = float(text.replace(",", "").strip())
+    if value != value or value in (float("inf"), float("-inf")):
+        raise ValueError("Not a finite number")
+    return value
+
+
+def compare_values(kind, first, second, first_unit, second_unit, relation):
+    """Compare two separately quoted values in code; numbers and dates only.
+
+    Returns "true" or "false" for the stated relation, or "cannot_settle" when a value
+    is missing or unparseable or the units differ. A later date is the greater one.
+    """
+    if first is None or second is None:
+        return "cannot_settle"
+    if collapse(first_unit).casefold() != collapse(second_unit).casefold():
+        return "cannot_settle"
+    try:
+        if kind == "date":
+            left, right = date.fromisoformat(first.strip()), date.fromisoformat(second.strip())
+        else:
+            left, right = _number(first), _number(second)
+    except ValueError:
+        return "cannot_settle"
+    holds = {
+        "first_greater": left > right,
+        "first_less": left < right,
+        "equal": left == right,
+    }[relation]
+    return "true" if holds else "false"
 
 
 def ranked_pages(query, pages):
