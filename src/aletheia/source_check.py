@@ -3,6 +3,7 @@
 import csv
 import io
 import json
+import math
 import statistics
 import time
 from collections import Counter
@@ -260,6 +261,63 @@ def fault_stage(claim, row, artifact, check):
     return "conclusion"
 
 
+def code_decision(artifact):
+    """The decision the code computed from the component findings, before the final check.
+
+    A withheld result keeps its component findings, so this shows what the final check
+    was asked to confirm. None means the run never produced component findings.
+    """
+    investigation = artifact.get("investigation") or {}
+    finding = (investigation.get("result") or {}).get("finding") or {}
+    components = finding.get("components") or []
+    if not components:
+        return finding.get("verdict")
+    analysis = investigation.get("claim_analysis") or {}
+    roles = {c["id"]: c["role"] for c in analysis.get("components", [])}
+    states = {c["outcome"] for c in components}
+    if "conflicting" in states:
+        return "conflicting"
+    if states == {"supported"}:
+        return "true"
+    if any(
+        c["outcome"] == "contradicted" and roles.get(c["component_id"]) == "essential"
+        for c in components
+    ):
+        return "false"
+    return "not_established"
+
+
+def interval(part, whole, z=1.96):
+    """Wilson 95% interval, in whole percentage points, for one run's proportion."""
+    if not whole:
+        return 0, 0
+    p = part / whole
+    centre = p + z * z / (2 * whole)
+    spread = z * math.sqrt(p * (1 - p) / whole + z * z / (4 * whole * whole))
+    scale = 100 / (1 + z * z / whole)
+    return round((centre - spread) * scale), round((centre + spread) * scale)
+
+
+def funnel(rows):
+    """Count where verdicts are lost between reading evidence and publishing."""
+    decided = [r for r in rows if r["code_decision"] in {"true", "false"}]
+    published = [r for r in decided if r["actual"].startswith("decided/")]
+    withheld = [r for r in decided if not r["actual"].startswith("decided/")]
+
+    def right(selected):
+        return sum(r["expected"] == f"decided/{r['code_decision']}" for r in selected)
+
+    return {
+        "no_evidence": sum(not r["evidence_items"] for r in rows),
+        "undecided": sum(
+            bool(r["evidence_items"]) and r["code_decision"] not in {"true", "false"} for r in rows
+        ),
+        "decided": (len(decided), right(decided)),
+        "published": (len(published), right(published)),
+        "withheld": (len(withheld), right(withheld)),
+    }
+
+
 REPORT_COLUMNS = (
     "id",
     "split",
@@ -284,6 +342,8 @@ REPORT_COLUMNS = (
     "labelled_source",
     "labelled_source_agreement",
     "arguable_label",
+    "evidence_items",
+    "code_decision",
 )
 
 
@@ -300,6 +360,10 @@ def report_rows(claims, artifacts, checks):
         units = (check or {}).get("units", [])
         judged = Counter((u.get("judgement") or {}).get("verdict", "unjudged") for u in units)
         row.update(
+            evidence_items=sum(
+                e["admissible"] for e in (artifact.get("evidence") or {}).get("evidence", [])
+            ),
+            code_decision=code_decision(artifact),
             units=len(units),
             citations_valid_units=sum(u["citations_valid"] for u in units),
             supported=judged["supported"],
@@ -348,6 +412,25 @@ def report_summary(rows, manifest, planned):
         f"{fraction(sum(r['match'] for r in arguable), len(arguable))} "
         f"({', '.join(r['id'] for r in arguable)}).",
         "- Labelled-source agreement is not model-judged: dataset sources never enter prompts.",
+        "- One run is one sample: the 95% interval around the headline figure is "
+        "{}% to {}%. A smaller difference between two runs is not evidence of a change.".format(
+            *interval(sum(r["match"] for r in headline), len(headline))
+        ),
+        "",
+        "## Where verdicts are lost (conflict group excluded)",
+        "",
+        "The code decision is computed from the component findings before the final check.",
+        "",
+        "| stage | claims | code decision matches label |",
+        "|---|---|---|",
+    ]
+    stages = funnel(headline)
+    lines += [
+        f"| No evidence read (question asked, failure or no source) | {stages['no_evidence']} | |",
+        f"| Evidence read, code reached no decision | {stages['undecided']} | |",
+        "| Code reached True or False | {} | {} |".format(*stages["decided"]),
+        "| ...published after the final check | {} | {} |".format(*stages["published"]),
+        "| ...withheld by the final check | {} | {} |".format(*stages["withheld"]),
         "",
         "## How runs ended",
         "",

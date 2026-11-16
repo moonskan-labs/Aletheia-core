@@ -195,3 +195,29 @@ async def test_report_scores_against_labels_and_keeps_conflict_out_of_the_headli
     summary = report_summary(rows, {"model": "m", "revision": "abc"}, 2)
     assert "(conflict group excluded): 1/1 (100%)" in summary
     assert "(all claims): 1/2 (50%)" in summary
+
+
+async def test_report_shows_where_verdicts_are_lost_and_how_wide_one_run_is(finished):
+    from aletheia.source_check import code_decision, interval
+
+    item, artifact, _ = finished
+    assert code_decision(artifact) == "true"
+    # A withheld run keeps its component findings: the report must still show that the
+    # code had reached the right decision before the final check removed it.
+    withheld = copy.deepcopy(artifact)
+    result = withheld["investigation"]["result"]
+    result.update(outcome="unable_to_decide", verdict=None)
+    result["unable_to_decide_reason"] = "insufficient_evidence"
+    asked = {"investigation": {"status": "needs_clarification"}}
+    assert code_decision(asked) is None
+    claims = [claim(f"b-0{n}") for n in (1, 2, 3)]
+    rows = report_rows(claims, {"b-01": artifact, "b-02": withheld, "b-03": asked}, {})
+    assert [r["code_decision"] for r in rows] == ["true", "true", None]
+    summary = report_summary(rows, {"model": "m", "revision": "abc"}, 3)
+    assert "| No evidence read (question asked, failure or no source) | 1 | |" in summary
+    assert "| Code reached True or False | 2 | 2 |" in summary
+    assert "| ...published after the final check | 1 | 1 |" in summary
+    assert "| ...withheld by the final check | 1 | 1 |" in summary
+    # 29 of 73 and 23 of 73 are inside each other's interval: not a measured difference.
+    assert interval(29, 73) == (29, 51) and interval(23, 73) == (22, 43)
+    assert interval(0, 0) == (0, 0)
