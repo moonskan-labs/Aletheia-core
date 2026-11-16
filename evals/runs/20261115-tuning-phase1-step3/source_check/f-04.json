@@ -1,0 +1,82 @@
+{
+  "id": "f-04",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "The June 2022 HTTP standard classifies POST as unsafe. IETF RFC 7231 Section 4.2.1 explicitly defines safe methods as GET, HEAD, OPTIONS, and TRACE, stating 'POST is not listed among the safe methods' (span 602). The ISO 20022 White Paper (June 2025) also contradicts the claim, noting 'POST is not a",
+      "citations": [
+        {
+          "evidence_id": "df279a3c-66e6-4745-affe-7ad920d393ee",
+          "url": "https://httpwg.org/specs/rfc7231.html",
+          "title": "RFC7231",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "53ac6582-b11a-4547-9c9c-9e599b8d6803",
+          "url": "https://www.iso20022.org/sites/default/files/media/file/ISO_20022_and_Web_APIs_An_Implementation_Best_Practices_White_Paper_10June2025.pdf",
+          "title": "[PDF] ISO 20022 and Web APIs: An Implementation Best Practices White ...",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "not_supported",
+        "reason": "The passages do not mention POST, the June 2022 HTTP standard, or the quoted phrase 'POST is not listed among the safe methods'; they only list safe methods and define safe as read-only."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "ISO 20022 White Paper (June 2025) describes POST as creating a new resource, listing it under 'Safe' column as 'Yes' in a table, but the same document's definition of safe methods (span 155) requires read-only behavior, creating a contradiction (span 147). The table and definition present opposing",
+      "citations": [
+        {
+          "evidence_id": "bb7f7709-bdc2-4fab-a79c-ad1922161a02",
+          "url": "https://www.iso20022.org/sites/default/files/media/file/ISO_20022_and_Web_APIs_An_Implementation_Best_Practices_White_Paper_10June2025.pdf",
+          "title": "[PDF] ISO 20022 and Web APIs: An Implementation Best Practices White ...",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "53ac6582-b11a-4547-9c9c-9e599b8d6803",
+          "url": "https://www.iso20022.org/sites/default/files/media/file/ISO_20022_and_Web_APIs_An_Implementation_Best_Practices_White_Paper_10June2025.pdf",
+          "title": "[PDF] ISO 20022 and Web APIs: An Implementation Best Practices White ...",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passages confirm POST creates a new resource and that safe methods are read-only, but the provided table extract does not show POST listed as 'Yes' under the Safe column, so the alleged contradiction is not established from these passages."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "IETF httpwg.org published httpwg.org RFC 7231, Section 4.2.1, which defines safe methods with 'essentially read-only semantics' and explicitly excludes POST (spans 595, 596, 602).",
+      "citations": [
+        {
+          "evidence_id": "644ff477-35cc-43cf-8159-7f767aa6c75b",
+          "url": "https://httpwg.org/specs/rfc7231.html",
+          "title": "RFC7231",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "df279a3c-66e6-4745-affe-7ad920d393ee",
+          "url": "https://httpwg.org/specs/rfc7231.html",
+          "title": "RFC7231",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passages define safe methods as essentially read-only and list GET, HEAD, OPTIONS, and TRACE as safe, but they do not mention POST or explicitly state that POST is excluded."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": null
+}

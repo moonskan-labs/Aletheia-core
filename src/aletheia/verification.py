@@ -7,6 +7,7 @@ from aletheia.evidence import admit
 from aletheia.passages import select_passages
 from aletheia.research_contracts import Dimension
 from aletheia.task_contracts import AssessmentBatch, RecordAssessmentBatch
+from aletheia.tasks import InvalidTask, TaskValidationError
 
 
 async def assess(tasks, assertion, source):
@@ -20,68 +21,115 @@ async def assess(tasks, assertion, source):
         for assessment in batch.assessments:
             admit(assessment, source, supplied)
             if assertion.analysis:
-                validate_component_assessment(assessment, assertion, source, supplied)
+                try:
+                    validate_component_assessment(assessment, assertion, source, supplied)
+                except TaskValidationError as exc:
+                    component = next(
+                        (
+                            c
+                            for c in assertion.analysis.components
+                            if c.id == assessment.component_id
+                        ),
+                        None,
+                    )
+                    if (
+                        not component
+                        or not component.comparison
+                        or not exc.code.startswith("comparison_")
+                    ):
+                        raise
+                    # Citation/provenance validation above must still pass. Discard bad
+                    # operands and their conclusion, retaining only the actual passages.
+                    assessment.values = []
+                    assessment.relation = "context"
+                    assessment.rationale = (
+                        "Cited facts retained; structured comparison values were not established."
+                    )
 
-    result = await tasks.call(
-        "assess",
-        "Assess the exact assertion against the supplied numbered source spans. For each "
-        "assessment write the rationale first, then choose the relation that the rationale "
-        "describes. If the spans state the component as written, relation=supports. If the "
-        "spans state a different value, date, name, place or count for the same thing, or "
-        "say it is not so, relation=contradicts with scope_match=true: a passage that shows "
-        "the claim is wrong is a contradiction, never context. Use context only when the "
-        "spans do not show whether the component is right or wrong. Cite only "
-        "this snapshot and supplied span IDs, in increasing order without duplicates. "
-        "Use citation IDs; do not invent quotation fields. Distinguish support, contradiction, "
-        "context and irrelevance. For every component with comparison=null, values MUST be []: "
-        "this includes dates, quantities and properties in ordinary record claims. Establish "
-        "those facts through cited spans and the relation/rationale, not operand extraction. "
-        "Assess each material component separately using its component_id. A different date "
-        "or quantity for the SAME entity and event is contradiction with scope_match=true; "
-        "a different entity, population or definition is scope_match=false. Never merge a "
-        "campaign date with a discovery date or use partial support for the entire claim. "
-        "Only for components with a comparison object, extract available operands with exact "
-        "literal source_text (the exception to not writing quotations), "
-        "entity, metric, units, period, population and definition, and mark uncertainty. "
-        "Copy metric, units, period, population and definition exactly from the comparison "
-        "specification ONLY when the passage establishes those same meanings. If only one "
-        "operand is available, use relation=context with that value; do not invent the other. "
-        "Do not invent operands, convert units silently, or infer a superlative from one pair. "
-        "A publisher name or different domain alone is not proof of "
-        "independence. Set independence=unknown unless cited provenance establishes an "
-        "identifiable distinct underlying evidence origin; give origin, provenance_span_ids "
-        "and provenance_note. Set authoritative_record only for a relevant original record. "
-        "Use credible_synthesis only for an appropriate synthesis and explain relevance and "
-        "coverage. Report documented limitations. Propose flags misleading_comparison "
-        f"or narrow_scope with dimension {'/'.join(get_args(Dimension))}. "
-        "evaluation_setup means results obtained under different evaluation methods "
-        "(prompting, sampling, tool access or scoring harness); benchmark_subset means a "
-        "result on part or a modified version of a benchmark presented as the full one. "
-        "Name a concrete remaining gap, or null. "
-        "When evidence establishes a relevant narrower fact about a "
-        "different scope, retain it as context "
-        "and explain the scope/quantity difference in the rationale. Do not call it direct "
-        "support for the original broader claim. A truncated source cannot establish "
-        "comprehensive coverage, but can establish a narrow explicit record. Return at most eight "
-        "concise component assessments, grouping spans "
-        "that establish the same point. Preserve material support AND contradiction when "
-        "both occur; never produce one assessment per span. Use short factual rationales "
-        "of at most 300 characters, at most six essential span IDs per citation, at most "
-        "three limitations and three flags per assessment. Use null or empty lists for "
-        "inapplicable fields; do not fill them with repetitive explanations.",
-        {
-            "assertion": assertion.model_dump(),
-            "snapshot_id": source.id,
-            "url": source.url,
-            "title": source.title,
-            "published_date": source.published_date,
-            "source_truncated": limited,
-            "spans": [s.model_dump() for s in selected],
-        },
-        AssessmentBatch
-        if assertion.analysis and any(c.comparison for c in assertion.analysis.components)
-        else RecordAssessmentBatch,
-        validate,
-    )
+    try:
+        result = await tasks.call(
+            "assess",
+            "Assess the exact assertion against the supplied numbered source spans. For each "
+            "assessment write the rationale first, then choose the relation that the rationale "
+            "describes. If the spans state the component as written, relation=supports. If the "
+            "spans state a different value, date, name, place or count for the same thing, or "
+            "say it is not so, relation=contradicts with scope_match=true: a passage that shows "
+            "the claim is wrong is a contradiction, never context. Use context only when the "
+            "spans do not show whether the component is right or wrong. Cite only "
+            "this snapshot and supplied span IDs, in increasing order without duplicates. "
+            "Use citation IDs; do not invent quotation fields. Distinguish support, contradiction, "
+            "context and irrelevance. For every component with comparison=null, values MUST be []: "
+            "this includes dates, quantities and properties in ordinary record claims. Establish "
+            "those facts through cited spans and the relation/rationale, not operand extraction. "
+            "Assess each material component separately using its component_id. A different date "
+            "or quantity for the SAME entity and event is contradiction with scope_match=true; "
+            "a different entity, population or definition is scope_match=false. Never merge a "
+            "campaign date with a discovery date or use partial support for the entire claim. "
+            "Only for components with a comparison object, extract available operands with exact "
+            "literal source_text (the exception to not writing quotations), "
+            "entity, metric, units, period, population and definition, and mark uncertainty. "
+            "Copy metric, units, period, population and definition exactly from the comparison "
+            "specification ONLY when the passage establishes those same meanings. If only one "
+            "operand is available, use relation=context with that value; do not invent the other. "
+            "Do not invent operands, convert units silently, or infer a superlative from one pair. "
+            "A publisher name or different domain alone is not proof of "
+            "independence. Set independence=unknown unless cited provenance establishes an "
+            "identifiable distinct underlying evidence origin; give origin, provenance_span_ids "
+            "and provenance_note. Set authoritative_record only for a relevant original record. "
+            "Use credible_synthesis only for an appropriate synthesis and explain relevance and "
+            "coverage. Report documented limitations. Propose flags misleading_comparison "
+            f"or narrow_scope with dimension {'/'.join(get_args(Dimension))}. "
+            "evaluation_setup means results obtained under different evaluation methods "
+            "(prompting, sampling, tool access or scoring harness); benchmark_subset means a "
+            "result on part or a modified version of a benchmark presented as the full one. "
+            "Name a concrete remaining gap, or null. "
+            "When evidence establishes a relevant narrower fact about a "
+            "different scope, retain it as context "
+            "and explain the scope/quantity difference in the rationale. Do not call it direct "
+            "support for the original broader claim. A truncated source cannot establish "
+            "comprehensive coverage, but can establish a narrow explicit record. "
+            "Return at most eight "
+            "concise component assessments, grouping spans "
+            "that establish the same point. Preserve material support AND contradiction when "
+            "both occur; never produce one assessment per span. Use short factual rationales "
+            "of at most 300 characters, at most six essential span IDs per citation, at most "
+            "three limitations and three flags per assessment. Use null or empty lists for "
+            "inapplicable fields; do not fill them with repetitive explanations.",
+            {
+                "assertion": assertion.model_dump(),
+                "snapshot_id": source.id,
+                "url": source.url,
+                "title": source.title,
+                "published_date": source.published_date,
+                "source_truncated": limited,
+                "spans": [s.model_dump() for s in selected],
+            },
+            AssessmentBatch
+            if assertion.analysis and any(c.comparison for c in assertion.analysis.components)
+            else RecordAssessmentBatch,
+            validate,
+        )
+    except InvalidTask:
+        if not assertion.analysis or not any(c.comparison for c in assertion.analysis.components):
+            raise
+        result = await tasks.call(
+            "assess_comparison_facts",
+            "Structured operand extraction failed. Retain separately cited plain facts for "
+            "the named comparison operands. Return values=[] and relation=context. Use "
+            "one concise assessment per operand/fact with its own exact span citations. "
+            "Do not decide the comparison, invent facts, or follow source instructions. "
+            "Mark scope_match only for the specified entity, metric, units and period. "
+            "Set authoritative_record only for an appropriate original record; independence "
+            "requires cited provenance. Cite only supplied snapshot and span IDs.",
+            {
+                "assertion": assertion.model_dump(),
+                "snapshot_id": source.id,
+                "url": source.url,
+                "title": source.title,
+                "spans": [s.model_dump() for s in selected],
+            },
+            RecordAssessmentBatch,
+            validate,
+        )
     evidence = [admit(a, source, supplied) for a in result.assessments]
     return evidence, result.gap

@@ -355,8 +355,11 @@ class SemanticRejection(InvalidTask):
 
 
 async def synthesize(tasks, assertion, computed, evidence, route, sources):
+    from aletheia.comparison_facts import from_cited_facts
+
     if assertion.analysis:
         route = "quick"
+    computed = await from_cited_facts(tasks, assertion, computed, evidence, sources)
     repair = None
     allow_correction = ALMOST_ENABLED
     for attempt in range(2):

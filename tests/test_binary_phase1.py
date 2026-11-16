@@ -170,3 +170,164 @@ def test_weak_comparison_counterexample_does_not_veto_grounded_operands():
         finding(claim, "quick", evidence, sources)[0].unable_to_decide_reason
         == "conflicting_evidence"
     )
+
+
+def test_named_comparison_does_not_ask_for_clarification_but_missing_operand_does():
+    from test_demo_reliability import interpretation
+    from test_phase_one import comparison_spec
+
+    from aletheia.claims import materialize, normalize_interpretation
+
+    text = "Venus is closer to the Sun than Mercury."
+    proposal = interpretation(
+        [(text, "essential", comparison_spec().model_dump())], method="record_comparison"
+    )
+    proposal.questions = ["What period should be used?"]
+    proposal.missing_scope = ["period"]
+    proposal.clarification_reason = "missing_scope"
+    fixed = normalize_interpretation(proposal, text)
+    assert not materialize(fixed, text).questions
+    assert materialize(
+        normalize_interpretation(proposal, "Venus is closer."), "Venus is closer."
+    ).questions
+
+
+@pytest.mark.parametrize(
+    "defect", [None, "invented_fact", "weak", "shared_citation", "incompatible"]
+)
+async def test_comparison_fallback_requires_two_separate_grounded_compatible_facts(defect):
+    from test_phase_one import assertion, comparison_spec
+    from test_research_integrity import judgment, source
+
+    from aletheia.comparison_facts import from_cited_facts
+    from aletheia.evidence import admit
+    from aletheia.tasks import InvalidTask
+    from aletheia.verdicts import finding
+
+    claim = assertion(
+        "Venus is closer than Mercury.", kind="direct_comparison", comparison=comparison_spec()
+    )
+    sources = [
+        source("Venus is 108 million km from the Sun."),
+        source("Mercury is 58 million km from the Sun."),
+    ]
+    evidence = [
+        admit(
+            judgment(
+                s,
+                component_id="c1",
+                relation="context",
+                authoritative_record=not (defect == "weak" and i == 1),
+            ),
+            s,
+            {1},
+        )
+        for i, s in enumerate(sources)
+    ]
+    computed, _ = finding(claim, "quick", evidence, sources)
+
+    class Tasks:
+        async def call(self, name, instructions, data, schema, validate):
+            assert name == "compare_facts"
+            value = schema.model_validate(
+                {
+                    "left": {
+                        "text": "Invented number 10"
+                        if defect == "invented_fact"
+                        else sources[0].spans[0].text,
+                        "evidence_ids": [evidence[0].id],
+                    },
+                    "right": {
+                        "text": sources[1].spans[0].text,
+                        "evidence_ids": [evidence[0 if defect == "shared_citation" else 1].id],
+                    },
+                    "compatible": defect != "incompatible",
+                    "relation": "contradicts",
+                }
+            )
+            try:
+                validate(value)
+            except ValueError as exc:
+                raise InvalidTask() from exc
+            return value
+
+    result = await from_cited_facts(Tasks(), claim, computed, evidence, sources)
+    assert result.verdict == ("false" if defect is None else None)
+
+
+async def test_bad_comparison_operands_retain_only_valid_cited_context():
+    from test_phase_one import assertion, comparison_spec, value
+    from test_research_integrity import judgment, source
+
+    from aletheia.verification import assess
+
+    claim = assertion(
+        "Venus is closer than Mercury.", kind="direct_comparison", comparison=comparison_spec()
+    )
+    page = source("Venus is 108 million km from the Sun.")
+
+    class Tasks:
+        async def call(self, name, instructions, data, schema, validate):
+            assessment = judgment(page, component_id="c1", values=[value("left", "999")])
+            response = schema.model_validate(
+                {"assessments": [assessment.model_dump()], "gap": None}
+            )
+            validate(response)
+            return response
+
+    evidence, _ = await assess(Tasks(), claim, page)
+    assert evidence[0].assessment.values == []
+    assert evidence[0].assessment.relation == "context"
+    assert evidence[0].excerpts[0].text == page.spans[0].text
+
+
+@pytest.mark.parametrize("confirm", [True, False])
+async def test_fallback_comparison_still_requires_final_confirmation(confirm):
+    from test_phase_one import assertion, comparison_spec
+    from test_research_integrity import judgment, source
+
+    from aletheia.evidence import admit
+    from aletheia.verdicts import SemanticRejection, finding, synthesize
+
+    claim = assertion(
+        "Venus is closer than Mercury.", kind="direct_comparison", comparison=comparison_spec()
+    )
+    sources = [
+        source("Venus is 108 million km from the Sun."),
+        source("Mercury is 58 million km from the Sun."),
+    ]
+    evidence = [admit(judgment(s, component_id="c1", relation="context"), s, {1}) for s in sources]
+    facts = [
+        {"text": s.spans[0].text, "evidence_ids": [e.id]}
+        for s, e in zip(sources, evidence, strict=True)
+    ]
+
+    class Tasks:
+        async def emit(self, *args):
+            pass
+
+        async def call(self, name, instructions, data, schema, validate):
+            if name == "compare_facts":
+                value = {
+                    "left": facts[0],
+                    "right": facts[1],
+                    "compatible": True,
+                    "relation": "contradicts",
+                }
+            elif name == "synthesize":
+                assert data["finding"]["verdict"] == "false"
+                value = {"units": facts, "almost_correction": None}
+            else:
+                assert name == "check_explanation"
+                value = {"claim_is_false": confirm, "supported_units": [0, 1]}
+            result = schema.model_validate(value)
+            validate(result)
+            return result
+
+    computed, _ = finding(claim, "quick", evidence, sources)
+    if confirm:
+        result, _ = await synthesize(Tasks(), claim, computed, evidence, "quick", sources)
+        assert result.verdict == "false"
+    else:
+        with pytest.raises(SemanticRejection):
+            await synthesize(Tasks(), claim, computed, evidence, "quick", sources)

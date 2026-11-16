@@ -1,0 +1,3709 @@
+{
+  "id": "a-19",
+  "live": true,
+  "investigation": {
+    "id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+    "claim": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-16T00:10:02.135698Z",
+    "started_at": "2026-11-16T00:10:02.218311Z",
+    "finished_at": "2026-11-16T00:10:54.795378Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Fiscal 2025 financial figures reported by a named corporation (Apple).",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+              "role": "essential",
+              "subject": "Apple",
+              "predicate": "reported iPhone sales",
+              "timeframe": "fiscal 2025",
+              "location_or_population": "Cupertino-based",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Both components are extracted as essential substrings matching the claim. No additional context or clarification is required.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "supported",
+            "evidence_ids": [
+              "9eb5cac3-01d3-42f3-814f-787f99a29039",
+              "f7568d41-4c76-45f6-bc95-af0273402e45",
+              "1302b786-8d61-4c76-a0cf-156e4d34ec4d",
+              "5490642d-8f70-42c0-8f96-cee8b11550a6"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "9eb5cac3-01d3-42f3-814f-787f99a29039",
+          "f7568d41-4c76-45f6-bc95-af0273402e45",
+          "1302b786-8d61-4c76-a0cf-156e4d34ec4d",
+          "5490642d-8f70-42c0-8f96-cee8b11550a6"
+        ],
+        "qualification_flags": [
+          {
+            "type": "misleading_comparison",
+            "dimension": "units",
+            "explanation": "Source rounds iPhone to $209.59 B and services (Wearables) to $35.69 B, not $96.169 B",
+            "evidence_ids": [
+              "9eb5cac3-01d3-42f3-814f-787f99a29039"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "page_text_truncated",
+        "Values rounded to two decimals; exact $209.586 B not found",
+        "Only four significant digits shown; exact rounding not specified",
+        "Spans report rounded figures ($209.6B, $109.2B); claim specifies $209.586B and $96.169B.",
+        "No span explicitly provides $96.169B; $109.2B is the closest figure for Services.",
+        "10-K body excerpt lacks sales revenue figures",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 240.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 12,
+        "search": 6,
+        "extract": 4
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.8190985420005745,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.0316861250030342,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.6142568750001374,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.3896020839965786,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.4230641670001205,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.15498504200513707,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 15.278324625003734,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.1501786669978173,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.3677963330046623,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.569914500003506,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.4302545829996234,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.4232540000011795,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.710176832995785,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.884616499999538,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.1958657079958357,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.7877016669954173,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.38454658299451694,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.099618709005881,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.77377158300078,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7900965420049033,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.2549865420005517,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7502750419953372,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 66709,
+        "completion_tokens": 5907,
+        "total_tokens": 72616
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Fiscal 2025 financial figures reported by a named corporation (Apple).",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+          "role": "essential",
+          "subject": "Apple",
+          "predicate": "reported iPhone sales",
+          "timeframe": "fiscal 2025",
+          "location_or_population": "Cupertino-based",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "events": "/investigations/c69f3e70-47ef-4ff7-8d92-7023527194f8/events",
+      "evidence": "/investigations/c69f3e70-47ef-4ff7-8d92-7023527194f8/evidence",
+      "comparison": "/investigations/c69f3e70-47ef-4ff7-8d92-7023527194f8/comparison",
+      "refresh": "/investigations/c69f3e70-47ef-4ff7-8d92-7023527194f8/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "url": "https://bullfincher.io/companies/apple/revenue-by-segment",
+        "canonical_url": "https://bullfincher.io/companies/apple/revenue-by-segment",
+        "title": "Apple Revenue Breakdown By Segment | Bullfincher",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:10:12.724963Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "bd158c52f3f19ede5fbdfd472290c5ab0bf9349f2d718b58fb32acb8da0287ac",
+        "duplicate_group": "bd158c52f3f19ede5fbdfd472290c5ab0bf9349f2d718b58fb32acb8da0287ac",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "url": "https://businessquant.com/stocks/aapl/revenue-breakdown",
+        "canonical_url": "https://businessquant.com/stocks/aapl/revenue-breakdown",
+        "title": "Apple Inc. (AAPL) Revenue Breakdown by Segment & Product and Service",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:10:31.562185Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "4730ef9393367f922892d49e54c0eb28cbdcd8a4e129a92e1bb41cdb41d8cc3b",
+        "duplicate_group": "4730ef9393367f922892d49e54c0eb28cbdcd8a4e129a92e1bb41cdb41d8cc3b",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "url": "https://savest-financial.com/wp-content/uploads/2025/11/Apple-Inc.-Full-Year-2025-Report-Summary.pdf",
+        "canonical_url": "https://savest-financial.com/wp-content/uploads/2025/11/Apple-Inc.-Full-Year-2025-Report-Summary.pdf",
+        "title": "Apple Full Year 2025 Report",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:10:42.843648Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "0f79968b2f2de6d5ee1fb464bd7552e7899d015da8a89942cff7b066bfa75ba6",
+        "duplicate_group": "0f79968b2f2de6d5ee1fb464bd7552e7899d015da8a89942cff7b066bfa75ba6",
+        "limitations": []
+      },
+      {
+        "id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "canonical_url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "title": "_10-K 2025 (As-Filed)",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:10:46.039424Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "b68a2d54b0f0ed6f8af92ffc0897f05be9f8933a11481a16759f090fedfc82a2",
+        "duplicate_group": "b68a2d54b0f0ed6f8af92ffc0897f05be9f8933a11481a16759f090fedfc82a2",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "9eb5cac3-01d3-42f3-814f-787f99a29039",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+            "span_ids": [
+              99,
+              100,
+              151,
+              152,
+              155
+            ]
+          },
+          "rationale": "Spans 99 and 151 show iPad revenue $28.02 B for fiscal 2025. Span 100 and 152 show iPhone revenue $209.59 B for fiscal 2025. Span 155 shows Wearables $35.69 B. The claim states $209.586 B iPhone and $96.169 B services, but the source gives $209.59 B iPhone and $35.69 B Wearables, Home and Accessory.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            99,
+            100,
+            151,
+            152,
+            155
+          ],
+          "provenance_note": "Bullfincher data sourced from company 10-Q and 10-K filings via Financial Modeling Prep.",
+          "limitations": [
+            "Values rounded to two decimals; exact $209.586 B not found"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "units",
+              "explanation": "Source rounds iPhone to $209.59 B and services (Wearables) to $35.69 B, not $96.169 B"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              99,
+              100
+            ],
+            "start": 8706,
+            "end": 8750,
+            "text": "* **iPad:** $28.02 B\n* **iPhone:** $209.59 B",
+            "quote_hash": "2ce0e3b9ccb9efca80cfd7b3d1b622b1d5d2a656e7c71a624a98d3c88e791df1"
+          },
+          {
+            "span_ids": [
+              151,
+              152
+            ],
+            "start": 11537,
+            "end": 11706,
+            "text": "* **iPad** generated $28.02 B in revenue, representing 6.73% of its total revenue.\n* **iPhone** generated $209.59 B in revenue, representing 50.36% of its total revenue.",
+            "quote_hash": "8840a3f199f7728cdf81f8da844b744a42466bfade37c79a066e5250f9e15abc"
+          },
+          {
+            "span_ids": [
+              155
+            ],
+            "start": 11876,
+            "end": 11985,
+            "text": "* **Wearables, Home and Accessories** generated $35.69 B in revenue, representing 8.58% of its total revenue.",
+            "quote_hash": "7220579730bb7173a2547b05a5dccad4f0fd9bec2b011033c71147ba04ae58fa"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "f7568d41-4c76-45f6-bc95-af0273402e45",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+            "span_ids": [
+              50,
+              53,
+              54
+            ]
+          },
+          "rationale": "Spans 50, 53, 54 extract from the Apple Revenue by Product & Service table (fiscal 2013–2025). Span 50 states FY 2025 iPhone revenue as $209.59B. Span 53 gives the exact iPhone value for FY 2025 as $205.49B–$209.59B range. Span 54 gives the Services value for FY 2025 as $78.13B–$109.16B range. The $",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "Business Quant",
+          "origin": "Business Quant",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            50,
+            53,
+            54
+          ],
+          "provenance_note": "Apple fiscal 2025 revenue by product and service segment from Business Quant source",
+          "limitations": [
+            "Only four significant digits shown; exact rounding not specified"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              50
+            ],
+            "start": 3055,
+            "end": 3174,
+            "text": "**Iphone** was Apple’s largest product and service line in fiscal 2025, bringing in **$209.59B** of **$416.16B** (50%).",
+            "quote_hash": "30cd0e5b305299cc7439f7067599bc3d5029adf4ca09ebc117de20aa458add85"
+          },
+          {
+            "span_ids": [
+              53,
+              54
+            ],
+            "start": 3389,
+            "end": 3533,
+            "text": "| Iphone | | | | | | | | | | $205.49B | $200.58B | $201.18B | $209.59B |\n| Services | | | | | | | | | | $78.13B | $85.20B | $96.17B | $109.16B |",
+            "quote_hash": "fd74e9914cc0966bf67b1b3739f59392757bf0fe7345add9ea9de36654f13762"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "1302b786-8d61-4c76-a0cf-156e4d34ec4d",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+            "span_ids": [
+              9,
+              11
+            ]
+          },
+          "rationale": "Span 9 states iPhone revenue rose 4% to $209.6 billion. Span 11 states Services revenue surged 14% to $109.2 billion. The span values are rounded to one decimal ($209.6 and $109.2), while the claim gives precise figures to three decimals ($209.586 and $96.169). Both spans and the claim refer to the ",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "SAVEST RESEARCH",
+          "origin": "Apple Full Year 2025 Report Summary",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            9,
+            11
+          ],
+          "provenance_note": "Rounded to one decimal place; exact three-decimal figures not found in spans.",
+          "limitations": [
+            "Spans report rounded figures ($209.6B, $109.2B); claim specifies $209.586B and $96.169B.",
+            "No span explicitly provides $96.169B; $109.2B is the closest figure for Services."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              9
+            ],
+            "start": 1608,
+            "end": 1716,
+            "text": "iPhone revenue rose 4% to $209.6 billion, led by strong demand for premium iPhone 17 Pro and Pro Max models.",
+            "quote_hash": "868d05be2126a7d1b019b6e1cbee8daf6a2dbad8b72c81dca0d5bf960f745138"
+          },
+          {
+            "span_ids": [
+              11
+            ],
+            "start": 1792,
+            "end": 1864,
+            "text": "Services revenue surged 14% to $109.2 billion, setting an all-time high.",
+            "quote_hash": "415fdf5566915aaeaca01b932438d96dc684911a7ac89be53bb66f01173a285d"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "5490642d-8f70-42c0-8f96-cee8b11550a6",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+            "span_ids": [
+              7,
+              129,
+              130
+            ]
+          },
+          "rationale": "Spans 7, 129, 130 confirm Apple is Cupertino-based and report fiscal year ended September 27, 2025, but the 10-K body does not contain the specific dollar figures $209.586B iPhone and $96.169B services in the excerpt provided.",
+          "relation": "context",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            7,
+            129,
+            130
+          ],
+          "provenance_note": "Span 7 confirms fiscal year; spans 129-130 confirm Apple identity and location; no revenue figures found in cited excerpt.",
+          "limitations": [
+            "10-K body excerpt lacks sales revenue figures"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              7
+            ],
+            "start": 200,
+            "end": 245,
+            "text": "For the fiscal year ended September 27, 2025 ",
+            "quote_hash": "ac8c413ea0b1c9dea47800fd6f28795d533a7448eaa20bc6551898ec3ec73675"
+          },
+          {
+            "span_ids": [
+              129,
+              130
+            ],
+            "start": 8729,
+            "end": 8985,
+            "text": "The Company designs, manufactures and markets smartphones, personal computers, tablets, wearables and accessories, and sells a variety of related services. The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. ",
+            "quote_hash": "5abbdf19f552b73460b9a331a24bb661a741985794a4c604446ca8005cd61d12"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 1,
+      "timestamp": "2026-11-16T00:10:02.135698Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 2,
+      "timestamp": "2026-11-16T00:10:02.218311Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 3,
+      "timestamp": "2026-11-16T00:10:02.220145Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 4,
+      "timestamp": "2026-11-16T00:10:02.221411Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 5,
+      "timestamp": "2026-11-16T00:10:02.222479Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.998",
+        "hard_remaining_seconds": "119.998",
+        "attempt": "1",
+        "input_chars": "147"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 6,
+      "timestamp": "2026-11-16T00:10:02.224349Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10895"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 7,
+      "timestamp": "2026-11-16T00:10:04.046087Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.176",
+        "hard_remaining_seconds": "118.176",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10895",
+        "elapsed_seconds": "1.819",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1784"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 8,
+      "timestamp": "2026-11-16T00:10:04.048685Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.172",
+        "hard_remaining_seconds": "118.172",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "849",
+        "elapsed_seconds": "1.826",
+        "finish_reason": "stop",
+        "prompt_tokens": "1790",
+        "completion_tokens": "245",
+        "total_tokens": "2035"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 9,
+      "timestamp": "2026-11-16T00:10:04.052834Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 10,
+      "timestamp": "2026-11-16T00:10:04.054445Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 11,
+      "timestamp": "2026-11-16T00:10:04.056509Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 12,
+      "timestamp": "2026-11-16T00:10:04.058438Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.162",
+        "hard_remaining_seconds": "118.162",
+        "attempt": "1",
+        "input_chars": "1106"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 13,
+      "timestamp": "2026-11-16T00:10:04.060853Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.160",
+        "hard_remaining_seconds": "118.160",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4189"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 14,
+      "timestamp": "2026-11-16T00:10:05.094857Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.126",
+        "hard_remaining_seconds": "117.126",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4189",
+        "elapsed_seconds": "1.032",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1354"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 15,
+      "timestamp": "2026-11-16T00:10:05.097709Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.123",
+        "hard_remaining_seconds": "117.123",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "464",
+        "elapsed_seconds": "1.039",
+        "finish_reason": "stop",
+        "prompt_tokens": "798",
+        "completion_tokens": "146",
+        "total_tokens": "944"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 16,
+      "timestamp": "2026-11-16T00:10:05.099530Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 iPhone sales amount $209.586 billion",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 17,
+      "timestamp": "2026-11-16T00:10:05.101293Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.119",
+        "hard_remaining_seconds": "117.119",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "262"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 18,
+      "timestamp": "2026-11-16T00:10:07.718694Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.503",
+        "hard_remaining_seconds": "114.503",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "262",
+        "elapsed_seconds": "2.614",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10439"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 19,
+      "timestamp": "2026-11-16T00:10:07.721559Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 iPhone sales amount $209.586 billion",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 20,
+      "timestamp": "2026-11-16T00:10:07.723860Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 services sales amount $96.169 billion",
+        "purpose": "support",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 21,
+      "timestamp": "2026-11-16T00:10:07.731540Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.490",
+        "hard_remaining_seconds": "114.490",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "263"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 22,
+      "timestamp": "2026-11-16T00:10:10.123881Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.097",
+        "hard_remaining_seconds": "112.097",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "263",
+        "elapsed_seconds": "2.390",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9886"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 23,
+      "timestamp": "2026-11-16T00:10:10.126483Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 services sales amount $96.169 billion",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 24,
+      "timestamp": "2026-11-16T00:10:10.128291Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 revenue breakdown iPhone services",
+        "purpose": "contradiction",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 25,
+      "timestamp": "2026-11-16T00:10:10.129770Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.090",
+        "hard_remaining_seconds": "112.090",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "259"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 26,
+      "timestamp": "2026-11-16T00:10:12.554986Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.666",
+        "hard_remaining_seconds": "109.666",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "259",
+        "elapsed_seconds": "2.423",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10435"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 27,
+      "timestamp": "2026-11-16T00:10:12.558068Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 revenue breakdown iPhone services",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 28,
+      "timestamp": "2026-11-16T00:10:12.560479Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "8",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 29,
+      "timestamp": "2026-11-16T00:10:12.562451Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://bullfincher.io/companies/apple/revenue-by-segment",
+        "slot": "1",
+        "query_ids": "q5,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 30,
+      "timestamp": "2026-11-16T00:10:12.564260Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 31,
+      "timestamp": "2026-11-16T00:10:12.566127Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.654",
+        "hard_remaining_seconds": "109.654",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "184"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 32,
+      "timestamp": "2026-11-16T00:10:12.723440Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.498",
+        "hard_remaining_seconds": "109.498",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "184",
+        "elapsed_seconds": "0.155",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "17882"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 33,
+      "timestamp": "2026-11-16T00:10:12.729721Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "url": "https://bullfincher.io/companies/apple/revenue-by-segment",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 34,
+      "timestamp": "2026-11-16T00:10:12.731428Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 35,
+      "timestamp": "2026-11-16T00:10:12.735918Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.485",
+        "hard_remaining_seconds": "109.485",
+        "attempt": "1",
+        "input_chars": "17897"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 36,
+      "timestamp": "2026-11-16T00:10:12.740318Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.481",
+        "hard_remaining_seconds": "109.480",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34602"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 37,
+      "timestamp": "2026-11-16T00:10:28.021071Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "49.200",
+        "hard_remaining_seconds": "94.200",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34602",
+        "elapsed_seconds": "15.278",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9507"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 38,
+      "timestamp": "2026-11-16T00:10:28.023662Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "49.197",
+        "hard_remaining_seconds": "94.197",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "8178",
+        "elapsed_seconds": "15.288",
+        "finish_reason": "stop",
+        "prompt_tokens": "9921",
+        "completion_tokens": "2869",
+        "total_tokens": "12790"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 39,
+      "timestamp": "2026-11-16T00:10:28.025469Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 40,
+      "timestamp": "2026-11-16T00:10:28.027002Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "49.193",
+        "hard_remaining_seconds": "94.193",
+        "attempt": "2",
+        "input_chars": "17897"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 41,
+      "timestamp": "2026-11-16T00:10:28.030954Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "49.189",
+        "hard_remaining_seconds": "94.189",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34803"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 42,
+      "timestamp": "2026-11-16T00:10:31.183379Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "46.038",
+        "hard_remaining_seconds": "91.038",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34803",
+        "elapsed_seconds": "3.150",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2146"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 43,
+      "timestamp": "2026-11-16T00:10:31.185489Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "46.035",
+        "hard_remaining_seconds": "91.035",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1226",
+        "elapsed_seconds": "3.158",
+        "finish_reason": "stop",
+        "prompt_tokens": "9955",
+        "completion_tokens": "486",
+        "total_tokens": "10441"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 44,
+      "timestamp": "2026-11-16T00:10:31.187586Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "9eb5cac3-01d3-42f3-814f-787f99a29039",
+        "snapshot_id": "df87c02d-0631-4d42-816c-259b9b668dad",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 45,
+      "timestamp": "2026-11-16T00:10:31.188590Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "url": "https://businessquant.com/stocks/aapl/revenue-breakdown",
+        "slot": "2",
+        "query_ids": "q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 46,
+      "timestamp": "2026-11-16T00:10:31.189610Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 47,
+      "timestamp": "2026-11-16T00:10:31.190519Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "46.029",
+        "hard_remaining_seconds": "91.029",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "182"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 48,
+      "timestamp": "2026-11-16T00:10:31.560392Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "45.661",
+        "hard_remaining_seconds": "90.661",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "182",
+        "elapsed_seconds": "0.368",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9306"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 49,
+      "timestamp": "2026-11-16T00:10:31.566225Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "url": "https://businessquant.com/stocks/aapl/revenue-breakdown",
+        "candidate_id": "c16",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 50,
+      "timestamp": "2026-11-16T00:10:31.567706Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 51,
+      "timestamp": "2026-11-16T00:10:31.571594Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "45.649",
+        "hard_remaining_seconds": "90.649",
+        "attempt": "1",
+        "input_chars": "17313"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 52,
+      "timestamp": "2026-11-16T00:10:31.575861Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "45.645",
+        "hard_remaining_seconds": "90.645",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34172"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 53,
+      "timestamp": "2026-11-16T00:10:34.148473Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "43.073",
+        "hard_remaining_seconds": "88.073",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34172",
+        "elapsed_seconds": "2.570",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1858"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 54,
+      "timestamp": "2026-11-16T00:10:34.152006Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "43.069",
+        "hard_remaining_seconds": "88.069",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "940",
+        "elapsed_seconds": "2.580",
+        "finish_reason": "stop",
+        "prompt_tokens": "10272",
+        "completion_tokens": "347",
+        "total_tokens": "10619"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 55,
+      "timestamp": "2026-11-16T00:10:34.155656Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "f7568d41-4c76-45f6-bc95-af0273402e45",
+        "snapshot_id": "929b97d4-5087-4fc5-ab88-bf293595ee21",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 56,
+      "timestamp": "2026-11-16T00:10:34.157331Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "evidence_quality"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 57,
+      "timestamp": "2026-11-16T00:10:34.158867Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 58,
+      "timestamp": "2026-11-16T00:10:34.160680Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "163.060",
+        "hard_remaining_seconds": "208.060",
+        "attempt": "1",
+        "input_chars": "3272"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 59,
+      "timestamp": "2026-11-16T00:10:34.162899Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "163.057",
+        "hard_remaining_seconds": "208.057",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "6448"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 60,
+      "timestamp": "2026-11-16T00:10:35.595352Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "161.626",
+        "hard_remaining_seconds": "206.626",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "6448",
+        "elapsed_seconds": "1.430",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1439"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 61,
+      "timestamp": "2026-11-16T00:10:35.597752Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "161.623",
+        "hard_remaining_seconds": "206.622",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "546",
+        "elapsed_seconds": "1.437",
+        "finish_reason": "stop",
+        "prompt_tokens": "1712",
+        "completion_tokens": "165",
+        "total_tokens": "1877"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 62,
+      "timestamp": "2026-11-16T00:10:35.599288Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "evidence_quality",
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 63,
+      "timestamp": "2026-11-16T00:10:35.600845Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 64,
+      "timestamp": "2026-11-16T00:10:35.602328Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 iPhone sales amount precise $209.586 billion",
+        "purpose": "support",
+        "query_id": "q22"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 65,
+      "timestamp": "2026-11-16T00:10:35.604236Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "161.616",
+        "hard_remaining_seconds": "206.616",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "270"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 66,
+      "timestamp": "2026-11-16T00:10:38.030245Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "159.191",
+        "hard_remaining_seconds": "204.191",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "270",
+        "elapsed_seconds": "2.423",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10681"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 67,
+      "timestamp": "2026-11-16T00:10:38.032359Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 iPhone sales amount precise $209.586 billion",
+        "query_id": "q22",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 68,
+      "timestamp": "2026-11-16T00:10:38.034009Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 services sales amount precise $96.169 billion",
+        "purpose": "support",
+        "query_id": "q24"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 69,
+      "timestamp": "2026-11-16T00:10:38.035656Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "159.185",
+        "hard_remaining_seconds": "204.185",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "271"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 70,
+      "timestamp": "2026-11-16T00:10:40.747821Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "156.473",
+        "hard_remaining_seconds": "201.473",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "271",
+        "elapsed_seconds": "2.710",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8749"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 71,
+      "timestamp": "2026-11-16T00:10:40.750342Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 services sales amount precise $96.169 billion",
+        "query_id": "q24",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 72,
+      "timestamp": "2026-11-16T00:10:40.753020Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 total revenue breakdown by product segment with exact figures",
+        "purpose": "contradiction",
+        "query_id": "q26"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 73,
+      "timestamp": "2026-11-16T00:10:40.754562Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q26",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "156.466",
+        "hard_remaining_seconds": "201.466",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "287"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 74,
+      "timestamp": "2026-11-16T00:10:42.640422Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q26",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "154.580",
+        "hard_remaining_seconds": "199.580",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "287",
+        "elapsed_seconds": "1.885",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "12074"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 75,
+      "timestamp": "2026-11-16T00:10:42.641658Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 total revenue breakdown by product segment with exact figures",
+        "query_id": "q26",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 76,
+      "timestamp": "2026-11-16T00:10:42.642917Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "5",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 77,
+      "timestamp": "2026-11-16T00:10:42.643952Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c28",
+        "url": "https://savest-financial.com/wp-content/uploads/2025/11/Apple-Inc.-Full-Year-2025-Report-Summary.pdf",
+        "slot": "1",
+        "query_ids": "q22,q26",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 78,
+      "timestamp": "2026-11-16T00:10:42.644840Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 79,
+      "timestamp": "2026-11-16T00:10:42.645747Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c28",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.574",
+        "hard_remaining_seconds": "199.574",
+        "provider_call_id": "p29",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "227"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 80,
+      "timestamp": "2026-11-16T00:10:42.842915Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c28",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.377",
+        "hard_remaining_seconds": "199.377",
+        "provider_call_id": "p29",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "227",
+        "elapsed_seconds": "0.196",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5874"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 81,
+      "timestamp": "2026-11-16T00:10:42.846093Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "url": "https://savest-financial.com/wp-content/uploads/2025/11/Apple-Inc.-Full-Year-2025-Report-Summary.pdf",
+        "candidate_id": "c28",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 82,
+      "timestamp": "2026-11-16T00:10:42.846885Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 83,
+      "timestamp": "2026-11-16T00:10:42.848314Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.372",
+        "hard_remaining_seconds": "199.372",
+        "attempt": "1",
+        "input_chars": "9373"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 84,
+      "timestamp": "2026-11-16T00:10:42.850863Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.369",
+        "hard_remaining_seconds": "199.369",
+        "provider_call_id": "p31",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "24962"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 85,
+      "timestamp": "2026-11-16T00:10:45.640896Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "151.580",
+        "hard_remaining_seconds": "196.580",
+        "provider_call_id": "p31",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "24962",
+        "elapsed_seconds": "2.788",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2127"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 86,
+      "timestamp": "2026-11-16T00:10:45.643468Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "151.577",
+        "hard_remaining_seconds": "196.577",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1214",
+        "elapsed_seconds": "2.795",
+        "finish_reason": "stop",
+        "prompt_tokens": "5392",
+        "completion_tokens": "428",
+        "total_tokens": "5820"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 87,
+      "timestamp": "2026-11-16T00:10:45.647242Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "1302b786-8d61-4c76-a0cf-156e4d34ec4d",
+        "snapshot_id": "86d0c550-f31b-4aa4-a215-d6d872dfc26c",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 88,
+      "timestamp": "2026-11-16T00:10:45.649217Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c32",
+        "url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "slot": "2",
+        "query_ids": "q22,q24,q26",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 89,
+      "timestamp": "2026-11-16T00:10:45.651002Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 90,
+      "timestamp": "2026-11-16T00:10:45.652534Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c32",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "151.568",
+        "hard_remaining_seconds": "196.568",
+        "provider_call_id": "p33",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "210"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 91,
+      "timestamp": "2026-11-16T00:10:46.038655Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c32",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "151.182",
+        "hard_remaining_seconds": "196.182",
+        "provider_call_id": "p33",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "210",
+        "elapsed_seconds": "0.385",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "284047"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 92,
+      "timestamp": "2026-11-16T00:10:46.048938Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "candidate_id": "c32",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 93,
+      "timestamp": "2026-11-16T00:10:46.049968Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 94,
+      "timestamp": "2026-11-16T00:10:46.058343Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "151.162",
+        "hard_remaining_seconds": "196.162",
+        "attempt": "1",
+        "input_chars": "19618"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 95,
+      "timestamp": "2026-11-16T00:10:46.060458Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "151.159",
+        "hard_remaining_seconds": "196.159",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "36005"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 96,
+      "timestamp": "2026-11-16T00:10:48.163445Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "149.059",
+        "hard_remaining_seconds": "194.059",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "36005",
+        "elapsed_seconds": "2.100",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1988"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 97,
+      "timestamp": "2026-11-16T00:10:48.166651Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "149.054",
+        "hard_remaining_seconds": "194.054",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1081",
+        "elapsed_seconds": "2.108",
+        "finish_reason": "stop",
+        "prompt_tokens": "8596",
+        "completion_tokens": "345",
+        "total_tokens": "8941"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 98,
+      "timestamp": "2026-11-16T00:10:48.170966Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "5490642d-8f70-42c0-8f96-cee8b11550a6",
+        "snapshot_id": "ba4c7932-c6a4-47f8-8004-25e096ab988a",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 99,
+      "timestamp": "2026-11-16T00:10:48.173054Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 100,
+      "timestamp": "2026-11-16T00:10:48.177383Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 101,
+      "timestamp": "2026-11-16T00:10:48.179867Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "194.041",
+        "hard_remaining_seconds": "194.041",
+        "attempt": "1",
+        "input_chars": "8522"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 102,
+      "timestamp": "2026-11-16T00:10:48.182193Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "194.038",
+        "hard_remaining_seconds": "194.038",
+        "provider_call_id": "p37",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13542"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 103,
+      "timestamp": "2026-11-16T00:10:50.958575Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.263",
+        "hard_remaining_seconds": "191.263",
+        "provider_call_id": "p37",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13542",
+        "elapsed_seconds": "2.774",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1694"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 104,
+      "timestamp": "2026-11-16T00:10:50.961364Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.259",
+        "hard_remaining_seconds": "191.259",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "813",
+        "elapsed_seconds": "2.782",
+        "finish_reason": "stop",
+        "prompt_tokens": "4392",
+        "completion_tokens": "366",
+        "total_tokens": "4758"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 105,
+      "timestamp": "2026-11-16T00:10:50.964239Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.257",
+        "hard_remaining_seconds": "191.257",
+        "attempt": "1",
+        "input_chars": "9329"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 106,
+      "timestamp": "2026-11-16T00:10:50.966502Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.254",
+        "hard_remaining_seconds": "191.254",
+        "provider_call_id": "p39",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14364"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 107,
+      "timestamp": "2026-11-16T00:10:51.759167Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "190.462",
+        "hard_remaining_seconds": "190.462",
+        "provider_call_id": "p39",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14364",
+        "elapsed_seconds": "0.790",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1107"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 108,
+      "timestamp": "2026-11-16T00:10:51.761515Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "190.459",
+        "hard_remaining_seconds": "190.459",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "239",
+        "elapsed_seconds": "0.798",
+        "finish_reason": "stop",
+        "prompt_tokens": "4723",
+        "completion_tokens": "72",
+        "total_tokens": "4795"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 109,
+      "timestamp": "2026-11-16T00:10:51.763973Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision",
+        "affected_units": "0"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 110,
+      "timestamp": "2026-11-16T00:10:51.766650Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "190.454",
+        "hard_remaining_seconds": "190.454",
+        "attempt": "1",
+        "input_chars": "8751"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 111,
+      "timestamp": "2026-11-16T00:10:51.768991Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "190.451",
+        "hard_remaining_seconds": "190.451",
+        "provider_call_id": "p41",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13781"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 112,
+      "timestamp": "2026-11-16T00:10:54.027432Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "188.195",
+        "hard_remaining_seconds": "188.195",
+        "provider_call_id": "p41",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13781",
+        "elapsed_seconds": "2.255",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1690"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 113,
+      "timestamp": "2026-11-16T00:10:54.030279Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "188.190",
+        "hard_remaining_seconds": "188.190",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "809",
+        "elapsed_seconds": "2.263",
+        "finish_reason": "stop",
+        "prompt_tokens": "4438",
+        "completion_tokens": "363",
+        "total_tokens": "4801"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 114,
+      "timestamp": "2026-11-16T00:10:54.032590Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "188.188",
+        "hard_remaining_seconds": "188.188",
+        "attempt": "1",
+        "input_chars": "9325"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 115,
+      "timestamp": "2026-11-16T00:10:54.034815Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "188.185",
+        "hard_remaining_seconds": "188.185",
+        "provider_call_id": "p43",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14360"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 116,
+      "timestamp": "2026-11-16T00:10:54.788033Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "187.434",
+        "hard_remaining_seconds": "187.434",
+        "provider_call_id": "p43",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14360",
+        "elapsed_seconds": "0.750",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1110"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 117,
+      "timestamp": "2026-11-16T00:10:54.790887Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "187.430",
+        "hard_remaining_seconds": "187.430",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "242",
+        "elapsed_seconds": "0.758",
+        "finish_reason": "stop",
+        "prompt_tokens": "4720",
+        "completion_tokens": "75",
+        "total_tokens": "4795"
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 118,
+      "timestamp": "2026-11-16T00:10:54.792945Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "c69f3e70-47ef-4ff7-8d92-7023527194f8",
+      "sequence": 119,
+      "timestamp": "2026-11-16T00:10:54.795378Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 52.860568083000544,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.817
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.03
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.611
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.388
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.422
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.149
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 15.276
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.149
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.361
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.568
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.429
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.42
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.709
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.882
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.194
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.785
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.181
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.097
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.772
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.788
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.252
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.749
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.8190985420005745,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.0316861250030342,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.6142568750001374,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.3896020839965786,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.4230641670001205,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.15498504200513707,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 15.278324625003734,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.1501786669978173,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.3677963330046623,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.569914500003506,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.4302545829996234,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.4232540000011795,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.710176832995785,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.884616499999538,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.1958657079958357,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.7877016669954173,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.38454658299451694,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.099618709005881,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.77377158300078,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7900965420049033,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.2549865420005517,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7502750419953372,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

@@ -109,6 +109,24 @@ def normalize_interpretation(proposal, original):
                 updates["comparison"] = comparisons[0]
         containers.append(component.model_copy(update=updates) if updates else component)
     kept = containers
+    # Named operands are researchable; do not ask the user to supply their facts.
+    named_pair = proposal.method == "record_comparison" and any(
+        c.comparison
+        and not c.comparison.exhaustive
+        and _locate(c.comparison.left, original)
+        and _locate(c.comparison.right, original)
+        and c.comparison.left.casefold() != c.comparison.right.casefold()
+        for c in kept
+    )
+    if named_pair:
+        return proposal.model_copy(
+            update={
+                "components": kept,
+                "questions": [],
+                "missing_scope": [],
+                "clarification_reason": None,
+            }
+        )
     if kept == list(proposal.components):
         return proposal
     return proposal.model_copy(update={"components": kept})
@@ -160,7 +178,9 @@ async def interpret(tasks, investigation):
         "Preserve the submitted claim EXACTLY, including all descriptive modifiers, dates, "
         "negation and quantities. Do not correct from memory or decide truth. Choose ONE method; "
         "Python derives support, scope and the saved assertion from your response. Direct facts "
-        "use record_lookup; direct comparisons use record_comparison. Other types use the "
+        "use record_lookup; direct comparisons use record_comparison. Copy each operand's "
+        "name exactly from the original claim. When both operands are named, do not ask "
+        "for clarification: research their separately cited facts. Other types use the "
         "corresponding unsupported method: causal, prediction, counterfactual, "
         "scientific_inference, interpretive or mixed. Topics are metadata, not methods. "
         "An unknown answer or unavailable record is not missing scope. A scientific existence "

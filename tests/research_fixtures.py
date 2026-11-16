@@ -126,6 +126,8 @@ class Providers:
                 ],
                 "gap": None,
             }
+        if schema == "ComparisonFacts":
+            return {"left": None, "right": None, "compatible": False, "relation": "context"}
         if schema == "Synthesis":
             evidence_id = data["evidence"][0]["id"]
             correction = (

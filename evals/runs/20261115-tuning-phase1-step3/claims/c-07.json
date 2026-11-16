@@ -1,0 +1,1999 @@
+{
+  "id": "c-07",
+  "live": true,
+  "investigation": {
+    "id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+    "claim": "In the United States, the years from the 1787 Constitution signing in Philadelphia to Bill of Rights ratification exceeded the years from congressional proposal to ratification.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-16T00:02:54.464917Z",
+    "started_at": "2026-11-16T00:02:54.648533Z",
+    "finished_at": "2026-11-16T00:03:15.623804Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "true",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "In the United States, the years from the 1787 Constitution signing in Philadelphia to Bill of Rights ratification exceeded the years from congressional proposal to ratification.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Compare two time intervals: (1) US Constitution signing to Bill of Rights ratification, and (2) congressional proposal to ratification of same Bill of Rights.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c2",
+              "text": "In the United States, the years from the 1787 Constitution signing in Philadelphia to Bill of Rights ratification exceeded the years from congressional proposal to ratification.",
+              "role": "essential",
+              "subject": "Bill of Rights",
+              "predicate": "ratification",
+              "timeframe": null,
+              "location_or_population": "United States",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The first interval spans 1787 to 1791 (Bill of Rights ratification). The second interval spans congressional proposal (September 25, 1789) to ratification completion (December 15, 1791). Both intervals concern the same Bill of Rights under the US Constitution.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "true",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c2",
+            "outcome": "supported",
+            "evidence_ids": [
+              "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+              "ffd21c49-caed-426e-b8bd-48be799b694e"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+          "ffd21c49-caed-426e-b8bd-48be799b694e"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "The interval from Constitution signing (1787) to Bill of Rights ratification (1791) is 4 years, while the interval from congressional proposal (September 1789) to ratification (December 1791) is approximately 2 years and 3 months. The first interval exceeds the second.",
+          "evidence_ids": [
+            "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+            "ffd21c49-caed-426e-b8bd-48be799b694e"
+          ]
+        },
+        {
+          "text": "Constitution signing occurred September 17, 1787 in Philadelphia (span 21). Congressional proposal of 12 amendments occurred September 25, 1789 (span 29 and 12). Bill of Rights ratified December 15, 1791 (span 33 and 14).",
+          "evidence_ids": [
+            "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+            "ffd21c49-caed-426e-b8bd-48be799b694e"
+          ]
+        },
+        {
+          "text": "Madison proposed 19 amendments on June 8, 1789; 12 were approved September 25, 1789; 10 became the Bill of Rights upon ratification December 15, 1791 (spans 29, 31, 33).",
+          "evidence_ids": [
+            "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+            "ffd21c49-caed-426e-b8bd-48be799b694e"
+          ]
+        }
+      ],
+      "limitations": [
+        "Date precision limited to year-level resolution; no month-day detail provided for signing event.",
+        "Span 21 and 29-33 are from a FAQ compilation that may consolidate or simplify dates; not a primary legislative record.",
+        "Source does not state the 1787 signing date or compute the 1787-1791 interval",
+        "Does not compute or state the comparison interval years",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 6,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.610203999996884,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.0906595409978763,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.385365499998443,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.733098416996654,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.4264434579963563,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.18067995800083736,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.7866524170021876,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.21252670900139492,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.5713643330018385,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.2264530419997755,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6091699579992564,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 21412,
+        "completion_tokens": 1931,
+        "total_tokens": 23343
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Compare two time intervals: (1) US Constitution signing to Bill of Rights ratification, and (2) congressional proposal to ratification of same Bill of Rights.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c2",
+          "text": "In the United States, the years from the 1787 Constitution signing in Philadelphia to Bill of Rights ratification exceeded the years from congressional proposal to ratification.",
+          "role": "essential",
+          "subject": "Bill of Rights",
+          "predicate": "ratification",
+          "timeframe": null,
+          "location_or_population": "United States",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "events": "/investigations/8ea36bd5-8c85-4500-ae40-1d6f93c88906/events",
+      "evidence": "/investigations/8ea36bd5-8c85-4500-ae40-1d6f93c88906/evidence",
+      "comparison": "/investigations/8ea36bd5-8c85-4500-ae40-1d6f93c88906/comparison",
+      "refresh": "/investigations/8ea36bd5-8c85-4500-ae40-1d6f93c88906/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "url": "https://constitutioncenter.org/media/files/BOR-faqs.pdf",
+        "canonical_url": "https://constitutioncenter.org/media/files/BOR-faqs.pdf",
+        "title": "BILL OF RIGHTS FAQS",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:03:07.154389Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "225eb1880e5fc7a56a08a97559b58cba91693d43fbe6b86f75d9f49f952108e5",
+        "duplicate_group": "225eb1880e5fc7a56a08a97559b58cba91693d43fbe6b86f75d9f49f952108e5",
+        "limitations": []
+      },
+      {
+        "id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        "canonical_url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        "title": "The Bill of Rights: A Transcription | National Archives",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:03:10.179266Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "857d956066cae81205f838b5326c8e32602d776d2c30d39658f92cd2b3452d25",
+        "duplicate_group": "857d956066cae81205f838b5326c8e32602d776d2c30d39658f92cd2b3452d25",
+        "limitations": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+            "span_ids": [
+              21,
+              29,
+              31,
+              33
+            ]
+          },
+          "rationale": "Span 21 states the Constitution was signed on September 17, 1787. Span 29 states Madison proposed 19 amendments on June 8, 1789. Span 31 states the 12 amendments were approved on September 25, 1789. Span 33 states the 10 amendments now known as the Bill of Rights were ratified on December 15, 1791.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "BILL OF RIGHTS FAQS",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            21,
+            29,
+            31,
+            33
+          ],
+          "provenance_note": "Primary source citations from the FAQ document; no external cross-referencing performed.",
+          "limitations": [
+            "Date precision limited to year-level resolution; no month-day detail provided for signing event.",
+            "Span 21 and 29-33 are from a FAQ compilation that may consolidate or simplify dates; not a primary legislative record."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              21
+            ],
+            "start": 3000,
+            "end": 3215,
+            "text": "A bill of rights was overruled. -MORE- ADD ONE/BILL OF RIGHTS FAQS The Constitution was signed by 39 delegates on September 17, 1787, at the Pennsylvania State House, now known as Independence Hall, in Philadelphia.",
+            "quote_hash": "389602407a35b70b03a37ae62717264e7399fbdc8ea28e10017098c30e0f2f6a"
+          },
+          {
+            "span_ids": [
+              29
+            ],
+            "start": 4564,
+            "end": 4641,
+            "text": "Madison drafted 19 amendments, which he proposed to Congress on June 8, 1789.",
+            "quote_hash": "ab310e4136fd494f399746a0c7d84c7ca5df0044d6f1a73293c73bf8d24acdc2"
+          },
+          {
+            "span_ids": [
+              31
+            ],
+            "start": 4773,
+            "end": 4858,
+            "text": "These 12 were approved on September 25, 1789 and sent to the states for ratification.",
+            "quote_hash": "8bf297782d590d955f6d85ca691b721b2126e55c65deef2b3983aaf999e0215d"
+          },
+          {
+            "span_ids": [
+              33
+            ],
+            "start": 4897,
+            "end": 5033,
+            "text": "The 10 amendments that are now known as the Bill of Rights were ratified on December 15, 1791, thus becoming a part of the Constitution.",
+            "quote_hash": "fd1450c99dc0a189e0c67dbbd782f80681d4ec9872300d5e1183d0fa90a52ff2"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "ffd21c49-caed-426e-b8bd-48be799b694e",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+            "span_ids": [
+              12,
+              14,
+              19
+            ]
+          },
+          "rationale": "Source states that on September 25, 1789, the First Congress proposed 12 amendments (congressional proposal). Ten were ratified by three-fourths of state legislatures on December 15, 1791. The signed Constitution was in 1787 in Philadelphia. The span from 1787 Constitution signing to Bill of Rights ",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": true,
+          "synthesis_coverage": "The source explicitly provides the congressional proposal date (September 25, 1789) and ratification date (December 15, 1791) for the Bill of Rights, and the Constitution signing date (1787) from the assertion context. No single span directly compares the full interval from 1787 signing to 1791 ratf",
+          "publisher": "National Archives",
+          "origin": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            12,
+            14,
+            19
+          ],
+          "provenance_note": "Spans 12, 14, and 19 give the proposal date, ratification date, and document context; 1787 signing date is from the assertion, not the source text.",
+          "limitations": [
+            "Source does not state the 1787 signing date or compute the 1787-1791 interval",
+            "Does not compute or state the comparison interval years"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              12
+            ],
+            "start": 771,
+            "end": 877,
+            "text": "On September 25, 1789, the First Congress of the United States proposed 12 amendments to the Constitution.",
+            "quote_hash": "bc2bfd6fdf93f34328a40663b202bda93a0059be023c18382bfc4845cf91915b"
+          },
+          {
+            "span_ids": [
+              14
+            ],
+            "start": 1003,
+            "end": 1115,
+            "text": "Ten of the proposed 12 amendments were ratified by three-fourths of the state legislatures on December 15, 1791.",
+            "quote_hash": "014d229a2085c62dfa56c1ac4a044accd34b537d978fa05e717ad24bf3b05010"
+          },
+          {
+            "span_ids": [
+              19
+            ],
+            "start": 1377,
+            "end": 1483,
+            "text": "## Transcription of the 1789 Joint Resolution of Congress Proposing 12 Amendments to the U.S. Constitution",
+            "quote_hash": "bc6ab6a65b7ad917d1bebbc26f4f7f142ddef45c93d053965070c78cf273a658"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 1,
+      "timestamp": "2026-11-16T00:02:54.464917Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 2,
+      "timestamp": "2026-11-16T00:02:54.648533Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 3,
+      "timestamp": "2026-11-16T00:02:54.651019Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 4,
+      "timestamp": "2026-11-16T00:02:54.652838Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 5,
+      "timestamp": "2026-11-16T00:02:54.654709Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "attempt": "1",
+        "input_chars": "205"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 6,
+      "timestamp": "2026-11-16T00:02:54.658115Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.993",
+        "hard_remaining_seconds": "119.993",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10953"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 7,
+      "timestamp": "2026-11-16T00:02:57.277700Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.381",
+        "hard_remaining_seconds": "117.381",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10953",
+        "elapsed_seconds": "2.610",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2513"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 8,
+      "timestamp": "2026-11-16T00:02:57.280560Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.371",
+        "hard_remaining_seconds": "117.371",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1524",
+        "elapsed_seconds": "2.626",
+        "finish_reason": "stop",
+        "prompt_tokens": "1784",
+        "completion_tokens": "412",
+        "total_tokens": "2196"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 9,
+      "timestamp": "2026-11-16T00:02:57.285182Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 10,
+      "timestamp": "2026-11-16T00:02:57.286857Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 11,
+      "timestamp": "2026-11-16T00:02:57.288425Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 12,
+      "timestamp": "2026-11-16T00:02:57.290013Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.361",
+        "hard_remaining_seconds": "117.361",
+        "attempt": "1",
+        "input_chars": "1299"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 13,
+      "timestamp": "2026-11-16T00:02:57.291802Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.359",
+        "hard_remaining_seconds": "117.359",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4380"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 14,
+      "timestamp": "2026-11-16T00:02:58.384095Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.267",
+        "hard_remaining_seconds": "116.267",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4380",
+        "elapsed_seconds": "1.091",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1542"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 15,
+      "timestamp": "2026-11-16T00:02:58.386641Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.264",
+        "hard_remaining_seconds": "116.264",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "652",
+        "elapsed_seconds": "1.097",
+        "finish_reason": "stop",
+        "prompt_tokens": "791",
+        "completion_tokens": "159",
+        "total_tokens": "950"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 16,
+      "timestamp": "2026-11-16T00:02:58.388636Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Timeline: US Constitution signing date in Philadelphia in 1787, Bill of Rights proposal date, and Bill of Rights ratification date",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 17,
+      "timestamp": "2026-11-16T00:02:58.390248Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.261",
+        "hard_remaining_seconds": "116.261",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "338"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 18,
+      "timestamp": "2026-11-16T00:03:00.777940Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.874",
+        "hard_remaining_seconds": "113.874",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "338",
+        "elapsed_seconds": "2.385",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10409"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 19,
+      "timestamp": "2026-11-16T00:03:00.779721Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Timeline: US Constitution signing date in Philadelphia in 1787, Bill of Rights proposal date, and Bill of Rights ratification date",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 20,
+      "timestamp": "2026-11-16T00:03:00.781533Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Timeline: Dates of congressional proposal and ratification of the US Bill of Rights",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 21,
+      "timestamp": "2026-11-16T00:03:00.783202Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.868",
+        "hard_remaining_seconds": "113.868",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 22,
+      "timestamp": "2026-11-16T00:03:04.519860Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.133",
+        "hard_remaining_seconds": "110.133",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291",
+        "elapsed_seconds": "3.733",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7865"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 23,
+      "timestamp": "2026-11-16T00:03:04.523359Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Timeline: Dates of congressional proposal and ratification of the US Bill of Rights",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 24,
+      "timestamp": "2026-11-16T00:03:04.526029Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Verification of whether 1787 Constitution signing to Bill of Rights ratification interval exceeds congressional proposal to ratification interval for the Bill of Rights",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 25,
+      "timestamp": "2026-11-16T00:03:04.534092Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.123",
+        "hard_remaining_seconds": "110.123",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "376"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 26,
+      "timestamp": "2026-11-16T00:03:06.966189Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.685",
+        "hard_remaining_seconds": "107.685",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "376",
+        "elapsed_seconds": "2.426",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9214"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 27,
+      "timestamp": "2026-11-16T00:03:06.967576Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Verification of whether 1787 Constitution signing to Bill of Rights ratification interval exceeds congressional proposal to ratification interval for the Bill of Rights",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 28,
+      "timestamp": "2026-11-16T00:03:06.968664Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "11",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 29,
+      "timestamp": "2026-11-16T00:03:06.969650Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://constitutioncenter.org/media/files/BOR-faqs.pdf",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 30,
+      "timestamp": "2026-11-16T00:03:06.970616Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 31,
+      "timestamp": "2026-11-16T00:03:06.971690Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.679",
+        "hard_remaining_seconds": "107.679",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "182"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 32,
+      "timestamp": "2026-11-16T00:03:07.153747Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.497",
+        "hard_remaining_seconds": "107.497",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "182",
+        "elapsed_seconds": "0.181",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6881"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 33,
+      "timestamp": "2026-11-16T00:03:07.156820Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "url": "https://constitutioncenter.org/media/files/BOR-faqs.pdf",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 34,
+      "timestamp": "2026-11-16T00:03:07.157838Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 35,
+      "timestamp": "2026-11-16T00:03:07.159521Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.491",
+        "hard_remaining_seconds": "107.491",
+        "attempt": "1",
+        "input_chars": "10795"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 36,
+      "timestamp": "2026-11-16T00:03:07.161732Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.489",
+        "hard_remaining_seconds": "107.489",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "26450"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 37,
+      "timestamp": "2026-11-16T00:03:09.953217Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "59.701",
+        "hard_remaining_seconds": "104.701",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "26450",
+        "elapsed_seconds": "2.787",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2007"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 38,
+      "timestamp": "2026-11-16T00:03:09.956452Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "59.694",
+        "hard_remaining_seconds": "104.694",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1098",
+        "elapsed_seconds": "2.797",
+        "finish_reason": "stop",
+        "prompt_tokens": "5549",
+        "completion_tokens": "357",
+        "total_tokens": "5906"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 39,
+      "timestamp": "2026-11-16T00:03:09.959646Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "cb6194f2-3ce2-4b7a-ad2c-f69d0aa7c37e",
+        "snapshot_id": "555d7fb2-8ce2-4600-aeeb-84899ed14908",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 40,
+      "timestamp": "2026-11-16T00:03:09.961374Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        "slot": "2",
+        "query_ids": "q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 41,
+      "timestamp": "2026-11-16T00:03:09.963413Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 42,
+      "timestamp": "2026-11-16T00:03:09.964510Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.686",
+        "hard_remaining_seconds": "104.686",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "191"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 43,
+      "timestamp": "2026-11-16T00:03:10.178528Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.473",
+        "hard_remaining_seconds": "104.473",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "191",
+        "elapsed_seconds": "0.213",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10772"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 44,
+      "timestamp": "2026-11-16T00:03:10.182929Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 45,
+      "timestamp": "2026-11-16T00:03:10.184970Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 46,
+      "timestamp": "2026-11-16T00:03:10.188228Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.462",
+        "hard_remaining_seconds": "104.462",
+        "attempt": "1",
+        "input_chars": "15429"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 47,
+      "timestamp": "2026-11-16T00:03:10.190205Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.460",
+        "hard_remaining_seconds": "104.460",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "31312"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 48,
+      "timestamp": "2026-11-16T00:03:12.763279Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "56.888",
+        "hard_remaining_seconds": "101.888",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "31312",
+        "elapsed_seconds": "2.571",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2536"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 49,
+      "timestamp": "2026-11-16T00:03:12.764751Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "56.886",
+        "hard_remaining_seconds": "101.886",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1621",
+        "elapsed_seconds": "2.576",
+        "finish_reason": "stop",
+        "prompt_tokens": "6891",
+        "completion_tokens": "486",
+        "total_tokens": "7377"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 50,
+      "timestamp": "2026-11-16T00:03:12.767759Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "ffd21c49-caed-426e-b8bd-48be799b694e",
+        "snapshot_id": "352bd871-ee39-47c0-aa09-7ea43c0d6b18",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 51,
+      "timestamp": "2026-11-16T00:03:12.769064Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 52,
+      "timestamp": "2026-11-16T00:03:12.771282Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 53,
+      "timestamp": "2026-11-16T00:03:12.772505Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "101.878",
+        "hard_remaining_seconds": "101.878",
+        "attempt": "1",
+        "input_chars": "6136"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 54,
+      "timestamp": "2026-11-16T00:03:12.773812Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "101.877",
+        "hard_remaining_seconds": "101.877",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10947"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 55,
+      "timestamp": "2026-11-16T00:03:15.002122Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.649",
+        "hard_remaining_seconds": "99.649",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10947",
+        "elapsed_seconds": "2.226",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1918"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 56,
+      "timestamp": "2026-11-16T00:03:15.004653Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.646",
+        "hard_remaining_seconds": "99.646",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1033",
+        "elapsed_seconds": "2.232",
+        "finish_reason": "stop",
+        "prompt_tokens": "2990",
+        "completion_tokens": "452",
+        "total_tokens": "3442"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 57,
+      "timestamp": "2026-11-16T00:03:15.006249Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.644",
+        "hard_remaining_seconds": "99.644",
+        "attempt": "1",
+        "input_chars": "7163"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 58,
+      "timestamp": "2026-11-16T00:03:15.009162Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.643",
+        "hard_remaining_seconds": "99.643",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11993"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 59,
+      "timestamp": "2026-11-16T00:03:15.620339Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.031",
+        "hard_remaining_seconds": "99.031",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11993",
+        "elapsed_seconds": "0.609",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1070"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 60,
+      "timestamp": "2026-11-16T00:03:15.622280Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.028",
+        "hard_remaining_seconds": "99.028",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "206",
+        "elapsed_seconds": "0.616",
+        "finish_reason": "stop",
+        "prompt_tokens": "3407",
+        "completion_tokens": "65",
+        "total_tokens": "3472"
+      }
+    },
+    {
+      "investigation_id": "8ea36bd5-8c85-4500-ae40-1d6f93c88906",
+      "sequence": 61,
+      "timestamp": "2026-11-16T00:03:15.623804Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 21.410952707999968,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.609
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.09
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.384
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.732
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.422
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.18
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.786
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.212
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.571
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.226
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.609
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.610203999996884,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.0906595409978763,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.385365499998443,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.733098416996654,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.4264434579963563,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.18067995800083736,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.7866524170021876,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.21252670900139492,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.5713643330018385,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.2264530419997755,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6091699579992564,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}
