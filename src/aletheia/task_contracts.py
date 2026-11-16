@@ -117,4 +117,4 @@ class AlmostCorrection(saved.AlmostCorrection):
 
 class Synthesis(saved.Synthesis):
     almost_correction: AlmostCorrection | None
-    units: Annotated[list[ExplanationUnit], Field(min_length=1, max_length=3)]
+    units: Annotated[list[ExplanationUnit], Field(min_length=1, max_length=6)]

@@ -165,12 +165,14 @@ class Providers:
             return {
                 "claim_is_false": True,
                 "supported_units": [] if o["invalid_explanation"] else [0],
+                "single_fact_units": [0],
             }
         if schema == "ExplanationCheck":
             return {
                 "decision_supported": True,
                 "rejected_component_ids": [],
                 "supported_units": [] if o["invalid_explanation"] else [0],
+                "single_fact_units": [0],
                 "core_supported": o["almost"],
                 "correction_supported": o["almost"],
                 "corrected_claim_supported": o["almost"] and not o["invalid_correction"],

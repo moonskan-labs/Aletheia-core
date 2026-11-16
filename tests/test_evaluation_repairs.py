@@ -174,7 +174,7 @@ def test_generation_limits_do_not_invalidate_older_saved_assessments():
     with pytest.raises(ValueError):
         AssessmentBatch.model_validate(value)
     schema = Synthesis.model_json_schema()
-    assert schema["properties"]["units"]["maxItems"] == 3
+    assert schema["properties"]["units"]["maxItems"] == 6
     assert schema["$defs"]["ExplanationUnit"]["properties"]["text"]["maxLength"] == 300
 
 
@@ -225,6 +225,7 @@ async def test_explanation_checker_receives_explicit_zero_based_indices(settings
             if schema == "ExplanationCheck":
                 assert [u["index"] for u in data["units"]] == [0, 1]
                 value["supported_units"] = [u["index"] for u in data["units"]]
+                value["single_fact_units"] = [u["index"] for u in data["units"]]
             return value
 
     async with running(settings, TwoUnits()) as (_, client):

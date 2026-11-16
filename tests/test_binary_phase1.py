@@ -366,7 +366,11 @@ async def test_fallback_comparison_still_requires_final_confirmation(confirm):
                 value = {"units": facts, "almost_correction": None}
             else:
                 assert name == "check_explanation"
-                value = {"claim_is_false": confirm, "supported_units": [0, 1]}
+                value = {
+                    "claim_is_false": confirm,
+                    "supported_units": [0, 1],
+                    "single_fact_units": [0, 1],
+                }
             result = schema.model_validate(value)
             validate(result)
             return result

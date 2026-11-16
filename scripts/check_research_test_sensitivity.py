@@ -10,6 +10,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MUTATIONS = (
     (
+        "fully supported bundled facts bypass the one-fact check",
+        "verdicts.py",
+        "if non_atomic:",
+        "if False:",
+        "tests/test_explanation_facts.py::test_non_atomic_explanation_is_withheld_even_with_supported_citations[supports]",
+    ),
+    (
         "quick budget prevents repairs of two independent source assessments",
         "budgets.py",
         "super().__init__(10, 4, 4, self.started + 120)",
