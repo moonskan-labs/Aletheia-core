@@ -337,15 +337,19 @@ async def test_b0006_final_check_diagnostics_and_bounded_repair(settings, recove
         initial = await client.post("/investigations", json={"claim": text})
         result = await terminal(client, initial.json()["id"])
         assert providers.checks == 2
-        assert result["status"] == ("completed" if recover else "partial")
+        # The decision was confirmed, so rejected prose never removes the verdict: a
+        # repaired sentence is published, or else the cited passage is quoted.
+        assert result["status"] == "completed"
+        assert result["result"]["verdict"] == "true"
+        unit = result["result"]["explanation"][0]["text"]
         if recover:
-            assert result["result"]["verdict"] == "true"
+            assert unit == passage
         else:
-            assert result["result"]["verdict"] is None
-            assert result["stop_reason"] == "semantic_rejection"
+            assert unit.startswith('The cited source states: "')
+            assert unit[26:-1].removesuffix(" …") in " ".join(passage.split())
         assert (await client.get(result["links"]["evidence"])).json()["evidence"]
         artifacts = list(settings.database_path.parent.glob("*.diagnostics/*.json"))
-        assert len(artifacts) == (1 if recover else 2)
+        assert len(artifacts) == 1
         diagnostic = json.loads(artifacts[0].read_text())
         assert diagnostic["failed_conditions"] == ["unsupported_explanation"]
         assert diagnostic["affected_units"] == [0]
@@ -448,7 +452,7 @@ async def test_diagnostic_write_failure_does_not_replace_semantic_failure(settin
         return original(path, *args, **kwargs)
 
     monkeypatch.setattr(Path, "mkdir", fail_diagnostics)
-    async with running(settings, Providers(invalid_explanation=True)) as (_, client):
+    async with running(settings, Providers(unconfirmed_decision=True)) as (_, client):
         saved = await submit(client)
         assert saved["result"]["verdict"] is None
         assert saved["stop_reason"] == "semantic_rejection"

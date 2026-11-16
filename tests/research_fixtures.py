@@ -26,6 +26,7 @@ class Providers:
         invalid_citation=False,
         invalid_plan=False,
         invalid_explanation=False,
+        unconfirmed_decision=False,
         authentication_failure=False,
         scope_match=True,
         synthesis=False,
@@ -163,13 +164,13 @@ class Providers:
             }
         if schema == "FalseExplanationCheck":
             return {
-                "claim_is_false": True,
+                "claim_is_false": not o["unconfirmed_decision"],
                 "supported_units": [] if o["invalid_explanation"] else [0],
                 "single_fact_units": [0],
             }
         if schema == "ExplanationCheck":
             return {
-                "decision_supported": True,
+                "decision_supported": not o["unconfirmed_decision"],
                 "rejected_component_ids": [],
                 "supported_units": [] if o["invalid_explanation"] else [0],
                 "single_fact_units": [0],

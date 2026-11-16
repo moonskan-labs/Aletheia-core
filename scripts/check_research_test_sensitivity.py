@@ -14,7 +14,21 @@ MUTATIONS = (
         "verdicts.py",
         "if non_atomic:",
         "if False:",
-        "tests/test_explanation_facts.py::test_non_atomic_explanation_is_withheld_even_with_supported_citations[supports]",
+        "tests/test_explanation_facts.py::test_bundled_sentence_is_never_published_but_the_confirmed_verdict_stays[supports]",
+    ),
+    (
+        "rejected prose removes a verdict the decision check confirmed",
+        "verdicts.py",
+        "if prose_only and (kept or final):",
+        "if False:",
+        "tests/test_explanation_facts.py::test_unsupported_sentence_is_dropped_without_a_second_attempt",
+    ),
+    (
+        "an unconfirmed decision is published when the prose is good",
+        "verdicts.py",
+        "and (decision_passed is not True or rejected_ids)",
+        "and False",
+        "tests/test_explanation_facts.py::test_good_prose_cannot_publish_a_decision_the_check_did_not_confirm[supports]",
     ),
     (
         "quick budget prevents repairs of two independent source assessments",

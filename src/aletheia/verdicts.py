@@ -9,7 +9,8 @@ from pydantic import Field, ValidationError
 from aletheia.diagnostics import emit_diagnostic
 from aletheia.direct import component_findings
 from aletheia.phase_one_contracts import ComponentId, FinalCheckDiagnostic
-from aletheia.research_contracts import Finding, QualificationFlag, Record
+from aletheia.providers.errors import ErrorCode, ProviderError
+from aletheia.research_contracts import ExplanationUnit, Finding, QualificationFlag, Record
 from aletheia.task_contracts import Synthesis
 from aletheia.tasks import InvalidTask, TaskValidationError
 
@@ -170,9 +171,67 @@ def validate_correction(correction, assertion, computed, available, route, sourc
             raise TaskValidationError("correction_insufficient")
 
 
+QUOTED_LIMITATION = (
+    "The written explanation did not pass the passage check; "
+    "the cited passages are quoted directly instead."
+)
+PROSE_CONDITIONS = {"unsupported_explanation", "non_atomic_explanation"}
+
+
+def quoted_units(computed, evidence):
+    """Explain a confirmed verdict with the decisive passages themselves.
+
+    Used only when no model-written sentence passed the passage check. A verbatim
+    quotation of a cited passage cannot say more than that passage does.
+    """
+    by_id = {e.id: e for e in evidence if e.admissible}
+    wanted = {"true": "supports", "false": "contradicts"}.get(computed.verdict)
+    decisive = {"true": "supported", "false": "contradicted"}.get(computed.verdict)
+    chosen = []
+    for component in computed.components:
+        if component.outcome != decisive:
+            continue
+        items = [by_id[i] for i in component.evidence_ids if i in by_id]
+        direct = [e for e in items if e.assessment.relation == wanted]
+        # A comparison can rest on operands read from separate passages, each
+        # recorded as context; quote those rather than explaining nothing.
+        chosen += direct or [e for e in items if e.assessment.scope_match]
+    if not computed.components:
+        chosen = [e for e in by_id.values() if e.assessment.relation == wanted]
+    units, seen = [], set()
+    for item in chosen:
+        if item.id in seen or not item.excerpts:
+            continue
+        seen.add(item.id)
+        quote = " ".join(item.excerpts[0].text.split())
+        if len(quote) > 240:
+            quote = quote[:240].rsplit(" ", 1)[0] + " …"
+        units.append(
+            ExplanationUnit(text=f'The cited source states: "{quote}"', evidence_ids=[item.id])
+        )
+        if len(units) == 6:
+            break
+    return units
+
+
 async def _synthesize_once(
-    tasks, assertion, computed, evidence, route, sources, repair=None, allow_correction=True
+    tasks,
+    assertion,
+    computed,
+    evidence,
+    route,
+    sources,
+    repair=None,
+    allow_correction=True,
+    *,
+    decision_confirmed=False,
+    final=False,
 ):
+    """Confirm the decision and keep only explanation units that pass the passage check.
+
+    The decision question gates the verdict. A sentence that is unsupported or bundles
+    facts is removed from the explanation; it does not remove a confirmed verdict.
+    """
     available = {e.id: e for e in evidence if e.admissible and e.assertion_id == assertion.id}
     if not available:
         return computed, []
@@ -326,7 +385,11 @@ async def _synthesize_once(
         failed.append("non_atomic_explanation")
     rejected_ids = getattr(check, "rejected_component_ids", [])
     decision_passed = check.claim_is_false if false_check else check.decision_supported
-    if assertion.analysis and (decision_passed is not True or rejected_ids):
+    if (
+        assertion.analysis
+        and not decision_confirmed
+        and (decision_passed is not True or rejected_ids)
+    ):
         failed.append("unsupported_decision")
     if correction:
         failed.extend(
@@ -340,6 +403,33 @@ async def _synthesize_once(
             )
             if not getattr(check, name)
         )
+    kept = [u for i, u in enumerate(result.units) if i not in affected]
+    # Only a direct-claim decision that the check confirmed can outlive bad prose.
+    # Without a checked decision the unit check is the only semantic gate, so it stays.
+    prose_only = (
+        bool(failed)
+        and set(failed) <= PROSE_CONDITIONS
+        and assertion.analysis is not None
+        and computed.verdict is not None
+    )
+    if prose_only and (kept or final):
+        await emit_diagnostic(
+            tasks.emit,
+            "task_output_rejected",
+            {
+                "task": "explanation_unit",
+                "reason": ",".join(failed),
+                "action": "dropped" if kept else "quoted_passages",
+                "affected_units": ",".join(map(str, affected)),
+            },
+        )
+        if kept:
+            return computed, kept
+        quoted = quoted_units(computed, available.values())
+        if quoted:
+            return computed.model_copy(
+                update={"limitations": [*computed.limitations, QUOTED_LIMITATION]}
+            ), quoted
     if failed:
         await emit_diagnostic(
             tasks.emit,
@@ -362,7 +452,9 @@ async def _synthesize_once(
         )
         if getattr(tasks, "save_diagnostic", None):
             await tasks.save_diagnostic(diagnostic)
-        raise SemanticRejection(failed, had_correction=correction is not None)
+        raise SemanticRejection(
+            failed, had_correction=correction is not None, decision_confirmed=prose_only
+        )
     if correction:
         # Construct a validated new finding only after BOTH reference and semantic checks.
         computed = Finding(
@@ -379,9 +471,11 @@ async def _synthesize_once(
 
 
 class SemanticRejection(InvalidTask):
-    def __init__(self, conditions, had_correction=False):
+    def __init__(self, conditions, had_correction=False, decision_confirmed=False):
         self.conditions = conditions
         self.had_correction = had_correction
+        # True when the decision passed and only the explanation prose failed.
+        self.decision_confirmed = decision_confirmed
         super().__init__("Final explanation or decision failed semantic validation.")
 
 
@@ -393,14 +487,25 @@ async def synthesize(tasks, assertion, computed, evidence, route, sources):
     computed = await from_cited_facts(tasks, assertion, computed, evidence, sources)
     repair = None
     allow_correction = ALMOST_ENABLED
+    confirmed = False
     for attempt in range(2):
         try:
             return await _synthesize_once(
-                tasks, assertion, computed, evidence, route, sources, repair, allow_correction
+                tasks,
+                assertion,
+                computed,
+                evidence,
+                route,
+                sources,
+                repair,
+                allow_correction,
+                decision_confirmed=confirmed,
+                final=bool(attempt),
             )
         except SemanticRejection as exc:
             if attempt:
                 raise
+            confirmed = exc.decision_confirmed
             # A rejected Almost proposal is not retried: the second attempt explains the
             # preliminary decision, so a sound True or False can still be confirmed.
             allow_correction = ALMOST_ENABLED and not exc.had_correction
@@ -415,4 +520,25 @@ async def synthesize(tasks, assertion, computed, evidence, route, sources):
                     "and explain the preliminary decision only. Do not repeat rejected prose."
                 ),
             }
+        except (InvalidTask, ProviderError) as exc:
+            # The decision was already confirmed; only the rewrite of the prose failed.
+            recoverable = not isinstance(exc, ProviderError) or exc.code in {
+                ErrorCode.BUDGET,
+                ErrorCode.DEADLINE,
+            }
+            quoted = quoted_units(computed, evidence) if confirmed and recoverable else []
+            if not quoted:
+                raise
+            await emit_diagnostic(
+                tasks.emit,
+                "task_output_rejected",
+                {
+                    "task": "explanation_unit",
+                    "reason": "repair_failed",
+                    "action": "quoted_passages",
+                },
+            )
+            return computed.model_copy(
+                update={"limitations": [*computed.limitations, QUOTED_LIMITATION]}
+            ), quoted
     raise AssertionError("Unreachable")

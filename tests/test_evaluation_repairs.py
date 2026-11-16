@@ -237,7 +237,7 @@ async def test_explanation_checker_receives_explicit_zero_based_indices(settings
 @pytest.mark.parametrize(
     "options,reason",
     [
-        ({"invalid_explanation": True}, "unsupported_explanation"),
+        ({"unconfirmed_decision": True}, "unsupported_decision"),
         (
             {"almost": True, "invalid_correction": True, "relation": "contradicts"},
             "unsupported_correction",

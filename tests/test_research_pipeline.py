@@ -92,7 +92,9 @@ async def test_complete_evidence_saved_reads_and_sse(settings):
         ({"ambiguous": True}, "needs_clarification", None),
         ({"invalid_citation": True}, "partial", None),
         ({"invalid_plan": True}, "failed", None),
-        ({"invalid_explanation": True}, "partial", None),
+        # Bad prose is replaced by the cited passage; an unconfirmed decision is withheld.
+        ({"invalid_explanation": True}, "completed", "true"),
+        ({"unconfirmed_decision": True}, "partial", None),
         ({"authentication_failure": True}, "failed", None),
     ],
 )
