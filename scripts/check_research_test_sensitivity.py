@@ -31,11 +31,11 @@ MUTATIONS = (
         "tests/test_adversarial_phase_one.py::test_superlative_requires_a_distinct_comparison_member",
     ),
     (
-        "comparison drops admitted counterevidence",
+        "weak comparison counterevidence blocks adequate evidence",
         "direct.py",
-        'if relations_for(observed) == {"supports", "contradicts"}:',
-        'if relations_for(grounded) == {"supports", "contradicts"}:',
-        "tests/test_adversarial_phase_one.py::test_comparison_does_not_silently_drop_admitted_counterevidence",
+        "relations = relations_for(grounded)",
+        "relations = relations_for([v for item in items for v in item.assessment.values])",
+        "tests/test_binary_phase1.py::test_weak_comparison_counterexample_does_not_veto_grounded_operands",
     ),
     (
         "passage selection drops substantive headings",

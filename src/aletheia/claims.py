@@ -56,6 +56,27 @@ def _locate(text, original):
     return original[start : start + len(probe)] if start >= 0 else None
 
 
+def _named_pair(spec, original):
+    """Anchor both operands, allowing shared leading words to be omitted once."""
+    if spec.exhaustive or spec.left.casefold() == spec.right.casefold():
+        return False
+    left, right = _locate(spec.left, original), _locate(spec.right, original)
+    if left and right:
+        return True
+    if not (left or right):
+        return False
+    # E.g. "the height of Alpha exceeds Beta" may expand the second operand to
+    # "the height of Beta". Only remove a prefix shared with the anchored operand;
+    # the entire remaining name must still occur in the submitted claim.
+    a, b = spec.left.split(), spec.right.split()
+    shared = 0
+    for x, y in zip(a, b, strict=False):
+        if x.casefold() != y.casefold():
+            break
+        shared += 1
+    return bool(shared and _locate(" ".join((b if left else a)[shared:]), original))
+
+
 def normalize_interpretation(proposal, original):
     """Repair component shape in code; the submitted wording always wins.
 
@@ -64,8 +85,8 @@ def normalize_interpretation(proposal, original):
     If anything was dropped, no essential component survives, or a number or date from
     the claim is no longer covered, one essential component is widened to the whole
     claim so no part of the proposition is lost. This never adds model text and never
-    narrows what must be supported. Method, scope and questions are left to the model
-    and to materialize().
+    narrows what must be supported. Named pairwise comparisons are researchable;
+    other scope and method decisions are left to the model and materialize().
     """
     lookup = proposal.method == "record_lookup"
     kept, dropped = [], False
@@ -111,12 +132,7 @@ def normalize_interpretation(proposal, original):
     kept = containers
     # Named operands are researchable; do not ask the user to supply their facts.
     named_pair = proposal.method == "record_comparison" and any(
-        c.comparison
-        and not c.comparison.exhaustive
-        and _locate(c.comparison.left, original)
-        and _locate(c.comparison.right, original)
-        and c.comparison.left.casefold() != c.comparison.right.casefold()
-        for c in kept
+        c.comparison and _named_pair(c.comparison, original) for c in kept
     )
     if named_pair:
         return proposal.model_copy(

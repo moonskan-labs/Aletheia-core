@@ -1,0 +1,2365 @@
+{
+  "id": "c-09",
+  "live": true,
+  "investigation": {
+    "id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+    "claim": "Florida surpassed Delaware by highest elevation in feet, according to state reference pages available in 2026.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-16T00:19:36.671160Z",
+    "started_at": "2026-11-16T00:19:36.693833Z",
+    "finished_at": "2026-11-16T00:19:54.084219Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Florida surpassed Delaware by highest elevation in feet, according to state reference pages available in 2026.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_comparison",
+          "scope": "complete",
+          "required_method": "record_comparison",
+          "supported": true,
+          "reason": "Direct comparison of highest elevation between two named entities (Florida and Delaware) from state reference data.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c3",
+              "text": "Florida surpassed Delaware by highest elevation in feet, according to state reference pages available in 2026.",
+              "role": "essential",
+              "subject": "Florida",
+              "predicate": "surpassed",
+              "timeframe": "2026",
+              "location_or_population": null,
+              "comparison": {
+                "left": "Florida's highest elevation",
+                "right": "Delaware's highest elevation",
+                "metric": "feet",
+                "operator": "gt",
+                "units": "feet",
+                "period": "2026",
+                "population": "states",
+                "definition": "state reference pages available in 2026",
+                "exhaustive": false
+              }
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The claim asserts a factual comparison of highest elevation in feet between Florida and Delaware based on state reference pages available in 2026. Both operands are named with clear identifiers. No missing essential scope.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c3",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "5ed86958-b8ec-4241-bc45-ec31e8568168"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "5ed86958-b8ec-4241-bc45-ec31e8568168"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": [
+          "Some material components are not established as written."
+        ]
+      },
+      "explanation": [],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Source is a video transcript, not a peer‑reviewed reference page.",
+        "Only two elevation values are explicitly cited (Britton Hill 345 ft); Delaware's value is not stated in the extracted spans.",
+        "Some selected pages were unavailable or exceeded the text limit.",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published.",
+        "Some material components are not established as written."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 240.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 9,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.1686507080012234,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7912658749992261,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 0.258564915995521,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 0.13248612499592127,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1910074160041404,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.16260333399986848,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.336972709003021,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 1.6302675410042866,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6920732500002487,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7913002919958672,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.348206290997041,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8190393330005463,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.2311140000019805,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6706597080046777,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 21706,
+        "completion_tokens": 1648,
+        "total_tokens": 23354
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_comparison",
+      "scope": "complete",
+      "required_method": "record_comparison",
+      "supported": true,
+      "reason": "Direct comparison of highest elevation between two named entities (Florida and Delaware) from state reference data.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c3",
+          "text": "Florida surpassed Delaware by highest elevation in feet, according to state reference pages available in 2026.",
+          "role": "essential",
+          "subject": "Florida",
+          "predicate": "surpassed",
+          "timeframe": "2026",
+          "location_or_population": null,
+          "comparison": {
+            "left": "Florida's highest elevation",
+            "right": "Delaware's highest elevation",
+            "metric": "feet",
+            "operator": "gt",
+            "units": "feet",
+            "period": "2026",
+            "population": "states",
+            "definition": "state reference pages available in 2026",
+            "exhaustive": false
+          }
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "events": "/investigations/9e2ddb0a-e019-46e6-8e12-d652445dae74/events",
+      "evidence": "/investigations/9e2ddb0a-e019-46e6-8e12-d652445dae74/evidence",
+      "comparison": "/investigations/9e2ddb0a-e019-46e6-8e12-d652445dae74/comparison",
+      "refresh": "/investigations/9e2ddb0a-e019-46e6-8e12-d652445dae74/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "url": "https://www.facebook.com/SmartKnowledgeCenter/videos/-all-50-us-states-their-highest-elevations-2026-ultimate-state-high-points-guide/2080135709203750",
+        "canonical_url": "https://www.facebook.com/SmartKnowledgeCenter/videos/-all-50-us-states-their-highest-elevations-2026-ultimate-state-high-points-guide/2080135709203750",
+        "title": "231K views · 389 reactions | 🇺🇸 All 50 U.S. States & Their Highest Elevations (2026) | Ultimate State High Points Guide\n🏔️ From Alaska's towering Denali (20,320 ft) to Florida's Britton Hill (345 ft), discover the highest elevation in every U.S. state. This updated 2026 infographic is perfect for geography lovers, students, hikers, and trivia fans. Save and share this complete reference!\nUSA States|Highest Elevations|US Geography|State High Points|American Mountains\n#USAGeography #StateHighPoints #Mountains #GeographyFacts | Smart Knowledge Center",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:19:43.456211Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "eed384245f170f3430a8bea7337af298b678bd3dae199a8667b1ec644cc8772e",
+        "duplicate_group": "eed384245f170f3430a8bea7337af298b678bd3dae199a8667b1ec644cc8772e",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "5ed86958-b8ec-4241-bc45-ec31e8568168",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c3",
+          "values": [],
+          "citation": {
+            "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+            "span_ids": [
+              16,
+              33
+            ]
+          },
+          "rationale": "Cited facts retained; structured comparison values were not established.",
+          "relation": "context",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            16,
+            33
+          ],
+          "provenance_note": "Source is a 2026 Facebook video transcript describing state high points; a third‑party reference page was not independently verified.",
+          "limitations": [
+            "Source is a video transcript, not a peer‑reviewed reference page.",
+            "Only two elevation values are explicitly cited (Britton Hill 345 ft); Delaware's value is not stated in the extracted spans."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              16
+            ],
+            "start": 942,
+            "end": 1441,
+            "text": "🇺🇸 All 50 U.S. States & Their Highest Elevations (2026) | Ultimate State High Points Guide 🏔️ From Alaska's towering Denali (20,320 ft) to Florida's Britton Hill (345 ft), discover the highest elevation in every U.S. state. This updated 2026 infographic is perfect for geography lovers, students, hikers, and trivia fans. Save and share this complete reference! USA States|Highest Elevations|US Geography|State High Points|American Mountains #USAGeography #StateHighPoints #Mountains #GeographyFacts",
+            "quote_hash": "38d339b01b9609364c81e8282dc38a3d53c4a2468517c5797ef8c0b191d8a3d3"
+          },
+          {
+            "span_ids": [
+              33
+            ],
+            "start": 2039,
+            "end": 2215,
+            "text": "![Image 2: 🇺🇸](https://static.xx.fbcdn.net/images/emoji.php/v9/t93/1/16/1f1fa_1f1f8.png) All 50 U.S. States & Their Highest Elevations (2026) | Ultimate State High Points Guide",
+            "quote_hash": "b845ddf6542d40e0949650d92547640c01175b8bc23631bba9ec0082735b72c9"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 1,
+      "timestamp": "2026-11-16T00:19:36.671160Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 2,
+      "timestamp": "2026-11-16T00:19:36.693833Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 3,
+      "timestamp": "2026-11-16T00:19:36.695254Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 4,
+      "timestamp": "2026-11-16T00:19:36.696547Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 5,
+      "timestamp": "2026-11-16T00:19:36.697777Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.997",
+        "hard_remaining_seconds": "119.997",
+        "attempt": "1",
+        "input_chars": "138"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 6,
+      "timestamp": "2026-11-16T00:19:36.699635Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10886"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 7,
+      "timestamp": "2026-11-16T00:19:39.869738Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.826",
+        "hard_remaining_seconds": "116.826",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10886",
+        "elapsed_seconds": "3.169",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2632"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 8,
+      "timestamp": "2026-11-16T00:19:39.871551Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.824",
+        "hard_remaining_seconds": "116.824",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1615",
+        "elapsed_seconds": "3.174",
+        "finish_reason": "stop",
+        "prompt_tokens": "1773",
+        "completion_tokens": "444",
+        "total_tokens": "2217"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 9,
+      "timestamp": "2026-11-16T00:19:39.874378Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 10,
+      "timestamp": "2026-11-16T00:19:39.875650Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 11,
+      "timestamp": "2026-11-16T00:19:39.877085Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 12,
+      "timestamp": "2026-11-16T00:19:39.878473Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.817",
+        "hard_remaining_seconds": "116.817",
+        "attempt": "1",
+        "input_chars": "1362"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 13,
+      "timestamp": "2026-11-16T00:19:39.880296Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.815",
+        "hard_remaining_seconds": "116.815",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4477"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 14,
+      "timestamp": "2026-11-16T00:19:40.674237Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.022",
+        "hard_remaining_seconds": "116.022",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4477",
+        "elapsed_seconds": "0.791",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1265"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 15,
+      "timestamp": "2026-11-16T00:19:40.676206Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.019",
+        "hard_remaining_seconds": "116.019",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "377",
+        "elapsed_seconds": "0.797",
+        "finish_reason": "stop",
+        "prompt_tokens": "836",
+        "completion_tokens": "115",
+        "total_tokens": "951"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 16,
+      "timestamp": "2026-11-16T00:19:40.677982Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Florida highest elevation feet state reference page 2026",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 17,
+      "timestamp": "2026-11-16T00:19:40.679682Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.016",
+        "hard_remaining_seconds": "116.016",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "264"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 18,
+      "timestamp": "2026-11-16T00:19:40.940697Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.756",
+        "hard_remaining_seconds": "115.756",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "264",
+        "elapsed_seconds": "0.259",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8664"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 19,
+      "timestamp": "2026-11-16T00:19:40.942621Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Florida highest elevation feet state reference page 2026",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 20,
+      "timestamp": "2026-11-16T00:19:40.944447Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Delaware highest elevation feet state reference page 2026",
+        "purpose": "support",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 21,
+      "timestamp": "2026-11-16T00:19:40.945934Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.749",
+        "hard_remaining_seconds": "115.749",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "265"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 22,
+      "timestamp": "2026-11-16T00:19:41.080689Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.615",
+        "hard_remaining_seconds": "115.615",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "265",
+        "elapsed_seconds": "0.132",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8163"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 23,
+      "timestamp": "2026-11-16T00:19:41.082510Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Delaware highest elevation feet state reference page 2026",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 24,
+      "timestamp": "2026-11-16T00:19:41.084113Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Florida vs Delaware highest elevation comparison feet 2026",
+        "purpose": "contradiction",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 25,
+      "timestamp": "2026-11-16T00:19:41.085781Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.610",
+        "hard_remaining_seconds": "115.610",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 26,
+      "timestamp": "2026-11-16T00:19:43.279583Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.417",
+        "hard_remaining_seconds": "113.417",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266",
+        "elapsed_seconds": "2.191",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6912"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 27,
+      "timestamp": "2026-11-16T00:19:43.282018Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Florida vs Delaware highest elevation comparison feet 2026",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 28,
+      "timestamp": "2026-11-16T00:19:43.284429Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "12",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 29,
+      "timestamp": "2026-11-16T00:19:43.286158Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.facebook.com/SmartKnowledgeCenter/videos/-all-50-us-states-their-highest-elevations-2026-ultimate-state-high-points-guide/2080135709203750",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 30,
+      "timestamp": "2026-11-16T00:19:43.287838Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 31,
+      "timestamp": "2026-11-16T00:19:43.289251Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "68.406",
+        "hard_remaining_seconds": "113.406",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "277"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 32,
+      "timestamp": "2026-11-16T00:19:43.454895Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "68.242",
+        "hard_remaining_seconds": "113.242",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "277",
+        "elapsed_seconds": "0.163",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "21933"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 33,
+      "timestamp": "2026-11-16T00:19:43.461753Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "url": "https://www.facebook.com/SmartKnowledgeCenter/videos/-all-50-us-states-their-highest-elevations-2026-ultimate-state-high-points-guide/2080135709203750",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 34,
+      "timestamp": "2026-11-16T00:19:43.463206Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 35,
+      "timestamp": "2026-11-16T00:19:43.465955Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "68.229",
+        "hard_remaining_seconds": "113.229",
+        "attempt": "1",
+        "input_chars": "12409"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 36,
+      "timestamp": "2026-11-16T00:19:43.469924Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "68.225",
+        "hard_remaining_seconds": "113.225",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "28691"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 37,
+      "timestamp": "2026-11-16T00:19:46.810517Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.887",
+        "hard_remaining_seconds": "109.887",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "28691",
+        "elapsed_seconds": "3.337",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2108"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 38,
+      "timestamp": "2026-11-16T00:19:46.813743Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.882",
+        "hard_remaining_seconds": "109.882",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1195",
+        "elapsed_seconds": "3.348",
+        "finish_reason": "stop",
+        "prompt_tokens": "8299",
+        "completion_tokens": "333",
+        "total_tokens": "8632"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 39,
+      "timestamp": "2026-11-16T00:19:46.816641Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "5ed86958-b8ec-4241-bc45-ec31e8568168",
+        "snapshot_id": "60199b7b-d07e-480d-b956-b27e8718c415",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 40,
+      "timestamp": "2026-11-16T00:19:46.817873Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://www.geographyrealm.com/highest-point-in-every-u-s-state",
+        "slot": "2",
+        "query_ids": "q5,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 41,
+      "timestamp": "2026-11-16T00:19:46.819399Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 42,
+      "timestamp": "2026-11-16T00:19:46.821056Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "64.874",
+        "hard_remaining_seconds": "109.874",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "190"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 43,
+      "timestamp": "2026-11-16T00:19:48.454359Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "63.242",
+        "hard_remaining_seconds": "108.242",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "190",
+        "elapsed_seconds": "1.630",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "235"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 44,
+      "timestamp": "2026-11-16T00:19:48.457240Z",
+      "type": "source_rejected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.geographyrealm.com/highest-point-in-every-u-s-state",
+        "candidate_id": "c15",
+        "reason": "extraction_failed"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 45,
+      "timestamp": "2026-11-16T00:19:48.459059Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "missing_evidence"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 46,
+      "timestamp": "2026-11-16T00:19:48.460560Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 47,
+      "timestamp": "2026-11-16T00:19:48.462116Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "183.233",
+        "hard_remaining_seconds": "228.233",
+        "attempt": "1",
+        "input_chars": "2894"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 48,
+      "timestamp": "2026-11-16T00:19:48.464255Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "183.231",
+        "hard_remaining_seconds": "228.231",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "6070"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 49,
+      "timestamp": "2026-11-16T00:19:49.160484Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "182.538",
+        "hard_remaining_seconds": "227.538",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "6070",
+        "elapsed_seconds": "0.692",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1167"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 50,
+      "timestamp": "2026-11-16T00:19:49.163630Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "182.532",
+        "hard_remaining_seconds": "227.532",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "query_gap",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "289",
+        "elapsed_seconds": "0.701",
+        "finish_reason": "stop",
+        "prompt_tokens": "1353",
+        "completion_tokens": "85",
+        "total_tokens": "1438"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 51,
+      "timestamp": "2026-11-16T00:19:49.164941Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "plan",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 52,
+      "timestamp": "2026-11-16T00:19:49.166276Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "182.529",
+        "hard_remaining_seconds": "227.529",
+        "attempt": "2",
+        "input_chars": "2894"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 53,
+      "timestamp": "2026-11-16T00:19:49.168456Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "182.527",
+        "hard_remaining_seconds": "227.527",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "6234"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 54,
+      "timestamp": "2026-11-16T00:19:49.961976Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "181.734",
+        "hard_remaining_seconds": "226.734",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "6234",
+        "elapsed_seconds": "0.791",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1334"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 55,
+      "timestamp": "2026-11-16T00:19:49.964458Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "181.731",
+        "hard_remaining_seconds": "226.731",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "441",
+        "elapsed_seconds": "0.798",
+        "finish_reason": "stop",
+        "prompt_tokens": "1382",
+        "completion_tokens": "130",
+        "total_tokens": "1512"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 56,
+      "timestamp": "2026-11-16T00:19:49.966254Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "no_useful_query",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 57,
+      "timestamp": "2026-11-16T00:19:49.970097Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 58,
+      "timestamp": "2026-11-16T00:19:49.972470Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "226.723",
+        "hard_remaining_seconds": "226.723",
+        "attempt": "1",
+        "input_chars": "3558"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 59,
+      "timestamp": "2026-11-16T00:19:49.975455Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "226.720",
+        "hard_remaining_seconds": "226.720",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8276"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 60,
+      "timestamp": "2026-11-16T00:19:51.325659Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "225.370",
+        "hard_remaining_seconds": "225.370",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8276",
+        "elapsed_seconds": "1.348",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1579"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 61,
+      "timestamp": "2026-11-16T00:19:51.327394Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "225.368",
+        "hard_remaining_seconds": "225.368",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "700",
+        "elapsed_seconds": "1.355",
+        "finish_reason": "stop",
+        "prompt_tokens": "1923",
+        "completion_tokens": "229",
+        "total_tokens": "2152"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 62,
+      "timestamp": "2026-11-16T00:19:51.328833Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "225.366",
+        "hard_remaining_seconds": "225.366",
+        "attempt": "1",
+        "input_chars": "4252"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 63,
+      "timestamp": "2026-11-16T00:19:51.330465Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "225.365",
+        "hard_remaining_seconds": "225.365",
+        "provider_call_id": "p23",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9016"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 64,
+      "timestamp": "2026-11-16T00:19:52.152085Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "224.544",
+        "hard_remaining_seconds": "224.544",
+        "provider_call_id": "p23",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9016",
+        "elapsed_seconds": "0.819",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1110"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 65,
+      "timestamp": "2026-11-16T00:19:52.154520Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "224.541",
+        "hard_remaining_seconds": "224.541",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "242",
+        "elapsed_seconds": "0.826",
+        "finish_reason": "stop",
+        "prompt_tokens": "2121",
+        "completion_tokens": "75",
+        "total_tokens": "2196"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 66,
+      "timestamp": "2026-11-16T00:19:52.156318Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 67,
+      "timestamp": "2026-11-16T00:19:52.158399Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t24",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "224.537",
+        "hard_remaining_seconds": "224.537",
+        "attempt": "1",
+        "input_chars": "3760"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 68,
+      "timestamp": "2026-11-16T00:19:52.160909Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t24",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "224.534",
+        "hard_remaining_seconds": "224.534",
+        "provider_call_id": "p25",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8486"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 69,
+      "timestamp": "2026-11-16T00:19:53.396329Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t24",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "223.302",
+        "hard_remaining_seconds": "223.302",
+        "provider_call_id": "p25",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8486",
+        "elapsed_seconds": "1.231",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1404"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 70,
+      "timestamp": "2026-11-16T00:19:53.398899Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t24",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "223.297",
+        "hard_remaining_seconds": "223.297",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "533",
+        "elapsed_seconds": "1.240",
+        "finish_reason": "stop",
+        "prompt_tokens": "1963",
+        "completion_tokens": "170",
+        "total_tokens": "2133"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 71,
+      "timestamp": "2026-11-16T00:19:53.401292Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t26",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "223.294",
+        "hard_remaining_seconds": "223.294",
+        "attempt": "1",
+        "input_chars": "4073"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 72,
+      "timestamp": "2026-11-16T00:19:53.403473Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t26",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "223.292",
+        "hard_remaining_seconds": "223.292",
+        "provider_call_id": "p27",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8827"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 73,
+      "timestamp": "2026-11-16T00:19:54.077479Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t26",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "222.619",
+        "hard_remaining_seconds": "222.619",
+        "provider_call_id": "p27",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8827",
+        "elapsed_seconds": "0.671",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1103"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 74,
+      "timestamp": "2026-11-16T00:19:54.080416Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t26",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "222.615",
+        "hard_remaining_seconds": "222.615",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "235",
+        "elapsed_seconds": "0.679",
+        "finish_reason": "stop",
+        "prompt_tokens": "2056",
+        "completion_tokens": "67",
+        "total_tokens": "2123"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 75,
+      "timestamp": "2026-11-16T00:19:54.082345Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision",
+        "affected_units": "0,1"
+      }
+    },
+    {
+      "investigation_id": "9e2ddb0a-e019-46e6-8e12-d652445dae74",
+      "sequence": 76,
+      "timestamp": "2026-11-16T00:19:54.084219Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 17.44358345799992,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.168
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.789
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.251
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.12
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.188
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.141
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.334
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.629
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.691
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.79
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.347
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.817
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.229
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.669
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.1686507080012234,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7912658749992261,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 0.258564915995521,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 0.13248612499592127,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1910074160041404,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.16260333399986848,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.336972709003021,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 1.6302675410042866,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6920732500002487,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7913002919958672,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.348206290997041,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8190393330005463,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.2311140000019805,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6706597080046777,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

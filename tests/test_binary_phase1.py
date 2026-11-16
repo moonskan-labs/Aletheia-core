@@ -192,6 +192,53 @@ def test_named_comparison_does_not_ask_for_clarification_but_missing_operand_doe
     ).questions
 
 
+@pytest.mark.parametrize("reverse", [False, True])
+@pytest.mark.parametrize("second_name", ["Beta", "Gamma"])
+def test_comparison_shared_prefix_does_not_require_user_to_supply_facts(reverse, second_name):
+    from test_demo_reliability import interpretation
+    from test_phase_one import comparison_spec
+
+    from aletheia.claims import materialize, normalize_interpretation
+
+    text = "The height of Alpha exceeds the height of Beta."
+    # The parser may expand an operand even when the claim elides shared words.
+    text = text.replace("the height of Beta", "Beta")
+    names = ["height of Alpha", f"height of {second_name}"]
+    if reverse:
+        names.reverse()
+    spec = comparison_spec(left=names[0], right=names[1])
+    proposal = interpretation([(text, "essential", spec.model_dump())], "record_comparison")
+    proposal.questions = ["What are their heights?"]
+    proposal.missing_scope = ["recorded heights"]
+    proposal.clarification_reason = "missing_scope"
+    plan = materialize(normalize_interpretation(proposal, text), text)
+    assert bool(plan.questions) == (second_name == "Gamma")
+    if second_name == "Beta":
+        assert plan.assertions[0].text == text
+        assert plan.analysis.scope == "complete"
+
+
+def test_http_comparison_abbreviated_operand_is_researchable():
+    from test_demo_reliability import interpretation
+    from test_phase_one import comparison_spec
+
+    from aletheia.claims import materialize, normalize_interpretation
+
+    text = (
+        "The 2022 HTTP status code for a disallowed known method is higher than the "
+        "code for an unimplemented method worldwide."
+    )
+    spec = comparison_spec(
+        left="HTTP status code for a disallowed known method",
+        right="HTTP status code for an unimplemented method",
+    )
+    proposal = interpretation([(text, "essential", spec.model_dump())], "record_comparison")
+    proposal.questions = ["What are the specific HTTP status code numbers?"]
+    proposal.missing_scope = ["actual HTTP status code values"]
+    proposal.clarification_reason = "missing_scope"
+    assert not materialize(normalize_interpretation(proposal, text), text).questions
+
+
 @pytest.mark.parametrize(
     "defect", [None, "invented_fact", "weak", "shared_citation", "incompatible"]
 )

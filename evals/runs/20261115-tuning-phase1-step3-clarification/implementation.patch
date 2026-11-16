@@ -1,0 +1,135 @@
+diff --git a/scripts/check_research_test_sensitivity.py b/scripts/check_research_test_sensitivity.py
+index 0048b66..9de8005 100644
+--- a/scripts/check_research_test_sensitivity.py
++++ b/scripts/check_research_test_sensitivity.py
+@@ -31,11 +31,11 @@ MUTATIONS = (
+         "tests/test_adversarial_phase_one.py::test_superlative_requires_a_distinct_comparison_member",
+     ),
+     (
+-        "comparison drops admitted counterevidence",
++        "weak comparison counterevidence blocks adequate evidence",
+         "direct.py",
+-        'if relations_for(observed) == {"supports", "contradicts"}:',
+-        'if relations_for(grounded) == {"supports", "contradicts"}:',
+-        "tests/test_adversarial_phase_one.py::test_comparison_does_not_silently_drop_admitted_counterevidence",
++        "relations = relations_for(grounded)",
++        "relations = relations_for([v for item in items for v in item.assessment.values])",
++        "tests/test_binary_phase1.py::test_weak_comparison_counterexample_does_not_veto_grounded_operands",
+     ),
+     (
+         "passage selection drops substantive headings",
+diff --git a/src/aletheia/claims.py b/src/aletheia/claims.py
+index 64b35c1..2463f25 100644
+--- a/src/aletheia/claims.py
++++ b/src/aletheia/claims.py
+@@ -56,6 +56,27 @@ def _locate(text, original):
+     return original[start : start + len(probe)] if start >= 0 else None
+ 
+ 
++def _named_pair(spec, original):
++    """Anchor both operands, allowing shared leading words to be omitted once."""
++    if spec.exhaustive or spec.left.casefold() == spec.right.casefold():
++        return False
++    left, right = _locate(spec.left, original), _locate(spec.right, original)
++    if left and right:
++        return True
++    if not (left or right):
++        return False
++    # E.g. "the height of Alpha exceeds Beta" may expand the second operand to
++    # "the height of Beta". Only remove a prefix shared with the anchored operand;
++    # the entire remaining name must still occur in the submitted claim.
++    a, b = spec.left.split(), spec.right.split()
++    shared = 0
++    for x, y in zip(a, b, strict=False):
++        if x.casefold() != y.casefold():
++            break
++        shared += 1
++    return bool(shared and _locate(" ".join((b if left else a)[shared:]), original))
++
++
+ def normalize_interpretation(proposal, original):
+     """Repair component shape in code; the submitted wording always wins.
+ 
+@@ -64,8 +85,8 @@ def normalize_interpretation(proposal, original):
+     If anything was dropped, no essential component survives, or a number or date from
+     the claim is no longer covered, one essential component is widened to the whole
+     claim so no part of the proposition is lost. This never adds model text and never
+-    narrows what must be supported. Method, scope and questions are left to the model
+-    and to materialize().
++    narrows what must be supported. Named pairwise comparisons are researchable;
++    other scope and method decisions are left to the model and materialize().
+     """
+     lookup = proposal.method == "record_lookup"
+     kept, dropped = [], False
+@@ -111,12 +132,7 @@ def normalize_interpretation(proposal, original):
+     kept = containers
+     # Named operands are researchable; do not ask the user to supply their facts.
+     named_pair = proposal.method == "record_comparison" and any(
+-        c.comparison
+-        and not c.comparison.exhaustive
+-        and _locate(c.comparison.left, original)
+-        and _locate(c.comparison.right, original)
+-        and c.comparison.left.casefold() != c.comparison.right.casefold()
+-        for c in kept
++        c.comparison and _named_pair(c.comparison, original) for c in kept
+     )
+     if named_pair:
+         return proposal.model_copy(
+diff --git a/tests/test_binary_phase1.py b/tests/test_binary_phase1.py
+index 5ff9ada..dbd4487 100644
+--- a/tests/test_binary_phase1.py
++++ b/tests/test_binary_phase1.py
+@@ -192,6 +192,53 @@ def test_named_comparison_does_not_ask_for_clarification_but_missing_operand_doe
+     ).questions
+ 
+ 
++@pytest.mark.parametrize("reverse", [False, True])
++@pytest.mark.parametrize("second_name", ["Beta", "Gamma"])
++def test_comparison_shared_prefix_does_not_require_user_to_supply_facts(reverse, second_name):
++    from test_demo_reliability import interpretation
++    from test_phase_one import comparison_spec
++
++    from aletheia.claims import materialize, normalize_interpretation
++
++    text = "The height of Alpha exceeds the height of Beta."
++    # The parser may expand an operand even when the claim elides shared words.
++    text = text.replace("the height of Beta", "Beta")
++    names = ["height of Alpha", f"height of {second_name}"]
++    if reverse:
++        names.reverse()
++    spec = comparison_spec(left=names[0], right=names[1])
++    proposal = interpretation([(text, "essential", spec.model_dump())], "record_comparison")
++    proposal.questions = ["What are their heights?"]
++    proposal.missing_scope = ["recorded heights"]
++    proposal.clarification_reason = "missing_scope"
++    plan = materialize(normalize_interpretation(proposal, text), text)
++    assert bool(plan.questions) == (second_name == "Gamma")
++    if second_name == "Beta":
++        assert plan.assertions[0].text == text
++        assert plan.analysis.scope == "complete"
++
++
++def test_http_comparison_abbreviated_operand_is_researchable():
++    from test_demo_reliability import interpretation
++    from test_phase_one import comparison_spec
++
++    from aletheia.claims import materialize, normalize_interpretation
++
++    text = (
++        "The 2022 HTTP status code for a disallowed known method is higher than the "
++        "code for an unimplemented method worldwide."
++    )
++    spec = comparison_spec(
++        left="HTTP status code for a disallowed known method",
++        right="HTTP status code for an unimplemented method",
++    )
++    proposal = interpretation([(text, "essential", spec.model_dump())], "record_comparison")
++    proposal.questions = ["What are the specific HTTP status code numbers?"]
++    proposal.missing_scope = ["actual HTTP status code values"]
++    proposal.clarification_reason = "missing_scope"
++    assert not materialize(normalize_interpretation(proposal, text), text).questions
++
++
+ @pytest.mark.parametrize(
+     "defect", [None, "invented_fact", "weak", "shared_citation", "incompatible"]
+ )
