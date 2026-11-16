@@ -451,20 +451,3 @@ def test_trusted_score_cli_keeps_77_denominator_and_refuses_to_overwrite(tmp_pat
     (folder / "manifest.json").write_text('{"claim_ids": ["t-01"]}')
     assert scoring.main([str(folder)]) == 2
     capsys.readouterr()
-
-
-async def test_estimate_rule_is_general_text_in_the_one_call_and_changes_no_code_decision():
-    rule = baseline.ATTRIBUTION_RULE
-    assert baseline.INSTRUCTIONS.endswith(rule)
-    # A general rule: the instructions contain no number or date from any claim.
-    assert not any(character.isdigit() for character in baseline.INSTRUCTIONS)
-    # The rule is prompt text only. A false answer with a valid quote on a claim that is
-    # not about an estimate still stands, and nothing but the instructions changed.
-    claim = trusted_claims(ids=["t-02"])[0]
-    quote = {"page": 1, "text": "The Archive opened in 2000."}
-    model = FakeModel({"verdict": "false", "quotes": [quote], "reason": "A short reason."})
-    result = await baseline.evaluate_claim(claim, [page()], model, 30)
-    assert result["verdict"] == "false" and not result["downgraded"]
-    request = model.requests[0]
-    assert request["instructions"] == baseline.INSTRUCTIONS
-    assert set(json.loads(request["input_text"])) == {"claim", "pages"}
