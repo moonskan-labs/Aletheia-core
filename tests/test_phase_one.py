@@ -10,6 +10,7 @@ from types import SimpleNamespace
 from uuid import UUID
 
 import pytest
+from diagnostic_assertions import assert_private_file
 from httpx import ASGITransport, AsyncClient
 from research_fixtures import Providers, propose_analysis, terminal
 from test_research_integrity import judgment, source
@@ -354,7 +355,7 @@ async def test_b0006_final_check_diagnostics_and_bounded_repair(settings, recove
         assert diagnostic["failed_conditions"] == ["unsupported_explanation"]
         assert diagnostic["affected_units"] == [0]
         assert diagnostic["rejected_explanation"][0]["text"] == passage
-        assert artifacts[0].stat().st_mode & 0o077 == 0
+        assert_private_file(artifacts[0])
         public = (await client.get(result["links"]["events"])).text
         assert "rejected_explanation" not in public
 

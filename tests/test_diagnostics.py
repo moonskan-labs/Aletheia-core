@@ -5,6 +5,7 @@ import os
 from types import SimpleNamespace
 
 import pytest
+from diagnostic_assertions import assert_private_file
 
 from aletheia.diagnostics import save_final_check
 
@@ -27,7 +28,7 @@ async def test_private_diagnostics_are_utf8_reusable_and_never_overwritten(tmp_p
     assert json.loads(path.read_text(encoding="utf-8"))["text"] == "café — checked"
     if os.name != "nt":
         assert directory.stat().st_mode & 0o077 == 0
-        assert path.stat().st_mode & 0o077 == 0
+    assert_private_file(path)
 
 
 async def test_permissive_existing_directory_is_refused(tmp_path, caplog):
