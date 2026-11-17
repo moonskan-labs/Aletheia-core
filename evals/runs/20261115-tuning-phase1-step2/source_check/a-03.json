@@ -1,0 +1,68 @@
+{
+  "id": "a-03",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "The source classification table (RFC 9110/HTTP standard) shows TRACE as safe (Safe=yes) but CONNECT as not safe (Safe=no), directly contradicting the claim that both qualify as safe methods.",
+      "citations": [
+        {
+          "evidence_id": "01ff334f-dd4c-4e59-9621-52d65c0632f6",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passages show TRACE as Safe=yes/Idempotent=yes and CONNECT as Safe=no/Idempotent=no, so they directly contradict the claim that both qualify as safe methods."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "Span 80 of source 57cc85d7 confirms CONNECT with 'No' under Safe, while Span 47 lists TRACE among safe methods GET, HEAD, OPTIONS, and TRACE.",
+      "citations": [
+        {
+          "evidence_id": "57cc85d7-bbae-4d34-a192-b24fd6447121",
+          "url": "https://algomaster.io/learn/computer-networks/http-methods-and-idempotency",
+          "title": "HTTP Methods and Idempotency | Computer Networks | AlgoMaster.io",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passage explicitly lists GET, HEAD, OPTIONS, and TRACE as safe, supporting Span 47. However, the CONNECT row only shows 'No | No | No request content' without a column header, so it does not confirm that a 'No' is specifically under Safe."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "The finding outcome was 'false' with qualification flags: CONNECT is classified as not safe in the standard's properties table (76f86541), contradicting the claim that both are safe (01ff334f).",
+      "citations": [
+        {
+          "evidence_id": "76f86541-7a04-40b1-ac50-e6b8958d864f",
+          "url": "https://en.wikipedia.org/wiki/HTTP",
+          "title": "HTTP - Wikipedia",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "01ff334f-dd4c-4e59-9621-52d65c0632f6",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passages show CONNECT is classified as not safe in the Safeguard table, but they do not mention the finding outcome, qualification flags 76f86541/01ff334f, or a claim that both methods were safe."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": null
+}

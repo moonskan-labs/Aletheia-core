@@ -16,8 +16,16 @@ from aletheia.research import refresh_sources
 from aletheia.research_gate import planning_context
 
 
+@pytest.mark.parametrize("capacity", [8, 10])
 @pytest.mark.parametrize("changed_decision", [False, True])
-async def test_refresh_rechecks_cited_pages_when_rankings_shift(settings, changed_decision):
+async def test_refresh_rechecks_cited_pages_when_rankings_shift(
+    settings, changed_decision, capacity
+):
+    class Allowance(RunBudget):
+        def __init__(self):
+            super().__init__()
+            self.model_attempts = capacity
+
     class RankingShift(Providers):
         shifted = False
 
@@ -31,7 +39,7 @@ async def test_refresh_rechecks_cited_pages_when_rankings_shift(settings, change
             return response
 
     providers = RankingShift(source_count=2)
-    async with running(settings, providers) as (_, client):
+    async with running(settings, providers, budget_factory=Allowance) as (_, client):
         first = await submit(client)
         old_evidence = (await client.get(first["links"]["evidence"])).json()
         old_urls = {s["url"] for s in old_evidence["sources"]}
@@ -47,15 +55,19 @@ async def test_refresh_rechecks_cited_pages_when_rankings_shift(settings, change
         assert all(
             s["change"] == "unchanged" for s in comparison["sources"] if s["url"] in old_urls
         )
-        assert comparison["same_relevant_evidence"] is True
+        assert comparison["same_relevant_evidence"] is (capacity == 8)
         assert comparison["consistency_status"] == (
-            "inconsistent" if changed_decision else "no_inconsistency_detected"
+            ("inconsistent" if changed_decision else "no_inconsistency_detected")
+            if capacity == 8
+            else "not_comparable"
         )
         # Rechecks remain within the global reserve; unavailable capacity is disclosed.
-        assert second["status"] == "partial"
-        assert second["stop_reason"] == "budget_exhausted"
+        assert second["status"] == ("partial" if capacity == 8 else "completed")
+        assert second["stop_reason"] == (
+            "budget_exhausted" if capacity == 8 else "evidence_sufficient"
+        )
         assert second["result"]["explanation"]
-        assert second["result"]["budget_used"]["model"] <= 8
+        assert second["result"]["budget_used"]["model"] <= capacity
         assert second["result"]["budget_used"]["extract"] <= 4
         assert (await client.get(first["links"]["evidence"])).json() == old_evidence
         assert (await client.get(first["links"]["self"])).json() == first
@@ -93,7 +105,7 @@ def test_refresh_selects_cited_support_and_contradiction_before_other_snapshots(
 
 
 async def test_successful_followup_gate_is_followed_by_planned_event(settings):
-    providers = RoundProviders([[{}], [independent("new")]], deep=True)
+    providers = RoundProviders([[{}], [independent("new")]], deep=True, authoritative=False)
     async with running(settings, providers) as (app, client):
         saved = await submit(client)
         events = await app.state.storage.events(UUID(saved["id"]))
@@ -113,7 +125,7 @@ async def test_exhausted_capacity_emits_stop_gate_without_followup(settings):
             super().escalate()
             self.extraction_attempts = 2
 
-    providers = RoundProviders([[{}, {}], [independent("new")]], deep=True)
+    providers = RoundProviders([[{}, {}], [independent("new")]], deep=True, authoritative=False)
     async with running(settings, providers, budget_factory=TwoPages) as (app, client):
         saved = await submit(client)
         events = await app.state.storage.events(UUID(saved["id"]))
@@ -126,7 +138,7 @@ async def test_exhausted_capacity_emits_stop_gate_without_followup(settings):
 
 
 async def test_empty_followup_plan_never_announces_followup(settings):
-    providers = Providers(deep=True)
+    providers = Providers(deep=True, authoritative=False)
     async with running(settings, providers) as (app, client):
         saved = await submit(client)
         events = await app.state.storage.events(UUID(saved["id"]))

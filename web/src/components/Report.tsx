@@ -138,6 +138,8 @@ function citedIds(result: InvestigationResult | null): string[] {
 export function Report(props: Props) {
   const { investigation, evidence, events, researchDone, finished, loadError, replay, reused, onRetry, onReplay } = props
   const result = finished ? investigation.result : null
+  const unconfirmed = result?.outcome === 'unable_to_decide' &&
+    (investigation.stop_reason === 'semantic_rejection' || investigation.stop_reason === 'invalid_task_output')
   const index = useMemo(() => buildEvidenceIndex(evidence), [evidence])
   const [choice, setChoice] = useState<{ investigation: string; id: string } | null>(null)
   const selected =
@@ -165,12 +167,12 @@ export function Report(props: Props) {
             {result && (
               <>
                 <h2 id="result-label" className="result-label">
-                  <DecisionLabel decision={result} />
-                  {result.finding.qualification_flags.length > 0 && (
+                  {unconfirmed ? 'No confirmed decision' : <DecisionLabel decision={result} />}
+                  {!unconfirmed && result.finding.qualification_flags.length > 0 && (
                     <span className="result-qualifier">, with a caveat</span>
                   )}
                 </h2>
-                {result.unable_to_decide_reason && (
+                {!unconfirmed && result.unable_to_decide_reason && (
                   <p className="result-reason">{UNDECIDED_REASON[result.unable_to_decide_reason]}</p>
                 )}
               </>
@@ -214,9 +216,16 @@ export function Report(props: Props) {
             </section>
           )}
 
+          {finished && investigation.method_limitation && (
+            <section className="outcome">
+              <h2 id="result-label">This claim needs a different research method</h2>
+              <p>{investigation.method_limitation.explanation}</p>
+            </section>
+          )}
+
           {finished && investigation.error && (
             <section className="outcome" role="alert">
-              <h2>No decision</h2>
+              <h2 id="result-label">No decision</h2>
               <p>{investigation.error.message}</p>
               <p className="meta">A failed investigation is not evidence that the claim is false.</p>
             </section>
@@ -227,8 +236,17 @@ export function Report(props: Props) {
               <div className="report-main">
                 {result && (
                   <>
-                    <Conclusion investigation={investigation} result={result} />
-                    <Findings result={result} route={investigation.route} />
+                    {unconfirmed ? (
+                      <section className="conclusion" aria-labelledby="result-label">
+                        <p>The final check did not confirm a decision. The collected sources are available in the evidence pane.</p>
+                        <p className="meta">This does not establish that evidence is insufficient or conflicting.</p>
+                      </section>
+                    ) : (
+                      <>
+                        <Conclusion investigation={investigation} result={result} />
+                        <Findings result={result} route={investigation.route} />
+                      </>
+                    )}
                     <Limitations result={result} />
                   </>
                 )}

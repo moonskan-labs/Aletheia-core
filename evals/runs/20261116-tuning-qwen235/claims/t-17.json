@@ -1,0 +1,2098 @@
+{
+  "id": "t-17",
+  "live": true,
+  "investigation": {
+    "id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+    "claim": "IMAP launched for NASA from Kennedy Space Center in Florida on September 24, 2025.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "invalid_task_output",
+    "reused": true,
+    "created_at": "2026-11-16T01:39:56.427463Z",
+    "started_at": "2026-11-16T01:39:56.517055Z",
+    "finished_at": "2026-11-16T01:40:52.164665Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "false",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "IMAP launched for NASA from Kennedy Space Center in Florida on September 24, 2025.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "The claim asserts a specific future event involving the launch of IMAP from Kennedy Space Center on a defined date. This is a factual statement about a scheduled mission that can be verified against official NASA records or launch schedules.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "launched for NASA from Kennedy Space Center in Florida on September 24, 2025",
+              "role": "essential",
+              "subject": "IMAP",
+              "predicate": "launched",
+              "timeframe": "September 24, 2025",
+              "location_or_population": "Kennedy Space Center in Florida",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The claim specifies the mission (IMAP), the agency (NASA), the launch site (Kennedy Space Center, Florida), and the exact date (September 24, 2025). All necessary scope is present for verification against official launch manifests.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "false",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "9b996e32-82fd-4fb6-a040-52abb57434a1"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "9b996e32-82fd-4fb6-a040-52abb57434a1"
+        ],
+        "qualification_flags": [
+          {
+            "type": "misleading_comparison",
+            "dimension": "timeframe",
+            "explanation": "Claimed launch date differs from official schedule",
+            "evidence_ids": [
+              "9b996e32-82fd-4fb6-a040-52abb57434a1"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "Official NASA records indicate the IMAP launch readiness date was delayed to February 1, 2025.",
+          "evidence_ids": [
+            "9b996e32-82fd-4fb6-a040-52abb57434a1"
+          ]
+        },
+        {
+          "text": "The IMAP mission is scheduled to launch on a SpaceX Falcon 9 rocket.",
+          "evidence_ids": [
+            "9b996e32-82fd-4fb6-a040-52abb57434a1"
+          ]
+        }
+      ],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Source truncated",
+        "Date conflict",
+        "Some planned evidence checks could not be completed; coverage is incomplete.",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "prompt_version": "direct-claims-v5",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "default",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 7,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.538404915999763,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.656316736999997,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.52031673700003,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.781861618000221,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.22573736700042,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.08412392599984742,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 9.58500869799991,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 10.676522415000363,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 1.9934416480000436,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 9.776164992999838,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 5.093253339999592,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9490882390000479,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 37631,
+        "completion_tokens": 1729,
+        "total_tokens": 39360
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "The claim asserts a specific future event involving the launch of IMAP from Kennedy Space Center on a defined date. This is a factual statement about a scheduled mission that can be verified against official NASA records or launch schedules.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "launched for NASA from Kennedy Space Center in Florida on September 24, 2025",
+          "role": "essential",
+          "subject": "IMAP",
+          "predicate": "launched",
+          "timeframe": "September 24, 2025",
+          "location_or_population": "Kennedy Space Center in Florida",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "events": "/investigations/db8f4a9a-703e-4b65-a48b-b96bf33ade66/events",
+      "evidence": "/investigations/db8f4a9a-703e-4b65-a48b-b96bf33ade66/evidence",
+      "comparison": "/investigations/db8f4a9a-703e-4b65-a48b-b96bf33ade66/comparison",
+      "refresh": "/investigations/db8f4a9a-703e-4b65-a48b-b96bf33ade66/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "url": "https://www.facebook.com/SpaceFP/posts/on-september-24-2025-nasa-successfully-launched-the-interstellar-mapping-and-acc/832868435927881",
+        "canonical_url": "https://www.facebook.com/SpaceFP/posts/on-september-24-2025-nasa-successfully-launched-the-interstellar-mapping-and-acc/832868435927881",
+        "title": "24K views · 439 reactions | On September 24, 2025, NASA successfully launched the Interstellar Mapping and Acceleration Probe (IMAP), along with two secondary spacecraft, aboard a SpaceX Falcon 9 rocket. The mission's primary objective is to map the boundaries of the heliosphere, the giant protective bubble created by the solar wind that shields our solar system from harmful cosmic radiation.\n\nLaunch and deployment details\n\nLaunch vehicle: A SpaceX Falcon 9 rocket launched from Launch Complex 39A at NASA's Kennedy Space Center in Florida.\n\nLiftoff: The mission lifted off on Wednesday, September 24, 2025, at 7:30 a.m. EDT.\n\nRideshare payloads: In addition to IMAP, the rocket also carried NOAA's Space Weather Follow On-Lagrange 1 (SWFO-L1) and NASA's Carruthers Geocorona Observatory.\n\nOrbital destination: All three spacecraft are traveling to the Sun-Earth L1 Lagrange Point, a gravitationally stable position approximately 1 million miles from Earth. They are expected to arrive in January 2026.\n\nSignal acquisition: IMAP successfully established communications with mission control shortly after its deployment from the rocket's second stage.\n\nBooster landing: The Falcon 9 first-stage booster successfully landed on the droneship \"Just Read the Instructions\" in the Atlantic Ocean.\n\nDennis Hlavsa /@dhlavsa with Space FrontPage and Launch Window Photo \n\n#NASA #SpaceX #falcon9 #IMAP #launchvideo #NOAA | Space FrontPage",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T01:40:13.905753Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "e6d70c983b8d3c0df71abd910b3a6e02c8a52bf9f8f5b906c051ac6bcbb2b76c",
+        "duplicate_group": "e6d70c983b8d3c0df71abd910b3a6e02c8a52bf9f8f5b906c051ac6bcbb2b76c",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "url": "https://science.nasa.gov/blogs/imap/2020/12/11/nasa-adjusts-imap-schedule-to-accommodate-covid-19-precautions",
+        "canonical_url": "https://science.nasa.gov/blogs/imap/2020/12/11/nasa-adjusts-imap-schedule-to-accommodate-covid-19-precautions",
+        "title": "NASA Adjusts IMAP Schedule to Accommodate COVID-19 ...",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T01:40:36.241822Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "e0884f3d039c85db869961bac875c39d1cf6cf09a85a4ef0720de389bffa15b9",
+        "duplicate_group": "e0884f3d039c85db869961bac875c39d1cf6cf09a85a4ef0720de389bffa15b9",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "9b996e32-82fd-4fb6-a040-52abb57434a1",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+            "span_ids": [
+              109,
+              114
+            ]
+          },
+          "rationale": "The spans state that the IMAP launch readiness date was delayed to Feb. 1, 2025, and that it will launch on a SpaceX Falcon 9 rocket. This conflicts with the claim of a September 24, 2025 launch date.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "NASA",
+          "origin": "NASA",
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [
+            "Source truncated",
+            "Date conflict"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "timeframe",
+              "explanation": "Claimed launch date differs from official schedule"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              109
+            ],
+            "start": 9749,
+            "end": 9832,
+            "text": "Similarly, the launch readiness date is delayed from Oct. 1, 2024, to Feb. 1, 2025.",
+            "quote_hash": "5ed0093ba1ab741ecda95d3e62ea25299a774e8f8f37b4ba0626bd8966c50f66"
+          },
+          {
+            "span_ids": [
+              114
+            ],
+            "start": 10693,
+            "end": 10912,
+            "text": "IMAP will launch on a [Falcon 9 Full Thrust rocket provided by Space Exploration Technologies (SpaceX)](https://www.nasa.gov/press-release/nasa-awards-launch-services-contract-for-imap-mission) of Hawthorne, California.",
+            "quote_hash": "7c635d6a7f72b036dafabcc4a9e7ddfc8bdd814b9b9fdb722c6aaba0f43c3894"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 1,
+      "timestamp": "2026-11-16T01:39:56.427463Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 2,
+      "timestamp": "2026-11-16T01:39:56.517055Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 3,
+      "timestamp": "2026-11-16T01:39:56.520706Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+        "prompt_version": "direct-claims-v5",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "default",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 4,
+      "timestamp": "2026-11-16T01:39:56.523170Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 5,
+      "timestamp": "2026-11-16T01:39:56.525792Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.995",
+        "hard_remaining_seconds": "119.995",
+        "attempt": "1",
+        "input_chars": "110"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 6,
+      "timestamp": "2026-11-16T01:39:56.529485Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.991",
+        "hard_remaining_seconds": "119.991",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10811"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 7,
+      "timestamp": "2026-11-16T01:40:01.071439Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.450",
+        "hard_remaining_seconds": "115.450",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10811",
+        "elapsed_seconds": "4.538",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1829"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 8,
+      "timestamp": "2026-11-16T01:40:01.074705Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.446",
+        "hard_remaining_seconds": "115.446",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1008",
+        "elapsed_seconds": "4.549",
+        "finish_reason": "stop",
+        "prompt_tokens": "1708",
+        "completion_tokens": "251",
+        "total_tokens": "1959"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 9,
+      "timestamp": "2026-11-16T01:40:01.080894Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 10,
+      "timestamp": "2026-11-16T01:40:01.083985Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 11,
+      "timestamp": "2026-11-16T01:40:01.086842Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 12,
+      "timestamp": "2026-11-16T01:40:01.090001Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.431",
+        "hard_remaining_seconds": "115.431",
+        "attempt": "1",
+        "input_chars": "1206"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 13,
+      "timestamp": "2026-11-16T01:40:01.093837Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.427",
+        "hard_remaining_seconds": "115.427",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4242"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 14,
+      "timestamp": "2026-11-16T01:40:05.759040Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.766",
+        "hard_remaining_seconds": "110.766",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4242",
+        "elapsed_seconds": "4.656",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1450"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 15,
+      "timestamp": "2026-11-16T01:40:05.767076Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.754",
+        "hard_remaining_seconds": "110.754",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "645",
+        "elapsed_seconds": "4.676",
+        "finish_reason": "stop",
+        "prompt_tokens": "761",
+        "completion_tokens": "170",
+        "total_tokens": "931"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 16,
+      "timestamp": "2026-11-16T01:40:05.773216Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission launch date NASA Kennedy Space Center September 24 2025 official schedule",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 17,
+      "timestamp": "2026-11-16T01:40:05.777187Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.744",
+        "hard_remaining_seconds": "110.744",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "294"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 18,
+      "timestamp": "2026-11-16T01:40:08.301160Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.220",
+        "hard_remaining_seconds": "108.220",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "294",
+        "elapsed_seconds": "2.520",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11337"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 19,
+      "timestamp": "2026-11-16T01:40:08.304667Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission launch date NASA Kennedy Space Center September 24 2025 official schedule",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 20,
+      "timestamp": "2026-11-16T01:40:08.308771Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP launch delay or reschedule NASA 2025 official update",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 21,
+      "timestamp": "2026-11-16T01:40:08.311744Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.209",
+        "hard_remaining_seconds": "108.209",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "265"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 22,
+      "timestamp": "2026-11-16T01:40:11.096893Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "60.424",
+        "hard_remaining_seconds": "105.424",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "265",
+        "elapsed_seconds": "2.782",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5521"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 23,
+      "timestamp": "2026-11-16T01:40:11.099911Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP launch delay or reschedule NASA 2025 official update",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 24,
+      "timestamp": "2026-11-16T01:40:11.102474Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission planned launch site and date NASA press release or fact sheet",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 25,
+      "timestamp": "2026-11-16T01:40:11.105020Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "60.416",
+        "hard_remaining_seconds": "105.416",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "282"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 26,
+      "timestamp": "2026-11-16T01:40:13.334046Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "58.187",
+        "hard_remaining_seconds": "103.187",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "282",
+        "elapsed_seconds": "2.226",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9574"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 27,
+      "timestamp": "2026-11-16T01:40:13.802476Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission planned launch site and date NASA press release or fact sheet",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 28,
+      "timestamp": "2026-11-16T01:40:13.806978Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "9",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 29,
+      "timestamp": "2026-11-16T01:40:13.810016Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.facebook.com/SpaceFP/posts/on-september-24-2025-nasa-successfully-launched-the-interstellar-mapping-and-acc/832868435927881",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 30,
+      "timestamp": "2026-11-16T01:40:13.812689Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 31,
+      "timestamp": "2026-11-16T01:40:13.815966Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "57.705",
+        "hard_remaining_seconds": "102.705",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "262"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 32,
+      "timestamp": "2026-11-16T01:40:13.903415Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "57.618",
+        "hard_remaining_seconds": "102.618",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "262",
+        "elapsed_seconds": "0.084",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "31362"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 33,
+      "timestamp": "2026-11-16T01:40:13.926289Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "url": "https://www.facebook.com/SpaceFP/posts/on-september-24-2025-nasa-successfully-launched-the-interstellar-mapping-and-acc/832868435927881",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 34,
+      "timestamp": "2026-11-16T01:40:13.929330Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 35,
+      "timestamp": "2026-11-16T01:40:13.933277Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "57.587",
+        "hard_remaining_seconds": "102.587",
+        "attempt": "1",
+        "input_chars": "18527"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 36,
+      "timestamp": "2026-11-16T01:40:13.937742Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "57.583",
+        "hard_remaining_seconds": "102.583",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35036"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 37,
+      "timestamp": "2026-11-16T01:40:23.525585Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "47.995",
+        "hard_remaining_seconds": "92.995",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35036",
+        "elapsed_seconds": "9.585",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2149"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 38,
+      "timestamp": "2026-11-16T01:40:23.532025Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "47.989",
+        "hard_remaining_seconds": "92.989",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "scope_flag",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1293",
+        "elapsed_seconds": "9.599",
+        "finish_reason": "stop",
+        "prompt_tokens": "10575",
+        "completion_tokens": "332",
+        "total_tokens": "10907"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 39,
+      "timestamp": "2026-11-16T01:40:23.534678Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 40,
+      "timestamp": "2026-11-16T01:40:23.537531Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "47.983",
+        "hard_remaining_seconds": "92.983",
+        "attempt": "2",
+        "input_chars": "18527"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 41,
+      "timestamp": "2026-11-16T01:40:23.542292Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "47.978",
+        "hard_remaining_seconds": "92.978",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35226"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 42,
+      "timestamp": "2026-11-16T01:40:34.222158Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "37.299",
+        "hard_remaining_seconds": "82.299",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35226",
+        "elapsed_seconds": "10.677",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2255"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 43,
+      "timestamp": "2026-11-16T01:40:34.226203Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "37.295",
+        "hard_remaining_seconds": "82.295",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "scope_flag",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1399",
+        "elapsed_seconds": "10.688",
+        "finish_reason": "stop",
+        "prompt_tokens": "10607",
+        "completion_tokens": "356",
+        "total_tokens": "10963"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 44,
+      "timestamp": "2026-11-16T01:40:34.229394Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 45,
+      "timestamp": "2026-11-16T01:40:34.232275Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "bef5ef71-63e7-4f55-851c-3edf59fb2e89",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 46,
+      "timestamp": "2026-11-16T01:40:34.235536Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "url": "https://science.nasa.gov/blogs/imap/2020/12/11/nasa-adjusts-imap-schedule-to-accommodate-covid-19-precautions",
+        "slot": "2",
+        "query_ids": "q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 47,
+      "timestamp": "2026-11-16T01:40:34.239077Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 48,
+      "timestamp": "2026-11-16T01:40:34.242311Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "37.279",
+        "hard_remaining_seconds": "82.279",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "236"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 49,
+      "timestamp": "2026-11-16T01:40:36.239281Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "35.282",
+        "hard_remaining_seconds": "80.282",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "236",
+        "elapsed_seconds": "1.993",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "13678"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 50,
+      "timestamp": "2026-11-16T01:40:36.249446Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "url": "https://science.nasa.gov/blogs/imap/2020/12/11/nasa-adjusts-imap-schedule-to-accommodate-covid-19-precautions",
+        "candidate_id": "c16",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 51,
+      "timestamp": "2026-11-16T01:40:36.252697Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 52,
+      "timestamp": "2026-11-16T01:40:36.259420Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "35.262",
+        "hard_remaining_seconds": "80.262",
+        "attempt": "1",
+        "input_chars": "21446"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 53,
+      "timestamp": "2026-11-16T01:40:36.275734Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "35.254",
+        "hard_remaining_seconds": "80.254",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38158"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 54,
+      "timestamp": "2026-11-16T01:40:46.056166Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "25.465",
+        "hard_remaining_seconds": "70.465",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38158",
+        "elapsed_seconds": "9.776",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1725"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 55,
+      "timestamp": "2026-11-16T01:40:46.061811Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "25.460",
+        "hard_remaining_seconds": "70.460",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "904",
+        "elapsed_seconds": "9.802",
+        "finish_reason": "stop",
+        "prompt_tokens": "10284",
+        "completion_tokens": "280",
+        "total_tokens": "10564"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 56,
+      "timestamp": "2026-11-16T01:40:46.069188Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "9b996e32-82fd-4fb6-a040-52abb57434a1",
+        "snapshot_id": "e8d18a07-9b37-4c52-949c-218b37e7a15f",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 57,
+      "timestamp": "2026-11-16T01:40:46.072509Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 58,
+      "timestamp": "2026-11-16T01:40:46.078279Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 59,
+      "timestamp": "2026-11-16T01:40:46.081964Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "70.439",
+        "hard_remaining_seconds": "70.439",
+        "attempt": "1",
+        "input_chars": "3102"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 60,
+      "timestamp": "2026-11-16T01:40:46.086393Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "70.435",
+        "hard_remaining_seconds": "70.435",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8420"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 61,
+      "timestamp": "2026-11-16T01:40:51.183116Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "65.338",
+        "hard_remaining_seconds": "65.338",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8420",
+        "elapsed_seconds": "5.093",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1613"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 62,
+      "timestamp": "2026-11-16T01:40:51.187166Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "65.334",
+        "hard_remaining_seconds": "65.334",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "811",
+        "elapsed_seconds": "5.105",
+        "finish_reason": "stop",
+        "prompt_tokens": "1841",
+        "completion_tokens": "311",
+        "total_tokens": "2152"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 63,
+      "timestamp": "2026-11-16T01:40:51.190197Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "65.331",
+        "hard_remaining_seconds": "65.331",
+        "attempt": "1",
+        "input_chars": "3821"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 64,
+      "timestamp": "2026-11-16T01:40:51.193695Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "65.327",
+        "hard_remaining_seconds": "65.327",
+        "provider_call_id": "p23",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7504"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 65,
+      "timestamp": "2026-11-16T01:40:52.149761Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "64.374",
+        "hard_remaining_seconds": "64.374",
+        "provider_call_id": "p23",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7504",
+        "elapsed_seconds": "0.949",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "831"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 66,
+      "timestamp": "2026-11-16T01:40:52.155005Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t22",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "64.366",
+        "hard_remaining_seconds": "64.366",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "80",
+        "elapsed_seconds": "0.965",
+        "finish_reason": "stop",
+        "prompt_tokens": "1855",
+        "completion_tokens": "29",
+        "total_tokens": "1884"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 67,
+      "timestamp": "2026-11-16T01:40:52.159107Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "explanation_unit",
+        "reason": "unsupported_explanation,non_atomic_explanation",
+        "action": "dropped",
+        "affected_units": "0,3"
+      }
+    },
+    {
+      "investigation_id": "db8f4a9a-703e-4b65-a48b-b96bf33ade66",
+      "sequence": 68,
+      "timestamp": "2026-11-16T01:40:52.164665Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "invalid_task_output"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 56.016983194000204,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.537
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.655
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.501
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.781
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.224
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.066
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 9.584
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 10.676
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.975
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 9.775
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 5.092
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.946
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.538404915999763,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.656316736999997,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.52031673700003,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.781861618000221,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.22573736700042,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.08412392599984742,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 9.58500869799991,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 10.676522415000363,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 1.9934416480000436,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 9.776164992999838,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 5.093253339999592,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9490882390000479,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

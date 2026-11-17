@@ -29,8 +29,27 @@ npm test         # hook and form behavior (Vitest + jsdom)
 
 ## Status and caveats
 
-- `src/api/types.ts` is **reconciled** with `src/aletheia/contracts.py` and the backend's `/openapi.json` for investigations, context, links, errors and `/health`. Results, evidence and most event payloads are still provisional because the backend doesn't serve them yet.
+- `src/api/types.ts` is **reconciled** with `src/aletheia/contracts.py` and the backend's `/openapi.json` for investigations, context, links, errors and `/health`. Results and evidence are exercised with captured backend responses; event names are checked against the backend contract, and payload fields are read defensively.
 - If the progress stream closes before research finishes (for example, `/events` returns 404 on a backend without the research pipeline), the page says live progress isn't available instead of staying on "Researching".
 - The only recording is invented sample data (`sample: true`), and the page says so. Replace it with sanitized exports of real runs before any hosted demo, and review exports for secrets first.
 - Clarification, failed and partial results render in the shared layout, but their full designs and sample recordings come in a follow-up.
 - The refresh, saved-view and comparison screens are not built yet.
+
+### Phase 1 backend integration
+
+The client subscribes to all 39 backend event names and describes the Phase 1 stop
+reasons. Unsupported-method responses show the saved explanation even though no
+truth verdict exists. A partial result stopped by `semantic_rejection` or
+`invalid_task_output` shows “No confirmed decision” with the collected evidence,
+without presenting an insufficient-evidence verdict or qualification caveat.
+
+The Phase 1 regression recordings come from the API, worker and SQLite with
+synthetic providers. Regenerate only these recordings from the repository root:
+
+```sh
+uv run --locked python web/scripts/capture_backend_fixtures.py . web/src/fixtures/backend unsupported-method unconfirmed-decision quoted-explanation deadline-before-confirmation
+```
+
+Earlier recordings remain historical compatibility cases, including Almost and the
+older partial-result behavior. New Phase 1 runs do not publish Almost, and a deadline
+before a pending verdict is confirmed fails with no result.

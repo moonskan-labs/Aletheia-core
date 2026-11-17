@@ -62,6 +62,7 @@ PROVIDER_ENV = {
     "tavily_api_key": "TAVILY_API_KEY",
     "nebius_model": "NEBIUS_MODEL",
     "nebius_response_format": "ALETHEIA_NEBIUS_RESPONSE_FORMAT",
+    "nebius_thinking": "ALETHEIA_NEBIUS_THINKING",
     "timeout_seconds": "ALETHEIA_PROVIDER_TIMEOUT_SECONDS",
     "max_retries": "ALETHEIA_PROVIDER_MAX_RETRIES",
     "max_request_bytes": "ALETHEIA_PROVIDER_MAX_REQUEST_BYTES",
@@ -69,6 +70,9 @@ PROVIDER_ENV = {
     "max_extracted_chars": "ALETHEIA_MAX_EXTRACTED_CHARS",
     "max_output_tokens": "ALETHEIA_MODEL_MAX_OUTPUT_TOKENS",
 }
+
+# Add a model only after verifying its chat-template control contract.
+NEBIUS_THINKING_MODELS = frozenset({"nvidia/Nemotron-3_5-Lightning"})
 
 
 class ProviderSettings(BaseModel):
@@ -80,12 +84,20 @@ class ProviderSettings(BaseModel):
     tavily_api_key: SecretStr | None = Field(default=None, repr=False)
     nebius_model: str | None = Field(default=None, min_length=1, max_length=200)
     nebius_response_format: Literal["json_schema", "json_object"] = "json_schema"
+    nebius_thinking: Literal["default", "enabled", "disabled"] = "default"
     timeout_seconds: float = Field(default=45.0, ge=1, le=120, allow_inf_nan=False)
     max_retries: int = Field(default=2, ge=0, le=2, strict=True)
     max_request_bytes: int = Field(default=262_144, ge=1024, le=1_048_576, strict=True)
     max_response_bytes: int = Field(default=2_097_152, ge=1024, le=10_485_760, strict=True)
     max_extracted_chars: int = Field(default=100_000, ge=1024, le=1_000_000, strict=True)
     max_output_tokens: int = Field(default=4096, ge=64, le=16_384, strict=True)
+
+    def validate_model_controls(self):
+        if self.nebius_thinking != "default" and self.nebius_model not in NEBIUS_THINKING_MODELS:
+            raise ConfigurationError(
+                "ALETHEIA_NEBIUS_THINKING requires a model with verified thinking controls; "
+                "use default for other models."
+            )
 
     @field_validator("nebius_api_key", "tavily_api_key")
     @classmethod

@@ -1,0 +1,2351 @@
+{
+  "id": "t-06",
+  "live": true,
+  "investigation": {
+    "id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+    "claim": "The worldwide June 2022 HTTP standard classifies PUT as idempotent.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-16T00:32:52.737179Z",
+    "started_at": "2026-11-16T00:32:52.870987Z",
+    "finished_at": "2026-11-16T00:33:20.626627Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "true",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "The worldwide June 2022 HTTP standard classifies PUT as idempotent.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Standard HTTP method classification verified from RFC specification.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "The worldwide June 2022 HTTP standard",
+              "role": "essential",
+              "subject": "The worldwide June 2022 HTTP standard",
+              "predicate": "classifies",
+              "timeframe": "June 2022",
+              "location_or_population": "worldwide",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "PUT",
+              "role": "essential",
+              "subject": "PUT",
+              "predicate": "is classified as",
+              "timeframe": "June 2022",
+              "location_or_population": "worldwide",
+              "comparison": null
+            },
+            {
+              "id": "c3",
+              "text": "idempotent",
+              "role": "essential",
+              "subject": "PUT",
+              "predicate": "classified as",
+              "timeframe": "June 2022",
+              "location_or_population": "worldwide",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "HTTP idempotency classification per RFC 7231 and subsequent standards; PUT is defined as idempotent in the HTTP specification.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "true",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "supported",
+            "evidence_ids": [
+              "69907948-accc-48b1-b6a0-12693e961d70",
+              "f3b52b9c-669b-4d00-8209-996f73f33aa3"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "supported",
+            "evidence_ids": [
+              "ab108c2d-4b93-4476-be5c-3cd88dfc97ed",
+              "519610a9-1802-4a42-9ca8-046a1a6e6622"
+            ]
+          },
+          {
+            "component_id": "c3",
+            "outcome": "supported",
+            "evidence_ids": [
+              "065377fc-87fe-47c6-aa4f-597dfbf35386",
+              "3770fde1-2697-49af-9a54-c13c4bffe0db"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "69907948-accc-48b1-b6a0-12693e961d70",
+          "ab108c2d-4b93-4476-be5c-3cd88dfc97ed",
+          "065377fc-87fe-47c6-aa4f-597dfbf35386",
+          "f3b52b9c-669b-4d00-8209-996f73f33aa3",
+          "519610a9-1802-4a42-9ca8-046a1a6e6622",
+          "3770fde1-2697-49af-9a54-c13c4bffe0db"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "RFC 9110 published June 2022 classifies PUT as idempotent in its method classification table.",
+          "evidence_ids": [
+            "69907948-accc-48b1-b6a0-12693e961d70"
+          ]
+        },
+        {
+          "text": "PUT is listed with Idempotent=Yes in the RFC 9110 classification table (span 56).",
+          "evidence_ids": [
+            "69907948-accc-48b1-b6a0-12693e961d70"
+          ]
+        },
+        {
+          "text": "The IETF published RFC 9110 in June 2022 as Internet Standard STD 97.",
+          "evidence_ids": [
+            "69907948-accc-48b1-b6a0-12693e961d70"
+          ]
+        },
+        {
+          "text": "RFC 7231 Section 4.2.2 defines idempotent methods and classifies PUT as idempotent.",
+          "evidence_ids": [
+            "f3b52b9c-669b-4d00-8209-996f73f33aa3"
+          ]
+        },
+        {
+          "text": "RFC 7231 Section 8.1.3 classification table lists PUT with idempotent status.",
+          "evidence_ids": [
+            "519610a9-1802-4a42-9ca8-046a1a6e6622"
+          ]
+        },
+        {
+          "text": "RFC 7231 Section 4.2.2 explicitly states that PUT, DELETE, and safe methods are idempotent.",
+          "evidence_ids": [
+            "3770fde1-2697-49af-9a54-c13c4bffe0db"
+          ]
+        }
+      ],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Source is a guide referencing the RFC, not the normative RFC text itself",
+        "Guide format may paraphrase RFC table",
+        "Definition spans cover intent, not the specific PUT classification independently",
+        "Stack Overflow answer references RFC; no independent verification of June 2022 standard status beyond the cited RFC text",
+        "Stack Overflow answer summarizes RFC classification; no primary RFC quote extraction beyond table row",
+        "Definition text truncated in span; full quote starts at 21670 and extends beyond span end",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v5",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 6,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.7004265409923391,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8380866660008905,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.0568950409942772,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.2174227500072448,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.246169332996942,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.2015270830015652,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 5.645326666999608,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.3179108339973027,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 6.140836791993934,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.3582865000062156,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.873969833002775,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 33873,
+        "completion_tokens": 2571,
+        "total_tokens": 36444
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Standard HTTP method classification verified from RFC specification.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "The worldwide June 2022 HTTP standard",
+          "role": "essential",
+          "subject": "The worldwide June 2022 HTTP standard",
+          "predicate": "classifies",
+          "timeframe": "June 2022",
+          "location_or_population": "worldwide",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "PUT",
+          "role": "essential",
+          "subject": "PUT",
+          "predicate": "is classified as",
+          "timeframe": "June 2022",
+          "location_or_population": "worldwide",
+          "comparison": null
+        },
+        {
+          "id": "c3",
+          "text": "idempotent",
+          "role": "essential",
+          "subject": "PUT",
+          "predicate": "classified as",
+          "timeframe": "June 2022",
+          "location_or_population": "worldwide",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "events": "/investigations/4b12af5c-1bb4-49c6-b5e9-a7272901905c/events",
+      "evidence": "/investigations/4b12af5c-1bb4-49c6-b5e9-a7272901905c/evidence",
+      "comparison": "/investigations/4b12af5c-1bb4-49c6-b5e9-a7272901905c/comparison",
+      "refresh": "/investigations/4b12af5c-1bb4-49c6-b5e9-a7272901905c/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "url": "https://www.restguide.info/rfc-9110",
+        "canonical_url": "https://www.restguide.info/rfc-9110",
+        "title": "RFC 9110 Explained: Safe & Idempotent HTTP Methods",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:33:04.197576Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "77bf00e5fb53e327db62c208ae74fda4c6416d9b9931374de4eee846138c2bd8",
+        "duplicate_group": "77bf00e5fb53e327db62c208ae74fda4c6416d9b9931374de4eee846138c2bd8",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "url": "https://stackoverflow.com/questions/45016234/what-is-idempotency-in-http-methods",
+        "canonical_url": "https://stackoverflow.com/questions/45016234/what-is-idempotency-in-http-methods",
+        "title": "What is idempotency in HTTP methods?",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:33:10.196462Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "fa1100a6d9fce7747e3594aa199eedd146c5602191b6932c36a7a895aa23efbb",
+        "duplicate_group": "fa1100a6d9fce7747e3594aa199eedd146c5602191b6932c36a7a895aa23efbb",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "69907948-accc-48b1-b6a0-12693e961d70",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+            "span_ids": [
+              18,
+              51,
+              56,
+              141
+            ]
+          },
+          "rationale": "Spans 18, 51, 56, 141 confirm RFC 9110 (published June 2022) defines PUT as idempotent in its method classification table; the snapshot is the June 2022 standard.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            18,
+            51,
+            56,
+            141
+          ],
+          "provenance_note": "Table row for PUT shows Idempotent=Yes; spans cite the classification and the June 2022 publication date.",
+          "limitations": [
+            "Source is a guide referencing the RFC, not the normative RFC text itself"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              18
+            ],
+            "start": 815,
+            "end": 878,
+            "text": "The IETF published it in June 2022 as Internet Standard STD 97.",
+            "quote_hash": "6083b67dc9056190fb825be6279ebc4c2062e9de19ccd6cce5586109c39c4ba7"
+          },
+          {
+            "span_ids": [
+              51
+            ],
+            "start": 3059,
+            "end": 3111,
+            "text": "| Method | Safe | Idempotent | Cacheable | Section |",
+            "quote_hash": "4a1ad1e594ac13e1ba632b67db7a85a5ec3ee204c236d1bdc4d6cfedd19a445e"
+          },
+          {
+            "span_ids": [
+              56
+            ],
+            "start": 3266,
+            "end": 3301,
+            "text": "| **PUT** | No | Yes | No | 9.3.4 |",
+            "quote_hash": "c4d2127cad417a6412d4ec2eb336266fe9990b1650846cf0fe9f8467f8ced7e9"
+          },
+          {
+            "span_ids": [
+              141
+            ],
+            "start": 8925,
+            "end": 8975,
+            "text": "### Which HTTP methods are idempotent in RFC 9110?",
+            "quote_hash": "897544fb4884a9433099c3d51134cdaf7450c44505d938f74fa7f1b96b2a8539"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "ab108c2d-4b93-4476-be5c-3cd88dfc97ed",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+            "span_ids": [
+              18,
+              51,
+              56
+            ]
+          },
+          "rationale": "Spans 18, 51, 56 identify PUT as a method within RFC 9110 and its idempotent classification; the component is a method name, established by the same spans.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            18,
+            51,
+            56
+          ],
+          "provenance_note": "PUT appears in the method classification table (span 56) and the guide identifies it as a defined method (spans 18, 51).",
+          "limitations": [
+            "Guide format may paraphrase RFC table"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              18
+            ],
+            "start": 815,
+            "end": 878,
+            "text": "The IETF published it in June 2022 as Internet Standard STD 97.",
+            "quote_hash": "6083b67dc9056190fb825be6279ebc4c2062e9de19ccd6cce5586109c39c4ba7"
+          },
+          {
+            "span_ids": [
+              51
+            ],
+            "start": 3059,
+            "end": 3111,
+            "text": "| Method | Safe | Idempotent | Cacheable | Section |",
+            "quote_hash": "4a1ad1e594ac13e1ba632b67db7a85a5ec3ee204c236d1bdc4d6cfedd19a445e"
+          },
+          {
+            "span_ids": [
+              56
+            ],
+            "start": 3266,
+            "end": 3301,
+            "text": "| **PUT** | No | Yes | No | 9.3.4 |",
+            "quote_hash": "c4d2127cad417a6412d4ec2eb336266fe9990b1650846cf0fe9f8467f8ced7e9"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "065377fc-87fe-47c6-aa4f-597dfbf35386",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c3",
+          "values": [],
+          "citation": {
+            "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+            "span_ids": [
+              27,
+              56,
+              74,
+              141
+            ]
+          },
+          "rationale": "Spans 27, 56, 74, 141 define idempotent as same intended effect on repeated identical requests and list PUT in the idempotent set; the classification matches the claim.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            27,
+            56,
+            74,
+            141
+          ],
+          "provenance_note": "Span 27 gives the definition; span 56 shows PUT Idempotent=Yes; spans 74/141 reiterate the classification.",
+          "limitations": [
+            "Definition spans cover intent, not the specific PUT classification independently"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              27
+            ],
+            "start": 1523,
+            "end": 1616,
+            "text": "An idempotent method has the same intended effect when a client repeats an identical request.",
+            "quote_hash": "03c26b335096c4ed2e27cb0cf5ab87f7de89540b9b410d1585375dd2264e8a17"
+          },
+          {
+            "span_ids": [
+              56
+            ],
+            "start": 3266,
+            "end": 3301,
+            "text": "| **PUT** | No | Yes | No | 9.3.4 |",
+            "quote_hash": "c4d2127cad417a6412d4ec2eb336266fe9990b1650846cf0fe9f8467f8ced7e9"
+          },
+          {
+            "span_ids": [
+              74
+            ],
+            "start": 4416,
+            "end": 4563,
+            "text": "[Section 9.2.2](https://www.rfc-editor.org/rfc/rfc9110#section-9.2.2) states that **PUT**, **DELETE**, and the safe request methods are idempotent.",
+            "quote_hash": "da64ab3c301a9f7579c1067fc879a4f571efa5588651776f23ab096827d45fbd"
+          },
+          {
+            "span_ids": [
+              141
+            ],
+            "start": 8925,
+            "end": 8975,
+            "text": "### Which HTTP methods are idempotent in RFC 9110?",
+            "quote_hash": "897544fb4884a9433099c3d51134cdaf7450c44505d938f74fa7f1b96b2a8539"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "f3b52b9c-669b-4d00-8209-996f73f33aa3",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+            "span_ids": [
+              938
+            ]
+          },
+          "rationale": "RFC 7231 (Section 4.2.2) states that PUT is idempotent. The source establishes the standard classification from the June 2022 specification timeframe.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            938
+          ],
+          "provenance_note": "RFC 7231 Section 4.2.2 definition of idempotent methods; Section 8.1.3 classification table.",
+          "limitations": [
+            "Stack Overflow answer references RFC; no independent verification of June 2022 standard status beyond the cited RFC text"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              938
+            ],
+            "start": 21670,
+            "end": 21975,
+            "text": "> **A request method is considered \"idempotent\" if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request**. Of the request methods defined by this specification, `PUT`, `DELETE`, and safe request methods are idempotent. [...]",
+            "quote_hash": "05c71ecd8a57e303fc2c53801e3f0c7ec7707f009f35dabbc672e56e80701e19"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "519610a9-1802-4a42-9ca8-046a1a6e6622",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+            "span_ids": [
+              938,
+              953
+            ]
+          },
+          "rationale": "RFC 7231 Section 4.2.2 and the classification table (Section 8.1.3) list PUT as an idempotent method. Both spans confirm PUT's classification.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            938,
+            953
+          ],
+          "provenance_note": "RFC 7231 Section 4.2.2 and Section 8.1.3 classification table identify PUT as idempotent.",
+          "limitations": [
+            "Stack Overflow answer summarizes RFC classification; no primary RFC quote extraction beyond table row"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              938
+            ],
+            "start": 21670,
+            "end": 21975,
+            "text": "> **A request method is considered \"idempotent\" if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request**. Of the request methods defined by this specification, `PUT`, `DELETE`, and safe request methods are idempotent. [...]",
+            "quote_hash": "05c71ecd8a57e303fc2c53801e3f0c7ec7707f009f35dabbc672e56e80701e19"
+          },
+          {
+            "span_ids": [
+              953
+            ],
+            "start": 22600,
+            "end": 22618,
+            "text": "| PUT | no | yes |",
+            "quote_hash": "df67e0d2c695b74e5beddd34c00d2cd71b62532d603a8aebdc241c6c362f9c11"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "3770fde1-2697-49af-9a54-c13c4bffe0db",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c3",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+            "span_ids": [
+              938
+            ]
+          },
+          "rationale": "RFC 7231 Section 4.2.2 explicitly states: 'A request method is considered ",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            938
+          ],
+          "provenance_note": "RFC 7231 Section 4.2.2 definition of idempotent methods.",
+          "limitations": [
+            "Definition text truncated in span; full quote starts at 21670 and extends beyond span end"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              938
+            ],
+            "start": 21670,
+            "end": 21975,
+            "text": "> **A request method is considered \"idempotent\" if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request**. Of the request methods defined by this specification, `PUT`, `DELETE`, and safe request methods are idempotent. [...]",
+            "quote_hash": "05c71ecd8a57e303fc2c53801e3f0c7ec7707f009f35dabbc672e56e80701e19"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 1,
+      "timestamp": "2026-11-16T00:32:52.737179Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 2,
+      "timestamp": "2026-11-16T00:32:52.870987Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 3,
+      "timestamp": "2026-11-16T00:32:52.874570Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v5",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 4,
+      "timestamp": "2026-11-16T00:32:52.876317Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 5,
+      "timestamp": "2026-11-16T00:32:52.877611Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.997",
+        "hard_remaining_seconds": "119.997",
+        "attempt": "1",
+        "input_chars": "95"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 6,
+      "timestamp": "2026-11-16T00:32:52.880841Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.994",
+        "hard_remaining_seconds": "119.994",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10843"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 7,
+      "timestamp": "2026-11-16T00:32:54.584525Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.291",
+        "hard_remaining_seconds": "118.291",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10843",
+        "elapsed_seconds": "1.700",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1956"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 8,
+      "timestamp": "2026-11-16T00:32:54.587080Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.287",
+        "hard_remaining_seconds": "118.287",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "991",
+        "elapsed_seconds": "1.709",
+        "finish_reason": "stop",
+        "prompt_tokens": "1769",
+        "completion_tokens": "292",
+        "total_tokens": "2061"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 9,
+      "timestamp": "2026-11-16T00:32:54.590286Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 10,
+      "timestamp": "2026-11-16T00:32:54.591701Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 11,
+      "timestamp": "2026-11-16T00:32:54.593076Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 12,
+      "timestamp": "2026-11-16T00:32:54.594566Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.280",
+        "hard_remaining_seconds": "118.280",
+        "attempt": "1",
+        "input_chars": "1359"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 13,
+      "timestamp": "2026-11-16T00:32:54.596795Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.277",
+        "hard_remaining_seconds": "118.277",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4502"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 14,
+      "timestamp": "2026-11-16T00:32:55.437904Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.438",
+        "hard_remaining_seconds": "117.438",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4502",
+        "elapsed_seconds": "0.838",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1337"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 15,
+      "timestamp": "2026-11-16T00:32:55.440573Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.434",
+        "hard_remaining_seconds": "117.434",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "448",
+        "elapsed_seconds": "0.846",
+        "finish_reason": "stop",
+        "prompt_tokens": "868",
+        "completion_tokens": "147",
+        "total_tokens": "1015"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 16,
+      "timestamp": "2026-11-16T00:32:55.442150Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "RFC 9110 June 2022 HTTP standard PUT method idempotent classification",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 17,
+      "timestamp": "2026-11-16T00:32:55.443664Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.431",
+        "hard_remaining_seconds": "117.431",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "277"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 18,
+      "timestamp": "2026-11-16T00:32:58.503840Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.372",
+        "hard_remaining_seconds": "114.372",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "277",
+        "elapsed_seconds": "3.057",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8773"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 19,
+      "timestamp": "2026-11-16T00:32:58.506398Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "RFC 9110 June 2022 HTTP standard PUT method idempotent classification",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 20,
+      "timestamp": "2026-11-16T00:32:58.508219Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Contradictory HTTP standards or errata prior to June 2022 that classify PUT as non-idempotent",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 21,
+      "timestamp": "2026-11-16T00:32:58.509824Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.364",
+        "hard_remaining_seconds": "114.364",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "301"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 22,
+      "timestamp": "2026-11-16T00:33:00.729718Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.146",
+        "hard_remaining_seconds": "112.146",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "301",
+        "elapsed_seconds": "2.217",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11673"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 23,
+      "timestamp": "2026-11-16T00:33:00.731782Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Contradictory HTTP standards or errata prior to June 2022 that classify PUT as non-idempotent",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 24,
+      "timestamp": "2026-11-16T00:33:00.733417Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "HTTP/1.1 RFC 7231 or earlier specifications' treatment of PUT idempotency status",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 25,
+      "timestamp": "2026-11-16T00:33:00.734711Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.139",
+        "hard_remaining_seconds": "112.139",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "288"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 26,
+      "timestamp": "2026-11-16T00:33:03.983325Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.892",
+        "hard_remaining_seconds": "108.892",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "288",
+        "elapsed_seconds": "3.246",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10681"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 27,
+      "timestamp": "2026-11-16T00:33:03.985709Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "HTTP/1.1 RFC 7231 or earlier specifications' treatment of PUT idempotency status",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 28,
+      "timestamp": "2026-11-16T00:33:03.987935Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "11",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 29,
+      "timestamp": "2026-11-16T00:33:03.989826Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://www.restguide.info/rfc-9110",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 30,
+      "timestamp": "2026-11-16T00:33:03.991437Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 31,
+      "timestamp": "2026-11-16T00:33:03.992856Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "63.881",
+        "hard_remaining_seconds": "108.881",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "162"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 32,
+      "timestamp": "2026-11-16T00:33:04.196434Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "63.678",
+        "hard_remaining_seconds": "108.678",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "162",
+        "elapsed_seconds": "0.202",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11196"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 33,
+      "timestamp": "2026-11-16T00:33:04.202484Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "url": "https://www.restguide.info/rfc-9110",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 34,
+      "timestamp": "2026-11-16T00:33:04.204185Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 35,
+      "timestamp": "2026-11-16T00:33:04.207913Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "63.666",
+        "hard_remaining_seconds": "108.666",
+        "attempt": "1",
+        "input_chars": "17419"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 36,
+      "timestamp": "2026-11-16T00:33:04.210946Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "63.663",
+        "hard_remaining_seconds": "108.663",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34243"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 37,
+      "timestamp": "2026-11-16T00:33:09.859056Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "58.017",
+        "hard_remaining_seconds": "103.016",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34243",
+        "elapsed_seconds": "5.645",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3378"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 38,
+      "timestamp": "2026-11-16T00:33:09.862308Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "58.012",
+        "hard_remaining_seconds": "103.012",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2372",
+        "elapsed_seconds": "5.654",
+        "finish_reason": "stop",
+        "prompt_tokens": "9215",
+        "completion_tokens": "814",
+        "total_tokens": "10029"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 39,
+      "timestamp": "2026-11-16T00:33:09.866621Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "69907948-accc-48b1-b6a0-12693e961d70",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 40,
+      "timestamp": "2026-11-16T00:33:09.868301Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "ab108c2d-4b93-4476-be5c-3cd88dfc97ed",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 41,
+      "timestamp": "2026-11-16T00:33:09.869636Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "065377fc-87fe-47c6-aa4f-597dfbf35386",
+        "snapshot_id": "2d3d6a75-cadd-435f-8971-c79164c112e3",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 42,
+      "timestamp": "2026-11-16T00:33:09.871089Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://stackoverflow.com/questions/45016234/what-is-idempotency-in-http-methods",
+        "slot": "2",
+        "query_ids": "q7,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 43,
+      "timestamp": "2026-11-16T00:33:09.872446Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 44,
+      "timestamp": "2026-11-16T00:33:09.873734Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.000",
+        "hard_remaining_seconds": "103.000",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "207"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 45,
+      "timestamp": "2026-11-16T00:33:10.195009Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.681",
+        "hard_remaining_seconds": "102.681",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "207",
+        "elapsed_seconds": "0.318",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "63311"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 46,
+      "timestamp": "2026-11-16T00:33:10.210274Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "url": "https://stackoverflow.com/questions/45016234/what-is-idempotency-in-http-methods",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 47,
+      "timestamp": "2026-11-16T00:33:10.211716Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 48,
+      "timestamp": "2026-11-16T00:33:10.220341Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.654",
+        "hard_remaining_seconds": "102.654",
+        "attempt": "1",
+        "input_chars": "20821"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 49,
+      "timestamp": "2026-11-16T00:33:10.223129Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.651",
+        "hard_remaining_seconds": "102.651",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "37648"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 50,
+      "timestamp": "2026-11-16T00:33:16.365146Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "51.509",
+        "hard_remaining_seconds": "96.509",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "37648",
+        "elapsed_seconds": "6.141",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3350"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 51,
+      "timestamp": "2026-11-16T00:33:16.367063Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "51.507",
+        "hard_remaining_seconds": "96.507",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2340",
+        "elapsed_seconds": "6.147",
+        "finish_reason": "stop",
+        "prompt_tokens": "10507",
+        "completion_tokens": "765",
+        "total_tokens": "11272"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 52,
+      "timestamp": "2026-11-16T00:33:16.369784Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "f3b52b9c-669b-4d00-8209-996f73f33aa3",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 53,
+      "timestamp": "2026-11-16T00:33:16.370831Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "519610a9-1802-4a42-9ca8-046a1a6e6622",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 54,
+      "timestamp": "2026-11-16T00:33:16.371863Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "3770fde1-2697-49af-9a54-c13c4bffe0db",
+        "snapshot_id": "5ae9f9b1-f412-4c3c-9c71-b5c9f9885e5a",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 55,
+      "timestamp": "2026-11-16T00:33:16.372930Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 56,
+      "timestamp": "2026-11-16T00:33:16.374854Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 57,
+      "timestamp": "2026-11-16T00:33:16.375917Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.498",
+        "hard_remaining_seconds": "96.498",
+        "attempt": "1",
+        "input_chars": "11222"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 58,
+      "timestamp": "2026-11-16T00:33:16.377324Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.497",
+        "hard_remaining_seconds": "96.497",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17179"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 59,
+      "timestamp": "2026-11-16T00:33:19.738587Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "93.137",
+        "hard_remaining_seconds": "93.137",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17179",
+        "elapsed_seconds": "3.358",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1867"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 60,
+      "timestamp": "2026-11-16T00:33:19.741736Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "93.133",
+        "hard_remaining_seconds": "93.133",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "964",
+        "elapsed_seconds": "3.365",
+        "finish_reason": "stop",
+        "prompt_tokens": "5512",
+        "completion_tokens": "448",
+        "total_tokens": "5960"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 61,
+      "timestamp": "2026-11-16T00:33:19.743896Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "93.130",
+        "hard_remaining_seconds": "93.130",
+        "attempt": "1",
+        "input_chars": "12216"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 62,
+      "timestamp": "2026-11-16T00:33:19.746064Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "93.128",
+        "hard_remaining_seconds": "93.128",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18692"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 63,
+      "timestamp": "2026-11-16T00:33:20.622558Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "92.253",
+        "hard_remaining_seconds": "92.253",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18692",
+        "elapsed_seconds": "0.874",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1155"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 64,
+      "timestamp": "2026-11-16T00:33:20.624720Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "92.250",
+        "hard_remaining_seconds": "92.250",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "286",
+        "elapsed_seconds": "0.881",
+        "finish_reason": "stop",
+        "prompt_tokens": "6002",
+        "completion_tokens": "105",
+        "total_tokens": "6107"
+      }
+    },
+    {
+      "investigation_id": "4b12af5c-1bb4-49c6-b5e9-a7272901905c",
+      "sequence": 65,
+      "timestamp": "2026-11-16T00:33:20.626627Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 28.146806666991324,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.698
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.836
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.047
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.212
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.245
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.2
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 5.643
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.268
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 6.14
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.356
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.872
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.7004265409923391,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8380866660008905,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.0568950409942772,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.2174227500072448,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.246169332996942,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.2015270830015652,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 5.645326666999608,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.3179108339973027,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 6.140836791993934,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.3582865000062156,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.873969833002775,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

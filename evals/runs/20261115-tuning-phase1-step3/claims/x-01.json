@@ -1,0 +1,3610 @@
+{
+  "id": "x-01",
+  "live": true,
+  "investigation": {
+    "id": "63e20e9a-2635-440f-99ee-00f141fef397",
+    "claim": "The United States had 340,003,797 people in its estimated midyear 2024 population.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-16T00:04:39.500682Z",
+    "started_at": "2026-11-16T00:04:39.531438Z",
+    "finished_at": "2026-11-16T00:05:28.730083Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "The United States had 340,003,797 people in its estimated midyear 2024 population.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Resolved from US Census Bureau July 1 2024 estimate.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "United States had 340,003,797 people in its estimated midyear 2024 population",
+              "role": "essential",
+              "subject": "United States",
+              "predicate": "had 340,003,797 people in its estimated midyear 2024 population",
+              "timeframe": "midyear 2024",
+              "location_or_population": "United States",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "US Census Bureau July 1 2024 population estimate",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "371265c7-5fa6-4367-9dba-44fb98482124",
+              "0d2da8e3-60cf-4a3e-a357-064484c5df3d"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "371265c7-5fa6-4367-9dba-44fb98482124",
+          "0d2da8e3-60cf-4a3e-a357-064484c5df3d"
+        ],
+        "qualification_flags": [
+          {
+            "type": "misleading_comparison",
+            "dimension": "units",
+            "explanation": "Source reports 340.1 million rounded figure, claim specifies exact integer 340,003,797 not present in source",
+            "evidence_ids": [
+              "371265c7-5fa6-4367-9dba-44fb98482124"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "No midyear 2024 estimate provided in source",
+        "Source uses rounded 340.1 million, not the exact value 340,003,797",
+        "Span only covers 2023 counts and future projections, not the specific midyear 2024 estimate claimed",
+        "Some planned evidence checks could not be completed; coverage is incomplete.",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 240.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 12,
+        "search": 6,
+        "extract": 4
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.1387144580003223,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9856100000033621,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.1416298330004793,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.7836148330025026,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.38544675000594,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.490741124995111,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 9.304191166993405,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.804734332996304,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.7510935409954982,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.8956179579981836,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.1492416249966482,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.981696082999406,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1071395829931134,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1349714169991785,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.18937391699728323,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 6.669243583004572,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.5151934169989545,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.335011041999678,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.6222990410024067,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5190159580015461,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.4078252500039525,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5880797499994515,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 44503,
+        "completion_tokens": 4077,
+        "total_tokens": 48580
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Resolved from US Census Bureau July 1 2024 estimate.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "United States had 340,003,797 people in its estimated midyear 2024 population",
+          "role": "essential",
+          "subject": "United States",
+          "predicate": "had 340,003,797 people in its estimated midyear 2024 population",
+          "timeframe": "midyear 2024",
+          "location_or_population": "United States",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/63e20e9a-2635-440f-99ee-00f141fef397",
+      "events": "/investigations/63e20e9a-2635-440f-99ee-00f141fef397/events",
+      "evidence": "/investigations/63e20e9a-2635-440f-99ee-00f141fef397/evidence",
+      "comparison": "/investigations/63e20e9a-2635-440f-99ee-00f141fef397/comparison",
+      "refresh": "/investigations/63e20e9a-2635-440f-99ee-00f141fef397/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "url": "https://content.govdelivery.com/accounts/USCENSUS/bulletins/3c21373",
+        "canonical_url": "https://content.govdelivery.com/accounts/USCENSUS/bulletins/3c21373",
+        "title": "TIP SHEET: TP24-23",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:04:50.520092Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "8a293a9c2b7acb9f833a22e9a3ed4b620966f08442d507391632125475692df7",
+        "duplicate_group": "8a293a9c2b7acb9f833a22e9a3ed4b620966f08442d507391632125475692df7",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "url": "https://www.census.gov/library/stories/2023/12/happy-new-year-2024.html",
+        "canonical_url": "https://www.census.gov/library/stories/2023/12/happy-new-year-2024.html",
+        "title": "U.S. Population Estimated at 335,893,238 on Jan. 1, 2024",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:05:03.415311Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "312dbb4ed219625da973f9e7c89448c360515d662b1241dfa111876d95a4b494",
+        "duplicate_group": "312dbb4ed219625da973f9e7c89448c360515d662b1241dfa111876d95a4b494",
+        "limitations": []
+      },
+      {
+        "id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "url": "https://www.census.gov/library/stories/2024/12/population-estimates.html",
+        "canonical_url": "https://www.census.gov/library/stories/2024/12/population-estimates.html",
+        "title": "New 2024 Population Estimates Show Nation’s Population Grew by About 1% to 340.1 Million Since 2023",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:05:13.947424Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "0f135f51fe196653798db124fc575b14f2c51edc5cf11197fb5a8d9d2842b34a",
+        "duplicate_group": "0f135f51fe196653798db124fc575b14f2c51edc5cf11197fb5a8d9d2842b34a",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "url": "https://en.wikipedia.org/wiki/World_Population_Prospects",
+        "canonical_url": "https://en.wikipedia.org/wiki/World_Population_Prospects",
+        "title": "World Population Prospects - Wikipedia",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:05:21.167240Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "b2503704642c237d30fc22ce954cd4f1c0bae49bd0bec1e2e953b8d89814a540",
+        "duplicate_group": "b2503704642c237d30fc22ce954cd4f1c0bae49bd0bec1e2e953b8d89814a540",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "dbdf87c9-c5c8-4173-bb8d-33d7b041ae18",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+            "span_ids": [
+              10,
+              14
+            ]
+          },
+          "rationale": "The source states the U.S. population was estimated at 335,893,238 on Jan. 1, 2024, and projects 335,893,238 on New Year's Day 2024 with an annual increase of 1,759,535. The claimed figure of 340,003,797 is not found. Span 31 states the U.S. is expected to still be third with about 344 million, but ",
+          "relation": "contradicts",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            10,
+            14
+          ],
+          "provenance_note": "Source provides 335,893,238 on Jan 1 2024; 344 million projection; claimed 340,003,797 unsupported.",
+          "limitations": [
+            "No midyear 2024 estimate provided in source"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              10
+            ],
+            "start": 269,
+            "end": 328,
+            "text": "## U.S. Population Estimated at 335,893,238 on Jan. 1, 2024",
+            "quote_hash": "6b1b8554e9525dfbd26077f650e048e0266309be484866f09c7353fcc96faff0"
+          },
+          {
+            "span_ids": [
+              14
+            ],
+            "start": 386,
+            "end": 509,
+            "text": "Census Bureau projects the U.S. population will be 335,893,238 on New Year’s Day, an annual increase of 1,759,535 or 0.53%.",
+            "quote_hash": "e12843e7dc552973e91cac321663b2c7e5196a2e9f0076a1cd36f4a712fcf7b0"
+          }
+        ],
+        "admissible": false,
+        "rejection_reason": "scope_mismatch_or_irrelevant"
+      },
+      {
+        "id": "371265c7-5fa6-4367-9dba-44fb98482124",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+            "span_ids": [
+              10
+            ]
+          },
+          "rationale": "Span 10 states the population reached 340.1 million as of July 1, 2024, up from 336.8 million in 2023. The figure 340.1 million rounds to 340,100,000, not 340,003,797.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Census Bureau July 1 2024 estimate",
+          "independence": "shared",
+          "provenance_span_ids": [
+            10
+          ],
+          "provenance_note": "Census Bureau press release reports rounded 340.1 million; the exact value 340,003,797 is not present in the source text.",
+          "limitations": [
+            "Source uses rounded 340.1 million, not the exact value 340,003,797"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "units",
+              "explanation": "Source reports 340.1 million rounded figure, claim specifies exact integer 340,003,797 not present in source"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              10
+            ],
+            "start": 403,
+            "end": 505,
+            "text": "## New 2024 Population Estimates Show Nation’s Population Grew by About 1% to 340.1 Million Since 2023",
+            "quote_hash": "66e33a4336ff3eaa1302c3d326e3c3edee800cbbb34906dbf2cf678047b73048"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "0d2da8e3-60cf-4a3e-a357-064484c5df3d",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+            "span_ids": [
+              45
+            ]
+          },
+          "rationale": "The Wikipedia source (span 45) reports the 2024 Revision provides annual population counts up to 2023 and generates future projections, but does not state a specific 2024 midyear figure of 340,003,797 for the United States.",
+          "relation": "context",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            45
+          ],
+          "provenance_note": "No explicit 2024 midyear US population figure provided in the cited span.",
+          "limitations": [
+            "Span only covers 2023 counts and future projections, not the specific midyear 2024 estimate claimed"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              45
+            ],
+            "start": 4290,
+            "end": 4613,
+            "text": "For example, the 2024 Revision – the 28th edition since the first 1951 projection – reports annual population counts up to 2023 for 237 countries and territories, drawing on over 1,900 national censuses (1950–2023) and thousands of surveys, and generates multi-variant projections (medium, low, high, etc.) into the future.",
+            "quote_hash": "b3204d7e6211218e5fc7030fe1a0d54f6d76040b745d984555c2fe18a8e6aa8f"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 1,
+      "timestamp": "2026-11-16T00:04:39.500682Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 2,
+      "timestamp": "2026-11-16T00:04:39.531438Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 3,
+      "timestamp": "2026-11-16T00:04:39.532718Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 4,
+      "timestamp": "2026-11-16T00:04:39.533687Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 5,
+      "timestamp": "2026-11-16T00:04:39.534590Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.998",
+        "hard_remaining_seconds": "119.998",
+        "attempt": "1",
+        "input_chars": "110"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 6,
+      "timestamp": "2026-11-16T00:04:39.536455Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10858"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 7,
+      "timestamp": "2026-11-16T00:04:40.677376Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.857",
+        "hard_remaining_seconds": "118.857",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10858",
+        "elapsed_seconds": "1.139",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1502"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 8,
+      "timestamp": "2026-11-16T00:04:40.679722Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.853",
+        "hard_remaining_seconds": "118.853",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "597",
+        "elapsed_seconds": "1.145",
+        "finish_reason": "stop",
+        "prompt_tokens": "1779",
+        "completion_tokens": "189",
+        "total_tokens": "1968"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 9,
+      "timestamp": "2026-11-16T00:04:40.683104Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 10,
+      "timestamp": "2026-11-16T00:04:40.684974Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 11,
+      "timestamp": "2026-11-16T00:04:40.687027Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 12,
+      "timestamp": "2026-11-16T00:04:40.688851Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.844",
+        "hard_remaining_seconds": "118.844",
+        "attempt": "1",
+        "input_chars": "1057"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 13,
+      "timestamp": "2026-11-16T00:04:40.690992Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.842",
+        "hard_remaining_seconds": "118.842",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4140"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 14,
+      "timestamp": "2026-11-16T00:04:41.678143Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.855",
+        "hard_remaining_seconds": "117.855",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4140",
+        "elapsed_seconds": "0.986",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1370"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 15,
+      "timestamp": "2026-11-16T00:04:41.679379Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.853",
+        "hard_remaining_seconds": "117.853",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "480",
+        "elapsed_seconds": "0.991",
+        "finish_reason": "stop",
+        "prompt_tokens": "791",
+        "completion_tokens": "141",
+        "total_tokens": "932"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 16,
+      "timestamp": "2026-11-16T00:04:41.680524Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau July 1 2024 midyear population estimate for United States",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 17,
+      "timestamp": "2026-11-16T00:04:41.681642Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.851",
+        "hard_remaining_seconds": "117.851",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "282"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 18,
+      "timestamp": "2026-11-16T00:04:44.825083Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.708",
+        "hard_remaining_seconds": "114.708",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "282",
+        "elapsed_seconds": "3.142",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9419"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 19,
+      "timestamp": "2026-11-16T00:04:44.827049Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau July 1 2024 midyear population estimate for United States",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 20,
+      "timestamp": "2026-11-16T00:04:44.828545Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Alternative midyear 2024 US population figure from CDC or UN dataset",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 21,
+      "timestamp": "2026-11-16T00:04:44.830166Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.703",
+        "hard_remaining_seconds": "114.703",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "276"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 22,
+      "timestamp": "2026-11-16T00:04:47.616233Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.918",
+        "hard_remaining_seconds": "111.918",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "276",
+        "elapsed_seconds": "2.784",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8921"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 23,
+      "timestamp": "2026-11-16T00:04:47.618834Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Alternative midyear 2024 US population figure from CDC or UN dataset",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 24,
+      "timestamp": "2026-11-16T00:04:47.621495Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau April 1 2020 decennial census total population",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 25,
+      "timestamp": "2026-11-16T00:04:47.623935Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.909",
+        "hard_remaining_seconds": "111.909",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "271"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 26,
+      "timestamp": "2026-11-16T00:04:50.013131Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.522",
+        "hard_remaining_seconds": "109.522",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "271",
+        "elapsed_seconds": "2.385",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11425"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 27,
+      "timestamp": "2026-11-16T00:04:50.016900Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau April 1 2020 decennial census total population",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 28,
+      "timestamp": "2026-11-16T00:04:50.020566Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "13",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 29,
+      "timestamp": "2026-11-16T00:04:50.022388Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://content.govdelivery.com/accounts/USCENSUS/bulletins/3c21373",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 30,
+      "timestamp": "2026-11-16T00:04:50.024243Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 31,
+      "timestamp": "2026-11-16T00:04:50.026717Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.507",
+        "hard_remaining_seconds": "109.507",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "194"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 32,
+      "timestamp": "2026-11-16T00:04:50.519360Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.014",
+        "hard_remaining_seconds": "109.014",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "194",
+        "elapsed_seconds": "0.491",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "39473"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 33,
+      "timestamp": "2026-11-16T00:04:50.523043Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "url": "https://content.govdelivery.com/accounts/USCENSUS/bulletins/3c21373",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 34,
+      "timestamp": "2026-11-16T00:04:50.524291Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 35,
+      "timestamp": "2026-11-16T00:04:50.527284Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.006",
+        "hard_remaining_seconds": "109.006",
+        "attempt": "1",
+        "input_chars": "2696"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 36,
+      "timestamp": "2026-11-16T00:04:50.529074Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.004",
+        "hard_remaining_seconds": "109.004",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17845"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 37,
+      "timestamp": "2026-11-16T00:04:59.834441Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "54.698",
+        "hard_remaining_seconds": "99.698",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "17845",
+        "elapsed_seconds": "9.304",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6899"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 38,
+      "timestamp": "2026-11-16T00:04:59.835827Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "54.697",
+        "hard_remaining_seconds": "99.697",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "5631",
+        "elapsed_seconds": "9.309",
+        "finish_reason": "stop",
+        "prompt_tokens": "3321",
+        "completion_tokens": "1705",
+        "total_tokens": "5026"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 39,
+      "timestamp": "2026-11-16T00:04:59.836766Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 40,
+      "timestamp": "2026-11-16T00:04:59.837530Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "54.695",
+        "hard_remaining_seconds": "99.695",
+        "attempt": "2",
+        "input_chars": "2696"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 41,
+      "timestamp": "2026-11-16T00:04:59.839174Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "54.693",
+        "hard_remaining_seconds": "99.693",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18046"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 42,
+      "timestamp": "2026-11-16T00:05:02.645766Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "51.888",
+        "hard_remaining_seconds": "96.888",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "18046",
+        "elapsed_seconds": "2.805",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1938"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 43,
+      "timestamp": "2026-11-16T00:05:02.647669Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "51.885",
+        "hard_remaining_seconds": "96.885",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1031",
+        "elapsed_seconds": "2.810",
+        "finish_reason": "stop",
+        "prompt_tokens": "3355",
+        "completion_tokens": "326",
+        "total_tokens": "3681"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 44,
+      "timestamp": "2026-11-16T00:05:02.649646Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 45,
+      "timestamp": "2026-11-16T00:05:02.651993Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "1a905150-e9e6-45d4-b7dc-cf132c2cdf7c",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 46,
+      "timestamp": "2026-11-16T00:05:02.654118Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "url": "https://www.census.gov/library/stories/2023/12/happy-new-year-2024.html",
+        "slot": "2",
+        "query_ids": "q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 47,
+      "timestamp": "2026-11-16T00:05:02.656559Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 48,
+      "timestamp": "2026-11-16T00:05:02.658757Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "51.874",
+        "hard_remaining_seconds": "96.874",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "198"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 49,
+      "timestamp": "2026-11-16T00:05:03.412919Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "51.122",
+        "hard_remaining_seconds": "96.122",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "198",
+        "elapsed_seconds": "0.751",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10870"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 50,
+      "timestamp": "2026-11-16T00:05:03.420441Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "url": "https://www.census.gov/library/stories/2023/12/happy-new-year-2024.html",
+        "candidate_id": "c16",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 51,
+      "timestamp": "2026-11-16T00:05:03.422163Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 52,
+      "timestamp": "2026-11-16T00:05:03.426779Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "51.107",
+        "hard_remaining_seconds": "96.107",
+        "attempt": "1",
+        "input_chars": "17618"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 53,
+      "timestamp": "2026-11-16T00:05:03.431851Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "51.101",
+        "hard_remaining_seconds": "96.101",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34215"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 54,
+      "timestamp": "2026-11-16T00:05:06.331116Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "48.203",
+        "hard_remaining_seconds": "93.203",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34215",
+        "elapsed_seconds": "2.896",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2000"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 55,
+      "timestamp": "2026-11-16T00:05:06.335116Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "48.198",
+        "hard_remaining_seconds": "93.198",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1093",
+        "elapsed_seconds": "2.908",
+        "finish_reason": "stop",
+        "prompt_tokens": "9220",
+        "completion_tokens": "425",
+        "total_tokens": "9645"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 56,
+      "timestamp": "2026-11-16T00:05:06.340910Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "dbdf87c9-c5c8-4173-bb8d-33d7b041ae18",
+        "snapshot_id": "c090c238-8cbe-47fd-b3b5-59062b63e447",
+        "admissible": "false",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 57,
+      "timestamp": "2026-11-16T00:05:06.342832Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "scope_mismatch"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 58,
+      "timestamp": "2026-11-16T00:05:06.344399Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 59,
+      "timestamp": "2026-11-16T00:05:06.346011Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "168.187",
+        "hard_remaining_seconds": "213.187",
+        "attempt": "1",
+        "input_chars": "1789"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 60,
+      "timestamp": "2026-11-16T00:05:06.347875Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "168.185",
+        "hard_remaining_seconds": "213.185",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4910"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 61,
+      "timestamp": "2026-11-16T00:05:07.499192Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "167.034",
+        "hard_remaining_seconds": "212.034",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4910",
+        "elapsed_seconds": "1.149",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1505"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 62,
+      "timestamp": "2026-11-16T00:05:07.501529Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "167.031",
+        "hard_remaining_seconds": "212.031",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "612",
+        "elapsed_seconds": "1.155",
+        "finish_reason": "stop",
+        "prompt_tokens": "1058",
+        "completion_tokens": "182",
+        "total_tokens": "1240"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 63,
+      "timestamp": "2026-11-16T00:05:07.502989Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "scope_mismatch",
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 64,
+      "timestamp": "2026-11-16T00:05:07.504487Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find evidence matching the claim's exact dates, population, quantity and definition; the collected passages address a different or narrower scope.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 65,
+      "timestamp": "2026-11-16T00:05:07.505785Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau midyear 2024 population estimate for United States July 1 2024",
+        "purpose": "support",
+        "query_id": "q22"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 66,
+      "timestamp": "2026-11-16T00:05:07.507145Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "167.026",
+        "hard_remaining_seconds": "212.026",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "287"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 67,
+      "timestamp": "2026-11-16T00:05:09.492007Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "165.043",
+        "hard_remaining_seconds": "210.043",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "287",
+        "elapsed_seconds": "1.982",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10869"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 68,
+      "timestamp": "2026-11-16T00:05:09.495659Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau midyear 2024 population estimate for United States July 1 2024",
+        "query_id": "q22",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 69,
+      "timestamp": "2026-11-16T00:05:09.498331Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Alternative US population estimate for midyear 2024 from UN World Population Prospects dataset",
+        "purpose": "contradiction",
+        "query_id": "q24"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 70,
+      "timestamp": "2026-11-16T00:05:09.500574Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "165.033",
+        "hard_remaining_seconds": "210.033",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "302"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 71,
+      "timestamp": "2026-11-16T00:05:11.609833Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "162.923",
+        "hard_remaining_seconds": "207.923",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "302",
+        "elapsed_seconds": "2.107",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9345"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 72,
+      "timestamp": "2026-11-16T00:05:11.611115Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Alternative US population estimate for midyear 2024 from UN World Population Prospects dataset",
+        "query_id": "q24",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 73,
+      "timestamp": "2026-11-16T00:05:11.612486Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau July 1 2023 population estimate used as baseline for 2024 projection methodology",
+        "purpose": "context",
+        "query_id": "q26"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 74,
+      "timestamp": "2026-11-16T00:05:11.613825Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q26",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "162.919",
+        "hard_remaining_seconds": "207.919",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "305"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 75,
+      "timestamp": "2026-11-16T00:05:13.750194Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q26",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "160.783",
+        "hard_remaining_seconds": "205.783",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "305",
+        "elapsed_seconds": "2.135",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11156"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 76,
+      "timestamp": "2026-11-16T00:05:13.751777Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "US Census Bureau July 1 2023 population estimate used as baseline for 2024 projection methodology",
+        "query_id": "q26",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 77,
+      "timestamp": "2026-11-16T00:05:13.753090Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "11",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 78,
+      "timestamp": "2026-11-16T00:05:13.754088Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c28",
+        "url": "https://www.census.gov/library/stories/2024/12/population-estimates.html",
+        "slot": "1",
+        "query_ids": "q22",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 79,
+      "timestamp": "2026-11-16T00:05:13.755238Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 80,
+      "timestamp": "2026-11-16T00:05:13.756513Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c28",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "160.776",
+        "hard_remaining_seconds": "205.776",
+        "provider_call_id": "p29",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "199"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 81,
+      "timestamp": "2026-11-16T00:05:13.946998Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c28",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "160.586",
+        "hard_remaining_seconds": "205.586",
+        "provider_call_id": "p29",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "199",
+        "elapsed_seconds": "0.189",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11150"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 82,
+      "timestamp": "2026-11-16T00:05:13.949874Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "url": "https://www.census.gov/library/stories/2024/12/population-estimates.html",
+        "candidate_id": "c28",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 83,
+      "timestamp": "2026-11-16T00:05:13.950704Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 84,
+      "timestamp": "2026-11-16T00:05:13.952381Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "160.580",
+        "hard_remaining_seconds": "205.580",
+        "attempt": "1",
+        "input_chars": "19160"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 85,
+      "timestamp": "2026-11-16T00:05:13.954438Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "160.578",
+        "hard_remaining_seconds": "205.578",
+        "provider_call_id": "p31",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35953"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 86,
+      "timestamp": "2026-11-16T00:05:20.626709Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "153.908",
+        "hard_remaining_seconds": "198.908",
+        "provider_call_id": "p31",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35953",
+        "elapsed_seconds": "6.669",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1941"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 87,
+      "timestamp": "2026-11-16T00:05:20.629855Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t30",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "153.903",
+        "hard_remaining_seconds": "198.903",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1022",
+        "elapsed_seconds": "6.677",
+        "finish_reason": "stop",
+        "prompt_tokens": "9543",
+        "completion_tokens": "379",
+        "total_tokens": "9922"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 88,
+      "timestamp": "2026-11-16T00:05:20.634112Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "371265c7-5fa6-4367-9dba-44fb98482124",
+        "snapshot_id": "66585d47-0051-4b81-b8d8-af13b1cda35b",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 89,
+      "timestamp": "2026-11-16T00:05:20.641866Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c32",
+        "url": "https://en.wikipedia.org/wiki/World_Population_Prospects",
+        "slot": "2",
+        "query_ids": "q24",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 90,
+      "timestamp": "2026-11-16T00:05:20.645557Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 91,
+      "timestamp": "2026-11-16T00:05:20.647059Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c32",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "153.886",
+        "hard_remaining_seconds": "198.886",
+        "provider_call_id": "p33",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "183"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 92,
+      "timestamp": "2026-11-16T00:05:21.166151Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c32",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "153.369",
+        "hard_remaining_seconds": "198.369",
+        "provider_call_id": "p33",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "183",
+        "elapsed_seconds": "0.515",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "65912"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 93,
+      "timestamp": "2026-11-16T00:05:21.176260Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "url": "https://en.wikipedia.org/wiki/World_Population_Prospects",
+        "candidate_id": "c32",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 94,
+      "timestamp": "2026-11-16T00:05:21.177829Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 95,
+      "timestamp": "2026-11-16T00:05:21.183957Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "153.349",
+        "hard_remaining_seconds": "198.349",
+        "attempt": "1",
+        "input_chars": "14149"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 96,
+      "timestamp": "2026-11-16T00:05:21.186747Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "153.346",
+        "hard_remaining_seconds": "198.346",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "29664"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 97,
+      "timestamp": "2026-11-16T00:05:24.527866Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "150.010",
+        "hard_remaining_seconds": "195.010",
+        "provider_call_id": "p35",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "29664",
+        "elapsed_seconds": "3.335",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1840"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 98,
+      "timestamp": "2026-11-16T00:05:24.534192Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t34",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "149.999",
+        "hard_remaining_seconds": "194.999",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "933",
+        "elapsed_seconds": "3.350",
+        "finish_reason": "stop",
+        "prompt_tokens": "6194",
+        "completion_tokens": "303",
+        "total_tokens": "6497"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 99,
+      "timestamp": "2026-11-16T00:05:24.538945Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "0d2da8e3-60cf-4a3e-a357-064484c5df3d",
+        "snapshot_id": "1ad56bca-0b78-4054-bae6-78c845a8c8f4",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 100,
+      "timestamp": "2026-11-16T00:05:24.541072Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 101,
+      "timestamp": "2026-11-16T00:05:24.544042Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 102,
+      "timestamp": "2026-11-16T00:05:24.545464Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "194.987",
+        "hard_remaining_seconds": "194.987",
+        "attempt": "1",
+        "input_chars": "4362"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 103,
+      "timestamp": "2026-11-16T00:05:24.547219Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "194.985",
+        "hard_remaining_seconds": "194.985",
+        "provider_call_id": "p37",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9131"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 104,
+      "timestamp": "2026-11-16T00:05:26.171120Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "193.362",
+        "hard_remaining_seconds": "193.362",
+        "provider_call_id": "p37",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9131",
+        "elapsed_seconds": "1.622",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1292"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 105,
+      "timestamp": "2026-11-16T00:05:26.172712Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t36",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "193.360",
+        "hard_remaining_seconds": "193.360",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "421",
+        "elapsed_seconds": "1.627",
+        "finish_reason": "stop",
+        "prompt_tokens": "2389",
+        "completion_tokens": "190",
+        "total_tokens": "2579"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 106,
+      "timestamp": "2026-11-16T00:05:26.174170Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "193.359",
+        "hard_remaining_seconds": "193.359",
+        "attempt": "1",
+        "input_chars": "4765"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 107,
+      "timestamp": "2026-11-16T00:05:26.175976Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "193.357",
+        "hard_remaining_seconds": "193.357",
+        "provider_call_id": "p39",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7403"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 108,
+      "timestamp": "2026-11-16T00:05:26.698601Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "192.836",
+        "hard_remaining_seconds": "192.836",
+        "provider_call_id": "p39",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7403",
+        "elapsed_seconds": "0.519",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "902"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 109,
+      "timestamp": "2026-11-16T00:05:26.702220Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t38",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "192.831",
+        "hard_remaining_seconds": "192.831",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "48",
+        "elapsed_seconds": "0.527",
+        "finish_reason": "stop",
+        "prompt_tokens": "2206",
+        "completion_tokens": "16",
+        "total_tokens": "2222"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 110,
+      "timestamp": "2026-11-16T00:05:26.704573Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation",
+        "affected_units": "1"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 111,
+      "timestamp": "2026-11-16T00:05:26.707421Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "192.826",
+        "hard_remaining_seconds": "192.826",
+        "attempt": "1",
+        "input_chars": "4567"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 112,
+      "timestamp": "2026-11-16T00:05:26.710975Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "192.822",
+        "hard_remaining_seconds": "192.822",
+        "provider_call_id": "p41",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9344"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 113,
+      "timestamp": "2026-11-16T00:05:28.121548Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.412",
+        "hard_remaining_seconds": "191.412",
+        "provider_call_id": "p41",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9344",
+        "elapsed_seconds": "1.408",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1338"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 114,
+      "timestamp": "2026-11-16T00:05:28.124231Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t40",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.409",
+        "hard_remaining_seconds": "191.409",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "467",
+        "elapsed_seconds": "1.417",
+        "finish_reason": "stop",
+        "prompt_tokens": "2429",
+        "completion_tokens": "202",
+        "total_tokens": "2631"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 115,
+      "timestamp": "2026-11-16T00:05:28.127124Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.406",
+        "hard_remaining_seconds": "191.406",
+        "attempt": "1",
+        "input_chars": "4811"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 116,
+      "timestamp": "2026-11-16T00:05:28.130469Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.403",
+        "hard_remaining_seconds": "191.403",
+        "provider_call_id": "p43",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7449"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 117,
+      "timestamp": "2026-11-16T00:05:28.722211Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "190.812",
+        "hard_remaining_seconds": "190.812",
+        "provider_call_id": "p43",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7449",
+        "elapsed_seconds": "0.588",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "906"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 118,
+      "timestamp": "2026-11-16T00:05:28.726280Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t42",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "190.808",
+        "hard_remaining_seconds": "190.808",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "52",
+        "elapsed_seconds": "0.598",
+        "finish_reason": "stop",
+        "prompt_tokens": "2218",
+        "completion_tokens": "19",
+        "total_tokens": "2237"
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 119,
+      "timestamp": "2026-11-16T00:05:28.728457Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "63e20e9a-2635-440f-99ee-00f141fef397",
+      "sequence": 120,
+      "timestamp": "2026-11-16T00:05:28.730083Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 49.497179334000975,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.138
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.985
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.136
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.776
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.379
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.273
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 9.303
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.804
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.668
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.893
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.148
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.98
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.104
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.094
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.189
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 6.667
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.279
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.333
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.621
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.517
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.407
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.585
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.1387144580003223,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9856100000033621,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.1416298330004793,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.7836148330025026,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.38544675000594,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.490741124995111,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 9.304191166993405,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.804734332996304,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.7510935409954982,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.8956179579981836,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.1492416249966482,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.981696082999406,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1071395829931134,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1349714169991785,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.18937391699728323,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 6.669243583004572,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.5151934169989545,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.335011041999678,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.6222990410024067,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5190159580015461,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.4078252500039525,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5880797499994515,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "id": "t-05",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "A HEAD response lacks a response body, per RFC 9112 section 3.2 and multiple RFC citations spanning 1999 to 2022.",
+      "citations": [
+        {
+          "evidence_id": "571e0ce7-1711-48b1-9ac0-5e08d2b7d2af",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "653234c2-485d-4189-ba86-1a53c546613b",
+          "url": "https://ftp.fagskolen.gjovik.no/pub/rfc/rfc2616.pdf",
+          "title": "Hypertext Transfer Protocol -- HTTP/1.1",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "142b9101-5e57-48df-8fb2-8f623cd18814",
+          "url": "https://httpwg.org/specs/rfc9112.html",
+          "title": "RFC 9112 - HTTP/1.1",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The quoted passages support that HEAD responses must not include a message body and cite RFC 2616 (1999) and RFC 9112 (2022). However, none of the passages explicitly attributes this rule to RFC 9112 section 3.2; that section is quoted only about the Host header."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "RFC 9110, 9111, 9112 were published June 2022 and collectively define the HTTP standard, establishing HEAD response rules.",
+      "citations": [
+        {
+          "evidence_id": "4ebf59bc-21e3-468c-8084-87e584b8d344",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "c8660495-1e1b-43e4-b2d2-6698270080da",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "dfb20501-7b5c-4f5d-a207-17ea190b4ead",
+          "url": "https://httpwg.org/specs/rfc9112.html",
+          "title": "RFC 9112 - HTTP/1.1",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passages support that RFC 9110, 9111, and 9112 were published in June 2022 and collectively define HTTP semantics/caching/message syntax, but none of the provided passages mentions HEAD response rules."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "Span 449 from RFC 9112 explicitly states that any response to a HEAD request is always terminated by the first empty line after header fields and cannot contain a message body.",
+      "citations": [
+        {
+          "evidence_id": "4b1714c8-fce6-45e1-b5dd-06624dcc9d91",
+          "url": "https://httpwg.org/specs/rfc9112.html",
+          "title": "RFC 9112 - HTTP/1.1",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passage states exactly that any response to a HEAD request is always terminated by the first empty line after header fields and cannot contain a message body or trailer section."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": null
+}

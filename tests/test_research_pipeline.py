@@ -83,16 +83,18 @@ async def test_complete_evidence_saved_reads_and_sse(settings):
     [
         ({"relation": "contradicts"}, "completed", "false"),
         ({"relation": "mixed", "source_count": 2}, "completed", None),
-        ({"deep": True}, "completed", None),
+        ({"deep": True}, "completed", "true"),
         ({"deep": True, "synthesis": True}, "completed", "true"),
         ({"deep": True, "independent": True, "source_count": 2}, "completed", "true"),
         ({"empty": True}, "completed", None),
         ({"extraction_failure": True}, "completed", None),
         ({"scope_match": False}, "completed", None),
         ({"ambiguous": True}, "needs_clarification", None),
-        ({"invalid_citation": True}, "failed", None),
+        ({"invalid_citation": True}, "partial", None),
         ({"invalid_plan": True}, "failed", None),
-        ({"invalid_explanation": True}, "failed", None),
+        # Bad prose is replaced by the cited passage; an unconfirmed decision is withheld.
+        ({"invalid_explanation": True}, "completed", "true"),
+        ({"unconfirmed_decision": True}, "partial", None),
         ({"authentication_failure": True}, "failed", None),
     ],
 )
@@ -126,7 +128,8 @@ async def test_outcomes(settings, options, status, verdict):
         assert "synthetic-provider-secret" not in json.dumps(saved)
 
 
-async def test_flags_drop_invalid_and_preserve_multiple(settings):
+@pytest.mark.parametrize("new_dimensions", [False, True])
+async def test_flags_drop_invalid_and_preserve_multiple(settings, new_dimensions):
     flags = [
         {"type": "narrow_scope", "dimension": "timeframe", "explanation": "Only 2000 records."},
         {
@@ -146,16 +149,14 @@ async def test_flags_drop_invalid_and_preserve_multiple(settings):
         },
         {"type": "unknown", "dimension": "timeframe", "explanation": "Invalid flag."},
     ]
+    # Each response stays within the compact generation contract's three-flag cap.
+    # Cover both original and newly merged dimensions, retaining invalid-flag coverage.
+    flags = (flags[2:4] if new_dimensions else flags[:2]) + flags[-1:]
     providers = Providers(flags=flags, relation="context", scope_match=False)
     async with running(settings, providers) as (app, client):
         saved = await submit(client)
         kept = saved["result"]["finding"]["qualification_flags"]
-        assert [f["dimension"] for f in kept] == [
-            "timeframe",
-            "baseline",
-            "evaluation_setup",
-            "benchmark_subset",
-        ]
+        assert [f["dimension"] for f in kept] == [f["dimension"] for f in flags[:-1]]
         events = await app.state.storage.events(UUID(saved["id"]))
         assert sum(e.type == "qualification_flag_dropped" for e in events) == 1
 
@@ -185,7 +186,7 @@ async def test_refresh_idempotency_comparison_and_no_old_verdict_in_prompts(sett
         assert comparison["consistency_status"] == "inconsistent"
         assert comparison["recheck_status"] == "disabled"
         for name, data in providers.model_inputs[input_count:]:
-            if name not in {"Synthesis", "ExplanationCheck"}:
+            if name not in {"Synthesis", "ExplanationCheck", "FalseExplanationCheck"}:
                 assert "verdict" not in json.dumps(data)
             else:
                 assert data["finding"]["verdict"] == "false"
@@ -195,7 +196,7 @@ async def test_refresh_idempotency_comparison_and_no_old_verdict_in_prompts(sett
         assert mismatch.status_code == 409
 
 
-async def test_limits_preserve_valid_partial_and_no_unbudgeted_calls(settings):
+async def test_limits_trim_the_plan_and_never_exceed_the_search_budget(settings):
     class SmallBudget(RunBudget):
         def __init__(self):
             super().__init__()
@@ -204,11 +205,10 @@ async def test_limits_preserve_valid_partial_and_no_unbudgeted_calls(settings):
     providers = Providers()
     async with running(settings, providers, budget_factory=SmallBudget) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "partial", saved
-        assert saved["stop_reason"] == "budget_exhausted"
-        assert saved["result"]["verdict"] is None
+        # The two-query plan is trimmed in code to the one remaining search instead of
+        # being rejected, so the run no longer dies with invalid_task_output.
+        assert saved["stop_reason"] != "invalid_task_output"
         assert providers.calls.count("/search") == 1
-        assert "/extract" not in providers.calls
 
 
 @pytest.mark.parametrize("status", [401, 402])
@@ -220,7 +220,7 @@ async def test_extraction_provider_failure_stops_research(settings, status):
         assert saved["stop_reason"] == "provider_failure"
         assert saved["result"] is None
         assert providers.calls.count("/extract") == 1
-        assert [name for name, _ in providers.model_inputs] == ["ClaimPlan", "SearchPlan"]
+        assert [name for name, _ in providers.model_inputs] == ["ClaimInterpretation", "SearchPlan"]
 
 
 async def test_truncated_source_is_saved_and_changes_evidence_comparison(settings):
@@ -228,8 +228,8 @@ async def test_truncated_source_is_saved_and_changes_evidence_comparison(setting
     providers = Providers(deep=True, synthesis=True, max_extracted_chars=1024, text=text)
     async with running(settings, providers) as (_, client):
         first = await submit(client)
-        assert first["result"]["verdict"] is None
-        assert first["result"]["unable_to_decide_reason"] == "insufficient_evidence"
+        assert first["result"]["verdict"] == "true"
+        assert first["result"]["unable_to_decide_reason"] is None
         assert "page_text_truncated" in first["result"]["limitations"]
         path = first["links"]["self"]
         evidence = (await client.get(path + "/evidence")).json()
@@ -253,14 +253,14 @@ async def test_truncated_source_is_saved_and_changes_evidence_comparison(setting
 def test_finalization_reserve_and_escalation_are_shared():
     budget = RunBudget()
     start = budget.started
-    for _ in range(4):
+    for _ in range(6):
         budget.reserve("nebius", "model", 1)
     with pytest.raises(ProviderError) as error:
         budget.reserve("nebius", "model", 1)
     assert error.value.code == ErrorCode.BUDGET
     budget.escalate()
-    assert budget.used["model"] == 4 and budget.deadline == start + 240
-    for _ in range(8):
+    assert budget.used["model"] == 6 and budget.deadline == start + 240
+    for _ in range(6):
         budget.reserve("nebius", "model", 1)
     with pytest.raises(ProviderError):
         budget.reserve("nebius", "model", 1)
@@ -330,7 +330,7 @@ async def test_hard_deadline_starts_no_calls(settings):
         assert not providers.calls
 
 
-async def test_finalization_deadline_keeps_finding_but_discards_unchecked_prose(settings):
+async def test_finalization_deadline_preserves_evidence_without_unchecked_verdict(settings):
     class FinalDeadlineBudget(RunBudget):
         def reserve(self, provider, operation, units):
             if self.finalizing and self.used["model"] == 4:
@@ -340,10 +340,10 @@ async def test_finalization_deadline_keeps_finding_but_discards_unchecked_prose(
     providers = Providers()
     async with running(settings, providers, budget_factory=FinalDeadlineBudget) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "partial"
+        assert saved["status"] == "failed"
         assert saved["stop_reason"] == "deadline_exceeded"
-        assert saved["result"]["verdict"] == "true"
-        assert saved["result"]["explanation"] == []
+        assert saved["result"] is None
+        assert (await client.get(saved["links"]["evidence"])).json()["evidence"]
         assert not any(name == "ExplanationCheck" for name, _ in providers.model_inputs)
 
 

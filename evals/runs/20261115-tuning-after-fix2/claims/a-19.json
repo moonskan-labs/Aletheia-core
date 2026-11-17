@@ -1,0 +1,2588 @@
+{
+  "id": "a-19",
+  "live": true,
+  "investigation": {
+    "id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+    "claim": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-15T21:51:23.602796Z",
+    "started_at": "2026-11-15T21:51:23.748255Z",
+    "finished_at": "2026-11-15T21:51:48.367727Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Direct claim of Apple fiscal 2025 sales figures from a named company.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+              "role": "essential",
+              "subject": "Apple",
+              "predicate": "reported $209.586 billion in iPhone sales",
+              "timeframe": "fiscal 2025",
+              "location_or_population": null,
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Components retain the exact claim substrings: 'Apple reported $209.586 billion in iPhone sales' and 'Apple reported $96.169 billion in services sales' for fiscal 2025.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "25b81fe7-82c6-4372-b415-824e998f0f44",
+              "8d0ababa-4673-49c0-9f92-fdd2c1b37fbb"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "25b81fe7-82c6-4372-b415-824e998f0f44",
+          "8d0ababa-4673-49c0-9f92-fdd2c1b37fbb"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "page_text_truncated",
+        "Rounding discrepancy between source and claim",
+        "Exact precision not available from spans",
+        "Services amount differs between source ($109.2B) and claim ($96.169B)",
+        "No sales figures reported in any span",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v3",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 10,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.8735927640000227,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.0573058170002696,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.0281719059998977,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.943424502999733,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.2076331630000823,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.7822634400004063,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.1920826020000277,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.9252819650000674,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.1578513039999052,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.0569386739998663,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.713196829000026,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.273614277999968,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.4732095570002457,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.8818526099998962,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6590383259999726,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 40291,
+        "completion_tokens": 2595,
+        "total_tokens": 42886
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Direct claim of Apple fiscal 2025 sales figures from a named company.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "For fiscal 2025, Cupertino-based Apple reported $209.586 billion in iPhone sales and $96.169 billion in services sales.",
+          "role": "essential",
+          "subject": "Apple",
+          "predicate": "reported $209.586 billion in iPhone sales",
+          "timeframe": "fiscal 2025",
+          "location_or_population": null,
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "events": "/investigations/ddc91ad2-5192-4eb3-96c3-65b57a32b8ee/events",
+      "evidence": "/investigations/ddc91ad2-5192-4eb3-96c3-65b57a32b8ee/evidence",
+      "comparison": "/investigations/ddc91ad2-5192-4eb3-96c3-65b57a32b8ee/comparison",
+      "refresh": "/investigations/ddc91ad2-5192-4eb3-96c3-65b57a32b8ee/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "canonical_url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "title": "Apple SEC filings: What Apple’s 2025 10-K Reveals",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:51:35.963489Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "83a2114b6fee5c062082def2303d7f765a9fbad699c170d72aeb643e9d9e943b",
+        "duplicate_group": "83a2114b6fee5c062082def2303d7f765a9fbad699c170d72aeb643e9d9e943b",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "canonical_url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "title": "_10-K 2025 (As-Filed)",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:51:39.100217Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "b68a2d54b0f0ed6f8af92ffc0897f05be9f8933a11481a16759f090fedfc82a2",
+        "duplicate_group": "b68a2d54b0f0ed6f8af92ffc0897f05be9f8933a11481a16759f090fedfc82a2",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "25b81fe7-82c6-4372-b415-824e998f0f44",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+            "span_ids": [
+              39,
+              43
+            ]
+          },
+          "rationale": "Spans 39 and 43 report iPhone sales of $209.6 billion and Services sales of $109.2 billion for fiscal 2025, rounded to the nearest billion. The claim specifies exact figures of $209.586 billion and $96.169 billion, which differ from the rounded amounts in the source.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "secfilingdata.com",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            39,
+            43
+          ],
+          "provenance_note": "Source uses rounded billions; claim specifies more precise amounts not shown in spans.",
+          "limitations": [
+            "Rounding discrepancy between source and claim",
+            "Exact precision not available from spans",
+            "Services amount differs between source ($109.2B) and claim ($96.169B)"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              39
+            ],
+            "start": 3925,
+            "end": 3958,
+            "text": "| iPhone | $209.6 billion | +4% |",
+            "quote_hash": "223387cc468cddd895d5d8e4fa5dc39019c182f8e1c13d431d9309b7a625366a"
+          },
+          {
+            "span_ids": [
+              43
+            ],
+            "start": 4079,
+            "end": 4115,
+            "text": "| Services | $109.2 billion | +14% |",
+            "quote_hash": "9c787eb003d3c526856c93df3d03f447560e2baa61a7ae70ebe0c61da11209ed"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "8d0ababa-4673-49c0-9f92-fdd2c1b37fbb",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+            "span_ids": [
+              7,
+              602
+            ]
+          },
+          "rationale": "Span 7 states the fiscal year ended September 27, 2025. Span 602 references Item 3, providing no iPhone or services sales figures for fiscal 2025. No span reports the dollar amounts $209.586 billion or $96.169 billion.",
+          "relation": "context",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            7,
+            602
+          ],
+          "provenance_note": "Span 7 establishes fiscal year scope; span 602 provides no sales data. No source establishes the claimed sales figures.",
+          "limitations": [
+            "No sales figures reported in any span"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              7
+            ],
+            "start": 200,
+            "end": 245,
+            "text": "For the fiscal year ended September 27, 2025 ",
+            "quote_hash": "ac8c413ea0b1c9dea47800fd6f28795d533a7448eaa20bc6551898ec3ec73675"
+          },
+          {
+            "span_ids": [
+              602
+            ],
+            "start": 96409,
+            "end": 96416,
+            "text": "Item 3.",
+            "quote_hash": "f395a8cdee3ce9cb5e417c56358b48de29d1f7e815e309793b3843cdc7021ac8"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 1,
+      "timestamp": "2026-11-15T21:51:23.602796Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 2,
+      "timestamp": "2026-11-15T21:51:23.748255Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 3,
+      "timestamp": "2026-11-15T21:51:23.752526Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v3",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 4,
+      "timestamp": "2026-11-15T21:51:23.755938Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 5,
+      "timestamp": "2026-11-15T21:51:23.759556Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.993",
+        "hard_remaining_seconds": "119.993",
+        "attempt": "1",
+        "input_chars": "147"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 6,
+      "timestamp": "2026-11-15T21:51:23.763614Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.989",
+        "hard_remaining_seconds": "119.989",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10738"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 7,
+      "timestamp": "2026-11-15T21:51:25.641859Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.111",
+        "hard_remaining_seconds": "118.111",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10738",
+        "elapsed_seconds": "1.874",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1846"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 8,
+      "timestamp": "2026-11-15T21:51:25.645568Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.107",
+        "hard_remaining_seconds": "118.107",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "915",
+        "elapsed_seconds": "1.886",
+        "finish_reason": "stop",
+        "prompt_tokens": "1760",
+        "completion_tokens": "284",
+        "total_tokens": "2044"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 9,
+      "timestamp": "2026-11-15T21:51:25.652325Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 10,
+      "timestamp": "2026-11-15T21:51:25.655206Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 11,
+      "timestamp": "2026-11-15T21:51:25.658439Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 12,
+      "timestamp": "2026-11-15T21:51:25.661522Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.091",
+        "hard_remaining_seconds": "118.091",
+        "attempt": "1",
+        "input_chars": "1111"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 13,
+      "timestamp": "2026-11-15T21:51:25.665522Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.087",
+        "hard_remaining_seconds": "118.087",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4192"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 14,
+      "timestamp": "2026-11-15T21:51:26.726330Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.026",
+        "hard_remaining_seconds": "117.026",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4192",
+        "elapsed_seconds": "1.057",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1308"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 15,
+      "timestamp": "2026-11-15T21:51:26.729810Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.022",
+        "hard_remaining_seconds": "117.022",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "query_coverage",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "420",
+        "elapsed_seconds": "1.069",
+        "finish_reason": "stop",
+        "prompt_tokens": "802",
+        "completion_tokens": "134",
+        "total_tokens": "936"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 16,
+      "timestamp": "2026-11-15T21:51:26.732563Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "plan",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 17,
+      "timestamp": "2026-11-15T21:51:26.735500Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.017",
+        "hard_remaining_seconds": "117.017",
+        "attempt": "2",
+        "input_chars": "1111"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 18,
+      "timestamp": "2026-11-15T21:51:26.742138Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.013",
+        "hard_remaining_seconds": "117.013",
+        "provider_call_id": "p5",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4378"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 19,
+      "timestamp": "2026-11-15T21:51:27.777313Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.977",
+        "hard_remaining_seconds": "115.977",
+        "provider_call_id": "p5",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4378",
+        "elapsed_seconds": "1.028",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1497"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 20,
+      "timestamp": "2026-11-15T21:51:27.781771Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.972",
+        "hard_remaining_seconds": "115.972",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "606",
+        "elapsed_seconds": "1.045",
+        "finish_reason": "stop",
+        "prompt_tokens": "833",
+        "completion_tokens": "170",
+        "total_tokens": "1003"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 21,
+      "timestamp": "2026-11-15T21:51:27.784362Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 iPhone sales amount $209.586 billion exact figure from annual report or SEC filing",
+        "purpose": "support",
+        "query_id": "q6"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 22,
+      "timestamp": "2026-11-15T21:51:27.787250Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q6",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.965",
+        "hard_remaining_seconds": "115.965",
+        "provider_call_id": "p7",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "308"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 23,
+      "timestamp": "2026-11-15T21:51:31.734619Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q6",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.019",
+        "hard_remaining_seconds": "112.019",
+        "provider_call_id": "p7",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "308",
+        "elapsed_seconds": "3.943",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10752"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 24,
+      "timestamp": "2026-11-15T21:51:31.738379Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 iPhone sales amount $209.586 billion exact figure from annual report or SEC filing",
+        "query_id": "q6",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 25,
+      "timestamp": "2026-11-15T21:51:31.741369Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 services sales amount $96.169 billion exact figure from annual report or SEC filing",
+        "purpose": "contradiction",
+        "query_id": "q8"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 26,
+      "timestamp": "2026-11-15T21:51:31.744113Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q8",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.008",
+        "hard_remaining_seconds": "112.008",
+        "provider_call_id": "p9",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "309"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 27,
+      "timestamp": "2026-11-15T21:51:33.954537Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q8",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.798",
+        "hard_remaining_seconds": "109.798",
+        "provider_call_id": "p9",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "309",
+        "elapsed_seconds": "2.208",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9895"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 28,
+      "timestamp": "2026-11-15T21:51:33.958277Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal 2025 services sales amount $96.169 billion exact figure from annual report or SEC filing",
+        "query_id": "q8",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 29,
+      "timestamp": "2026-11-15T21:51:33.961500Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal year 2025 total revenue breakdown by product category iPhone and services",
+        "purpose": "context",
+        "query_id": "q10"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 30,
+      "timestamp": "2026-11-15T21:51:33.964988Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q10",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.788",
+        "hard_remaining_seconds": "109.788",
+        "provider_call_id": "p11",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "294"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 31,
+      "timestamp": "2026-11-15T21:51:35.751255Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q10",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "63.002",
+        "hard_remaining_seconds": "108.002",
+        "provider_call_id": "p11",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "294",
+        "elapsed_seconds": "1.782",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "12118"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 32,
+      "timestamp": "2026-11-15T21:51:35.754165Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Apple fiscal year 2025 total revenue breakdown by product category iPhone and services",
+        "query_id": "q10",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 33,
+      "timestamp": "2026-11-15T21:51:35.757053Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "7",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 34,
+      "timestamp": "2026-11-15T21:51:35.759390Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c12",
+        "url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "slot": "1",
+        "query_ids": "q6,q8",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 35,
+      "timestamp": "2026-11-15T21:51:35.762431Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 36,
+      "timestamp": "2026-11-15T21:51:35.764636Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c12",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.987",
+        "hard_remaining_seconds": "107.987",
+        "provider_call_id": "p13",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "195"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 37,
+      "timestamp": "2026-11-15T21:51:35.961142Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c12",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.793",
+        "hard_remaining_seconds": "107.793",
+        "provider_call_id": "p13",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "195",
+        "elapsed_seconds": "0.192",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "29189"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 38,
+      "timestamp": "2026-11-15T21:51:35.972182Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "url": "https://www.secfilingdata.com/blog/apples-most-important-filing-2025",
+        "candidate_id": "c12",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 39,
+      "timestamp": "2026-11-15T21:51:35.974835Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 40,
+      "timestamp": "2026-11-15T21:51:35.981261Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.771",
+        "hard_remaining_seconds": "107.771",
+        "attempt": "1",
+        "input_chars": "20132"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 41,
+      "timestamp": "2026-11-15T21:51:35.987246Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.765",
+        "hard_remaining_seconds": "107.765",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "36593"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 42,
+      "timestamp": "2026-11-15T21:51:38.916578Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "59.837",
+        "hard_remaining_seconds": "104.837",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "36593",
+        "elapsed_seconds": "2.925",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1904"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 43,
+      "timestamp": "2026-11-15T21:51:38.920772Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t14",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "59.832",
+        "hard_remaining_seconds": "104.832",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "993",
+        "elapsed_seconds": "2.939",
+        "finish_reason": "stop",
+        "prompt_tokens": "9607",
+        "completion_tokens": "313",
+        "total_tokens": "9920"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 44,
+      "timestamp": "2026-11-15T21:51:38.927515Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "25b81fe7-82c6-4372-b415-824e998f0f44",
+        "snapshot_id": "68fe636f-fe34-4a97-a0ca-cce31de8385f",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 45,
+      "timestamp": "2026-11-15T21:51:38.930658Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "slot": "2",
+        "query_ids": "q6,q8,q10",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 46,
+      "timestamp": "2026-11-15T21:51:38.933529Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 47,
+      "timestamp": "2026-11-15T21:51:38.937133Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.815",
+        "hard_remaining_seconds": "104.815",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "210"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 48,
+      "timestamp": "2026-11-15T21:51:39.098447Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c16",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.654",
+        "hard_remaining_seconds": "104.654",
+        "provider_call_id": "p17",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "210",
+        "elapsed_seconds": "0.158",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "284047"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 49,
+      "timestamp": "2026-11-15T21:51:39.120580Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "url": "https://s2.q4cdn.com/470004039/files/doc_financials/2025/ar/_10-K-2025-As-Filed.pdf",
+        "candidate_id": "c16",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 50,
+      "timestamp": "2026-11-15T21:51:39.123802Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 51,
+      "timestamp": "2026-11-15T21:51:39.150631Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.602",
+        "hard_remaining_seconds": "104.602",
+        "attempt": "1",
+        "input_chars": "19624"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 52,
+      "timestamp": "2026-11-15T21:51:39.157509Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "59.595",
+        "hard_remaining_seconds": "104.595",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35741"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 53,
+      "timestamp": "2026-11-15T21:51:41.217697Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.535",
+        "hard_remaining_seconds": "102.535",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35741",
+        "elapsed_seconds": "2.057",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1932"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 54,
+      "timestamp": "2026-11-15T21:51:41.220922Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.532",
+        "hard_remaining_seconds": "102.532",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1025",
+        "elapsed_seconds": "2.071",
+        "finish_reason": "stop",
+        "prompt_tokens": "8550",
+        "completion_tokens": "339",
+        "total_tokens": "8889"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 55,
+      "timestamp": "2026-11-15T21:51:41.236164Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 56,
+      "timestamp": "2026-11-15T21:51:41.248773Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.507",
+        "hard_remaining_seconds": "102.507",
+        "attempt": "2",
+        "input_chars": "19624"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 57,
+      "timestamp": "2026-11-15T21:51:41.264228Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "57.488",
+        "hard_remaining_seconds": "102.488",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35942"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 58,
+      "timestamp": "2026-11-15T21:51:42.981258Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "55.772",
+        "hard_remaining_seconds": "100.772",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "35942",
+        "elapsed_seconds": "1.713",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1889"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 59,
+      "timestamp": "2026-11-15T21:51:42.985351Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "55.767",
+        "hard_remaining_seconds": "100.767",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "982",
+        "elapsed_seconds": "1.740",
+        "finish_reason": "stop",
+        "prompt_tokens": "8584",
+        "completion_tokens": "320",
+        "total_tokens": "8904"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 60,
+      "timestamp": "2026-11-15T21:51:42.991584Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "8d0ababa-4673-49c0-9f92-fdd2c1b37fbb",
+        "snapshot_id": "2bc9559d-592b-4dfe-85bc-e7fc97b3deb2",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 61,
+      "timestamp": "2026-11-15T21:51:42.994930Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 62,
+      "timestamp": "2026-11-15T21:51:43.000001Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 63,
+      "timestamp": "2026-11-15T21:51:43.003495Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "100.749",
+        "hard_remaining_seconds": "100.749",
+        "attempt": "1",
+        "input_chars": "4115"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 64,
+      "timestamp": "2026-11-15T21:51:43.007489Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "100.745",
+        "hard_remaining_seconds": "100.745",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8811"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 65,
+      "timestamp": "2026-11-15T21:51:45.285260Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.468",
+        "hard_remaining_seconds": "98.468",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8811",
+        "elapsed_seconds": "2.274",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2359"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 66,
+      "timestamp": "2026-11-15T21:51:45.290021Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.463",
+        "hard_remaining_seconds": "98.463",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1450",
+        "elapsed_seconds": "2.286",
+        "finish_reason": "stop",
+        "prompt_tokens": "2324",
+        "completion_tokens": "563",
+        "total_tokens": "2887"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 67,
+      "timestamp": "2026-11-15T21:51:45.294803Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.459",
+        "hard_remaining_seconds": "98.459",
+        "attempt": "1",
+        "input_chars": "5560"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 68,
+      "timestamp": "2026-11-15T21:51:45.298825Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "98.454",
+        "hard_remaining_seconds": "98.454",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10256"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 69,
+      "timestamp": "2026-11-15T21:51:45.776870Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.977",
+        "hard_remaining_seconds": "97.977",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10256",
+        "elapsed_seconds": "0.473",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1061"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 70,
+      "timestamp": "2026-11-15T21:51:45.785871Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.971",
+        "hard_remaining_seconds": "97.971",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "197",
+        "elapsed_seconds": "0.488",
+        "finish_reason": "stop",
+        "prompt_tokens": "2846",
+        "completion_tokens": "59",
+        "total_tokens": "2905"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 71,
+      "timestamp": "2026-11-15T21:51:45.789137Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation",
+        "affected_units": "1,2"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 72,
+      "timestamp": "2026-11-15T21:51:45.792175Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.960",
+        "hard_remaining_seconds": "97.960",
+        "attempt": "1",
+        "input_chars": "4321"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 73,
+      "timestamp": "2026-11-15T21:51:45.795627Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.957",
+        "hard_remaining_seconds": "97.957",
+        "provider_call_id": "p26",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9025"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 74,
+      "timestamp": "2026-11-15T21:51:47.684265Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.069",
+        "hard_remaining_seconds": "96.069",
+        "provider_call_id": "p26",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9025",
+        "elapsed_seconds": "1.882",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1674"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 75,
+      "timestamp": "2026-11-15T21:51:47.689647Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t25",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.063",
+        "hard_remaining_seconds": "96.063",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "793",
+        "elapsed_seconds": "1.897",
+        "finish_reason": "stop",
+        "prompt_tokens": "2364",
+        "completion_tokens": "338",
+        "total_tokens": "2702"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 76,
+      "timestamp": "2026-11-15T21:51:47.693376Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.059",
+        "hard_remaining_seconds": "96.059",
+        "attempt": "1",
+        "input_chars": "4903"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 77,
+      "timestamp": "2026-11-15T21:51:47.696576Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.056",
+        "hard_remaining_seconds": "96.056",
+        "provider_call_id": "p28",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9571"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 78,
+      "timestamp": "2026-11-15T21:51:48.358829Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "95.394",
+        "hard_remaining_seconds": "95.394",
+        "provider_call_id": "p28",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "9571",
+        "elapsed_seconds": "0.659",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1110"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 79,
+      "timestamp": "2026-11-15T21:51:48.362170Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t27",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "95.390",
+        "hard_remaining_seconds": "95.390",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "242",
+        "elapsed_seconds": "0.669",
+        "finish_reason": "stop",
+        "prompt_tokens": "2621",
+        "completion_tokens": "75",
+        "total_tokens": "2696"
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 80,
+      "timestamp": "2026-11-15T21:51:48.364577Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "ddc91ad2-5192-4eb3-96c3-65b57a32b8ee",
+      "sequence": 81,
+      "timestamp": "2026-11-15T21:51:48.367727Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 24.99214276199973,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.873
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.056
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.027
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.942
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.206
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.78
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.173
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.924
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.102
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.056
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.711
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.272
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.472
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.881
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.658
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.8735927640000227,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.0573058170002696,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.0281719059998977,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.943424502999733,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.2076331630000823,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.7822634400004063,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.1920826020000277,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.9252819650000674,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.1578513039999052,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.0569386739998663,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.713196829000026,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.273614277999968,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.4732095570002457,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.8818526099998962,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6590383259999726,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

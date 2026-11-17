@@ -39,7 +39,7 @@ function renderCaptured(name: string): HTMLElement {
       onRetry={() => {}}
     />,
   )
-  return document.querySelector<HTMLElement>('section.conclusion')!
+  return document.querySelector<HTMLElement>('section.conclusion, section.outcome')!
 }
 
 afterEach(cleanup)
@@ -52,9 +52,44 @@ describe('rendering captured backend responses', () => {
     ['insufficient', 'Insufficient evidence'],
     ['conflicting', 'Conflicting evidence'],
     ['finalization-timeout', 'True'],
+    ['quoted-explanation', 'True'],
+    ['unsupported-method', 'This claim needs a different research method'],
+    ['unconfirmed-decision', 'No confirmed decision'],
+    ['deadline-before-confirmation', 'No decision'],
   ])('%s renders the contracted label "%s"', (name, label) => {
     renderCaptured(name)
     expect(document.getElementById('result-label')?.textContent).toBe(label)
+  })
+
+  it('explains an unsupported method without presenting a truth verdict', () => {
+    const { investigation } = load('unsupported-method')
+    expect(investigation.result).toBeNull()
+    const conclusion = renderCaptured('unsupported-method')
+    expect(conclusion.textContent).toContain(investigation.method_limitation?.explanation)
+    expect(conclusion.textContent).toContain('No truth verdict was assigned')
+  })
+
+  it('shows a rejected final check without an evidence verdict or caveat', () => {
+    const conclusion = renderCaptured('unconfirmed-decision')
+    expect(document.getElementById('result-label')?.textContent).toBe('No confirmed decision')
+    expect(conclusion.textContent).not.toContain('with a caveat')
+    expect(document.querySelector('[aria-labelledby="findings-heading"]')).toBeNull()
+    expect(document.querySelector('.evidence-pane')).not.toBeNull()
+  })
+
+  it('keeps a confirmed verdict linked to the fallback quotation', () => {
+    const conclusion = renderCaptured('quoted-explanation')
+    expect(conclusion.textContent).toContain('The cited source states:')
+    expect(within(conclusion).getAllByRole('button').length).toBeGreaterThan(0)
+    expect(document.querySelector('.limitations')?.textContent).toContain('quoted directly')
+  })
+
+  it('shows a deadline before confirmation as failure without a verdict', () => {
+    const { investigation } = load('deadline-before-confirmation')
+    expect(investigation.status).toBe('failed')
+    expect(investigation.result).toBeNull()
+    const conclusion = renderCaptured('deadline-before-confirmation')
+    expect(conclusion.textContent).toContain('no verdict was published')
   })
 
   it('shows the three correction parts for Almost', () => {

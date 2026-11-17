@@ -1,0 +1,68 @@
+{
+  "id": "f-04",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "RFC 9110 explicitly classifies POST as not a safe method.",
+      "citations": [
+        {
+          "evidence_id": "ae38b83e-ce87-44c7-a229-7b5553aa25ea",
+          "url": "https://safeguard.sh/resources/blog/http-1-1-explained-rfc-9110-and-rfc-9112-messages-and-security",
+          "title": "HTTP/1.1 Explained: RFC 9110 and RFC 9112 Messages, Methods and Security | Safeguard Blog",
+          "valid": true,
+          "problem": null
+        },
+        {
+          "evidence_id": "d7b2c16c-7105-4cb0-b2c3-1e0279f47875",
+          "url": "https://rfc-explained.com/en/9110",
+          "title": "RFC 9110 explained simply: HTTP Semantics | rfc-explained.com",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passages state that RFC 9110 section 9 classifies POST as 'no' for safe / 'Neither safe nor idempotent', which directly supports the statement."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "Only GET, HEAD, OPTIONS, and TRACE are listed as safe methods in RFC 9110 Section 9.2.1.",
+      "citations": [
+        {
+          "evidence_id": "e3eb63ee-51dd-409b-8f5f-222ad8300b79",
+          "url": "https://www.restguide.info/rfc-9110",
+          "title": "RFC 9110 Explained: Safe & Idempotent HTTP Methods",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passages explicitly state Section 9.2.1 defines four safe methods: GET, HEAD, OPTIONS, and TRACE."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "POST is intended for resource-specific processing, which may cause state changes, making it unsafe.",
+      "citations": [
+        {
+          "evidence_id": "12664b9f-9cf7-4bee-8eb9-1c1da64605ed",
+          "url": "https://www.rfc-editor.org/rfc/rfc9110.pdf",
+          "title": "RFC 9110: HTTP Semantics",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "partly_supported",
+        "reason": "The passage supports that POST content represents information to be processed by the target resource, but it does not state that POST may cause state changes or that this makes it unsafe."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": null
+}

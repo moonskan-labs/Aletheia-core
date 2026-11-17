@@ -17,6 +17,16 @@ from aletheia.research_contracts import Decision, InvestigationResult
 from aletheia.storage import Storage, StorageError
 
 
+@pytest.fixture(autouse=True)
+def legacy_almost_contract(monkeypatch):
+    """Retain the existing historical Almost contract checks; production disables it.
+
+    Current Phase 1 behavior is exercised without this override in test_binary_phase1.
+    This is not the deferred correction/reverification loop.
+    """
+    monkeypatch.setattr("aletheia.verdicts.ALMOST_ENABLED", True)
+
+
 @pytest.mark.parametrize(
     "options",
     [
@@ -77,15 +87,17 @@ async def test_each_failed_correction_check_prevents_almost(settings, check_fiel
     providers = RejectedCorrection(relation="contradicts", almost=True)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed"
-        assert saved["result"] is None
-        assert "validation" in saved["error"]["message"]
+        # The rejected correction is dropped, never published; the checked False stays.
+        assert saved["status"] == "completed"
+        assert saved["result"]["verdict"] == "false"
+        assert saved["result"]["almost_correction"] is None
+        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
 
 
 @pytest.mark.parametrize(
     "defect", ["missing_part", "blank", "invented_id", "no_citations", "unchanged"]
 )
-async def test_invalid_correction_has_one_repair_then_fails(settings, defect):
+async def test_invalid_correction_is_never_published(settings, defect):
     class BadCorrection(Providers):
         def model_value(self, schema, data):
             value = super().model_value(schema, data)
@@ -106,9 +118,17 @@ async def test_invalid_correction_has_one_repair_then_fails(settings, defect):
     providers = BadCorrection(relation="contradicts", almost=True)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed" and saved["result"] is None
-        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
-        assert [name for name, _ in providers.model_inputs].count("ExplanationCheck") == 0
+        assert saved["result"]["almost_correction"] is None
+        names = [name for name, _ in providers.model_inputs]
+        if defect in {"invented_id", "unchanged"}:
+            # A well-formed but invalid correction is dropped; the checked False stays.
+            assert saved["status"] == "completed" and saved["result"]["verdict"] == "false"
+            assert names.count("Synthesis") == 1 and names.count("ExplanationCheck") == 1
+        else:
+            # A malformed response still gets one repair and then withholds the verdict.
+            assert saved["status"] == "partial" and saved["result"]["verdict"] is None
+            assert saved["stop_reason"] == "invalid_task_output"
+            assert names.count("Synthesis") == 2 and names.count("ExplanationCheck") == 0
 
 
 @pytest.mark.parametrize(
@@ -116,18 +136,30 @@ async def test_invalid_correction_has_one_repair_then_fails(settings, defect):
     [
         {"relation": "mixed", "source_count": 2},
         {"relation": "supports"},
-        {"relation": "context", "deep": True},
-        {"relation": "context", "deep": True, "independent": True, "source_count": 2},
+        {"relation": "context", "deep": True, "authoritative": False},
+        {
+            "relation": "context",
+            "deep": True,
+            "independent": True,
+            "source_count": 2,
+            "authoritative": False,
+        },
     ],
 )
 async def test_almost_cannot_bypass_conflict_truth_or_per_part_evidence_bar(settings, options):
     providers = Providers(almost=True, **options)
     async with running(settings, providers) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "failed" and saved["result"] is None
+        # The ineligible correction is dropped and the decision is exactly what the same
+        # evidence gives without it: no Almost, and no verdict lost to the bad proposal.
+        assert saved["status"] == "completed"
+        assert saved["result"]["almost_correction"] is None
+        assert saved["result"]["verdict"] == (
+            "true" if options == {"relation": "supports"} else None
+        )
         # In the two-origin case the whole set is adequate, but each correction part
         # cites only one origin. Individual support requirements must still be enforced.
-        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 2
+        assert [name for name, _ in providers.model_inputs].count("Synthesis") == 1
 
 
 async def test_deadline_before_correction_check_never_publishes_candidate(settings):
@@ -140,10 +172,9 @@ async def test_deadline_before_correction_check_never_publishes_candidate(settin
     providers = Providers(relation="contradicts", almost=True)
     async with running(settings, providers, budget_factory=CheckDeadline) as (_, client):
         saved = await submit(client)
-        assert saved["status"] == "partial"
-        assert saved["result"]["verdict"] == "false"
-        assert saved["result"]["almost_correction"] is None
-        assert saved["result"]["explanation"] == []
+        assert saved["status"] == "failed"
+        assert saved["result"] is None
+        assert saved["stop_reason"] == "deadline_exceeded"
         assert not any(name == "ExplanationCheck" for name, _ in providers.model_inputs)
 
 

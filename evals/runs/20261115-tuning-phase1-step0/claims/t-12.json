@@ -1,0 +1,2271 @@
+{
+  "id": "t-12",
+  "live": true,
+  "investigation": {
+    "id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+    "claim": "Guadalupe Peak rises 8,749 feet in the Texas state parks description available in 2026.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-15T23:03:40.200596Z",
+    "started_at": "2026-11-15T23:03:40.242386Z",
+    "finished_at": "2026-11-15T23:04:03.493809Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Guadalupe Peak rises 8,749 feet in the Texas state parks description available in 2026.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "direct factual claim about a measurement from a specific source (Texas state parks description)",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "Guadalupe Peak rises 8,749 feet",
+              "role": "essential",
+              "subject": "Guadalupe Peak",
+              "predicate": "rises 8,749 feet",
+              "timeframe": null,
+              "location_or_population": "Texas state parks",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "in the Texas state parks description available in 2026",
+              "role": "modifier",
+              "subject": "Guadalupe Peak",
+              "predicate": "in the Texas state parks description available in 2026",
+              "timeframe": null,
+              "location_or_population": "Texas state parks",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "This is a direct factual assertion from the specified source about a measurement value. No verification possible without access to the Texas state parks description from 2026. The measurement '8,749 feet' is presented as a factual claim from that source.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "eebf32d4-55a2-4fc6-a9e2-74b6e8c00665",
+              "3c3e4a89-a858-4777-b9a8-396f3c6b7fc8"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "fa888171-a30d-4914-9e56-8806cb3c5837"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "eebf32d4-55a2-4fc6-a9e2-74b6e8c00665",
+          "3c3e4a89-a858-4777-b9a8-396f3c6b7fc8",
+          "fa888171-a30d-4914-9e56-8806cb3c5837"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Two different summit elevations stated in the same source",
+        "Source is Wikipedia, not a Texas state parks description.",
+        "Spans do not address Texas state parks description or 2026 availability.",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 8,
+        "search": 2,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.462481458998809,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.7495826659942395,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.3264764999985346,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.5237652079958934,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 1.0353586659985012,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.183632625004975,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.5246722500014585,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.7672112500004005,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.219203957996797,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8458900840050774,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.6376070420010365,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8056575829978101,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 33925,
+        "completion_tokens": 2109,
+        "total_tokens": 36034
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "direct factual claim about a measurement from a specific source (Texas state parks description)",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "Guadalupe Peak rises 8,749 feet",
+          "role": "essential",
+          "subject": "Guadalupe Peak",
+          "predicate": "rises 8,749 feet",
+          "timeframe": null,
+          "location_or_population": "Texas state parks",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "in the Texas state parks description available in 2026",
+          "role": "modifier",
+          "subject": "Guadalupe Peak",
+          "predicate": "in the Texas state parks description available in 2026",
+          "timeframe": null,
+          "location_or_population": "Texas state parks",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/438e089b-548b-4516-b7a9-b7b1e232d166",
+      "events": "/investigations/438e089b-548b-4516-b7a9-b7b1e232d166/events",
+      "evidence": "/investigations/438e089b-548b-4516-b7a9-b7b1e232d166/evidence",
+      "comparison": "/investigations/438e089b-548b-4516-b7a9-b7b1e232d166/comparison",
+      "refresh": "/investigations/438e089b-548b-4516-b7a9-b7b1e232d166/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "url": "https://national-parks.org/united-states/guadalupe-mountains",
+        "canonical_url": "https://national-parks.org/united-states/guadalupe-mountains",
+        "title": "Guadalupe Mountains National Park | (Official GANP Page)",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T23:03:48.388585Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "6072a863ad645124780eb1e61468627a8d7a05f29f1918059b6573c978a357fc",
+        "duplicate_group": "6072a863ad645124780eb1e61468627a8d7a05f29f1918059b6573c978a357fc",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "url": "https://en.wikipedia.org/wiki/Guadalupe_Peak",
+        "canonical_url": "https://en.wikipedia.org/wiki/Guadalupe_Peak",
+        "title": "Guadalupe Peak - Wikipedia",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T23:03:53.133858Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "4880eb035d295310f15e5f612375c0f5752ae9317bdb8264eed7c22adbeddc2d",
+        "duplicate_group": "4880eb035d295310f15e5f612375c0f5752ae9317bdb8264eed7c22adbeddc2d",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "eebf32d4-55a2-4fc6-a9e2-74b6e8c00665",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+            "span_ids": [
+              75
+            ]
+          },
+          "rationale": "Span 75 states the summit elevation is 8,749 feet, but spans 17, 50, 51, and 75 refer to 8,751 feet for Guadalupe Peak.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            75
+          ],
+          "provenance_note": "Contradiction between 8,749 and 8,751 feet for Guadalupe Peak",
+          "limitations": [
+            "Two different summit elevations stated in the same source"
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "units/metric",
+              "explanation": "Source gives both 8,749 and 8,751 feet for the same peak without clarifying which is the official Texas state parks description elevation"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              75
+            ],
+            "start": 10036,
+            "end": 10212,
+            "text": "Guadalupe Peak, standing at an impressive 8,749 feet (2,667 meters) above sea level, is the highest point in Texas and a prominent feature of Guadalupe Mountains National Park.",
+            "quote_hash": "5d0c0608df1487dba9c088706bb3a6f605939e83ac94a1082676c8cdb2d243b2"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "3c3e4a89-a858-4777-b9a8-396f3c6b7fc8",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+            "span_ids": [
+              74
+            ]
+          },
+          "rationale": "Spans 74 states the elevation is 8,751 feet, not 8,749 feet. The claim of 8,749 feet is a different numeric value for the same entity and elevation.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "Wikipedia",
+          "origin": "Wikipedia article on Guadalupe Peak",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            74
+          ],
+          "provenance_note": "From Wikipedia infobox and article text.",
+          "limitations": [
+            "Source is Wikipedia, not a Texas state parks description."
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "metric_value",
+              "explanation": "Source states 8,751 feet; claim asserts 8,749 feet."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              74
+            ],
+            "start": 7153,
+            "end": 8304,
+            "text": "**Guadalupe Peak**, also known as **Signal Peak**,[[3]](#cite_note-3) is the highest natural point in [Texas](https://en.wikipedia.org/wiki/Texas \"Texas\"),[[4]](#cite_note-4) with an elevation of 8,751 feet (2,667 m) above [sea level](https://en.wikipedia.org/wiki/Sea_level \"Sea level\").[[1]](#cite_note-ngs-1) It is located in [Guadalupe Mountains National Park](https://en.wikipedia.org/wiki/Guadalupe_Mountains_National_Park \"Guadalupe Mountains National Park\"), and is part of the [Guadalupe Mountains](https://en.wikipedia.org/wiki/Guadalupe_Mountains \"Guadalupe Mountains\") range in southeastern [New Mexico](https://en.wikipedia.org/wiki/New_Mexico \"New Mexico\") and [West Texas](https://en.wikipedia.org/wiki/West_Texas \"West Texas\"). The mountain is about 90 miles (140 km) east of [El Paso](https://en.wikipedia.org/wiki/El_Paso \"El Paso\") and about 50 miles (80 km) southwest of [Carlsbad, New Mexico](https://en.wikipedia.org/wiki/Carlsbad,_New_Mexico \"Carlsbad, New Mexico\"). The peak rises more than 3,000 feet (910 m) above the arid floor of the [Chihuahuan Desert](https://en.wikipedia.org/wiki/Chihuahuan_Desert \"Chihuahuan Desert\").",
+            "quote_hash": "0a0ffa827709cd3844938c0a1256b614cbca63150638e0c4bfbd475f58fe64ec"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "fa888171-a30d-4914-9e56-8806cb3c5837",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+            "span_ids": [
+              74
+            ]
+          },
+          "rationale": "Spans 74 describes the location and context but does not mention a 2026 Texas state parks description. The claim's modifier about availability in 2026 is unsupported by the supplied spans.",
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "Wikipedia",
+          "origin": "Wikipedia article on Guadalupe Peak",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            74
+          ],
+          "provenance_note": "From Wikipedia article text.",
+          "limitations": [
+            "Spans do not address Texas state parks description or 2026 availability."
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "source",
+              "explanation": "Spans are from Wikipedia, not a Texas state parks description available in 2026."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              74
+            ],
+            "start": 7153,
+            "end": 8304,
+            "text": "**Guadalupe Peak**, also known as **Signal Peak**,[[3]](#cite_note-3) is the highest natural point in [Texas](https://en.wikipedia.org/wiki/Texas \"Texas\"),[[4]](#cite_note-4) with an elevation of 8,751 feet (2,667 m) above [sea level](https://en.wikipedia.org/wiki/Sea_level \"Sea level\").[[1]](#cite_note-ngs-1) It is located in [Guadalupe Mountains National Park](https://en.wikipedia.org/wiki/Guadalupe_Mountains_National_Park \"Guadalupe Mountains National Park\"), and is part of the [Guadalupe Mountains](https://en.wikipedia.org/wiki/Guadalupe_Mountains \"Guadalupe Mountains\") range in southeastern [New Mexico](https://en.wikipedia.org/wiki/New_Mexico \"New Mexico\") and [West Texas](https://en.wikipedia.org/wiki/West_Texas \"West Texas\"). The mountain is about 90 miles (140 km) east of [El Paso](https://en.wikipedia.org/wiki/El_Paso \"El Paso\") and about 50 miles (80 km) southwest of [Carlsbad, New Mexico](https://en.wikipedia.org/wiki/Carlsbad,_New_Mexico \"Carlsbad, New Mexico\"). The peak rises more than 3,000 feet (910 m) above the arid floor of the [Chihuahuan Desert](https://en.wikipedia.org/wiki/Chihuahuan_Desert \"Chihuahuan Desert\").",
+            "quote_hash": "0a0ffa827709cd3844938c0a1256b614cbca63150638e0c4bfbd475f58fe64ec"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 1,
+      "timestamp": "2026-11-15T23:03:40.200596Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 2,
+      "timestamp": "2026-11-15T23:03:40.242386Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 3,
+      "timestamp": "2026-11-15T23:03:40.243855Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 4,
+      "timestamp": "2026-11-15T23:03:40.245064Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 5,
+      "timestamp": "2026-11-15T23:03:40.246464Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.997",
+        "hard_remaining_seconds": "119.997",
+        "attempt": "1",
+        "input_chars": "115"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 6,
+      "timestamp": "2026-11-15T23:03:40.247854Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10706"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 7,
+      "timestamp": "2026-11-15T23:03:41.711144Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.532",
+        "hard_remaining_seconds": "118.532",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10706",
+        "elapsed_seconds": "1.462",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1965"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 8,
+      "timestamp": "2026-11-15T23:03:41.712229Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.531",
+        "hard_remaining_seconds": "118.531",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1034",
+        "elapsed_seconds": "1.466",
+        "finish_reason": "stop",
+        "prompt_tokens": "1746",
+        "completion_tokens": "276",
+        "total_tokens": "2022"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 9,
+      "timestamp": "2026-11-15T23:03:41.714490Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 10,
+      "timestamp": "2026-11-15T23:03:41.715573Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 11,
+      "timestamp": "2026-11-15T23:03:41.717011Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 12,
+      "timestamp": "2026-11-15T23:03:41.719345Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.526",
+        "hard_remaining_seconds": "118.526",
+        "attempt": "1",
+        "input_chars": "1294"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 13,
+      "timestamp": "2026-11-15T23:03:41.720433Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.523",
+        "hard_remaining_seconds": "118.523",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4403"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 14,
+      "timestamp": "2026-11-15T23:03:42.471685Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.772",
+        "hard_remaining_seconds": "117.772",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4403",
+        "elapsed_seconds": "0.750",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1308"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 15,
+      "timestamp": "2026-11-15T23:03:42.473402Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.770",
+        "hard_remaining_seconds": "117.770",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "430",
+        "elapsed_seconds": "0.755",
+        "finish_reason": "stop",
+        "prompt_tokens": "836",
+        "completion_tokens": "110",
+        "total_tokens": "946"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 16,
+      "timestamp": "2026-11-15T23:03:42.475266Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Guadalupe Peak elevation 8749 feet Texas state parks description",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 17,
+      "timestamp": "2026-11-15T23:03:42.477382Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.767",
+        "hard_remaining_seconds": "117.767",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "272"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 18,
+      "timestamp": "2026-11-15T23:03:44.806211Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.438",
+        "hard_remaining_seconds": "115.438",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "272",
+        "elapsed_seconds": "2.326",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10061"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 19,
+      "timestamp": "2026-11-15T23:03:44.808088Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Guadalupe Peak elevation 8749 feet Texas state parks description",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 20,
+      "timestamp": "2026-11-15T23:03:44.810042Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Guadalupe Peak highest point elevation Texas state parks official record",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 21,
+      "timestamp": "2026-11-15T23:03:44.812059Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.432",
+        "hard_remaining_seconds": "115.432",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "280"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 22,
+      "timestamp": "2026-11-15T23:03:47.338633Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.906",
+        "hard_remaining_seconds": "112.906",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "280",
+        "elapsed_seconds": "2.524",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7107"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 23,
+      "timestamp": "2026-11-15T23:03:47.341252Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Guadalupe Peak highest point elevation Texas state parks official record",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 24,
+      "timestamp": "2026-11-15T23:03:47.343242Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "6",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 25,
+      "timestamp": "2026-11-15T23:03:47.344656Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "url": "https://national-parks.org/united-states/guadalupe-mountains",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 26,
+      "timestamp": "2026-11-15T23:03:47.346196Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 27,
+      "timestamp": "2026-11-15T23:03:47.347600Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "67.896",
+        "hard_remaining_seconds": "112.896",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "187"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 28,
+      "timestamp": "2026-11-15T23:03:48.386451Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "66.859",
+        "hard_remaining_seconds": "111.859",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "187",
+        "elapsed_seconds": "1.035",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "32112"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 29,
+      "timestamp": "2026-11-15T23:03:48.396035Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "url": "https://national-parks.org/united-states/guadalupe-mountains",
+        "candidate_id": "c9",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 30,
+      "timestamp": "2026-11-15T23:03:48.397468Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 31,
+      "timestamp": "2026-11-15T23:03:48.403788Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "66.840",
+        "hard_remaining_seconds": "111.840",
+        "attempt": "1",
+        "input_chars": "21995"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 32,
+      "timestamp": "2026-11-15T23:03:48.407386Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "66.837",
+        "hard_remaining_seconds": "111.837",
+        "provider_call_id": "p12",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38772"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 33,
+      "timestamp": "2026-11-15T23:03:52.593203Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.651",
+        "hard_remaining_seconds": "107.651",
+        "provider_call_id": "p12",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38772",
+        "elapsed_seconds": "4.184",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1938"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 34,
+      "timestamp": "2026-11-15T23:03:52.595298Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.649",
+        "hard_remaining_seconds": "107.649",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1016",
+        "elapsed_seconds": "4.192",
+        "finish_reason": "stop",
+        "prompt_tokens": "10000",
+        "completion_tokens": "330",
+        "total_tokens": "10330"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 35,
+      "timestamp": "2026-11-15T23:03:52.598336Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "eebf32d4-55a2-4fc6-a9e2-74b6e8c00665",
+        "snapshot_id": "f53cb956-8e6e-4bfb-bcd5-5db206b9680d",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 36,
+      "timestamp": "2026-11-15T23:03:52.599804Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c13",
+        "url": "https://en.wikipedia.org/wiki/Guadalupe_Peak",
+        "slot": "2",
+        "query_ids": "q5,q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 37,
+      "timestamp": "2026-11-15T23:03:52.601245Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 38,
+      "timestamp": "2026-11-15T23:03:52.603414Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c13",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "62.641",
+        "hard_remaining_seconds": "107.641",
+        "provider_call_id": "p14",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "171"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 39,
+      "timestamp": "2026-11-15T23:03:53.132254Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c13",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "62.114",
+        "hard_remaining_seconds": "107.114",
+        "provider_call_id": "p14",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "171",
+        "elapsed_seconds": "0.525",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "59133"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 40,
+      "timestamp": "2026-11-15T23:03:53.140672Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "url": "https://en.wikipedia.org/wiki/Guadalupe_Peak",
+        "candidate_id": "c13",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 41,
+      "timestamp": "2026-11-15T23:03:53.142360Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 42,
+      "timestamp": "2026-11-15T23:03:53.148253Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t15",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "62.096",
+        "hard_remaining_seconds": "107.096",
+        "attempt": "1",
+        "input_chars": "15120"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 43,
+      "timestamp": "2026-11-15T23:03:53.151121Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t15",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "62.093",
+        "hard_remaining_seconds": "107.093",
+        "provider_call_id": "p16",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30995"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 44,
+      "timestamp": "2026-11-15T23:03:56.920918Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t15",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.324",
+        "hard_remaining_seconds": "103.324",
+        "provider_call_id": "p16",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "30995",
+        "elapsed_seconds": "3.767",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3061"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 45,
+      "timestamp": "2026-11-15T23:03:56.923526Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t15",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.321",
+        "hard_remaining_seconds": "103.321",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2072",
+        "elapsed_seconds": "3.775",
+        "finish_reason": "stop",
+        "prompt_tokens": "7171",
+        "completion_tokens": "624",
+        "total_tokens": "7795"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 46,
+      "timestamp": "2026-11-15T23:03:56.927228Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "3c3e4a89-a858-4777-b9a8-396f3c6b7fc8",
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 47,
+      "timestamp": "2026-11-15T23:03:56.928789Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "fa888171-a30d-4914-9e56-8806cb3c5837",
+        "snapshot_id": "322dace4-a077-4028-8818-9877aba4f57d",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 48,
+      "timestamp": "2026-11-15T23:03:56.930388Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 49,
+      "timestamp": "2026-11-15T23:03:56.931775Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "eebf32d4-55a2-4fc6-a9e2-74b6e8c00665"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 50,
+      "timestamp": "2026-11-15T23:03:56.933065Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "3c3e4a89-a858-4777-b9a8-396f3c6b7fc8"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 51,
+      "timestamp": "2026-11-15T23:03:56.934241Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "fa888171-a30d-4914-9e56-8806cb3c5837"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 52,
+      "timestamp": "2026-11-15T23:03:56.937242Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 53,
+      "timestamp": "2026-11-15T23:03:56.939317Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "103.305",
+        "hard_remaining_seconds": "103.305",
+        "attempt": "1",
+        "input_chars": "7691"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 54,
+      "timestamp": "2026-11-15T23:03:56.941480Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "103.302",
+        "hard_remaining_seconds": "103.302",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "12658"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 55,
+      "timestamp": "2026-11-15T23:04:00.168585Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "100.082",
+        "hard_remaining_seconds": "100.082",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "12658",
+        "elapsed_seconds": "3.219",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2015"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 56,
+      "timestamp": "2026-11-15T23:04:00.170806Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "100.073",
+        "hard_remaining_seconds": "100.073",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1132",
+        "elapsed_seconds": "3.232",
+        "finish_reason": "stop",
+        "prompt_tokens": "3410",
+        "completion_tokens": "438",
+        "total_tokens": "3848"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 57,
+      "timestamp": "2026-11-15T23:04:00.172290Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "100.071",
+        "hard_remaining_seconds": "100.071",
+        "attempt": "1",
+        "input_chars": "8817"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 58,
+      "timestamp": "2026-11-15T23:04:00.174237Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "100.070",
+        "hard_remaining_seconds": "100.070",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13691"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 59,
+      "timestamp": "2026-11-15T23:04:01.022857Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.222",
+        "hard_remaining_seconds": "99.222",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13691",
+        "elapsed_seconds": "0.846",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1119"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 60,
+      "timestamp": "2026-11-15T23:04:01.025460Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.219",
+        "hard_remaining_seconds": "99.219",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "249",
+        "elapsed_seconds": "0.853",
+        "finish_reason": "stop",
+        "prompt_tokens": "3791",
+        "completion_tokens": "79",
+        "total_tokens": "3870"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 61,
+      "timestamp": "2026-11-15T23:04:01.027121Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 62,
+      "timestamp": "2026-11-15T23:04:01.029266Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.215",
+        "hard_remaining_seconds": "99.215",
+        "attempt": "1",
+        "input_chars": "7893"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 63,
+      "timestamp": "2026-11-15T23:04:01.031575Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "99.212",
+        "hard_remaining_seconds": "99.212",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "12868"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 64,
+      "timestamp": "2026-11-15T23:04:02.671677Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.573",
+        "hard_remaining_seconds": "97.573",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "12868",
+        "elapsed_seconds": "1.638",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1257"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 65,
+      "timestamp": "2026-11-15T23:04:02.674002Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.570",
+        "hard_remaining_seconds": "97.570",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "390",
+        "elapsed_seconds": "1.645",
+        "finish_reason": "stop",
+        "prompt_tokens": "3450",
+        "completion_tokens": "179",
+        "total_tokens": "3629"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 66,
+      "timestamp": "2026-11-15T23:04:02.676018Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "7",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.568",
+        "hard_remaining_seconds": "97.568",
+        "attempt": "1",
+        "input_chars": "8051"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 67,
+      "timestamp": "2026-11-15T23:04:02.678318Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "97.565",
+        "hard_remaining_seconds": "97.565",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "12905"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 68,
+      "timestamp": "2026-11-15T23:04:03.486972Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.758",
+        "hard_remaining_seconds": "96.758",
+        "provider_call_id": "p24",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "12905",
+        "elapsed_seconds": "0.806",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1112"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 69,
+      "timestamp": "2026-11-15T23:04:03.489839Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t23",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "8",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "96.754",
+        "hard_remaining_seconds": "96.754",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "242",
+        "elapsed_seconds": "0.814",
+        "finish_reason": "stop",
+        "prompt_tokens": "3521",
+        "completion_tokens": "73",
+        "total_tokens": "3594"
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 70,
+      "timestamp": "2026-11-15T23:04:03.491803Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "438e089b-548b-4516-b7a9-b7b1e232d166",
+      "sequence": 71,
+      "timestamp": "2026-11-15T23:04:03.493809Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 23.36880408399884,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.462
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.749
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.321
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.521
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.572
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.183
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.245
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.766
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.217
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.844
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.636
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.803
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.462481458998809,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.7495826659942395,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.3264764999985346,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.5237652079958934,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 1.0353586659985012,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.183632625004975,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.5246722500014585,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.7672112500004005,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.219203957996797,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8458900840050774,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.6376070420010365,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8056575829978101,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

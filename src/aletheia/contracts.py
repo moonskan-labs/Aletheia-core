@@ -8,6 +8,7 @@ from uuid import UUID
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, field_validator
 
+from aletheia.phase_one_contracts import ClaimAnalysis, UnsupportedMethod
 from aletheia.research_contracts import InvestigationResult
 
 Status = Literal["queued", "running", "needs_clarification", "completed", "partial", "failed"]
@@ -83,6 +84,9 @@ class Investigation(Contract):
             "provider_failure",
             "storage_failure",
             "interrupted",
+            "unsupported_method",
+            "invalid_task_output",
+            "semantic_rejection",
         ]
         | None
     ) = None
@@ -91,6 +95,8 @@ class Investigation(Contract):
     started_at: AwareDatetime | None = None
     finished_at: AwareDatetime | None = None
     result: InvestigationResult | None = None
+    claim_analysis: ClaimAnalysis | None = None
+    method_limitation: UnsupportedMethod | None = None
     clarification_questions: list[str] | None = None
     error: PublicError | None = None
     links: InvestigationLinks
@@ -109,6 +115,7 @@ class InvestigationEvent(Contract):
         "clarification_required",
         "claim_interpreted",
         "route_selected",
+        "route_revised",
         "search_started",
         "search_completed",
         "source_extracted",
@@ -122,6 +129,21 @@ class InvestigationEvent(Contract):
         "comparison_completed",
         "consistency_flagged",
         "task_output_rejected",
+        "model_attempt_finished",
+        "task_finished",
+        "task_started",
+        "run_configured",
+        "clarification_decision",
+        "research_stopped",
+        "provider_attempt_started",
+        "provider_attempt_finished",
+        "provider_call_rejected",
+        "provider_retry_stopped",
+        "provider_retry_scheduled",
+        "pipeline_failed",
+        "source_selected",
+        "assessment_rejected",
+        "search_incomplete",
         "qualification_flag_dropped",
         "stage_started",
     ]

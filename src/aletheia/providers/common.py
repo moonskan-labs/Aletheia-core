@@ -111,14 +111,38 @@ class ProviderHTTP:
             raise ProviderError(self.provider, ErrorCode.INVALID_REQUEST) from None
         if len(encoded) > self.settings.max_request_bytes:
             raise ProviderError(self.provider, ErrorCode.INVALID_REQUEST)
+        call_id = budget.trace_id("p")
         for attempt in range(self.settings.max_retries + 1):
-            budget.reserve(self.provider, operation, units)
+            trace = {
+                "provider_call_id": call_id,
+                "provider": self.provider,
+                "operation": operation,
+                "attempt": str(attempt + 1),
+                "units": str(units),
+                "request_bytes": str(len(encoded)),
+            }
+            try:
+                budget.reserve(self.provider, operation, units)
+            except ProviderError as exc:
+                await budget.observe(
+                    "provider_call_rejected",
+                    {
+                        **trace,
+                        "outcome": exc.code.value,
+                        "limit_reason": exc.limit_reason,
+                    },
+                )
+                raise
+            await budget.observe("provider_attempt_started", trace)
             started = time.monotonic()
             status = None
             outcome = "cancelled"
             error = None
+            response_bytes = None
             try:
                 timeout = min(self.settings.timeout_seconds, budget.remaining_seconds())
+                if timeout <= 0:
+                    raise budget.deadline_error(self.provider)
                 async with asyncio.timeout(timeout):
                     async with self._client.stream(
                         "POST",
@@ -133,7 +157,9 @@ class ProviderHTTP:
                                 self.provider, status, response.headers.get("retry-after")
                             )
                         content = bytearray()
+                        response_bytes = 0
                         async for chunk in response.aiter_bytes():
+                            response_bytes += len(chunk)
                             if len(content) + len(chunk) > self.settings.max_response_bytes:
                                 raise ProviderError(self.provider, ErrorCode.RESPONSE_TOO_LARGE)
                             content.extend(chunk)
@@ -144,8 +170,11 @@ class ProviderHTTP:
                         outcome = "success"
                         return result
             except (TimeoutError, httpx.TimeoutException):
-                code = ErrorCode.DEADLINE if budget.remaining_seconds() <= 0 else ErrorCode.TIMEOUT
-                error = ProviderError(self.provider, code, status_code=status)
+                error = (
+                    budget.deadline_error(self.provider, status_code=status)
+                    if budget.remaining_seconds() <= 0
+                    else ProviderError(self.provider, ErrorCode.TIMEOUT, status_code=status)
+                )
             except httpx.DecodingError:
                 error = ProviderError(self.provider, ErrorCode.INVALID_RESPONSE, status_code=status)
             except httpx.TransportError:
@@ -154,6 +183,9 @@ class ProviderHTTP:
                 error = ProviderError(self.provider, ErrorCode.INVALID_RESPONSE, status_code=status)
             except ProviderError as exc:
                 error = exc
+            except Exception:
+                outcome = "internal_error"
+                raise
             finally:
                 budget.attempts.append(
                     Attempt(
@@ -165,12 +197,66 @@ class ProviderHTTP:
                         error.code.value if error else outcome,
                     )
                 )
+                await budget.observe(
+                    "provider_attempt_finished",
+                    {
+                        **trace,
+                        "elapsed_seconds": f"{budget.attempts[-1].elapsed_seconds:.3f}",
+                        "status_code": str(status) if status is not None else "unknown",
+                        "outcome": error.code.value if error else outcome,
+                        "validation_code": error.validation_code if error else "none",
+                        "limit_reason": error.limit_reason if error else "none",
+                        "response_bytes": str(response_bytes)
+                        if response_bytes is not None
+                        else "unknown",
+                    },
+                )
             if not error.retryable or attempt == self.settings.max_retries:
+                await budget.observe(
+                    "provider_retry_stopped",
+                    {
+                        **trace,
+                        "reason": "not_retryable" if not error.retryable else "retry_limit_reached",
+                        "outcome": error.code.value,
+                    },
+                )
                 raise error from None
-            budget.check(self.provider, operation, units)
+            try:
+                budget.check(self.provider, operation, units)
+            except ProviderError as exc:
+                await budget.observe(
+                    "provider_retry_stopped",
+                    {
+                        **trace,
+                        "reason": exc.code.value,
+                        "limit_reason": exc.limit_reason,
+                    },
+                )
+                raise
             delay = max(0.25 * 2**attempt, error.retry_after or 0)
-            # Do not shorten Retry-After, or sleep through the caller's deadline.
-            if delay >= budget.remaining_seconds():
-                raise error from None
+
+            async def check_backoff(delay, trace, error):
+                # Trace persistence consumes time, so check both before and after it.
+                if delay >= budget.remaining_seconds():
+                    await budget.observe(
+                        "provider_retry_stopped",
+                        {
+                            **trace,
+                            "reason": "backoff_exceeds_deadline",
+                            "delay_seconds": str(delay),
+                        },
+                    )
+                    raise error from None
+
+            await check_backoff(delay, trace, error)
+            await budget.observe(
+                "provider_retry_scheduled",
+                {
+                    **trace,
+                    "reason": error.code.value,
+                    "delay_seconds": str(delay),
+                },
+            )
+            await check_backoff(delay, trace, error)
             await asyncio.sleep(delay)
         raise AssertionError("Unreachable retry state")

@@ -1,0 +1,3794 @@
+{
+  "id": "f-13",
+  "live": true,
+  "investigation": {
+    "id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+    "claim": "WHO placed the worldwide number of new malaria cases in 2015 at 273 million.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-16T01:22:42.701947Z",
+    "started_at": "2026-11-16T01:22:42.850724Z",
+    "finished_at": "2026-11-16T01:23:34.390682Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "false",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "WHO placed the worldwide number of new malaria cases in 2015 at 273 million.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "Resolving a reported WHO global estimate for a specific year.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "WHO placed the worldwide number of new malaria cases in 2015 at 273 million.",
+              "role": "essential",
+              "subject": "WHO",
+              "predicate": "placed the worldwide number of new malaria cases",
+              "timeframe": "2015",
+              "location_or_population": "worldwide",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The claim attributes a 2015 WHO estimate of 273 million new malaria cases worldwide. Verification requires checking WHO World Malaria Report data for 2015.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "false",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "0dd0dc00-9740-44b3-9ef8-7b8fba71d6a4",
+              "586554d7-a4ee-4ce4-a652-0de822877d0b",
+              "1f1ebc5d-a5eb-4634-bd46-6aa8eb432e6a",
+              "c76ad282-8352-4cac-ab6f-0c2f3bb9eec2",
+              "3076a473-df68-4ec1-99c9-b3c6fb7b5b52"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "0dd0dc00-9740-44b3-9ef8-7b8fba71d6a4",
+          "586554d7-a4ee-4ce4-a652-0de822877d0b",
+          "1f1ebc5d-a5eb-4634-bd46-6aa8eb432e6a",
+          "c76ad282-8352-4cac-ab6f-0c2f3bb9eec2",
+          "3076a473-df68-4ec1-99c9-b3c6fb7b5b52"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "The WHO World malaria report 2015 estimated 214 million new malaria cases worldwide in 2015, contradicting the claim of 273 million.",
+          "evidence_ids": [
+            "0dd0dc00-9740-44b3-9ef8-7b8fba71d6a4",
+            "586554d7-a4ee-4ce4-a652-0de822877d0b",
+            "c76ad282-8352-4cac-ab6f-0c2f3bb9eec2",
+            "3076a473-df68-4ec1-99c9-b3c6fb7b5b52"
+          ]
+        }
+      ],
+      "limitations": [
+        "page_text_truncated",
+        "Only a relevant bounded selection of source spans was assessed.",
+        "The report gives a 2015 estimate of 214 million cases, which differs from the claimed 273 million.",
+        "Source is a blog summary, not the official WHO report PDF.",
+        "The cited spans provide a range (149–303 million) but the point estimate is 214 million.",
+        "No absolute case count provided for 2015.",
+        "Span 85 covers only the WHO African Region and sub-Saharan context; global estimate not detailed beyond the 214 million figure",
+        "Source truncated; only summary paragraph captured",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v5",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 240.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 13,
+        "search": 5,
+        "extract": 4
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.4362411829999928,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8834760140000526,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 4.178584364000017,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.703317076999838,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.39923193300001003,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.5939976639999713,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.8735185549999187,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.3571241789998112,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 6.248310900999968,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.6539346859999569,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.954437332999987,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.3104614129999845,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 5.411222354000074,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.3102088030000232,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 5.3749046279999675,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.3713258959999166,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.5939859669999805,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.6049014660000012,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.463583493999977,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5491687139999613,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.2650031190000846,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5283564359999673,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 62915,
+        "completion_tokens": 4299,
+        "total_tokens": 67214
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "Resolving a reported WHO global estimate for a specific year.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "WHO placed the worldwide number of new malaria cases in 2015 at 273 million.",
+          "role": "essential",
+          "subject": "WHO",
+          "predicate": "placed the worldwide number of new malaria cases",
+          "timeframe": "2015",
+          "location_or_population": "worldwide",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/12433c32-abb8-4984-a546-5d47423fd8dc",
+      "events": "/investigations/12433c32-abb8-4984-a546-5d47423fd8dc/events",
+      "evidence": "/investigations/12433c32-abb8-4984-a546-5d47423fd8dc/evidence",
+      "comparison": "/investigations/12433c32-abb8-4984-a546-5d47423fd8dc/comparison",
+      "refresh": "/investigations/12433c32-abb8-4984-a546-5d47423fd8dc/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "url": "https://www.afro.who.int/sites/default/files/2017-06/9789241565158_eng.pdf",
+        "canonical_url": "https://www.afro.who.int/sites/default/files/2017-06/9789241565158_eng.pdf",
+        "title": "World malaria report 2015",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T01:22:53.540816Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "49f692e3c418eaf2ef11c9c4f1b8b12e7e6b8c4c17f0edfb5e18cfcc675248e7",
+        "duplicate_group": "49f692e3c418eaf2ef11c9c4f1b8b12e7e6b8c4c17f0edfb5e18cfcc675248e7",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "url": "https://communitymedicine4asses.wordpress.com/2015/12/09/who-releases-world-malaria-report-2015-9-december-2015",
+        "canonical_url": "https://communitymedicine4asses.wordpress.com/2015/12/09/who-releases-world-malaria-report-2015-9-december-2015",
+        "title": "WHO releases World Malaria Report 2015 (9 December 2015) | communitymedicine4all",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T01:22:59.440019Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "5f75ebc722b8922e2424319d88eae7ebfaa795fb0ca6f4708fbcb80c9f198111",
+        "duplicate_group": "5f75ebc722b8922e2424319d88eae7ebfaa795fb0ca6f4708fbcb80c9f198111",
+        "limitations": []
+      },
+      {
+        "id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "url": "https://linksglobal.org/AMI/extras/WorldMalariaReport2015.pdf",
+        "canonical_url": "https://linksglobal.org/AMI/extras/WorldMalariaReport2015.pdf",
+        "title": "World malaria report 2015",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T01:23:18.442919Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "94948549a24f96460fa27eb1c83f410840e50576432f39ad5e1451218c79f03f",
+        "duplicate_group": "94948549a24f96460fa27eb1c83f410840e50576432f39ad5e1451218c79f03f",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "url": "https://www.emro.who.int/malaria/rbm-news/fact-sheet-world-malaria-report-2015.html?layout=blog",
+        "canonical_url": "https://www.emro.who.int/malaria/rbm-news/fact-sheet-world-malaria-report-2015.html?layout=blog",
+        "title": "WHO EMRO - Fact sheet: World malaria report 2015",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T01:23:26.861562Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "32f96f22284f9d94be2a79d0a15dcaa9eb6d448af3abeb03c1ef60d2206603d9",
+        "duplicate_group": "32f96f22284f9d94be2a79d0a15dcaa9eb6d448af3abeb03c1ef60d2206603d9",
+        "limitations": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "0dd0dc00-9740-44b3-9ef8-7b8fba71d6a4",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+            "span_ids": [
+              85
+            ]
+          },
+          "rationale": "Span 85 states that the global number of malaria cases in 2015 was 214 million, not 273 million as the claim asserts.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            85
+          ],
+          "provenance_note": "World malaria report 2015 (WHO)",
+          "limitations": [
+            "The report gives a 2015 estimate of 214 million cases, which differs from the claimed 273 million."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              85
+            ],
+            "start": 21107,
+            "end": 21279,
+            "text": "The number of malaria cases globally fell from an estimated 262 million in 2000 (range: 205–316 million), to 214 million in 2015 (range: 149–303 million), a decline of 18%.",
+            "quote_hash": "f700a36c58a53ac164327dde9f102ba267b7f9eb4ce7da1952baa59480db1545"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "586554d7-a4ee-4ce4-a652-0de822877d0b",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+            "span_ids": [
+              7,
+              30
+            ]
+          },
+          "rationale": "Span 7 gives the worldwide number of malaria cases in 2015 as 214 million (range 149–303 million). Span 30 restates this as 214 million new cases. Both state the WHO 2015 estimate as 214 million, not 273 million.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "communitymedicine4alls.wordpress.com snapshot 421497bf-94dc-4117-9e23-9efc1316c75e",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            7,
+            30
+          ],
+          "provenance_note": "The source reports 214 million cases in 2015, contradicting the claim of 273 million.",
+          "limitations": [
+            "Source is a blog summary, not the official WHO report PDF.",
+            "The cited spans provide a range (149–303 million) but the point estimate is 214 million."
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "value",
+              "explanation": "The source gives 214 million; the claim states 273 million. No evidence the claim refers to a different year or definition."
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              7
+            ],
+            "start": 592,
+            "end": 748,
+            "text": "**Globally, the number of malaria cases fell from an estimated 262 million in 2000 (range 205–316 million) to 214 million in 2015 (range 149–303 million).**",
+            "quote_hash": "5f21fa5f3117cc09e00ef103c81598be1d878f64652c1c254df72b92f40e60ee"
+          },
+          {
+            "span_ids": [
+              30
+            ],
+            "start": 2772,
+            "end": 2877,
+            "text": "* ***In 2015, there were estimated 214 million new cases of malaria, and approximately 438 000 deaths.***",
+            "quote_hash": "f9b5e5679b8b1e8b2d553cd38690e183017b91f32c34cee01511ecaa4faf2efd"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "1f1ebc5d-a5eb-4634-bd46-6aa8eb432e6a",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+            "span_ids": [
+              33
+            ]
+          },
+          "rationale": "Span 33 states that 15 high-burden African countries account for 80% of global malaria cases, but does not give a 2015 total case count. It provides no figure that supports or contradicts the 273 million number.",
+          "relation": "context",
+          "scope_match": false,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "communitymedicine4alls.wordpress.com snapshot 421497bf-94dc-4117-9e23-9efc1316c75e",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            33
+          ],
+          "provenance_note": "Only mentions share of cases (80%), not the absolute 2015 total.",
+          "limitations": [
+            "No absolute case count provided for 2015."
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              33
+            ],
+            "start": 3296,
+            "end": 3656,
+            "text": "**15 countries, mainly in Africa, account for most global malaria cases (80%) and deaths (78%).** According to the report, these high burden countries have achieved slower-than-average declines in malaria incidence (32%) compared to other countries globally (53%). In many of these countries, weak health systems continue to impede progress in malaria control.",
+            "quote_hash": "23aaae10b6e02c48e8ec085c5c024ea04ec89ca4cf854e1261d3f805ae842f9b"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "c76ad282-8352-4cac-ab6f-0c2f3bb9eec2",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+            "span_ids": [
+              85
+            ]
+          },
+          "rationale": "Span 85 states that in 2015 there were 214 million estimated new cases, not 273 million as claimed.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "WHO",
+          "origin": "World Malaria Report 2015",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            85
+          ],
+          "provenance_note": "WHO 2015 report: 214 million new cases in 2015.",
+          "limitations": [
+            "Span 85 covers only the WHO African Region and sub-Saharan context; global estimate not detailed beyond the 214 million figure"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "quantity",
+              "explanation": "Claim states 273 million, but the sourced report gives 214 million for 2015"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              85
+            ],
+            "start": 21158,
+            "end": 21330,
+            "text": "The number of malaria cases globally fell from an estimated 262 million in 2000 (range: 205–316 million), to 214 million in 2015 (range: 149–303 million), a decline of 18%.",
+            "quote_hash": "f700a36c58a53ac164327dde9f102ba267b7f9eb4ce7da1952baa59480db1545"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "3076a473-df68-4ec1-99c9-b3c6fb7b5b52",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+            "span_ids": [
+              70
+            ]
+          },
+          "rationale": "The cited passage states WHO estimated 214 million new malaria cases worldwide in 2015 (range 149–303 million), not 273 million.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            70
+          ],
+          "provenance_note": "WHO EMRO fact sheet for World malaria report 2015",
+          "limitations": [
+            "Source truncated; only summary paragraph captured"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              70
+            ],
+            "start": 4301,
+            "end": 4431,
+            "text": "According to the latest estimates from WHO, there were 214 million new cases of malaria worldwide in 2015 (range 149–303 million).",
+            "quote_hash": "18cfce57abf38dae29dca605b861b4255d84cc3a080b656f5ad52383986256c9"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 1,
+      "timestamp": "2026-11-16T01:22:42.701947Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 2,
+      "timestamp": "2026-11-16T01:22:42.850724Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 3,
+      "timestamp": "2026-11-16T01:22:42.854488Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v5",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 4,
+      "timestamp": "2026-11-16T01:22:42.857399Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 5,
+      "timestamp": "2026-11-16T01:22:42.860026Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.995",
+        "hard_remaining_seconds": "119.994",
+        "attempt": "1",
+        "input_chars": "104"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 6,
+      "timestamp": "2026-11-16T01:22:42.863464Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.991",
+        "hard_remaining_seconds": "119.991",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10852"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 7,
+      "timestamp": "2026-11-16T01:22:44.302656Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.552",
+        "hard_remaining_seconds": "118.552",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10852",
+        "elapsed_seconds": "1.436",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1758"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 8,
+      "timestamp": "2026-11-16T01:22:44.306475Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.549",
+        "hard_remaining_seconds": "118.549",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "823",
+        "elapsed_seconds": "1.446",
+        "finish_reason": "stop",
+        "prompt_tokens": "1772",
+        "completion_tokens": "233",
+        "total_tokens": "2005"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 9,
+      "timestamp": "2026-11-16T01:22:44.311969Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 10,
+      "timestamp": "2026-11-16T01:22:44.314469Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 11,
+      "timestamp": "2026-11-16T01:22:44.317299Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 12,
+      "timestamp": "2026-11-16T01:22:44.320886Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.533",
+        "hard_remaining_seconds": "118.533",
+        "attempt": "1",
+        "input_chars": "1023"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 13,
+      "timestamp": "2026-11-16T01:22:44.323709Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.531",
+        "hard_remaining_seconds": "118.531",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4106"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 14,
+      "timestamp": "2026-11-16T01:22:45.210112Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.645",
+        "hard_remaining_seconds": "117.645",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4106",
+        "elapsed_seconds": "0.883",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1249"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 15,
+      "timestamp": "2026-11-16T01:22:45.213457Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.641",
+        "hard_remaining_seconds": "117.641",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "371",
+        "elapsed_seconds": "0.892",
+        "finish_reason": "stop",
+        "prompt_tokens": "755",
+        "completion_tokens": "116",
+        "total_tokens": "871"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 16,
+      "timestamp": "2026-11-16T01:22:45.216220Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 estimated new malaria cases global number 273 million",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 17,
+      "timestamp": "2026-11-16T01:22:45.223762Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.634",
+        "hard_remaining_seconds": "117.634",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 18,
+      "timestamp": "2026-11-16T01:22:49.406869Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.448",
+        "hard_remaining_seconds": "113.448",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "291",
+        "elapsed_seconds": "4.179",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11068"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 19,
+      "timestamp": "2026-11-16T01:22:49.410220Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 estimated new malaria cases global number 273 million",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 20,
+      "timestamp": "2026-11-16T01:22:49.412543Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 revised malaria case estimate 273 million 2015",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 21,
+      "timestamp": "2026-11-16T01:22:49.415146Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "68.439",
+        "hard_remaining_seconds": "113.439",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "284"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 22,
+      "timestamp": "2026-11-16T01:22:53.122057Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.733",
+        "hard_remaining_seconds": "109.733",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "284",
+        "elapsed_seconds": "3.703",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11334"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 23,
+      "timestamp": "2026-11-16T01:22:53.128962Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 revised malaria case estimate 273 million 2015",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 24,
+      "timestamp": "2026-11-16T01:22:53.131371Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "4",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 25,
+      "timestamp": "2026-11-16T01:22:53.133331Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "url": "https://www.afro.who.int/sites/default/files/2017-06/9789241565158_eng.pdf",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 26,
+      "timestamp": "2026-11-16T01:22:53.135324Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 27,
+      "timestamp": "2026-11-16T01:22:53.137244Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.717",
+        "hard_remaining_seconds": "109.717",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "201"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 28,
+      "timestamp": "2026-11-16T01:22:53.539036Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c9",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.316",
+        "hard_remaining_seconds": "109.316",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "201",
+        "elapsed_seconds": "0.399",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1218389"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 29,
+      "timestamp": "2026-11-16T01:22:53.554651Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "url": "https://www.afro.who.int/sites/default/files/2017-06/9789241565158_eng.pdf",
+        "candidate_id": "c9",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 30,
+      "timestamp": "2026-11-16T01:22:53.556661Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 31,
+      "timestamp": "2026-11-16T01:22:53.569463Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.285",
+        "hard_remaining_seconds": "109.285",
+        "attempt": "1",
+        "input_chars": "16242"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 32,
+      "timestamp": "2026-11-16T01:22:53.573852Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.280",
+        "hard_remaining_seconds": "109.280",
+        "provider_call_id": "p12",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "31977"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 33,
+      "timestamp": "2026-11-16T01:22:57.170580Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.684",
+        "hard_remaining_seconds": "105.684",
+        "provider_call_id": "p12",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "31977",
+        "elapsed_seconds": "3.594",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1962"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 34,
+      "timestamp": "2026-11-16T01:22:57.174147Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.680",
+        "hard_remaining_seconds": "105.680",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1051",
+        "elapsed_seconds": "3.604",
+        "finish_reason": "stop",
+        "prompt_tokens": "7675",
+        "completion_tokens": "357",
+        "total_tokens": "8032"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 35,
+      "timestamp": "2026-11-16T01:22:57.176875Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 36,
+      "timestamp": "2026-11-16T01:22:57.182051Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.672",
+        "hard_remaining_seconds": "105.672",
+        "attempt": "2",
+        "input_chars": "16242"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 37,
+      "timestamp": "2026-11-16T01:22:57.187067Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.668",
+        "hard_remaining_seconds": "105.668",
+        "provider_call_id": "p13",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32178"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 38,
+      "timestamp": "2026-11-16T01:22:59.064617Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "58.791",
+        "hard_remaining_seconds": "103.791",
+        "provider_call_id": "p13",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32178",
+        "elapsed_seconds": "1.874",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1607"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 39,
+      "timestamp": "2026-11-16T01:22:59.067342Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t11",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "58.787",
+        "hard_remaining_seconds": "103.787",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "702",
+        "elapsed_seconds": "1.885",
+        "finish_reason": "stop",
+        "prompt_tokens": "7709",
+        "completion_tokens": "240",
+        "total_tokens": "7949"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 40,
+      "timestamp": "2026-11-16T01:22:59.071783Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "0dd0dc00-9740-44b3-9ef8-7b8fba71d6a4",
+        "snapshot_id": "5bebbbc8-daa4-456d-bbd7-5d9f6c218774",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 41,
+      "timestamp": "2026-11-16T01:22:59.073842Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c14",
+        "url": "https://communitymedicine4asses.wordpress.com/2015/12/09/who-releases-world-malaria-report-2015-9-december-2015",
+        "slot": "2",
+        "query_ids": "q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 42,
+      "timestamp": "2026-11-16T01:22:59.075953Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 43,
+      "timestamp": "2026-11-16T01:22:59.078388Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c14",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.776",
+        "hard_remaining_seconds": "103.776",
+        "provider_call_id": "p15",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "238"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 44,
+      "timestamp": "2026-11-16T01:22:59.437902Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c14",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.417",
+        "hard_remaining_seconds": "103.417",
+        "provider_call_id": "p15",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "238",
+        "elapsed_seconds": "0.357",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6415"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 45,
+      "timestamp": "2026-11-16T01:22:59.445556Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "url": "https://communitymedicine4asses.wordpress.com/2015/12/09/who-releases-world-malaria-report-2015-9-december-2015",
+        "candidate_id": "c14",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 46,
+      "timestamp": "2026-11-16T01:22:59.448114Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 47,
+      "timestamp": "2026-11-16T01:22:59.451434Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t16",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.403",
+        "hard_remaining_seconds": "103.403",
+        "attempt": "1",
+        "input_chars": "8838"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 48,
+      "timestamp": "2026-11-16T01:22:59.455694Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t16",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.399",
+        "hard_remaining_seconds": "103.399",
+        "provider_call_id": "p17",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "24559"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 49,
+      "timestamp": "2026-11-16T01:23:05.707476Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t16",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "52.148",
+        "hard_remaining_seconds": "97.148",
+        "provider_call_id": "p17",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "24559",
+        "elapsed_seconds": "6.248",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3219"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 50,
+      "timestamp": "2026-11-16T01:23:05.711635Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t16",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "52.143",
+        "hard_remaining_seconds": "97.143",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2238",
+        "elapsed_seconds": "6.260",
+        "finish_reason": "stop",
+        "prompt_tokens": "5678",
+        "completion_tokens": "762",
+        "total_tokens": "6440"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 51,
+      "timestamp": "2026-11-16T01:23:05.718474Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "586554d7-a4ee-4ce4-a652-0de822877d0b",
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 52,
+      "timestamp": "2026-11-16T01:23:05.721403Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "1f1ebc5d-a5eb-4634-bd46-6aa8eb432e6a",
+        "snapshot_id": "421497bf-94dc-4117-9e23-9efc1316c75e",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 53,
+      "timestamp": "2026-11-16T01:23:05.724696Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "evidence_quality"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 54,
+      "timestamp": "2026-11-16T01:23:05.727478Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 55,
+      "timestamp": "2026-11-16T01:23:05.730441Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "172.124",
+        "hard_remaining_seconds": "217.124",
+        "attempt": "1",
+        "input_chars": "4066"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 56,
+      "timestamp": "2026-11-16T01:23:05.734099Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "172.120",
+        "hard_remaining_seconds": "217.120",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7273"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 57,
+      "timestamp": "2026-11-16T01:23:07.393236Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t18",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "170.464",
+        "hard_remaining_seconds": "215.464",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7273",
+        "elapsed_seconds": "1.654",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1753"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 58,
+      "timestamp": "2026-11-16T01:23:07.396973Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t18",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "2",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "170.457",
+        "hard_remaining_seconds": "215.457",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "860",
+        "elapsed_seconds": "1.667",
+        "finish_reason": "stop",
+        "prompt_tokens": "1894",
+        "completion_tokens": "245",
+        "total_tokens": "2139"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 59,
+      "timestamp": "2026-11-16T01:23:07.400268Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "evidence_quality",
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 60,
+      "timestamp": "2026-11-16T01:23:07.403204Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 61,
+      "timestamp": "2026-11-16T01:23:07.406514Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 original 273 million malaria cases global estimate",
+        "purpose": "support",
+        "query_id": "q20"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 62,
+      "timestamp": "2026-11-16T01:23:07.409364Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q20",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "170.445",
+        "hard_remaining_seconds": "215.445",
+        "provider_call_id": "p21",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "288"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 63,
+      "timestamp": "2026-11-16T01:23:10.366813Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q20",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "167.488",
+        "hard_remaining_seconds": "212.488",
+        "provider_call_id": "p21",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "288",
+        "elapsed_seconds": "2.954",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "10017"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 64,
+      "timestamp": "2026-11-16T01:23:10.370180Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 original 273 million malaria cases global estimate",
+        "query_id": "q20",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 65,
+      "timestamp": "2026-11-16T01:23:10.373631Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 214 million malaria cases 2015 estimate",
+        "purpose": "contradiction",
+        "query_id": "q22"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 66,
+      "timestamp": "2026-11-16T01:23:10.376567Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "167.478",
+        "hard_remaining_seconds": "212.478",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "277"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 67,
+      "timestamp": "2026-11-16T01:23:12.689985Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "165.165",
+        "hard_remaining_seconds": "210.165",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "277",
+        "elapsed_seconds": "2.310",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9123"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 68,
+      "timestamp": "2026-11-16T01:23:12.692924Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "WHO World Malaria Report 2015 214 million malaria cases 2015 estimate",
+        "query_id": "q22",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 69,
+      "timestamp": "2026-11-16T01:23:12.695456Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "World Malaria Report 2015 WHO methodology revision 2015 273 million versus 214 million new cases discrepancy",
+        "purpose": "context",
+        "query_id": "q24"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 70,
+      "timestamp": "2026-11-16T01:23:12.698812Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "165.156",
+        "hard_remaining_seconds": "210.156",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "316"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 71,
+      "timestamp": "2026-11-16T01:23:18.112619Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "159.742",
+        "hard_remaining_seconds": "204.742",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "316",
+        "elapsed_seconds": "5.411",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8626"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 72,
+      "timestamp": "2026-11-16T01:23:18.116250Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "World Malaria Report 2015 WHO methodology revision 2015 273 million versus 214 million new cases discrepancy",
+        "query_id": "q24",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 73,
+      "timestamp": "2026-11-16T01:23:18.119458Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "7",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 74,
+      "timestamp": "2026-11-16T01:23:18.122229Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "url": "https://linksglobal.org/AMI/extras/WorldMalariaReport2015.pdf",
+        "slot": "1",
+        "query_ids": "q20,q22",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 75,
+      "timestamp": "2026-11-16T01:23:18.124873Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 76,
+      "timestamp": "2026-11-16T01:23:18.127421Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "159.727",
+        "hard_remaining_seconds": "204.727",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "188"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 77,
+      "timestamp": "2026-11-16T01:23:18.440634Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "159.414",
+        "hard_remaining_seconds": "204.414",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "188",
+        "elapsed_seconds": "0.310",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1218787"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 78,
+      "timestamp": "2026-11-16T01:23:18.456982Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "url": "https://linksglobal.org/AMI/extras/WorldMalariaReport2015.pdf",
+        "candidate_id": "c26",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 79,
+      "timestamp": "2026-11-16T01:23:18.459235Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 80,
+      "timestamp": "2026-11-16T01:23:18.473639Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "159.381",
+        "hard_remaining_seconds": "204.381",
+        "attempt": "1",
+        "input_chars": "16168"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 81,
+      "timestamp": "2026-11-16T01:23:18.478273Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "159.376",
+        "hard_remaining_seconds": "204.376",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "31876"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 82,
+      "timestamp": "2026-11-16T01:23:23.856741Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "153.999",
+        "hard_remaining_seconds": "198.999",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "31876",
+        "elapsed_seconds": "5.375",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "4144"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 83,
+      "timestamp": "2026-11-16T01:23:23.861219Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "153.994",
+        "hard_remaining_seconds": "198.994",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "3098",
+        "elapsed_seconds": "5.387",
+        "finish_reason": "stop",
+        "prompt_tokens": "7657",
+        "completion_tokens": "1014",
+        "total_tokens": "8671"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 84,
+      "timestamp": "2026-11-16T01:23:23.864379Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 85,
+      "timestamp": "2026-11-16T01:23:23.867881Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "153.987",
+        "hard_remaining_seconds": "198.987",
+        "attempt": "2",
+        "input_chars": "16168"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 86,
+      "timestamp": "2026-11-16T01:23:23.873627Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "153.981",
+        "hard_remaining_seconds": "198.981",
+        "provider_call_id": "p30",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32077"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 87,
+      "timestamp": "2026-11-16T01:23:26.248393Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "151.606",
+        "hard_remaining_seconds": "196.606",
+        "provider_call_id": "p30",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32077",
+        "elapsed_seconds": "2.371",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1950"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 88,
+      "timestamp": "2026-11-16T01:23:26.251305Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "151.603",
+        "hard_remaining_seconds": "196.603",
+        "attempt": "2",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1027",
+        "elapsed_seconds": "2.384",
+        "finish_reason": "stop",
+        "prompt_tokens": "7691",
+        "completion_tokens": "341",
+        "total_tokens": "8032"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 89,
+      "timestamp": "2026-11-16T01:23:26.256132Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "c76ad282-8352-4cac-ab6f-0c2f3bb9eec2",
+        "snapshot_id": "ec4b645b-34de-420c-883d-9c341b0a1282",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 90,
+      "timestamp": "2026-11-16T01:23:26.257961Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c31",
+        "url": "https://www.emro.who.int/malaria/rbm-news/fact-sheet-world-malaria-report-2015.html?layout=blog",
+        "slot": "2",
+        "query_ids": "q22",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 91,
+      "timestamp": "2026-11-16T01:23:26.259848Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 92,
+      "timestamp": "2026-11-16T01:23:26.261796Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c31",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "151.592",
+        "hard_remaining_seconds": "196.592",
+        "provider_call_id": "p32",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "222"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 93,
+      "timestamp": "2026-11-16T01:23:26.858737Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c31",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "150.996",
+        "hard_remaining_seconds": "195.996",
+        "provider_call_id": "p32",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "222",
+        "elapsed_seconds": "0.594",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5692"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 94,
+      "timestamp": "2026-11-16T01:23:26.869524Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "url": "https://www.emro.who.int/malaria/rbm-news/fact-sheet-world-malaria-report-2015.html?layout=blog",
+        "candidate_id": "c31",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 95,
+      "timestamp": "2026-11-16T01:23:26.872078Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 96,
+      "timestamp": "2026-11-16T01:23:26.879992Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t33",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "150.974",
+        "hard_remaining_seconds": "195.974",
+        "attempt": "1",
+        "input_chars": "7509"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 97,
+      "timestamp": "2026-11-16T01:23:26.884826Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t33",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "150.970",
+        "hard_remaining_seconds": "195.970",
+        "provider_call_id": "p34",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "23364"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 98,
+      "timestamp": "2026-11-16T01:23:28.493269Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t33",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "149.362",
+        "hard_remaining_seconds": "194.362",
+        "provider_call_id": "p34",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "23364",
+        "elapsed_seconds": "1.605",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1589"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 99,
+      "timestamp": "2026-11-16T01:23:28.500343Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t33",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "149.358",
+        "hard_remaining_seconds": "194.358",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "682",
+        "elapsed_seconds": "1.617",
+        "finish_reason": "stop",
+        "prompt_tokens": "5340",
+        "completion_tokens": "226",
+        "total_tokens": "5566"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 100,
+      "timestamp": "2026-11-16T01:23:28.508404Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "3076a473-df68-4ec1-99c9-b3c6fb7b5b52",
+        "snapshot_id": "3047af56-dd86-4e17-98b7-ffee145ca423",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 101,
+      "timestamp": "2026-11-16T01:23:28.511573Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 102,
+      "timestamp": "2026-11-16T01:23:28.514865Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "586554d7-a4ee-4ce4-a652-0de822877d0b"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 103,
+      "timestamp": "2026-11-16T01:23:28.518990Z",
+      "type": "qualification_flag_dropped",
+      "stage": null,
+      "payload": {
+        "evidence_id": "c76ad282-8352-4cac-ab6f-0c2f3bb9eec2"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 104,
+      "timestamp": "2026-11-16T01:23:28.524705Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 105,
+      "timestamp": "2026-11-16T01:23:28.527708Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t35",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "194.327",
+        "hard_remaining_seconds": "194.327",
+        "attempt": "1",
+        "input_chars": "8363"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 106,
+      "timestamp": "2026-11-16T01:23:28.531328Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t35",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "194.323",
+        "hard_remaining_seconds": "194.323",
+        "provider_call_id": "p36",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14086"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 107,
+      "timestamp": "2026-11-16T01:23:30.998850Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t35",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.857",
+        "hard_remaining_seconds": "191.857",
+        "provider_call_id": "p36",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14086",
+        "elapsed_seconds": "2.464",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1504"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 108,
+      "timestamp": "2026-11-16T01:23:31.002423Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t35",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.852",
+        "hard_remaining_seconds": "191.852",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "621",
+        "elapsed_seconds": "2.475",
+        "finish_reason": "stop",
+        "prompt_tokens": "4150",
+        "completion_tokens": "355",
+        "total_tokens": "4505"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 109,
+      "timestamp": "2026-11-16T01:23:31.005058Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t37",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.849",
+        "hard_remaining_seconds": "191.849",
+        "attempt": "1",
+        "input_chars": "8966"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 110,
+      "timestamp": "2026-11-16T01:23:31.007723Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t37",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.847",
+        "hard_remaining_seconds": "191.847",
+        "provider_call_id": "p38",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13046"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 111,
+      "timestamp": "2026-11-16T01:23:31.560023Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t37",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.295",
+        "hard_remaining_seconds": "191.295",
+        "provider_call_id": "p38",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13046",
+        "elapsed_seconds": "0.549",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "932"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 112,
+      "timestamp": "2026-11-16T01:23:31.563228Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t37",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.291",
+        "hard_remaining_seconds": "191.291",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "76",
+        "elapsed_seconds": "0.558",
+        "finish_reason": "stop",
+        "prompt_tokens": "4191",
+        "completion_tokens": "26",
+        "total_tokens": "4217"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 113,
+      "timestamp": "2026-11-16T01:23:31.565814Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation",
+        "affected_units": "0,1"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 114,
+      "timestamp": "2026-11-16T01:23:31.568901Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t39",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.286",
+        "hard_remaining_seconds": "191.286",
+        "attempt": "1",
+        "input_chars": "8641"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 115,
+      "timestamp": "2026-11-16T01:23:31.572486Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t39",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "191.282",
+        "hard_remaining_seconds": "191.282",
+        "provider_call_id": "p40",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14372"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 116,
+      "timestamp": "2026-11-16T01:23:33.840658Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t39",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "189.014",
+        "hard_remaining_seconds": "189.014",
+        "provider_call_id": "p40",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "14372",
+        "elapsed_seconds": "2.265",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1662"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 117,
+      "timestamp": "2026-11-16T01:23:33.843469Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t39",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "189.011",
+        "hard_remaining_seconds": "189.011",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "775",
+        "elapsed_seconds": "2.275",
+        "finish_reason": "stop",
+        "prompt_tokens": "4202",
+        "completion_tokens": "359",
+        "total_tokens": "4561"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 118,
+      "timestamp": "2026-11-16T01:23:33.846334Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t41",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "189.008",
+        "hard_remaining_seconds": "189.008",
+        "attempt": "1",
+        "input_chars": "9132"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 119,
+      "timestamp": "2026-11-16T01:23:33.849582Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t41",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "189.005",
+        "hard_remaining_seconds": "189.005",
+        "provider_call_id": "p42",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13218"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 120,
+      "timestamp": "2026-11-16T01:23:34.380888Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t41",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "188.474",
+        "hard_remaining_seconds": "188.474",
+        "provider_call_id": "p42",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13218",
+        "elapsed_seconds": "0.528",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "930"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 121,
+      "timestamp": "2026-11-16T01:23:34.384909Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t41",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "188.470",
+        "hard_remaining_seconds": "188.470",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "74",
+        "elapsed_seconds": "0.538",
+        "finish_reason": "stop",
+        "prompt_tokens": "4201",
+        "completion_tokens": "25",
+        "total_tokens": "4226"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 122,
+      "timestamp": "2026-11-16T01:23:34.387877Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "explanation_unit",
+        "reason": "unsupported_explanation,non_atomic_explanation",
+        "action": "dropped",
+        "affected_units": "1,2"
+      }
+    },
+    {
+      "investigation_id": "12433c32-abb8-4984-a546-5d47423fd8dc",
+      "sequence": 123,
+      "timestamp": "2026-11-16T01:23:34.390682Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 51.79712752899991,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.435
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.882
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.159
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.684
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.28
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.592
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.873
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.356
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 6.247
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.653
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.953
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.309
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 5.41
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.196
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 5.374
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.37
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.593
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.603
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.463
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.548
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.264
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.527
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.4362411829999928,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8834760140000526,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 4.178584364000017,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.703317076999838,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.39923193300001003,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.5939976639999713,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.8735185549999187,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.3571241789998112,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 6.248310900999968,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.6539346859999569,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.954437332999987,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.3104614129999845,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 5.411222354000074,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.3102088030000232,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 5.3749046279999675,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.3713258959999166,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.5939859669999805,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.6049014660000012,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.463583493999977,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5491687139999613,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.2650031190000846,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5283564359999673,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

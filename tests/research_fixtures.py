@@ -17,6 +17,7 @@ class Providers:
         self,
         *,
         relation="supports",
+        authoritative=True,
         almost=False,
         invalid_correction=False,
         deep=False,
@@ -25,6 +26,7 @@ class Providers:
         invalid_citation=False,
         invalid_plan=False,
         invalid_explanation=False,
+        unconfirmed_decision=False,
         authentication_failure=False,
         scope_match=True,
         synthesis=False,
@@ -46,20 +48,27 @@ class Providers:
 
     def model_value(self, schema, data):
         o = self.options
-        if schema == "ClaimPlan":
+        if schema == "ClaimInterpretation":
+            claim = data.get("claim", "The Archive opened in 2000.")
             return {
-                "assertions": []
-                if o["ambiguous"]
-                else [
+                "method": "record_lookup",
+                "reason": "An opening date is a recorded fact.",
+                "missing_scope": ["archive identity"] if o["ambiguous"] else [],
+                "components": [
                     {
-                        "id": "a1",
-                        "text": "The Archive opened in 2000.",
-                        "kind": "direct_record",
-                        "consequential": o["deep"],
-                        "recommended_route": "quick",
+                        "id": "c1",
+                        "text": claim,
+                        "role": "essential",
+                        "subject": "Archive",
+                        "predicate": "opened",
+                        "timeframe": "2000",
+                        "location_or_population": None,
+                        "comparison": None,
                     }
                 ],
+                "recommended_route": "deep" if o["deep"] else "quick",
                 "questions": ["Which archive do you mean?"] if o["ambiguous"] else [],
+                "clarification_reason": "missing_scope" if o["ambiguous"] else None,
                 "scope_note": "Opening year of the named Archive.",
             }
         if schema == "SearchPlan":
@@ -89,6 +98,8 @@ class Providers:
             return {
                 "assessments": [
                     {
+                        "component_id": "c1",
+                        "values": [],
                         "citation": {
                             "snapshot_id": "invented"
                             if o["invalid_citation"]
@@ -97,7 +108,7 @@ class Providers:
                         },
                         "relation": relation,
                         "scope_match": o["scope_match"],
-                        "authoritative_record": True,
+                        "authoritative_record": o["authoritative"],
                         "credible_synthesis": o["synthesis"],
                         "synthesis_coverage": "Reviews all Archive records."
                         if o["synthesis"]
@@ -116,6 +127,8 @@ class Providers:
                 ],
                 "gap": None,
             }
+        if schema == "ComparisonFacts":
+            return {"left": None, "right": None, "compatible": False, "relation": "context"}
         if schema == "Synthesis":
             evidence_id = data["evidence"][0]["id"]
             correction = (
@@ -149,9 +162,18 @@ class Providers:
                     }
                 ],
             }
+        if schema == "FalseExplanationCheck":
+            return {
+                "claim_is_false": not o["unconfirmed_decision"],
+                "supported_units": [] if o["invalid_explanation"] else [0],
+                "single_fact_units": [0],
+            }
         if schema == "ExplanationCheck":
             return {
+                "decision_supported": not o["unconfirmed_decision"],
+                "rejected_component_ids": [],
                 "supported_units": [] if o["invalid_explanation"] else [0],
+                "single_fact_units": [0],
                 "core_supported": o["almost"],
                 "correction_supported": o["almost"],
                 "corrected_claim_supported": o["almost"] and not o["invalid_correction"],
@@ -248,3 +270,14 @@ async def terminal(client, run_id):
             if value["status"] not in {"queued", "running"}:
                 return value
             await asyncio.sleep(0.01)
+
+
+def propose_analysis(result, analysis):
+    """Supply model-owned fields; production derives the saved routing envelope."""
+    result.update(
+        method=analysis.required_method,
+        components=[c.model_dump() for c in analysis.components],
+        missing_scope=analysis.missing_scope,
+        reason=analysis.reason,
+    )
+    return result

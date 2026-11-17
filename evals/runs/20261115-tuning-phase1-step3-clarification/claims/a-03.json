@@ -1,0 +1,1989 @@
+{
+  "id": "a-03",
+  "live": true,
+  "investigation": {
+    "id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+    "claim": "TRACE and CONNECT both qualify as safe request methods in the June 2022 HTTP standard used worldwide.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-16T00:17:22.020662Z",
+    "started_at": "2026-11-16T00:17:22.155067Z",
+    "finished_at": "2026-11-16T00:17:40.211861Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "false",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "TRACE and CONNECT both qualify as safe request methods in the June 2022 HTTP standard used worldwide.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "The claim concerns verification of specific HTTP methods' status in a named standard.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "TRACE and CONNECT both qualify as safe request methods in the June 2022 HTTP standard used worldwide.",
+              "role": "essential",
+              "subject": "TRACE",
+              "predicate": "qualify as safe request method",
+              "timeframe": "June 2022",
+              "location_or_population": "worldwide",
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "HTTP method safety classification per RFC 9110 published June 2022",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "false",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "487d9485-0fed-41b6-96b6-a7b0b186b555",
+              "1ddb286b-fa9d-47fe-986f-3ec84fe05bf7"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "487d9485-0fed-41b6-96b6-a7b0b186b555",
+          "1ddb286b-fa9d-47fe-986f-3ec84fe05bf7"
+        ],
+        "qualification_flags": [
+          {
+            "type": "narrow_scope",
+            "dimension": "timeframe",
+            "explanation": "MDN table does not reference June 2022 standard or worldwide usage; claims about standard version and global adoption are unsupported",
+            "evidence_ids": [
+              "487d9485-0fed-41b6-96b6-a7b0b186b555"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "MDN table shows TRACE safe but CONNECT not safe, contradicting the claim.",
+          "evidence_ids": [
+            "487d9485-0fed-41b6-96b6-a7b0b186b555"
+          ]
+        },
+        {
+          "text": "Wikipedia states safe methods are GET, HEAD, OPTIONS, TRACE, and QUERY, excluding CONNECT.",
+          "evidence_ids": [
+            "1ddb286b-fa9d-47fe-986f-3ec84fe05bf7"
+          ]
+        }
+      ],
+      "limitations": [
+        "page_text_truncated",
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Table does not specify June 2022 standard version or worldwide usage context",
+        "Does not cite RFC publication date or global adoption",
+        "encyclopedia article not primary standard",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v4",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 6,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.4685336250040564,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.1331740829991759,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.3319303750031395,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1537797919954755,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.2426761659953627,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.1963147909991676,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.923189374996582,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.2890901249993476,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.7513674169968,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9206957919959677,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.4792509170001722,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 21828,
+        "completion_tokens": 1311,
+        "total_tokens": 23139
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "The claim concerns verification of specific HTTP methods' status in a named standard.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "TRACE and CONNECT both qualify as safe request methods in the June 2022 HTTP standard used worldwide.",
+          "role": "essential",
+          "subject": "TRACE",
+          "predicate": "qualify as safe request method",
+          "timeframe": "June 2022",
+          "location_or_population": "worldwide",
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "events": "/investigations/124aa50f-94ff-48b7-b65b-cce402ff037d/events",
+      "evidence": "/investigations/124aa50f-94ff-48b7-b65b-cce402ff037d/evidence",
+      "comparison": "/investigations/124aa50f-94ff-48b7-b65b-cce402ff037d/comparison",
+      "refresh": "/investigations/124aa50f-94ff-48b7-b65b-cce402ff037d/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "906eb675-b534-412b-884a-5f892437e138",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+        "canonical_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+        "title": "HTTP request methods - HTTP | MDN",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:17:32.749640Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "64332cac95c3e0e5d8feb6080186803e2ea9c3e4dbf2f443cc04b7b79236b5aa",
+        "duplicate_group": "64332cac95c3e0e5d8feb6080186803e2ea9c3e4dbf2f443cc04b7b79236b5aa",
+        "limitations": []
+      },
+      {
+        "id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "url": "https://en.wikipedia.org/wiki/HTTP",
+        "canonical_url": "https://en.wikipedia.org/wiki/HTTP",
+        "title": "HTTP - Wikipedia",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T00:17:35.993631Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "e98b05fd72a9bb39704a78f0baed3a60b3e705366e24ee94834751cdf78b35d6",
+        "duplicate_group": "e98b05fd72a9bb39704a78f0baed3a60b3e705366e24ee94834751cdf78b35d6",
+        "limitations": [
+          "page_text_truncated",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "487d9485-0fed-41b6-96b6-a7b0b186b555",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+            "span_ids": [
+              53,
+              58
+            ]
+          },
+          "rationale": "The MDN table lists TRACE as 'Yes' under Safe (span 53) and CONNECT as 'No' under Safe (span 58). This contradicts the claim that both qualify as safe request methods.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "MDN HTTP request methods page",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            53,
+            58
+          ],
+          "provenance_note": "MDN safety table shows TRACE=Yes, CONNECT=No for safe categorization",
+          "limitations": [
+            "Table does not specify June 2022 standard version or worldwide usage context",
+            "Does not cite RFC publication date or global adoption"
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "timeframe",
+              "explanation": "MDN table does not reference June 2022 standard or worldwide usage; claims about standard version and global adoption are unsupported"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              53
+            ],
+            "start": 3690,
+            "end": 3766,
+            "text": "| [`TRACE`](/en-US/docs/Web/HTTP/Reference/Methods/TRACE) | Yes | Yes | No |",
+            "quote_hash": "16f21a2176eac9286b85c048a0a65e57edaaa59e7c93db87376fbbade6d54599"
+          },
+          {
+            "span_ids": [
+              58
+            ],
+            "start": 4087,
+            "end": 4165,
+            "text": "| [`CONNECT`](/en-US/docs/Web/HTTP/Reference/Methods/CONNECT) | No | No | No |",
+            "quote_hash": "da2af9d4ca2ba43a1c3ea666a02baa9d7497dd89b6768e18c0d7e65cb201acfa"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "1ddb286b-fa9d-47fe-986f-3ec84fe05bf7",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+            "span_ids": [
+              427,
+              428,
+              432,
+              435
+            ]
+          },
+          "rationale": "Spans 427-435 from the Wikipedia HTTP article contain the properties table and safe method definitions. Span 427 shows TRACE has Safe=Yes under RFC 9110. Span 428 shows PATCH has Safe=No. Span 432 explicitly states safe methods are GET, HEAD, OPTIONS, TRACE, and QUERY. Span 435 explicitly states CON",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": "Wikipedia HTTP article",
+          "independence": "unknown",
+          "provenance_span_ids": [
+            427,
+            428,
+            432,
+            435
+          ],
+          "provenance_note": "Wikipedia article on HTTP; spans include properties table (427-428) and safe method definitions (432-435). Limitations: encyclopedia article, not primary standard. Flags: none needed.",
+          "limitations": [
+            "encyclopedia article not primary standard"
+          ],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              427,
+              428
+            ],
+            "start": 68002,
+            "end": 68318,
+            "text": "| TRACE | [RFC](https://en.wikipedia.org/wiki/RFC_(identifier) \"RFC (identifier)\")[9110](https://www.rfc-editor.org/rfc/rfc9110) | No | Yes | Yes | Yes | No |\n| PATCH | [RFC](https://en.wikipedia.org/wiki/RFC_(identifier) \"RFC (identifier)\")[5789](https://www.rfc-editor.org/rfc/rfc5789) | Yes | Yes | No | No | No |",
+            "quote_hash": "7e607dc3b169f6745a86b1817d7b9fb76fa579e1753b3894383f710e15907bcb"
+          },
+          {
+            "span_ids": [
+              432
+            ],
+            "start": 68597,
+            "end": 68666,
+            "text": "The methods GET, HEAD, OPTIONS, TRACE, and QUERY are defined as safe.",
+            "quote_hash": "2c7016bc3400abe91f7bb3654043e72a770d32fee129c9eabce66cf0d4a02624"
+          },
+          {
+            "span_ids": [
+              435
+            ],
+            "start": 69184,
+            "end": 69260,
+            "text": "In contrast, the methods POST, PUT, DELETE, CONNECT, and PATCH are not safe.",
+            "quote_hash": "ba806ad6ce471ef31dd784088f2918f1b97147e7d4255e66038262890b0da74b"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 1,
+      "timestamp": "2026-11-16T00:17:22.020662Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 2,
+      "timestamp": "2026-11-16T00:17:22.155067Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 3,
+      "timestamp": "2026-11-16T00:17:22.158666Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v4",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 4,
+      "timestamp": "2026-11-16T00:17:22.160567Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 5,
+      "timestamp": "2026-11-16T00:17:22.162299Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.996",
+        "hard_remaining_seconds": "119.996",
+        "attempt": "1",
+        "input_chars": "129"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 6,
+      "timestamp": "2026-11-16T00:17:22.165562Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.993",
+        "hard_remaining_seconds": "119.993",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10877"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 7,
+      "timestamp": "2026-11-16T00:17:23.637703Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.523",
+        "hard_remaining_seconds": "118.523",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10877",
+        "elapsed_seconds": "1.469",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1671"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 8,
+      "timestamp": "2026-11-16T00:17:23.640276Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.518",
+        "hard_remaining_seconds": "118.518",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "736",
+        "elapsed_seconds": "1.478",
+        "finish_reason": "stop",
+        "prompt_tokens": "1774",
+        "completion_tokens": "215",
+        "total_tokens": "1989"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 9,
+      "timestamp": "2026-11-16T00:17:23.643429Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 10,
+      "timestamp": "2026-11-16T00:17:23.644988Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 11,
+      "timestamp": "2026-11-16T00:17:23.646443Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 12,
+      "timestamp": "2026-11-16T00:17:23.647995Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.510",
+        "hard_remaining_seconds": "118.510",
+        "attempt": "1",
+        "input_chars": "1086"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 13,
+      "timestamp": "2026-11-16T00:17:23.650410Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "73.508",
+        "hard_remaining_seconds": "118.508",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4169"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 14,
+      "timestamp": "2026-11-16T00:17:24.786033Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.373",
+        "hard_remaining_seconds": "117.373",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4169",
+        "elapsed_seconds": "1.133",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1392"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 15,
+      "timestamp": "2026-11-16T00:17:24.788497Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.370",
+        "hard_remaining_seconds": "117.370",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "502",
+        "elapsed_seconds": "1.140",
+        "finish_reason": "stop",
+        "prompt_tokens": "762",
+        "completion_tokens": "143",
+        "total_tokens": "905"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 16,
+      "timestamp": "2026-11-16T00:17:24.790219Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "June 2022 HTTP standard safe request methods list TRACE CONNECT",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 17,
+      "timestamp": "2026-11-16T00:17:24.791607Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.367",
+        "hard_remaining_seconds": "117.367",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "271"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 18,
+      "timestamp": "2026-11-16T00:17:27.125415Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.033",
+        "hard_remaining_seconds": "115.033",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "271",
+        "elapsed_seconds": "2.332",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11002"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 19,
+      "timestamp": "2026-11-16T00:17:27.127084Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "June 2022 HTTP standard safe request methods list TRACE CONNECT",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 20,
+      "timestamp": "2026-11-16T00:17:27.128543Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "HTTP trace method safety classification 2022 RFC status",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 21,
+      "timestamp": "2026-11-16T00:17:27.129873Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "70.028",
+        "hard_remaining_seconds": "115.028",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "263"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 22,
+      "timestamp": "2026-11-16T00:17:29.285331Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.873",
+        "hard_remaining_seconds": "112.873",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "263",
+        "elapsed_seconds": "2.154",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9107"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 23,
+      "timestamp": "2026-11-16T00:17:29.290101Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "HTTP trace method safety classification 2022 RFC status",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 24,
+      "timestamp": "2026-11-16T00:17:29.291968Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "CONNECT method safe request classification HTTP June 2022 standard worldwide usage",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 25,
+      "timestamp": "2026-11-16T00:17:29.294937Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.863",
+        "hard_remaining_seconds": "112.863",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "290"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 26,
+      "timestamp": "2026-11-16T00:17:32.540536Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "64.619",
+        "hard_remaining_seconds": "109.619",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "290",
+        "elapsed_seconds": "3.243",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11390"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 27,
+      "timestamp": "2026-11-16T00:17:32.543154Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "CONNECT method safe request classification HTTP June 2022 standard worldwide usage",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 28,
+      "timestamp": "2026-11-16T00:17:32.545113Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "9",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 29,
+      "timestamp": "2026-11-16T00:17:32.546515Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 30,
+      "timestamp": "2026-11-16T00:17:32.547838Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 31,
+      "timestamp": "2026-11-16T00:17:32.549164Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.609",
+        "hard_remaining_seconds": "109.609",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "194"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 32,
+      "timestamp": "2026-11-16T00:17:32.748103Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.411",
+        "hard_remaining_seconds": "109.411",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "194",
+        "elapsed_seconds": "0.196",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6912"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 33,
+      "timestamp": "2026-11-16T00:17:32.753195Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 34,
+      "timestamp": "2026-11-16T00:17:32.754561Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 35,
+      "timestamp": "2026-11-16T00:17:32.757094Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.401",
+        "hard_remaining_seconds": "109.401",
+        "attempt": "1",
+        "input_chars": "8679"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 36,
+      "timestamp": "2026-11-16T00:17:32.761094Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "64.397",
+        "hard_remaining_seconds": "109.397",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "24438"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 37,
+      "timestamp": "2026-11-16T00:17:35.687087Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.473",
+        "hard_remaining_seconds": "106.473",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "24438",
+        "elapsed_seconds": "2.923",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2148"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 38,
+      "timestamp": "2026-11-16T00:17:35.690765Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "61.468",
+        "hard_remaining_seconds": "106.468",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1225",
+        "elapsed_seconds": "2.933",
+        "finish_reason": "stop",
+        "prompt_tokens": "5540",
+        "completion_tokens": "360",
+        "total_tokens": "5900"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 39,
+      "timestamp": "2026-11-16T00:17:35.694064Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "487d9485-0fed-41b6-96b6-a7b0b186b555",
+        "snapshot_id": "906eb675-b534-412b-884a-5f892437e138",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 40,
+      "timestamp": "2026-11-16T00:17:35.695507Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://en.wikipedia.org/wiki/HTTP",
+        "slot": "2",
+        "query_ids": "q5,q7,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 41,
+      "timestamp": "2026-11-16T00:17:35.697037Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 42,
+      "timestamp": "2026-11-16T00:17:35.698540Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.460",
+        "hard_remaining_seconds": "106.460",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "161"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 43,
+      "timestamp": "2026-11-16T00:17:35.991113Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.169",
+        "hard_remaining_seconds": "106.169",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "161",
+        "elapsed_seconds": "0.289",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "180840"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 44,
+      "timestamp": "2026-11-16T00:17:36.008994Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "url": "https://en.wikipedia.org/wiki/HTTP",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 45,
+      "timestamp": "2026-11-16T00:17:36.010793Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 46,
+      "timestamp": "2026-11-16T00:17:36.019906Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.139",
+        "hard_remaining_seconds": "106.139",
+        "attempt": "1",
+        "input_chars": "17664"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 47,
+      "timestamp": "2026-11-16T00:17:36.022635Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.136",
+        "hard_remaining_seconds": "106.136",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "33726"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 48,
+      "timestamp": "2026-11-16T00:17:38.775563Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.383",
+        "hard_remaining_seconds": "103.383",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "33726",
+        "elapsed_seconds": "2.751",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2258"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 49,
+      "timestamp": "2026-11-16T00:17:38.777764Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.381",
+        "hard_remaining_seconds": "103.381",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1349",
+        "elapsed_seconds": "2.758",
+        "finish_reason": "stop",
+        "prompt_tokens": "8500",
+        "completion_tokens": "431",
+        "total_tokens": "8931"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 50,
+      "timestamp": "2026-11-16T00:17:38.781863Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "1ddb286b-fa9d-47fe-986f-3ec84fe05bf7",
+        "snapshot_id": "ca2f50a8-7ae1-4f9c-ba8a-95e9e4f99c03",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 51,
+      "timestamp": "2026-11-16T00:17:38.784400Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 52,
+      "timestamp": "2026-11-16T00:17:38.786951Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 53,
+      "timestamp": "2026-11-16T00:17:38.788500Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "103.370",
+        "hard_remaining_seconds": "103.370",
+        "attempt": "1",
+        "input_chars": "5270"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 54,
+      "timestamp": "2026-11-16T00:17:38.790315Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "103.368",
+        "hard_remaining_seconds": "103.368",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10086"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 55,
+      "timestamp": "2026-11-16T00:17:39.713034Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "102.446",
+        "hard_remaining_seconds": "102.446",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10086",
+        "elapsed_seconds": "0.921",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1216"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 56,
+      "timestamp": "2026-11-16T00:17:39.715038Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "102.443",
+        "hard_remaining_seconds": "102.443",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "345",
+        "elapsed_seconds": "0.926",
+        "finish_reason": "stop",
+        "prompt_tokens": "2741",
+        "completion_tokens": "143",
+        "total_tokens": "2884"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 57,
+      "timestamp": "2026-11-16T00:17:39.716838Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "102.442",
+        "hard_remaining_seconds": "102.442",
+        "attempt": "1",
+        "input_chars": "5597"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 58,
+      "timestamp": "2026-11-16T00:17:39.718683Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "102.440",
+        "hard_remaining_seconds": "102.440",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8282"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 59,
+      "timestamp": "2026-11-16T00:17:40.201104Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "101.959",
+        "hard_remaining_seconds": "101.959",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "8282",
+        "elapsed_seconds": "0.479",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "905"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 60,
+      "timestamp": "2026-11-16T00:17:40.206701Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "101.954",
+        "hard_remaining_seconds": "101.954",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "51",
+        "elapsed_seconds": "0.488",
+        "finish_reason": "stop",
+        "prompt_tokens": "2511",
+        "completion_tokens": "19",
+        "total_tokens": "2530"
+      }
+    },
+    {
+      "investigation_id": "124aa50f-94ff-48b7-b65b-cce402ff037d",
+      "sequence": 61,
+      "timestamp": "2026-11-16T00:17:40.211861Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 18.468141749995993,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.466
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.131
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.331
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.146
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.241
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.195
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.921
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.136
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.749
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.919
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.476
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.4685336250040564,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.1331740829991759,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.3319303750031395,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1537797919954755,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.2426761659953627,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.1963147909991676,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.923189374996582,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.2890901249993476,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.7513674169968,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9206957919959677,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.4792509170001722,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

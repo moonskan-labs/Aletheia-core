@@ -1,0 +1,61 @@
+{
+  "id": "c-03",
+  "units": [
+    {
+      "unit": "explanation[0]",
+      "text": "RFC 9110 requires that a HEAD response must not include a message body, even though it includes headers describing what would have been sent.",
+      "citations": [
+        {
+          "evidence_id": "2cae5b6c-dd3e-49ae-b2b7-eb5ac0a1f751",
+          "url": "https://www.facebook.com/fb-answers/rfc-9110-head-server-must-not-send-content-response",
+          "title": "Facebook",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passages state RFC 9110 requires a HEAD response to omit the message body, while headers such as Content-Length describe the body that would have been returned for GET."
+      }
+    },
+    {
+      "unit": "explanation[1]",
+      "text": "The headers in a 200 HEAD response, such as Content-Length, reflect the body that would have been sent in a 200 GET response for the same resource.",
+      "citations": [
+        {
+          "evidence_id": "2cae5b6c-dd3e-49ae-b2b7-eb5ac0a1f751",
+          "url": "https://www.facebook.com/fb-answers/rfc-9110-head-server-must-not-send-content-response",
+          "title": "Facebook",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The second passage explicitly states that headers like Content-Length in a HEAD response describe the body that would have been returned for a GET, with the actual body omitted."
+      }
+    },
+    {
+      "unit": "explanation[2]",
+      "text": "Because the GET response includes the actual body and the HEAD response omits it, the GET response carries more body bytes than the HEAD response.",
+      "citations": [
+        {
+          "evidence_id": "2cae5b6c-dd3e-49ae-b2b7-eb5ac0a1f751",
+          "url": "https://www.facebook.com/fb-answers/rfc-9110-head-server-must-not-send-content-response",
+          "title": "Facebook",
+          "valid": true,
+          "problem": null
+        }
+      ],
+      "citations_valid": true,
+      "judgement": {
+        "verdict": "supported",
+        "reason": "The passages state HEAD omits the response body while GET includes the body that HEAD would have returned, so GET carries more body bytes."
+      }
+    }
+  ],
+  "labelled_source": "absent",
+  "labelled_source_agreement": null
+}

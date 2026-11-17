@@ -1,0 +1,5050 @@
+{
+  "id": "c-16",
+  "live": true,
+  "investigation": {
+    "id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+    "claim": "NASA launched ESCAPADE earlier than IMAP during 2025 in Florida, counting dates.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "partial",
+    "stage": null,
+    "route": "deep",
+    "stop_reason": "semantic_rejection",
+    "reused": true,
+    "created_at": "2026-11-15T21:28:28.946162Z",
+    "started_at": "2026-11-15T21:28:29.109803Z",
+    "finished_at": "2026-11-15T21:29:57.559687Z",
+    "result": {
+      "outcome": "unable_to_decide",
+      "verdict": null,
+      "unable_to_decide_reason": "insufficient_evidence",
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "NASA launched ESCAPADE earlier than IMAP during 2025 in Florida, counting dates.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_comparison",
+          "scope": "complete",
+          "required_method": "record_comparison",
+          "supported": true,
+          "reason": "The user compares the launch dates of two NASA missions to determine which occurred earlier.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "NASA launched ESCAPADE",
+              "role": "essential",
+              "subject": "NASA",
+              "predicate": "launched",
+              "timeframe": null,
+              "location_or_population": null,
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "earlier than IMAP",
+              "role": "essential",
+              "subject": "ESCAPADE launch date",
+              "predicate": "earlier than",
+              "timeframe": "during 2025",
+              "location_or_population": "Florida",
+              "comparison": {
+                "left": "ESCAPADE launch",
+                "right": "IMAP launch",
+                "metric": "date",
+                "operator": "lt",
+                "units": "date",
+                "period": "2025",
+                "population": "NASA missions launched from Florida",
+                "definition": "calendar date of launch",
+                "exhaustive": false
+              }
+            },
+            {
+              "id": "c3",
+              "text": "during 2025",
+              "role": "modifier",
+              "subject": "ESCAPADE launch",
+              "predicate": "occurred",
+              "timeframe": "2025",
+              "location_or_population": "Florida",
+              "comparison": null
+            },
+            {
+              "id": "c4",
+              "text": "Florida",
+              "role": "modifier",
+              "subject": "launch site",
+              "predicate": "located in",
+              "timeframe": null,
+              "location_or_population": null,
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Both missions launched from Florida in 2025; comparison is based on their launch dates.",
+      "finding": {
+        "outcome": "unable_to_decide",
+        "verdict": null,
+        "unable_to_decide_reason": "insufficient_evidence",
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "de08d281-cc3a-4c27-a067-1e0dfbe653a3"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "db167afa-9f64-4567-ad12-390dc21a0223"
+            ]
+          },
+          {
+            "component_id": "c3",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "e1332687-cf86-4714-bcb3-c0a6aebbfc41"
+            ]
+          },
+          {
+            "component_id": "c4",
+            "outcome": "not_established",
+            "evidence_ids": [
+              "6fd0e031-ac0f-4063-945b-911c3834e359"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "de08d281-cc3a-4c27-a067-1e0dfbe653a3",
+          "db167afa-9f64-4567-ad12-390dc21a0223",
+          "e1332687-cf86-4714-bcb3-c0a6aebbfc41",
+          "6fd0e031-ac0f-4063-945b-911c3834e359"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "assessed",
+        "limitations": [
+          "Some material components are not established as written."
+        ]
+      },
+      "explanation": [],
+      "limitations": [
+        "Research stopped at a time or call limit; coverage is incomplete.",
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Some planned evidence checks could not be completed; coverage is incomplete.",
+        "Some selected pages were unavailable or exceeded the text limit.",
+        "Some search results were not extracted within per-round page limits.",
+        "The final check did not confirm a decision from the collected evidence; no verdict is published.",
+        "Some material components are not established as written."
+      ],
+      "model": "nvidia/Nemotron-3_5-Lightning",
+      "prompt_version": "direct-claims-v3",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "disabled",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 16,
+        "search_attempt_limit": 8,
+        "extraction_attempt_limit": 10,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 240.00000000000023,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 16,
+        "search": 8,
+        "extract": 6
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.0510224550000657,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.2255727840001782,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.963979707999897,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.8513482390001172,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.1918474890001107,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.08969123499991838,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 4.906127048999906,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.11537208200002169,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.2669951539999147,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 9.071400807999908,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.9018418269999984,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 4.526224892000073,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.8432583040000736,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.0819479679998949,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 7.105757142999892,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 12.88496439100004,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.684656213000153,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8817776789999243,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.1620398659999864,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 1.9538579689999551,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.6682611159999396,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.11109272499993494,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 8.019954976999998,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 8.255986390999851,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.3674687190000441,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.2036511270000574,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.693011738999985,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6441072760001134,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 1.1513385869998274,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.8814166750000823,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 98476,
+        "completion_tokens": 11077,
+        "total_tokens": 109553
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_comparison",
+      "scope": "complete",
+      "required_method": "record_comparison",
+      "supported": true,
+      "reason": "The user compares the launch dates of two NASA missions to determine which occurred earlier.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "NASA launched ESCAPADE",
+          "role": "essential",
+          "subject": "NASA",
+          "predicate": "launched",
+          "timeframe": null,
+          "location_or_population": null,
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "earlier than IMAP",
+          "role": "essential",
+          "subject": "ESCAPADE launch date",
+          "predicate": "earlier than",
+          "timeframe": "during 2025",
+          "location_or_population": "Florida",
+          "comparison": {
+            "left": "ESCAPADE launch",
+            "right": "IMAP launch",
+            "metric": "date",
+            "operator": "lt",
+            "units": "date",
+            "period": "2025",
+            "population": "NASA missions launched from Florida",
+            "definition": "calendar date of launch",
+            "exhaustive": false
+          }
+        },
+        {
+          "id": "c3",
+          "text": "during 2025",
+          "role": "modifier",
+          "subject": "ESCAPADE launch",
+          "predicate": "occurred",
+          "timeframe": "2025",
+          "location_or_population": "Florida",
+          "comparison": null
+        },
+        {
+          "id": "c4",
+          "text": "Florida",
+          "role": "modifier",
+          "subject": "launch site",
+          "predicate": "located in",
+          "timeframe": null,
+          "location_or_population": null,
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "events": "/investigations/e4db947c-c040-4f32-ab4e-f50f67394a5c/events",
+      "evidence": "/investigations/e4db947c-c040-4f32-ab4e-f50f67394a5c/evidence",
+      "comparison": "/investigations/e4db947c-c040-4f32-ab4e-f50f67394a5c/comparison",
+      "refresh": "/investigations/e4db947c-c040-4f32-ab4e-f50f67394a5c/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "url": "https://science.nasa.gov/mission/escapade",
+        "canonical_url": "https://science.nasa.gov/mission/escapade",
+        "title": "ESCAPADE - NASA Science",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:28:38.598797Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "8a0906c32657df2f7b78b4ceb2140e3300ed3fdda5960ea1ff50703f2f130800",
+        "duplicate_group": "8a0906c32657df2f7b78b4ceb2140e3300ed3fdda5960ea1ff50703f2f130800",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "url": "https://svs.gsfc.nasa.gov/gallery/imap",
+        "canonical_url": "https://svs.gsfc.nasa.gov/gallery/imap",
+        "title": "NASA SVS | IMAP – Interstellar Mapping and Acceleration Probe",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:28:43.678959Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "1cac49ebfdc317438721b3bff65cbe4f80bce6b92b21bb9296887dcf444b4c67",
+        "duplicate_group": "1cac49ebfdc317438721b3bff65cbe4f80bce6b92b21bb9296887dcf444b4c67",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "url": "https://svs.gsfc.nasa.gov/14918",
+        "canonical_url": "https://svs.gsfc.nasa.gov/14918",
+        "title": "NASA SVS | ESCAPADE Prepares for Flight (2025)",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:29:02.521739Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "234a3b687eeffb250e825ec51685df24793e05ba61ccf279c59df23d4e05cdb4",
+        "duplicate_group": "234a3b687eeffb250e825ec51685df24793e05ba61ccf279c59df23d4e05cdb4",
+        "limitations": []
+      },
+      {
+        "id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "url": "https://svs.gsfc.nasa.gov/14926",
+        "canonical_url": "https://svs.gsfc.nasa.gov/14926",
+        "title": "NASA SVS | ESCAPADE Launch",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:29:33.137215Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "e09803ac65025bda0b537102f860343202331bd38b51deb472c7af104412f525",
+        "duplicate_group": "e09803ac65025bda0b537102f860343202331bd38b51deb472c7af104412f525",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "url": "https://svs.gsfc.nasa.gov/14896",
+        "canonical_url": "https://svs.gsfc.nasa.gov/14896",
+        "title": "NASA SVS | NASA's IMAP Mission (Trailer)",
+        "published_date": null,
+        "retrieved_at": "2026-11-15T21:29:49.856980Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "a3b4d4484cb2f82f6be5cffc016b1cbb2f3e28bb2df91c2a2b76beac41715408",
+        "duplicate_group": "a3b4d4484cb2f82f6be5cffc016b1cbb2f3e28bb2df91c2a2b76beac41715408",
+        "limitations": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "de08d281-cc3a-4c27-a067-1e0dfbe653a3",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+            "span_ids": [
+              310
+            ]
+          },
+          "rationale": "Span 310 states 'ESCAPADE launched from Cape Canaveral, Florida, on Nov. 13, 2025.' This confirms ESCAPADE was launched.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            310
+          ],
+          "provenance_note": "ESCAPADE launch from Cape Canaveral, Florida on Nov. 13, 2025.",
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              310
+            ],
+            "start": 24708,
+            "end": 24773,
+            "text": "ESCAPADE launched from Cape Canaveral, Florida, on Nov. 13, 2025.",
+            "quote_hash": "1d7be2fe1c0d48c105bb6059cc2ca4ec45dc34b64ba5d9e6dbcd7ad541228fee"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "db167afa-9f64-4567-ad12-390dc21a0223",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+            "span_ids": [
+              198
+            ]
+          },
+          "rationale": "Span 198 is the ESCAPADE mission description that references launch but does not provide an IMAP launch date or comparison.",
+          "relation": "context",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            198
+          ],
+          "provenance_note": "Mission description page, no IMAP date found.",
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              198
+            ],
+            "start": 13952,
+            "end": 14024,
+            "text": "### NASA’s ESCAPADE Completes Powered Earth Flybys, Now En Route to Mars",
+            "quote_hash": "b1c0d18371f988849ef6802eec48039a4488ce282c1c0f599a2f536e8728e87c"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "e1332687-cf86-4714-bcb3-c0a6aebbfc41",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c3",
+          "values": [],
+          "citation": {
+            "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+            "span_ids": [
+              310
+            ]
+          },
+          "rationale": "Span 310 explicitly states the launch date as Nov. 13, 2025, confirming the 2025 timeframe for ESCAPADE.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            310
+          ],
+          "provenance_note": "Launch date Nov. 13, 2025.",
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              310
+            ],
+            "start": 24708,
+            "end": 24773,
+            "text": "ESCAPADE launched from Cape Canaveral, Florida, on Nov. 13, 2025.",
+            "quote_hash": "1d7be2fe1c0d48c105bb6059cc2ca4ec45dc34b64ba5d9e6dbcd7ad541228fee"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "6fd0e031-ac0f-4063-945b-911c3834e359",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c4",
+          "values": [],
+          "citation": {
+            "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+            "span_ids": [
+              310
+            ]
+          },
+          "rationale": "Span 310 identifies the launch site as Cape Canaveral, Florida, which matches the Florida location in the claim.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [
+            310
+          ],
+          "provenance_note": "Cape Canaveral, Florida launch site.",
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              310
+            ],
+            "start": 24708,
+            "end": 24773,
+            "text": "ESCAPADE launched from Cape Canaveral, Florida, on Nov. 13, 2025.",
+            "quote_hash": "1d7be2fe1c0d48c105bb6059cc2ca4ec45dc34b64ba5d9e6dbcd7ad541228fee"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 1,
+      "timestamp": "2026-11-15T21:28:28.946162Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 2,
+      "timestamp": "2026-11-15T21:28:29.109803Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 3,
+      "timestamp": "2026-11-15T21:28:29.114303Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "nvidia/Nemotron-3_5-Lightning",
+        "prompt_version": "direct-claims-v3",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "disabled",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 4,
+      "timestamp": "2026-11-15T21:28:29.118443Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 5,
+      "timestamp": "2026-11-15T21:28:29.121875Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.992",
+        "hard_remaining_seconds": "119.992",
+        "attempt": "1",
+        "input_chars": "108"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 6,
+      "timestamp": "2026-11-15T21:28:29.127426Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.987",
+        "hard_remaining_seconds": "119.987",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10699"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 7,
+      "timestamp": "2026-11-15T21:28:31.183425Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.932",
+        "hard_remaining_seconds": "117.932",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10699",
+        "elapsed_seconds": "2.051",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2374"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 8,
+      "timestamp": "2026-11-15T21:28:31.188864Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.925",
+        "hard_remaining_seconds": "117.925",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1353",
+        "elapsed_seconds": "2.067",
+        "finish_reason": "stop",
+        "prompt_tokens": "1743",
+        "completion_tokens": "413",
+        "total_tokens": "2156"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 9,
+      "timestamp": "2026-11-15T21:28:31.194189Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 10,
+      "timestamp": "2026-11-15T21:28:31.197514Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 11,
+      "timestamp": "2026-11-15T21:28:31.200407Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 12,
+      "timestamp": "2026-11-15T21:28:31.203730Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.911",
+        "hard_remaining_seconds": "117.911",
+        "attempt": "1",
+        "input_chars": "1779"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 13,
+      "timestamp": "2026-11-15T21:28:31.207418Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "72.907",
+        "hard_remaining_seconds": "117.907",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4978"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 14,
+      "timestamp": "2026-11-15T21:28:32.438351Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.678",
+        "hard_remaining_seconds": "116.678",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4978",
+        "elapsed_seconds": "1.226",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1230"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 15,
+      "timestamp": "2026-11-15T21:28:32.442388Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.672",
+        "hard_remaining_seconds": "116.672",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "339",
+        "elapsed_seconds": "1.239",
+        "finish_reason": "stop",
+        "prompt_tokens": "1004",
+        "completion_tokens": "117",
+        "total_tokens": "1121"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 16,
+      "timestamp": "2026-11-15T21:28:32.445796Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "ESCAPADE mission launch date 2025 Florida",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 17,
+      "timestamp": "2026-11-15T21:28:32.448772Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "71.666",
+        "hard_remaining_seconds": "116.666",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "249"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 18,
+      "timestamp": "2026-11-15T21:28:34.415767Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.699",
+        "hard_remaining_seconds": "114.699",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "249",
+        "elapsed_seconds": "1.964",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9123"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 19,
+      "timestamp": "2026-11-15T21:28:34.420039Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "ESCAPADE mission launch date 2025 Florida",
+        "query_id": "q5",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 20,
+      "timestamp": "2026-11-15T21:28:34.423693Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission launch date 2025 Florida",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 21,
+      "timestamp": "2026-11-15T21:28:34.428211Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "69.687",
+        "hard_remaining_seconds": "114.687",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "245"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 22,
+      "timestamp": "2026-11-15T21:28:36.283354Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.831",
+        "hard_remaining_seconds": "112.831",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "245",
+        "elapsed_seconds": "1.851",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7093"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 23,
+      "timestamp": "2026-11-15T21:28:36.287156Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission launch date 2025 Florida",
+        "query_id": "q7",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 24,
+      "timestamp": "2026-11-15T21:28:36.291107Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "NASA mission launch order 2025 ESCAPADE IMAP comparison",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 25,
+      "timestamp": "2026-11-15T21:28:36.294348Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "67.820",
+        "hard_remaining_seconds": "112.820",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "263"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 26,
+      "timestamp": "2026-11-15T21:28:38.490590Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "65.625",
+        "hard_remaining_seconds": "110.625",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "263",
+        "elapsed_seconds": "2.192",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9849"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 27,
+      "timestamp": "2026-11-15T21:28:38.493944Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "NASA mission launch order 2025 ESCAPADE IMAP comparison",
+        "query_id": "q9",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 28,
+      "timestamp": "2026-11-15T21:28:38.497094Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "13",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 29,
+      "timestamp": "2026-11-15T21:28:38.499667Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://science.nasa.gov/mission/escapade",
+        "slot": "1",
+        "query_ids": "q5",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 30,
+      "timestamp": "2026-11-15T21:28:38.502204Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 31,
+      "timestamp": "2026-11-15T21:28:38.504379Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.609",
+        "hard_remaining_seconds": "110.609",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "168"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 32,
+      "timestamp": "2026-11-15T21:28:38.596627Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.517",
+        "hard_remaining_seconds": "110.517",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "168",
+        "elapsed_seconds": "0.090",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "33937"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 33,
+      "timestamp": "2026-11-15T21:28:38.609012Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "url": "https://science.nasa.gov/mission/escapade",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 34,
+      "timestamp": "2026-11-15T21:28:38.612927Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 35,
+      "timestamp": "2026-11-15T21:28:38.619428Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.494",
+        "hard_remaining_seconds": "110.494",
+        "attempt": "1",
+        "input_chars": "21810"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 36,
+      "timestamp": "2026-11-15T21:28:38.624177Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "65.490",
+        "hard_remaining_seconds": "110.490",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38431"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 37,
+      "timestamp": "2026-11-15T21:28:43.533261Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.581",
+        "hard_remaining_seconds": "105.581",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38431",
+        "elapsed_seconds": "4.906",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "3527"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 38,
+      "timestamp": "2026-11-15T21:28:43.536485Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "60.577",
+        "hard_remaining_seconds": "105.577",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "2475",
+        "elapsed_seconds": "4.917",
+        "finish_reason": "stop",
+        "prompt_tokens": "10682",
+        "completion_tokens": "842",
+        "total_tokens": "11524"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 39,
+      "timestamp": "2026-11-15T21:28:43.542730Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "de08d281-cc3a-4c27-a067-1e0dfbe653a3",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 40,
+      "timestamp": "2026-11-15T21:28:43.544906Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "db167afa-9f64-4567-ad12-390dc21a0223",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "admissible": "true",
+        "relation": "context"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 41,
+      "timestamp": "2026-11-15T21:28:43.547264Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "e1332687-cf86-4714-bcb3-c0a6aebbfc41",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 42,
+      "timestamp": "2026-11-15T21:28:43.550356Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "6fd0e031-ac0f-4063-945b-911c3834e359",
+        "snapshot_id": "b1a36a75-2291-4d51-acfd-bf40579b5c15",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 43,
+      "timestamp": "2026-11-15T21:28:43.552765Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://svs.gsfc.nasa.gov/gallery/imap",
+        "slot": "2",
+        "query_ids": "q7",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 44,
+      "timestamp": "2026-11-15T21:28:43.555268Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 45,
+      "timestamp": "2026-11-15T21:28:43.557882Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.556",
+        "hard_remaining_seconds": "105.556",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "165"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 46,
+      "timestamp": "2026-11-15T21:28:43.676839Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.438",
+        "hard_remaining_seconds": "105.438",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "165",
+        "elapsed_seconds": "0.115",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "34813"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 47,
+      "timestamp": "2026-11-15T21:28:43.689615Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "url": "https://svs.gsfc.nasa.gov/gallery/imap",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 48,
+      "timestamp": "2026-11-15T21:28:43.694121Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 49,
+      "timestamp": "2026-11-15T21:28:43.702172Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.412",
+        "hard_remaining_seconds": "105.412",
+        "attempt": "1",
+        "input_chars": "17190"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 50,
+      "timestamp": "2026-11-15T21:28:43.708395Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "60.407",
+        "hard_remaining_seconds": "105.407",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32820"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 51,
+      "timestamp": "2026-11-15T21:28:45.979826Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.135",
+        "hard_remaining_seconds": "103.135",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32820",
+        "elapsed_seconds": "2.267",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1813"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 52,
+      "timestamp": "2026-11-15T21:28:45.983560Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.131",
+        "hard_remaining_seconds": "103.131",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "894",
+        "elapsed_seconds": "2.281",
+        "finish_reason": "stop",
+        "prompt_tokens": "7553",
+        "completion_tokens": "309",
+        "total_tokens": "7862"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 53,
+      "timestamp": "2026-11-15T21:28:45.986462Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 54,
+      "timestamp": "2026-11-15T21:28:45.990708Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.125",
+        "hard_remaining_seconds": "103.125",
+        "attempt": "2",
+        "input_chars": "17190"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 55,
+      "timestamp": "2026-11-15T21:28:45.997632Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.117",
+        "hard_remaining_seconds": "103.117",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "33021"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 56,
+      "timestamp": "2026-11-15T21:28:55.072809Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "49.042",
+        "hard_remaining_seconds": "94.042",
+        "provider_call_id": "p19",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "33021",
+        "elapsed_seconds": "9.071",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6696"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 57,
+      "timestamp": "2026-11-15T21:28:55.076518Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "49.038",
+        "hard_remaining_seconds": "94.038",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "comparison_source_anchor",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "5414",
+        "elapsed_seconds": "9.088",
+        "finish_reason": "stop",
+        "prompt_tokens": "7587",
+        "completion_tokens": "1606",
+        "total_tokens": "9193"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 58,
+      "timestamp": "2026-11-15T21:28:55.079505Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 59,
+      "timestamp": "2026-11-15T21:28:55.082735Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "9433419e-2cb3-4806-b320-7d9801e4af9a",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 60,
+      "timestamp": "2026-11-15T21:28:55.085899Z",
+      "type": "route_escalated",
+      "stage": null,
+      "payload": {
+        "reason": "evidence_quality"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 61,
+      "timestamp": "2026-11-15T21:28:55.088535Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 62,
+      "timestamp": "2026-11-15T21:28:55.091491Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "5",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "169.022",
+        "hard_remaining_seconds": "214.022",
+        "attempt": "1",
+        "input_chars": "4188"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 63,
+      "timestamp": "2026-11-15T21:28:55.095137Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "169.019",
+        "hard_remaining_seconds": "214.019",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7533"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 64,
+      "timestamp": "2026-11-15T21:28:56.004004Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "168.114",
+        "hard_remaining_seconds": "213.114",
+        "provider_call_id": "p21",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7533",
+        "elapsed_seconds": "0.902",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1168"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 65,
+      "timestamp": "2026-11-15T21:28:56.011732Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t20",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "3",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "168.102",
+        "hard_remaining_seconds": "213.102",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "287",
+        "elapsed_seconds": "0.920",
+        "finish_reason": "stop",
+        "prompt_tokens": "1955",
+        "completion_tokens": "101",
+        "total_tokens": "2056"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 66,
+      "timestamp": "2026-11-15T21:28:56.015014Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "evidence_quality",
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 67,
+      "timestamp": "2026-11-15T21:28:56.017631Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 68,
+      "timestamp": "2026-11-15T21:28:56.019987Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission launch date November 2025 Florida",
+        "purpose": "contradiction",
+        "query_id": "q22"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 69,
+      "timestamp": "2026-11-15T21:28:56.026620Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "168.088",
+        "hard_remaining_seconds": "213.088",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "254"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 70,
+      "timestamp": "2026-11-15T21:29:00.560732Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q22",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "4",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "163.554",
+        "hard_remaining_seconds": "208.554",
+        "provider_call_id": "p23",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "254",
+        "elapsed_seconds": "4.526",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6192"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 71,
+      "timestamp": "2026-11-15T21:29:00.565186Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP mission launch date November 2025 Florida",
+        "query_id": "q22",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 72,
+      "timestamp": "2026-11-15T21:29:00.568133Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "NASA ESCAPADE launch November 2025 Florida",
+        "purpose": "support",
+        "query_id": "q24"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 73,
+      "timestamp": "2026-11-15T21:29:00.570560Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "163.543",
+        "hard_remaining_seconds": "208.543",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "250"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 74,
+      "timestamp": "2026-11-15T21:29:02.416577Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q24",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "2",
+        "extract_limit": "10",
+        "remaining_seconds": "161.698",
+        "hard_remaining_seconds": "206.698",
+        "provider_call_id": "p25",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "250",
+        "elapsed_seconds": "1.843",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7263"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 75,
+      "timestamp": "2026-11-15T21:29:02.422197Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "NASA ESCAPADE launch November 2025 Florida",
+        "query_id": "q24",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 76,
+      "timestamp": "2026-11-15T21:29:02.426386Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "7",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 77,
+      "timestamp": "2026-11-15T21:29:02.428774Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "url": "https://svs.gsfc.nasa.gov/14918",
+        "slot": "1",
+        "query_ids": "q24",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 78,
+      "timestamp": "2026-11-15T21:29:02.431425Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 79,
+      "timestamp": "2026-11-15T21:29:02.434104Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "161.680",
+        "hard_remaining_seconds": "206.680",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "158"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 80,
+      "timestamp": "2026-11-15T21:29:02.519904Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c26",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "161.595",
+        "hard_remaining_seconds": "206.595",
+        "provider_call_id": "p27",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "158",
+        "elapsed_seconds": "0.082",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9459"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 81,
+      "timestamp": "2026-11-15T21:29:02.528284Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "url": "https://svs.gsfc.nasa.gov/14918",
+        "candidate_id": "c26",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 82,
+      "timestamp": "2026-11-15T21:29:02.531349Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 83,
+      "timestamp": "2026-11-15T21:29:02.537620Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "6",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "161.577",
+        "hard_remaining_seconds": "206.577",
+        "attempt": "1",
+        "input_chars": "16325"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 84,
+      "timestamp": "2026-11-15T21:29:02.545571Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "161.569",
+        "hard_remaining_seconds": "206.569",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32716"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 85,
+      "timestamp": "2026-11-15T21:29:09.654645Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.460",
+        "hard_remaining_seconds": "199.460",
+        "provider_call_id": "p29",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32716",
+        "elapsed_seconds": "7.106",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5301"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 86,
+      "timestamp": "2026-11-15T21:29:09.658588Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.456",
+        "hard_remaining_seconds": "199.456",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "comparison_source_anchor",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "4146",
+        "elapsed_seconds": "7.121",
+        "finish_reason": "stop",
+        "prompt_tokens": "9671",
+        "completion_tokens": "1314",
+        "total_tokens": "10985"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 87,
+      "timestamp": "2026-11-15T21:29:09.662385Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 88,
+      "timestamp": "2026-11-15T21:29:09.665622Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "7",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.449",
+        "hard_remaining_seconds": "199.449",
+        "attempt": "2",
+        "input_chars": "16325"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 89,
+      "timestamp": "2026-11-15T21:29:09.671186Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "154.443",
+        "hard_remaining_seconds": "199.443",
+        "provider_call_id": "p30",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32918"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 90,
+      "timestamp": "2026-11-15T21:29:22.561786Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "141.555",
+        "hard_remaining_seconds": "186.555",
+        "provider_call_id": "p30",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "32918",
+        "elapsed_seconds": "12.885",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7301"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 91,
+      "timestamp": "2026-11-15T21:29:22.566469Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t28",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "3",
+        "extract_limit": "10",
+        "remaining_seconds": "141.548",
+        "hard_remaining_seconds": "186.548",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "5948",
+        "elapsed_seconds": "12.900",
+        "finish_reason": "stop",
+        "prompt_tokens": "9705",
+        "completion_tokens": "1843",
+        "total_tokens": "11548"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 92,
+      "timestamp": "2026-11-15T21:29:22.571677Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 93,
+      "timestamp": "2026-11-15T21:29:22.575579Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "4251eb40-3cb9-4931-8019-5574b0c34d36",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 94,
+      "timestamp": "2026-11-15T21:29:22.580107Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c31",
+        "url": "https://imap.princeton.edu/mission/mission-timeline",
+        "slot": "2",
+        "query_ids": "q22",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 95,
+      "timestamp": "2026-11-15T21:29:22.583375Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 96,
+      "timestamp": "2026-11-15T21:29:22.587080Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c31",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "141.527",
+        "hard_remaining_seconds": "186.527",
+        "provider_call_id": "p32",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "178"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 97,
+      "timestamp": "2026-11-15T21:29:23.276261Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c31",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "140.838",
+        "hard_remaining_seconds": "185.838",
+        "provider_call_id": "p32",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "178",
+        "elapsed_seconds": "0.685",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "220"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 98,
+      "timestamp": "2026-11-15T21:29:23.279348Z",
+      "type": "source_rejected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://imap.princeton.edu/mission/mission-timeline",
+        "candidate_id": "c31",
+        "reason": "extraction_failed"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 99,
+      "timestamp": "2026-11-15T21:29:23.282356Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 100,
+      "timestamp": "2026-11-15T21:29:23.285071Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t33",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "8",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "140.829",
+        "hard_remaining_seconds": "185.829",
+        "attempt": "1",
+        "input_chars": "4285"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 101,
+      "timestamp": "2026-11-15T21:29:23.288526Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t33",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "140.826",
+        "hard_remaining_seconds": "185.826",
+        "provider_call_id": "p34",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7634"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 102,
+      "timestamp": "2026-11-15T21:29:24.173799Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t33",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "139.941",
+        "hard_remaining_seconds": "184.941",
+        "provider_call_id": "p34",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "7634",
+        "elapsed_seconds": "0.882",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1465"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 103,
+      "timestamp": "2026-11-15T21:29:24.176442Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t33",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "5",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "139.938",
+        "hard_remaining_seconds": "184.938",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "572",
+        "elapsed_seconds": "0.891",
+        "finish_reason": "stop",
+        "prompt_tokens": "1986",
+        "completion_tokens": "167",
+        "total_tokens": "2153"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 104,
+      "timestamp": "2026-11-15T21:29:24.179004Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "followup",
+        "reason": "evidence_quality",
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 105,
+      "timestamp": "2026-11-15T21:29:24.181156Z",
+      "type": "followup_planned",
+      "stage": null,
+      "payload": {
+        "gap": "Find an authoritative original record or documented independent origins or an appropriate synthesis for the exact claim. Repeated reports of one origin do not establish independent evidence.",
+        "round": "2"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 106,
+      "timestamp": "2026-11-15T21:29:24.183973Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP launch date November 2025 Florida launch site",
+        "purpose": "contradiction",
+        "query_id": "q35"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 107,
+      "timestamp": "2026-11-15T21:29:24.185950Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q35",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "139.928",
+        "hard_remaining_seconds": "184.928",
+        "provider_call_id": "p36",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "258"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 108,
+      "timestamp": "2026-11-15T21:29:27.351128Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q35",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "6",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "136.764",
+        "hard_remaining_seconds": "181.764",
+        "provider_call_id": "p36",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "258",
+        "elapsed_seconds": "3.162",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7698"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 109,
+      "timestamp": "2026-11-15T21:29:27.354942Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "IMAP launch date November 2025 Florida launch site",
+        "query_id": "q35",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 110,
+      "timestamp": "2026-11-15T21:29:27.358355Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "ESCAPADE launch date November 13 2025 Cape Canaveral Florida NASA record",
+        "purpose": "support",
+        "query_id": "q37"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 111,
+      "timestamp": "2026-11-15T21:29:27.362428Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q37",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "7",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "136.752",
+        "hard_remaining_seconds": "181.752",
+        "provider_call_id": "p38",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "280"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 112,
+      "timestamp": "2026-11-15T21:29:29.320134Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q37",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "7",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "134.795",
+        "hard_remaining_seconds": "179.795",
+        "provider_call_id": "p38",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "280",
+        "elapsed_seconds": "1.954",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8694"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 113,
+      "timestamp": "2026-11-15T21:29:29.323735Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "ESCAPADE launch date November 13 2025 Cape Canaveral Florida NASA record",
+        "query_id": "q37",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 114,
+      "timestamp": "2026-11-15T21:29:29.327022Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "NASA 2025 mission launch order ESCAPADE IMAP timeline comparison dates",
+        "purpose": "context",
+        "query_id": "q39"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 115,
+      "timestamp": "2026-11-15T21:29:29.330136Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q39",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "134.784",
+        "hard_remaining_seconds": "179.784",
+        "provider_call_id": "p40",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "278"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 116,
+      "timestamp": "2026-11-15T21:29:33.001186Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q39",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "4",
+        "extract_limit": "10",
+        "remaining_seconds": "131.113",
+        "hard_remaining_seconds": "176.113",
+        "provider_call_id": "p40",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "278",
+        "elapsed_seconds": "3.668",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7960"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 117,
+      "timestamp": "2026-11-15T21:29:33.005524Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "NASA 2025 mission launch order ESCAPADE IMAP timeline comparison dates",
+        "query_id": "q39",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 118,
+      "timestamp": "2026-11-15T21:29:33.008710Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "8",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 119,
+      "timestamp": "2026-11-15T21:29:33.012243Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c41",
+        "url": "https://svs.gsfc.nasa.gov/14926",
+        "slot": "1",
+        "query_ids": "q37",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 120,
+      "timestamp": "2026-11-15T21:29:33.015701Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 121,
+      "timestamp": "2026-11-15T21:29:33.019262Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c41",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "131.095",
+        "hard_remaining_seconds": "176.095",
+        "provider_call_id": "p42",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "158"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 122,
+      "timestamp": "2026-11-15T21:29:33.133976Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c41",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "130.981",
+        "hard_remaining_seconds": "175.981",
+        "provider_call_id": "p42",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "158",
+        "elapsed_seconds": "0.111",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "13505"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 123,
+      "timestamp": "2026-11-15T21:29:33.143388Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "url": "https://svs.gsfc.nasa.gov/14926",
+        "candidate_id": "c41",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 124,
+      "timestamp": "2026-11-15T21:29:33.145969Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 125,
+      "timestamp": "2026-11-15T21:29:33.150565Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "9",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "130.964",
+        "hard_remaining_seconds": "175.964",
+        "attempt": "1",
+        "input_chars": "22250"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 126,
+      "timestamp": "2026-11-15T21:29:33.158832Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "130.955",
+        "hard_remaining_seconds": "175.955",
+        "provider_call_id": "p44",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "39039"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 127,
+      "timestamp": "2026-11-15T21:29:41.181862Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "122.933",
+        "hard_remaining_seconds": "167.933",
+        "provider_call_id": "p44",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "39039",
+        "elapsed_seconds": "8.020",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "5282"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 128,
+      "timestamp": "2026-11-15T21:29:41.188765Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "122.925",
+        "hard_remaining_seconds": "167.925",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "comparison_literal_value",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "4139",
+        "elapsed_seconds": "8.038",
+        "finish_reason": "stop",
+        "prompt_tokens": "12634",
+        "completion_tokens": "1381",
+        "total_tokens": "14015"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 129,
+      "timestamp": "2026-11-15T21:29:41.191387Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 130,
+      "timestamp": "2026-11-15T21:29:41.197080Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "10",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "122.918",
+        "hard_remaining_seconds": "167.918",
+        "attempt": "2",
+        "input_chars": "22250"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 131,
+      "timestamp": "2026-11-15T21:29:41.203215Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "122.911",
+        "hard_remaining_seconds": "167.911",
+        "provider_call_id": "p45",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "39282"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 132,
+      "timestamp": "2026-11-15T21:29:49.462540Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "114.652",
+        "hard_remaining_seconds": "159.652",
+        "provider_call_id": "p45",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "39282",
+        "elapsed_seconds": "8.256",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "7032"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 133,
+      "timestamp": "2026-11-15T21:29:49.467229Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t43",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "5",
+        "extract_limit": "10",
+        "remaining_seconds": "114.648",
+        "hard_remaining_seconds": "159.648",
+        "attempt": "2",
+        "outcome": "invalid_task_output",
+        "validation_code": "comparison_unexpected_values",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "5749",
+        "elapsed_seconds": "8.271",
+        "finish_reason": "stop",
+        "prompt_tokens": "12677",
+        "completion_tokens": "1790",
+        "total_tokens": "14467"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 134,
+      "timestamp": "2026-11-15T21:29:49.470422Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "2"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 135,
+      "timestamp": "2026-11-15T21:29:49.473337Z",
+      "type": "assessment_rejected",
+      "stage": "verifying",
+      "payload": {
+        "snapshot_id": "01435152-a9f0-48b6-bab7-498fb56837b9",
+        "reason": "invalid_task_output"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 136,
+      "timestamp": "2026-11-15T21:29:49.476878Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c46",
+        "url": "https://svs.gsfc.nasa.gov/14896",
+        "slot": "2",
+        "query_ids": "q35",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 137,
+      "timestamp": "2026-11-15T21:29:49.480213Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 138,
+      "timestamp": "2026-11-15T21:29:49.483507Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c46",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "114.631",
+        "hard_remaining_seconds": "159.631",
+        "provider_call_id": "p47",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "158"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 139,
+      "timestamp": "2026-11-15T21:29:49.854494Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c46",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "114.260",
+        "hard_remaining_seconds": "159.260",
+        "provider_call_id": "p47",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "158",
+        "elapsed_seconds": "0.367",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "6882"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 140,
+      "timestamp": "2026-11-15T21:29:49.862413Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "url": "https://svs.gsfc.nasa.gov/14896",
+        "candidate_id": "c46",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 141,
+      "timestamp": "2026-11-15T21:29:49.865873Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 142,
+      "timestamp": "2026-11-15T21:29:49.871356Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "11",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "114.243",
+        "hard_remaining_seconds": "159.243",
+        "attempt": "1",
+        "input_chars": "12879"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 143,
+      "timestamp": "2026-11-15T21:29:49.876754Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "114.238",
+        "hard_remaining_seconds": "159.238",
+        "provider_call_id": "p49",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "28952"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 144,
+      "timestamp": "2026-11-15T21:29:53.084335Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "111.031",
+        "hard_remaining_seconds": "156.031",
+        "provider_call_id": "p49",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "28952",
+        "elapsed_seconds": "3.204",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2888"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 145,
+      "timestamp": "2026-11-15T21:29:53.088143Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "111.026",
+        "hard_remaining_seconds": "156.026",
+        "attempt": "1",
+        "outcome": "invalid_task_output",
+        "validation_code": "citation_spans",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "1881",
+        "elapsed_seconds": "3.217",
+        "finish_reason": "stop",
+        "prompt_tokens": "8175",
+        "completion_tokens": "605",
+        "total_tokens": "8780"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 146,
+      "timestamp": "2026-11-15T21:29:53.091409Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "assess",
+        "attempt": "1"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 147,
+      "timestamp": "2026-11-15T21:29:53.094026Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "111.020",
+        "hard_remaining_seconds": "156.020",
+        "attempt": "2",
+        "input_chars": "12879"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 148,
+      "timestamp": "2026-11-15T21:29:53.100780Z",
+      "type": "provider_call_rejected",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "111.014",
+        "hard_remaining_seconds": "156.014",
+        "provider_call_id": "p50",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "29153",
+        "outcome": "budget_exhausted",
+        "limit_reason": "model_finalization_reserve"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 149,
+      "timestamp": "2026-11-15T21:29:53.103569Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t48",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "c6c4c680-68e6-4625-88da-c9720373291f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "111.010",
+        "hard_remaining_seconds": "156.010",
+        "attempt": "2",
+        "outcome": "budget_exhausted",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "model_finalization_reserve",
+        "reasoning_tokens": "unknown",
+        "output_chars": "unknown",
+        "elapsed_seconds": "0.010",
+        "finish_reason": "unknown",
+        "prompt_tokens": "unknown",
+        "completion_tokens": "unknown",
+        "total_tokens": "unknown"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 150,
+      "timestamp": "2026-11-15T21:29:53.106649Z",
+      "type": "research_stopped",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "12",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "111.008",
+        "hard_remaining_seconds": "156.007",
+        "provider": "nebius",
+        "outcome": "budget_exhausted",
+        "limit_reason": "model_finalization_reserve"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 151,
+      "timestamp": "2026-11-15T21:29:53.109430Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "budget_exhausted",
+        "round": "2"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 152,
+      "timestamp": "2026-11-15T21:29:53.111647Z",
+      "type": "budget_reached",
+      "stage": null,
+      "payload": {
+        "reason": "budget_exhausted"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 153,
+      "timestamp": "2026-11-15T21:29:53.117532Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 154,
+      "timestamp": "2026-11-15T21:29:53.120197Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "12",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "155.994",
+        "hard_remaining_seconds": "155.994",
+        "attempt": "1",
+        "input_chars": "6243"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 155,
+      "timestamp": "2026-11-15T21:29:53.123136Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "155.991",
+        "hard_remaining_seconds": "155.991",
+        "provider_call_id": "p52",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11217"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 156,
+      "timestamp": "2026-11-15T21:29:54.819273Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "154.295",
+        "hard_remaining_seconds": "154.295",
+        "provider_call_id": "p52",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11217",
+        "elapsed_seconds": "1.693",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1362"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 157,
+      "timestamp": "2026-11-15T21:29:54.824734Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t51",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "154.290",
+        "hard_remaining_seconds": "154.290",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "487",
+        "elapsed_seconds": "1.704",
+        "finish_reason": "stop",
+        "prompt_tokens": "3167",
+        "completion_tokens": "229",
+        "total_tokens": "3396"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 158,
+      "timestamp": "2026-11-15T21:29:54.828314Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "13",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "154.286",
+        "hard_remaining_seconds": "154.286",
+        "attempt": "1",
+        "input_chars": "6712"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 159,
+      "timestamp": "2026-11-15T21:29:54.832189Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "154.282",
+        "hard_remaining_seconds": "154.282",
+        "provider_call_id": "p54",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11708"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 160,
+      "timestamp": "2026-11-15T21:29:55.479674Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "153.635",
+        "hard_remaining_seconds": "153.635",
+        "provider_call_id": "p54",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11708",
+        "elapsed_seconds": "0.644",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1035"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 161,
+      "timestamp": "2026-11-15T21:29:55.483741Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t53",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "153.631",
+        "hard_remaining_seconds": "153.631",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "173",
+        "elapsed_seconds": "0.655",
+        "finish_reason": "stop",
+        "prompt_tokens": "3360",
+        "completion_tokens": "51",
+        "total_tokens": "3411"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 162,
+      "timestamp": "2026-11-15T21:29:55.487406Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_explanation,unsupported_decision",
+        "affected_units": "0"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 163,
+      "timestamp": "2026-11-15T21:29:55.491449Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "14",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "153.623",
+        "hard_remaining_seconds": "153.623",
+        "attempt": "1",
+        "input_chars": "6436"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 164,
+      "timestamp": "2026-11-15T21:29:55.496138Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "153.618",
+        "hard_remaining_seconds": "153.618",
+        "provider_call_id": "p56",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11420"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 165,
+      "timestamp": "2026-11-15T21:29:56.655062Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "152.464",
+        "hard_remaining_seconds": "152.464",
+        "provider_call_id": "p56",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11420",
+        "elapsed_seconds": "1.151",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1472"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 166,
+      "timestamp": "2026-11-15T21:29:56.658506Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t55",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "152.455",
+        "hard_remaining_seconds": "152.455",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "593",
+        "elapsed_seconds": "1.167",
+        "finish_reason": "stop",
+        "prompt_tokens": "3206",
+        "completion_tokens": "234",
+        "total_tokens": "3440"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 167,
+      "timestamp": "2026-11-15T21:29:56.661259Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "15",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "152.453",
+        "hard_remaining_seconds": "152.453",
+        "attempt": "1",
+        "input_chars": "6830"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 168,
+      "timestamp": "2026-11-15T21:29:56.664670Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "16",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "152.449",
+        "hard_remaining_seconds": "152.449",
+        "provider_call_id": "p58",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11832"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 169,
+      "timestamp": "2026-11-15T21:29:57.549318Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "16",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "151.565",
+        "hard_remaining_seconds": "151.565",
+        "provider_call_id": "p58",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "11832",
+        "elapsed_seconds": "0.881",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1111"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 170,
+      "timestamp": "2026-11-15T21:29:57.553536Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t57",
+        "task": "check_explanation",
+        "schema": "ExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "16",
+        "model_limit": "16",
+        "model_available_limit": "16",
+        "search_used": "8",
+        "search_limit": "8",
+        "extract_used": "6",
+        "extract_limit": "10",
+        "remaining_seconds": "151.561",
+        "hard_remaining_seconds": "151.561",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "0",
+        "output_chars": "243",
+        "elapsed_seconds": "0.892",
+        "finish_reason": "stop",
+        "prompt_tokens": "3371",
+        "completion_tokens": "75",
+        "total_tokens": "3446"
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 171,
+      "timestamp": "2026-11-15T21:29:57.556524Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "final_explanation",
+        "reason": "semantic_rejection",
+        "failed_conditions": "unsupported_decision",
+        "affected_units": ""
+      }
+    },
+    {
+      "investigation_id": "e4db947c-c040-4f32-ab4e-f50f67394a5c",
+      "sequence": 172,
+      "timestamp": "2026-11-15T21:29:57.559687Z",
+      "type": "investigation_partial",
+      "stage": null,
+      "payload": {
+        "stop_reason": "semantic_rejection"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 88.78330154500009,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.05
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.223
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.963
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.85
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.172
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.071
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.905
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.096
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.266
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 9.07
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.9
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 4.525
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.842
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.081
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 7.104
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 12.883
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.684
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.881
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.161
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.952
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.664
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.11
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 8.019
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 8.254
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.366
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.203
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.692
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.643
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 1.149
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.88
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.0510224550000657,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.2255727840001782,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.963979707999897,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.8513482390001172,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.1918474890001107,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.08969123499991838,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 4.906127048999906,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.11537208200002169,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.2669951539999147,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 9.071400807999908,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.9018418269999984,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 4.526224892000073,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.8432583040000736,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.0819479679998949,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 7.105757142999892,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 12.88496439100004,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.684656213000153,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8817776789999243,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.1620398659999864,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 1.9538579689999551,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.6682611159999396,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.11109272499993494,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 8.019954976999998,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 8.255986390999851,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.3674687190000441,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.2036511270000574,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.693011738999985,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6441072760001134,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 1.1513385869998274,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.8814166750000823,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}

@@ -3,8 +3,8 @@
 // RECONCILED with src/aletheia/contracts.py and research_contracts.py at 6b1dc23
 // (step 3 research pipeline, #11): Investigation, the decision and result models,
 // the /evidence response, events, /health and the error body. Keep this file in
-// step with those modules; the backend forbids extra fields, so nothing here is
-// optional unless the backend makes it so.
+// step with those modules. Phase 1 events and stop reasons are reconciled too;
+// method_limitation is optional here only to support historical recordings.
 
 export type InvestigationStatus =
   | 'queued'
@@ -31,6 +31,9 @@ export type StopReason =
   | 'provider_failure'
   | 'storage_failure'
   | 'interrupted'
+  | 'unsupported_method'
+  | 'invalid_task_output'
+  | 'semantic_rejection'
 
 export type Route = 'quick' | 'deep'
 
@@ -160,6 +163,8 @@ export interface Investigation {
   finished_at: string | null
   /** Set when research reached a decision (completed or partial). */
   result: InvestigationResult | null
+  /** Absent in historical recordings made before Phase 1. */
+  method_limitation?: { explanation: string } | null
   clarification_questions: string[] | null
   error: { message: string } | null
   links: InvestigationLinks
@@ -244,6 +249,22 @@ export const EVENT_TYPES = [
   'investigation_queued',
   'investigation_started',
   'stage_started',
+  'route_revised',
+  'model_attempt_finished',
+  'task_finished',
+  'task_started',
+  'run_configured',
+  'clarification_decision',
+  'research_stopped',
+  'provider_attempt_started',
+  'provider_attempt_finished',
+  'provider_call_rejected',
+  'provider_retry_stopped',
+  'provider_retry_scheduled',
+  'pipeline_failed',
+  'source_selected',
+  'assessment_rejected',
+  'search_incomplete',
   'claim_interpreted',
   'clarification_required',
   'route_selected',

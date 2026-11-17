@@ -144,7 +144,7 @@ async def test_worker_recovers_after_real_sqlite_lock_without_replaying_work(set
             second = await submit(client)
             assert second["status"] == "completed"
             assert (await client.get("/health")).status_code == 200
-            assert sum(name == "ClaimPlan" for name, _ in providers.model_inputs) == 2
+            assert sum(name == "ClaimInterpretation" for name, _ in providers.model_inputs) == 2
     finally:
         lock.close()
 

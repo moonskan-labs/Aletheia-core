@@ -10,6 +10,104 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MUTATIONS = (
     (
+        "fully supported bundled facts bypass the one-fact check",
+        "verdicts.py",
+        "if non_atomic:",
+        "if False:",
+        "tests/test_explanation_facts.py::test_bundled_sentence_is_never_published_but_the_confirmed_verdict_stays[supports]",
+    ),
+    (
+        "rejected prose removes a verdict the decision check confirmed",
+        "verdicts.py",
+        "if prose_only and (kept or final):",
+        "if False:",
+        "tests/test_explanation_facts.py::test_unsupported_sentence_is_dropped_without_a_second_attempt",
+    ),
+    (
+        "an unconfirmed decision is published when the prose is good",
+        "verdicts.py",
+        "and (decision_passed is not True or rejected_ids)",
+        "and False",
+        "tests/test_explanation_facts.py::test_good_prose_cannot_publish_a_decision_the_check_did_not_confirm[supports]",
+    ),
+    (
+        "quick budget prevents repairs of two independent source assessments",
+        "budgets.py",
+        "super().__init__(10, 4, 4, self.started + 120)",
+        "super().__init__(8, 4, 4, self.started + 120)",
+        "tests/test_model_boundaries.py::test_two_sources_each_get_one_repair_without_spending_finalization_reserve",
+    ),
+    (
+        "numeric grounding trusts a cropped source fragment",
+        "direct.py",
+        "extracted = decimal_value(value.value)",
+        "extracted = decimal_value(value.value)\n                quoted = value.source_text",
+        "tests/test_adversarial_phase_one.py::test_cropped_negative_value_must_not_publish_true",
+    ),
+    (
+        "superlative admits a self-comparison",
+        "direct.py",
+        "if normalized(right.entity) == normalized(left.entity):",
+        "if False:",
+        "tests/test_adversarial_phase_one.py::test_superlative_requires_a_distinct_comparison_member",
+    ),
+    (
+        "weak comparison counterevidence blocks adequate evidence",
+        "direct.py",
+        "relations = relations_for(grounded)",
+        "relations = relations_for([v for item in items for v in item.assessment.values])",
+        "tests/test_binary_phase1.py::test_weak_comparison_counterexample_does_not_veto_grounded_operands",
+    ),
+    (
+        "passage selection drops substantive headings",
+        "passages.py",
+        "or normalized_navigation(stripped)",
+        'or re.fullmatch(r"#{1,6}\\s+.*", stripped) or normalized_navigation(stripped)',
+        "tests/test_adversarial_phase_one.py::test_evidence_heading_is_not_navigation_boilerplate",
+    ),
+    (
+        "missing component incorrectly becomes True",
+        "verdicts.py",
+        'elif states == {"supported"}:',
+        'elif "supported" in states:',
+        "tests/test_phase_one.py::test_missing_component_cannot_become_true",
+    ),
+    (
+        "comparison arithmetic is reversed",
+        "direct.py",
+        "result = getattr(operator, spec.operator)(a, b)",
+        "result = getattr(operator, spec.operator)(b, a)",
+        "tests/test_phase_one.py::test_comparison_can_join_separate_sources_but_each_operand_needs_evidence",
+    ),
+    (
+        "diagnostic storage failure replaces a successful provider result",
+        "diagnostics.py",
+        "except Exception:\n        # Never log",
+        "except LookupError:\n        # Never log",
+        "tests/test_pr18_reliability.py::test_diagnostic_failure_preserves_provider_result_and_error[200-StorageError]",
+    ),
+    (
+        "dataset text uses the platform encoding",
+        "evaluation.py",
+        'path.read_text(encoding="utf-8")',
+        "path.read_text()",
+        "tests/test_evaluation.py::test_utf8_dataset_and_artifacts_ignore_platform_default",
+    ),
+    (
+        "provider trace is not persisted",
+        "orchestrator.py",
+        "budget.observer = observe",
+        "budget.observer = None",
+        "tests/test_adversarial_evaluation_trace.py::test_non_model_failure_trace_survives_restart[search-503]",
+    ),
+    (
+        "schema diagnostics leak untrusted extra field names",
+        "providers/nebius.py",
+        'and e["loc"][0] in response_type.model_fields',
+        "",
+        "tests/test_adversarial_evaluation_trace.py::test_invalid_completion_keeps_usage_and_safe_reason_not_private_keys[schema]",
+    ),
+    (
         "duplicate search hits consume counterevidence selection turns",
         "research.py",
         "if key in ranked_keys:",
@@ -28,7 +126,7 @@ MUTATIONS = (
         "orchestrator.py",
         "baseline_sources if round_index == 0 else (),",
         "(),",
-        "tests/test_step4_review.py::test_refresh_rechecks_cited_pages_when_rankings_shift[False]",
+        "tests/test_step4_review.py::test_refresh_rechecks_cited_pages_when_rankings_shift[False-8]",
     ),
     (
         "rejected rationale reaches planning",
@@ -68,8 +166,8 @@ MUTATIONS = (
     (
         "Almost semantic correction check bypassed",
         "verdicts.py",
-        "        if not all(\n",
-        "        if False and not all(\n",
+        "if not getattr(check, name)",
+        "if False",
         "tests/test_verdict_labels.py::test_each_failed_correction_check_prevents_almost[corrected_claim_supported]",
     ),
     (
@@ -100,7 +198,7 @@ def main():
     for name, filename, old, new, test in MUTATIONS:
         with tempfile.TemporaryDirectory(prefix="aletheia-research-mutation-") as directory:
             work = Path(directory)
-            for folder in ("src", "tests"):
+            for folder in ("src", "tests", "scripts"):
                 shutil.copytree(
                     ROOT / folder, work / folder, ignore=shutil.ignore_patterns("__pycache__")
                 )
