@@ -56,15 +56,56 @@ pages the run read was checked for the answer.
   0.85M input + 0.18M output tokens on the 77 (about $1.84 at Nebius list prices), against
   0.94M + 0.11M for gpt-oss-120b (about $0.21).
 
-## Suggested next steps (issue step 4, not done here)
+## Next step: make gpt-oss-120b perform like DeepSeek (issue step 4, not done here)
 
-1. **Time limit.** Extract pages in parallel, or shorten the per-extract timeout. Some
-   extractions take about 56 s each, one after another. This matters most for DeepSeek.
-2. **Save rejected quotations** in the run record, then fix whatever makes the word-for-word
-   match fail on easy claims.
-3. **Judge prompt:** a different estimate is not a contradiction; a missing detail is not
-   cannot_settle when the rest is decided; the absence of a figure is cannot_settle, not false.
-4. Consider DeepSeek V4 Pro as the default model if a second run confirms the lead.
+The question for the next PR is whether the harness around gpt-oss-120b, not the model
+itself, can close most of the gap to DeepSeek V4 Pro at about 1/9 of its cost and twice its
+speed.
+
+**Where DeepSeek's lead on the 77 comes from.** It gets 11 of gpt-oss-120b's misses right.
+About 9 are **judging**: both models read pages with the answer, and only gpt-oss-120b
+concluded wrongly. For example, on x-05 and x-07 both read the exact population figure, and
+gpt-oss-120b answered false because another agency gave a different estimate. About 2 are
+**search**: on x-04 and x-08, DeepSeek's follow-up round reached the FRED / World Bank page
+and gpt-oss-120b's did not, from near-identical queries, so this may be luck. On the 200-claim
+sheet, DeepSeek gets most of gpt-oss-120b's misses right, including the six easy claims it lost
+to the quotation check.
+
+**Changes to try, best bets first. Each targets misses in the `diagnosis.csv` files.**
+
+1. **Quotation matching that ignores page formatting.** Page text contains markdown
+   (`**21 million**`, `[Geneva](link)`, table bars). Match the quotation's words while
+   ignoring that formatting; it must still be found on the page. Also save rejected
+   quotations in the run record so the remaining failures can be seen. Targets the 6 easy
+   claims on the 200 (s200-022, -036, -089, -100, -120, -130) and some on the 77 (t-21,
+   c-18). Deterministic and safe. Start here.
+2. **Four judge-prompt rules, each taken from a real miss:**
+   - A different agency's or dataset's estimate is not a contradiction; when a claim names
+     its source, judge it against that source (x-05, x-07).
+   - When one page disagrees with most pages read, follow the majority (s200-021, -040, -111).
+   - "No page gives this exact figure" is cannot_settle, not false (u-02, u-08, s200-011,
+     -090, -124, -170).
+   - When the evidence rules out the claim's figure, answer false rather than holding out
+     (s200-041: the Paris goal is 2 °C, not 3 °C).
+3. **Higher reasoning effort for gpt-oss-120b.** It is a reasoning model. The thinking switch
+   is currently allowed only for one Nemotron model (`src/aletheia/config.py`), so first
+   confirm with a 3-claim test that Nebius honours a reasoning-effort setting for gpt-oss-120b.
+4. **Review the verdict-vs-quotation check.** It withdrew gpt-oss-120b's verdict on a-06, a-07
+   and t-12, where the trusted source page had been read. Check whether the withdrawn
+   verdicts were right before changing it.
+5. **Search the dataset a claim names.** When a claim cites the World Bank or a statistics
+   office, add a query aimed at that dataset or FRED (x-04, x-08).
+6. **Time limit.** Extract pages in parallel, or shorten the per-extract timeout; some
+   extractions take about 56 s each, one after another. Costs gpt-oss-120b one claim per set,
+   and matters more for DeepSeek.
+
+**How to measure it (the existing 3-run keep rule):** run gpt-oss-120b live on the 77 twice
+more, unchanged, to get a 3-run baseline and its noise. Then add one change at a time, with
+3 runs each, and keep a change only if its average beats the baseline by more than the noise.
+Finish with one run on the 200-claim sheet. A live 77-claim gpt-oss-120b run takes about
+20 minutes and about $0.21 in model tokens (plus Tavily), so the plan is roughly 3–4 hours.
+The README can then show gpt-oss-120b rising from 59/77, one kept change at a time, beside
+DeepSeek's 66/77, with cost and time per claim.
 
 ## Files
 
