@@ -20,8 +20,12 @@ class Settings:
     research_enabled: bool = False
     # All 24,000 allowed characters may use 12-byte escaped surrogate pairs in JSON.
     max_body_bytes: int = 327_680
+    # "staged" is the multi-step pipeline; "simple" is the search-and-verdict loop.
+    pipeline: str = "staged"
 
     def __post_init__(self) -> None:
+        if self.pipeline not in {"staged", "simple"}:
+            raise ConfigurationError("ALETHEIA_PIPELINE must be staged or simple.")
         if type(self.research_enabled) is not bool:
             raise ConfigurationError("ALETHEIA_RESEARCH_ENABLED must be true or false.")
         if (
@@ -50,6 +54,7 @@ class Settings:
                 ),
                 queue_limit=int(os.environ.get("ALETHEIA_QUEUE_LIMIT", "100")),
                 max_body_bytes=int(os.environ.get("ALETHEIA_MAX_BODY_BYTES", "327680")),
+                pipeline=os.environ.get("ALETHEIA_PIPELINE", "staged"),
             )
         except (ValueError, TypeError):
             raise ConfigurationError(
