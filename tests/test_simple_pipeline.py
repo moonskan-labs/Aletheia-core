@@ -16,7 +16,7 @@ from aletheia.config import ConfigurationError, ProviderSettings, Settings
 from aletheia.evidence import snapshot
 from aletheia.providers.nebius import NebiusProvider
 from aletheia.providers.tavily import TavilyProvider
-from aletheia.simple import locate
+from aletheia.simple import excluded, locate, official
 
 CLAIM = "The Archive opened in 2000."
 NOW = datetime(2026, 11, 16, tzinfo=UTC)
@@ -258,3 +258,38 @@ def test_the_staged_pipeline_stays_the_default_and_unknown_names_are_rejected(tm
     assert Settings(database_path=tmp_path / "a.db").pipeline == "staged"
     with pytest.raises(ConfigurationError):
         Settings(database_path=tmp_path / "a.db", pipeline="other")
+
+
+def test_social_and_video_sites_are_excluded_and_official_sites_are_recognised():
+    assert excluded("https://www.youtube.com/watch?v=1") and excluded("https://m.facebook.com/p")
+    assert not excluded("https://notyoutube.com/a") and not excluded("https://example.org/x.com")
+    assert official("https://science.nasa.gov/a") and official("https://www.ox.ac.uk/a")
+    assert not official("https://govnews.example.com/a") and not official("https://edu.example/a")
+
+
+async def test_excluded_sites_are_never_read_and_official_pages_are_read_first(settings):
+    class Mixed(Fake):
+        async def handle(self, request):
+            if request.url.path != "/search":
+                return await super().handle(request)
+            self.calls.append("/search")
+            urls = ["https://www.youtube.com/watch?v=1", "https://blog.test/a", "https://a.gov/b"]
+            hits = [
+                {"url": u, "title": "t", "content": "c", "score": 0.9 - i / 10}
+                for i, u in enumerate(urls)
+            ]
+            return httpx.Response(200, json={"results": hits})
+
+    fake = Mixed([answer("true")])
+    saved, evidence, events = await check(settings, fake)
+    assert [s["url"] for s in evidence["sources"]] == ["https://a.gov/b", "https://blog.test/a"]
+    deferred = next(e for e in events if e["type"] == "sources_deferred")
+    assert deferred["payload"]["count"] == "1"
+
+
+async def test_the_loop_adds_its_rules_after_the_measured_instructions(settings):
+    fake = Fake([answer("true")])
+    await check(settings, fake)
+    system = fake.inputs[-1][1][0]["content"]
+    assert "pages disagree with each other" in system and "has not been studied" in system
+    assert system.index("Judge the claim") < system.index("pages disagree")
