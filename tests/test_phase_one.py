@@ -31,7 +31,7 @@ HANDOFF = Path(__file__).resolve().parents[1] / "docs/evaluation/pilot-handoff"
 
 
 def pilot(case):
-    return json.loads((HANDOFF / f"rerun/cases/{case}.json").read_text())
+    return json.loads((HANDOFF / f"rerun/cases/{case}.json").read_text(encoding="utf-8"))
 
 
 def analysis(claim, *, kind="direct_fact", components=None, comparison=None):
@@ -117,7 +117,7 @@ class PlannedProviders(Providers):
 
 
 def test_b0001_relevant_saved_span_reaches_assessment_and_effort_does_not_change_verdict():
-    record = json.loads((HANDOFF / "apollo-selection.json").read_text())
+    record = json.loads((HANDOFF / "apollo-selection.json").read_text(encoding="utf-8"))
     saved = pilot("b0001")
     claim = assertion(saved["investigation"]["claim"])
     excluded = record["excluded_relevant_span"]
@@ -350,7 +350,7 @@ async def test_b0006_final_check_diagnostics_and_bounded_repair(settings, recove
         assert (await client.get(result["links"]["evidence"])).json()["evidence"]
         artifacts = list(settings.database_path.parent.glob("*.diagnostics/*.json"))
         assert len(artifacts) == 1
-        diagnostic = json.loads(artifacts[0].read_text())
+        diagnostic = json.loads(artifacts[0].read_text(encoding="utf-8"))
         assert diagnostic["failed_conditions"] == ["unsupported_explanation"]
         assert diagnostic["affected_units"] == [0]
         assert diagnostic["rejected_explanation"][0]["text"] == passage
@@ -436,7 +436,7 @@ async def test_failed_decision_check_never_publishes_true(settings):
         assert saved["stop_reason"] == "semantic_rejection"
         assert len([n for n, _ in providers.model_inputs if n == "ExplanationCheck"]) == 2
         records = [
-            json.loads(p.read_text())
+            json.loads(p.read_text(encoding="utf-8"))
             for p in settings.database_path.parent.glob("*.diagnostics/*.json")
         ]
         assert all(r["failed_conditions"] == ["unsupported_decision"] for r in records)
