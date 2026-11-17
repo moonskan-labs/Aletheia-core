@@ -28,13 +28,17 @@ label was then checked against one fetched source page:
    direct fetch. The claim was kept only if the page contained the deciding string(s).
 3. **Cannot-settle claims** state a precise figure that no public record holds (for example,
    an exact attendance count on one day). For these, the related source page was checked
-   *not* to contain the claimed figure. Two drafts failed this check because the figure turned
-   out to be real: 88,966 spectators at the 2022 World Cup final, and 285,000 copies of the
-   first IKEA catalogue. Both were dropped. The cannot-settle labels rest on "no public
-   source found", which is weaker than a positive source; treat them with that caution.
-4. 212 claims were drafted, 41 first failed (mostly pages that could not be fetched) and were
-   pointed at another page and rechecked, 2 were dropped, and 10 true claims with the weakest
-   check strings were removed to reach 200.
+   *not* to contain the claimed figure. These labels rest on "no public source found",
+   which is weaker than a positive source; treat them with that caution. Figures that turn
+   out to be real are the main risk: 88,966 (spectators at the 2022 World Cup final) and a
+   15 cc first insulin dose were removed on review before checking, and 285,000 (copies of
+   the first IKEA catalogue) was removed because the check found it on the page.
+4. 214 claims were drafted. 2 were removed on review (above). Of the remaining 212, 171
+   passed the first check. The 41 that failed were almost all pages that could not be
+   fetched, or wording that differed from the check string; none showed a wrong label. They
+   were pointed at another page and rechecked. Two were dropped: the IKEA claim, and
+   tungsten's melting point, which had no clean check string. Finally, the 10 true claims
+   with the weakest check strings were removed to reach 200.
 
 `claims-20261117-200-verification.csv` lists, per claim, the URL fetched, the strings it had
 to contain or not contain, and the result. This string check confirms the source states the
