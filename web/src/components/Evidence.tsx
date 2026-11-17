@@ -1,10 +1,13 @@
 import type { EvidenceEntry } from '../evidenceIndex'
 import { EVIDENCE_PANE_ID, useEvidenceIndex, useEvidenceSelection } from '../evidenceIndex'
+import type { SourceSnapshot } from '../api/types'
 import { RELATION_LABEL, formatTime } from '../labels'
+import { passageLink } from '../passageLink'
 
 /** One piece of evidence: relation, source, the exact excerpt, why it counts, the link. */
 function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry }) {
   const a = evidence.assessment
+  const passage = source && evidence.excerpts[0] ? passageLink(source.url, evidence.excerpts[0].text) : null
   return (
     <article className="evidence" aria-label={`Source ${number}`}>
       <p className={`relation relation-${a.relation}`}>
@@ -29,8 +32,8 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
       </p>
       {a.limitations.length > 0 && <p className="meta">Limitations: {a.limitations.join(' ')}</p>}
       {source && (
-        <a className="open-original" href={source.url} target="_blank" rel="noreferrer noopener">
-          Open the original
+        <a className="open-original" href={passage ?? source.url} target="_blank" rel="noreferrer noopener">
+          {passage ? 'Open the original at this passage' : 'Open the original'}
         </a>
       )}
       <details className="trace">
@@ -70,11 +73,62 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
  * The evidence pane: one entry at a time, numbered as cited. Beside the report on wide
  * screens, below it on narrow ones. Passages checked but not admitted sit collapsed.
  */
-export function EvidencePane() {
+function host(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return url
+  }
+}
+
+/** Every page the run read, quoted or not, so the reader can see what was consulted. */
+function PagesRead({ sources, quoted }: { sources: SourceSnapshot[]; quoted: Set<string> }) {
+  if (sources.length === 0) return null
+  return (
+    <details className="pane-rejected pane-sources">
+      <summary>
+        {sources.length} page{sources.length === 1 ? '' : 's'} read
+      </summary>
+      <ul>
+        {sources.map((source) => (
+          <li key={source.id}>
+            <a href={source.url} target="_blank" rel="noreferrer noopener">
+              {source.title || source.url}
+            </a>
+            <span className="meta">
+              {' '}
+              · {host(source.url)}
+              {quoted.has(source.id) ? ' · quoted' : ''}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )
+}
+
+export function EvidencePane({ sources = [] }: { sources?: SourceSnapshot[] }) {
   const index = useEvidenceIndex()
   const { selected, select } = useEvidenceSelection()
   const entries = [...index.values()]
-  if (entries.length === 0) return null
+  const quoted = new Set(entries.map((e) => e.evidence.assessment.citation.snapshot_id))
+  if (entries.length === 0) {
+    // No passage was quoted, but the pages that were read are still worth showing.
+    if (sources.length === 0) return null
+    return (
+      <aside id={EVIDENCE_PANE_ID} className="evidence-pane" aria-labelledby="evidence-heading" tabIndex={-1}>
+        <div className="pane-head">
+          <h2 id="evidence-heading" className="section-label">
+            Evidence
+          </h2>
+        </div>
+        <div className="pane-body">
+          <p className="meta">No passage was quoted as evidence.</p>
+        </div>
+        <PagesRead sources={sources} quoted={quoted} />
+      </aside>
+    )
+  }
   const admitted = entries.filter((e) => e.evidence.admissible)
   const rejected = entries.filter((e) => !e.evidence.admissible)
   const current = (selected ? index.get(selected) : undefined) ?? entries[0]
@@ -132,6 +186,7 @@ export function EvidencePane() {
           </ul>
         </details>
       )}
+      <PagesRead sources={sources} quoted={quoted} />
     </aside>
   )
 }
