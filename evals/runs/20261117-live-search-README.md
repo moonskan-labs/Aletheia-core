@@ -20,15 +20,15 @@ Source URLs and labels stay in the scorer (`BatchClaim.request()` returns `{"cla
 | Run | Model | True/false answers | Right among those | Total matches |
 | --- | --- | ---: | ---: | ---: |
 | 20261117-s200-live-gptoss120-a | gpt-oss-120b | 171/200 | 161/171 | **182/200 (91%)** |
-| 20261117-s200-live-dsv4pro-a | DeepSeek-V4-Pro-0813 | still running; added to this PR when done | | |
+| 20261117-s200-live-dsv4pro-a | DeepSeek-V4-Pro-0813 | 176/200 | 169/176 | **191/200 (96%)** |
 
 The 200-claim totals use the sheet after two label corrections (see its README). With the
-labels as first written, gpt-oss-120b scored 180/200. The new sheet is mostly stable,
+labels as first written, gpt-oss-120b scored 180/200 (DeepSeek started after the correction). The new sheet is mostly stable,
 well-known facts, so it is easier than the 77 trusted claims; don't compare across sets.
 
 Each model has **one run** per set. The earlier 3-run study measured run-to-run noise of
 about 3 claims on the 77 (`20261116-improvements-README.md`, saved pages). DeepSeek's 7-claim
-lead on the 77 is larger than that, but it is still one run.
+lead on the 77 (and 9 on the 200) is larger than that, but it is still one run per set.
 
 ## Where the misses come from
 
@@ -39,7 +39,8 @@ pages the run read was checked for the answer.
 | --- | ---: | ---: | ---: | ---: |
 | gpt-oss-120b, 77 | 18 | 5 | 12 | 1 |
 | DeepSeek V4 Pro, 77 | 11 | 0 | 6 | 5 (answer already read in 3, not read in 1, unclear in 1) |
-| gpt-oss-120b, 200 | 18 | 0 | 14 (3 with debatable labels) | 1 |
+| gpt-oss-120b, 200 | 18 | 0 | 17 (3 with debatable labels) | 1 |
+| DeepSeek V4 Pro, 200 | 9 | 0 | 9 (2 with debatable labels) | 0 |
 
 - **Search is not the main problem.** Live search scored the same as saved pages for
   gpt-oss-120b (59/77). On the 200-claim sheet, every miss had the answer on a page it read.
@@ -48,13 +49,15 @@ pages the run read was checked for the answer.
   verdict withdrawn by the verdict-vs-quotation check. DeepSeek got all five population
   claims right.
 - **Quotations rejected on easy claims.** On the 200, 6 easy claims (ISS, Bitcoin, WTO,
-  JPEG, Kazakhstan, Rio 2016) ended as cannot_settle. The answer was on most of the pages
+  JPEG, Kazakhstan, Rio 2016) ended as cannot_settle for gpt-oss-120b, and 2 (Kipchoge, Starry Night)
+  for DeepSeek. The answer was on most of the pages
   read, but no quotation the model returned matched a page word for word. Rejected
   quotations are not saved, so the cause is not visible in the records.
 - **Time is the cost of DeepSeek.** Median 40 s per claim (gpt-oss-120b: about 17 s); 5 of 77
   hit the 150 s limit, and in at least 3 the answer was already on a page read. It used
   0.85M input + 0.18M output tokens on the 77 (about $1.84 at Nebius list prices), against
-  0.94M + 0.11M for gpt-oss-120b (about $0.21).
+  0.94M + 0.11M for gpt-oss-120b (about $0.21). On the 200: about $4.10 against $0.48, median
+  29 s per claim against 17 s.
 
 ## Next step: make gpt-oss-120b perform like DeepSeek (issue step 4, not done here)
 
@@ -111,6 +114,6 @@ DeepSeek's 66/77, with cost and time per claim.
 
 - `20261117-simple-live-gptoss120-README.md`: the first live run, with its diagnosis.
 - Run folders: `20261117-simple-live-gptoss120-a`, `20261117-simple-live-dsv4pro-a`,
-  `20261117-s200-live-gptoss120-a` (and `20261117-s200-live-dsv4pro-a` when done). Each
+  `20261117-s200-live-gptoss120-a`, `20261117-s200-live-dsv4pro-a`. Each
   holds the claim records, labels, manifest, scores and `diagnosis.csv`. Page text (`db/`,
   `snapshots/`) is not committed.
