@@ -23,13 +23,13 @@ npm test         # hook and form behavior (Vitest + jsdom)
 
 - **Entry:** the claim field is always the first thing on the page. In live mode it submits; while a submission is pending the button reads "Starting investigation…" and further clicks are ignored. In replay mode the field is disabled, with a note that live investigation needs the backend, which is still being built. Sample investigations are listed below it.
 - **Researching:** the claim headline, the latest step, and the live progress log.
-- **Report** (saved samples open straight to it; "Replay research steps" plays the recorded progress): the claim, then the verdict with its qualification caveat and an evidence-linked summary, then how the verdict was reached, limitations, and sources. The research log is collapsed at the end.
+- **Report** (saved samples open straight to it; "Replay research steps" plays the recorded progress), in visual direction B ([`design/visual-direction.md`](../design/visual-direction.md)): the claim, the result label just below it in its label colour (smaller than the claim), and one mono line of run facts. Below, the report on the left (the evidence-linked conclusion, any correction or caveat, what was checked, limitations, and the collapsed research log) and the evidence pane on the right.
 - **Results that fail to load:** if research ends but fetching the report fails, the page says so and offers "Retry loading results", which never starts a new investigation.
-- **Citations:** numbered links open an accessible preview of the source and excerpt (Esc or an outside click closes it, and focus returns to the link). Without popover support they jump to the evidence entry.
+- **Evidence pane:** shows one piece of evidence at a time, numbered as cited: relation, source, the exact excerpt, why it counts, and a link to the original. Choosing a citation in the report, or a numbered tab in the pane, selects it (`aria-pressed`). Passages checked but not admitted are collapsed at the bottom of the pane. Below 900px the pane stacks under the report, and choosing a citation scrolls to it.
 
 ## Status and caveats
 
-- `src/api/types.ts` is **reconciled** with `src/aletheia/contracts.py` and the backend's `/openapi.json` for investigations, context, links, errors and `/health`. Results, evidence and most event payloads are still provisional because the backend doesn't serve them yet.
+- `src/api/types.ts` is **reconciled** with `src/aletheia/contracts.py` and the backend's `/openapi.json` for investigations, context, links, errors and `/health`. Results and evidence are exercised with captured backend responses; event names are checked against the backend contract, and payload fields are read defensively.
 - If the progress stream closes before research finishes (for example, `/events` returns 404 on a backend without the research pipeline), the page says live progress isn't available instead of staying on "Researching".
 - The only recording is invented sample data (`sample: true`), and the page says so. Replace it with sanitized exports of real runs before any hosted demo, and review exports for secrets first.
 - Clarification, failed and partial results render in the shared layout, but their full designs and sample recordings come in a follow-up.

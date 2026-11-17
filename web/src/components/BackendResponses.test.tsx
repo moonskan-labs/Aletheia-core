@@ -39,7 +39,7 @@ function renderCaptured(name: string): HTMLElement {
       onRetry={() => {}}
     />,
   )
-  return document.querySelector<HTMLElement>('section.conclusion')!
+  return document.querySelector<HTMLElement>('section.conclusion, section.outcome')!
 }
 
 afterEach(cleanup)
@@ -57,8 +57,8 @@ describe('rendering captured backend responses', () => {
     ['unconfirmed-decision', 'No confirmed decision'],
     ['deadline-before-confirmation', 'No decision'],
   ])('%s renders the contracted label "%s"', (name, label) => {
-    const conclusion = renderCaptured(name)
-    expect(within(conclusion).getByRole('heading', { level: 2 }).textContent).toBe(label)
+    renderCaptured(name)
+    expect(document.getElementById('result-label')?.textContent).toBe(label)
   })
 
   it('explains an unsupported method without presenting a truth verdict', () => {
@@ -71,16 +71,16 @@ describe('rendering captured backend responses', () => {
 
   it('shows a rejected final check without an evidence verdict or caveat', () => {
     const conclusion = renderCaptured('unconfirmed-decision')
-    expect(within(conclusion).getByRole('heading').textContent).toBe('No confirmed decision')
+    expect(document.getElementById('result-label')?.textContent).toBe('No confirmed decision')
     expect(conclusion.textContent).not.toContain('with a caveat')
     expect(document.querySelector('[aria-labelledby="findings-heading"]')).toBeNull()
-    expect(document.querySelector('[aria-labelledby="evidence-heading"]')).not.toBeNull()
+    expect(document.querySelector('.evidence-pane')).not.toBeNull()
   })
 
   it('keeps a confirmed verdict linked to the fallback quotation', () => {
     const conclusion = renderCaptured('quoted-explanation')
     expect(conclusion.textContent).toContain('The cited source states:')
-    expect(within(conclusion).getAllByRole('link').length).toBeGreaterThan(0)
+    expect(within(conclusion).getAllByRole('button').length).toBeGreaterThan(0)
     expect(document.querySelector('.limitations')?.textContent).toContain('quoted directly')
   })
 
@@ -105,7 +105,7 @@ describe('rendering captured backend responses', () => {
 
     const conclusion = renderCaptured('finalization-timeout')
     expect(conclusion.textContent).toContain('No written explanation was saved')
-    expect(within(conclusion).getAllByRole('link').length).toBe(investigation.result?.finding.evidence_ids.length)
+    expect(within(conclusion).getAllByRole('button').length).toBe(investigation.result?.finding.evidence_ids.length)
   })
 
   it('describes a partial run without claiming fewer sources', () => {
