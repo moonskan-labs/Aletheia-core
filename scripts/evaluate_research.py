@@ -128,6 +128,7 @@ async def run(args, cases, *, settings=None):
         "max_retries": settings.max_retries,
         "case_ids": [c.id for c in cases],
         "refresh_first": args.refresh_first,
+        "pipeline": getattr(args, "pipeline", "staged"),
         "cost": "unknown; no pricing estimate substituted for billed cost",
         "human_review": "pending",
         "live": True,
@@ -139,7 +140,12 @@ async def run(args, cases, *, settings=None):
         write_json(args.output / "cases.json", [c.model_dump() for c in cases])
         database = args.output / "investigations.sqlite3"
         app = create_app(
-            Settings(database_path=database, research_enabled=True), provider_factory=providers
+            Settings(
+                database_path=database,
+                research_enabled=True,
+                pipeline=getattr(args, "pipeline", "staged"),
+            ),
+            provider_factory=providers,
         )
         async with (
             app.router.lifespan_context(app),
@@ -320,6 +326,7 @@ async def run_batch(args, claims, *, settings=None):
             "claim_ids": [c.id for c in claims],
             "split": args.split,
             "parallel": args.parallel,
+            "pipeline": getattr(args, "pipeline", "staged"),
             "cost": "unknown; no pricing estimate substituted for billed cost",
             "live": True,
             "sessions": [],
@@ -366,7 +373,12 @@ async def run_batch(args, claims, *, settings=None):
 
         database = output / "db" / f"session-{session}-lane-{number}.sqlite3"
         app = create_app(
-            Settings(database_path=database, research_enabled=True), provider_factory=providers
+            Settings(
+                database_path=database,
+                research_enabled=True,
+                pipeline=getattr(args, "pipeline", "staged"),
+            ),
+            provider_factory=providers,
         )
         async with (
             app.router.lifespan_context(app),
@@ -446,6 +458,12 @@ def main(argv=None):
     parser.add_argument("--claims-csv", type=Path, help="batch input; removes the 20-case cap")
     parser.add_argument("--replay-evidence", type=Path, help="replay saved included tuning pages")
     parser.add_argument("--batch", action="store_true", help="run --cases through the batch runner")
+    parser.add_argument(
+        "--pipeline",
+        choices=["staged", "simple"],
+        default="staged",
+        help="simple runs the search-and-verdict loop",
+    )
     parser.add_argument("--split", choices=["tuning", "heldout"])
     parser.add_argument("--ids", help="comma-separated claim IDs")
     parser.add_argument("--parallel", type=int, default=4)
