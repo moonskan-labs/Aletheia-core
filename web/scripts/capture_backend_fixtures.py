@@ -33,9 +33,26 @@ class FinalDeadlineBudget(RunBudget):
         super().reserve(provider, operation, units)
 
 
+class CaptureProviders(Providers):
+    def __init__(self, *, unsupported=False, **options):
+        super().__init__(**options)
+        self.unsupported = unsupported
+
+    def model_value(self, schema, data):
+        value = super().model_value(schema, data)
+        if self.unsupported and schema == "ClaimInterpretation":
+            value["method"] = "prediction"
+            value["reason"] = "The submitted claim predicts a future opening."
+        return value
+
+
 CLAIM = "The Archive opened in 2000."
 
 SCENARIOS = {
+    "unsupported-method": ({"unsupported": True}, {}),
+    "unconfirmed-decision": ({"unconfirmed_decision": True}, {}),
+    "quoted-explanation": ({"invalid_explanation": True}, {}),
+    "deadline-before-confirmation": ({}, {"budget_factory": FinalDeadlineBudget}),
     "true": ({}, {}),
     "almost": (
         {"relation": "contradicts", "almost": True, "text": "The Archive opened in 2001."},
@@ -61,8 +78,13 @@ async def running(db, providers, **options):
 
 async def capture(name, provider_options, app_options, tmp):
     db = Path(tmp) / f"{name}.sqlite3"
-    async with running(db, Providers(**provider_options), **app_options) as client:
-        created = await client.post("/investigations", json={"claim": CLAIM})
+    async with running(db, CaptureProviders(**provider_options), **app_options) as client:
+        created = await client.post(
+            "/investigations",
+            json={
+                "claim": "The Archive will open in 2100." if name == "unsupported-method" else CLAIM
+            },
+        )
         run_id = created.json()["id"]
         investigation = await terminal(client, run_id)
         evidence = (await client.get(f"/investigations/{run_id}/evidence")).json()
@@ -86,7 +108,8 @@ async def capture(name, provider_options, app_options, tmp):
 async def main():
     with tempfile.TemporaryDirectory() as tmp:
         for name, (provider_options, app_options) in SCENARIOS.items():
-            await capture(name, provider_options, app_options, tmp)
+            if len(sys.argv) <= 3 or name in sys.argv[3:]:
+                await capture(name, provider_options, app_options, tmp)
 
 
 out.mkdir(parents=True, exist_ok=True)

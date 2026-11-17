@@ -34,3 +34,22 @@ npm test         # hook and form behavior (Vitest + jsdom)
 - The only recording is invented sample data (`sample: true`), and the page says so. Replace it with sanitized exports of real runs before any hosted demo, and review exports for secrets first.
 - Clarification, failed and partial results render in the shared layout, but their full designs and sample recordings come in a follow-up.
 - The refresh, saved-view and comparison screens are not built yet.
+
+### Phase 1 backend integration
+
+The client subscribes to all 39 backend event names and describes the Phase 1 stop
+reasons. Unsupported-method responses show the saved explanation even though no
+truth verdict exists. A partial result stopped by `semantic_rejection` or
+`invalid_task_output` shows “No confirmed decision” with the collected evidence,
+without presenting an insufficient-evidence verdict or qualification caveat.
+
+The Phase 1 regression recordings come from the API, worker and SQLite with
+synthetic providers. Regenerate only these recordings from the repository root:
+
+```sh
+uv run --locked python web/scripts/capture_backend_fixtures.py . web/src/fixtures/backend unsupported-method unconfirmed-decision quoted-explanation deadline-before-confirmation
+```
+
+Earlier recordings remain historical compatibility cases, including Almost and the
+older partial-result behavior. New Phase 1 runs do not publish Almost, and a deadline
+before a pending verdict is confirmed fails with no result.

@@ -48,6 +48,9 @@ const REASON_LABEL: Record<string, string> = {
   provider_failure: 'a provider failed',
   storage_failure: 'storage failed',
   interrupted: 'interrupted',
+  unsupported_method: 'this claim needs a different research method',
+  invalid_task_output: 'a research answer could not be validated',
+  semantic_rejection: 'the final check did not confirm a decision',
   empty_content: 'no readable text',
   followup_round_limit: 'follow-up limit reached',
 }
@@ -97,6 +100,38 @@ function text(value: string | undefined): string | null {
 export function describeEvent(event: InvestigationEvent): string {
   const p = event.payload
   switch (event.type) {
+    case 'route_revised':
+      return 'Revised the research approach'
+    case 'model_attempt_finished':
+      return 'Finished a reasoning attempt'
+    case 'task_finished':
+      return 'Finished a research step'
+    case 'task_started':
+      return 'Started a research step'
+    case 'run_configured':
+      return 'Set the research limits'
+    case 'clarification_decision':
+      return 'Checked whether the claim needs clarification'
+    case 'research_stopped':
+      return 'Stopped collecting evidence'
+    case 'provider_attempt_started':
+      return 'Started a provider request'
+    case 'provider_attempt_finished':
+      return 'Finished a provider request'
+    case 'provider_call_rejected':
+      return 'A provider request could not start'
+    case 'provider_retry_stopped':
+      return 'Stopped retrying a provider request'
+    case 'provider_retry_scheduled':
+      return 'Scheduled another provider attempt'
+    case 'pipeline_failed':
+      return 'Research could not finish'
+    case 'source_selected':
+      return 'Selected a source to read'
+    case 'assessment_rejected':
+      return 'A passage assessment did not pass validation'
+    case 'search_incomplete':
+      return 'Some planned searches did not finish'
     case 'investigation_queued':
       return 'Queued'
     case 'investigation_started':

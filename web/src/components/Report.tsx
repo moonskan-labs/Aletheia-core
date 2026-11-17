@@ -122,6 +122,8 @@ function Limitations({ result }: { result: InvestigationResult }) {
 export function Report(props: Props) {
   const { investigation, evidence, events, researchDone, finished, loadError, replay, reused, onRetry, onReplay } = props
   const result = finished ? investigation.result : null
+  const unconfirmed = result?.outcome === 'unable_to_decide' &&
+    (investigation.stop_reason === 'semantic_rejection' || investigation.stop_reason === 'invalid_task_output')
   return (
     <EvidenceIndexContext.Provider value={buildEvidenceIndex(evidence)}>
       <article className="report">
@@ -157,6 +159,13 @@ export function Report(props: Props) {
           </section>
         )}
 
+        {finished && investigation.method_limitation && (
+          <section className="conclusion">
+            <h2>This claim needs a different research method</h2>
+            <p>{investigation.method_limitation.explanation}</p>
+          </section>
+        )}
+
         {finished && investigation.error && (
           <section className="conclusion" role="alert">
             <h2>No decision</h2>
@@ -167,8 +176,18 @@ export function Report(props: Props) {
 
         {result && (
           <>
-            <Conclusion investigation={investigation} result={result} />
-            <Findings result={result} route={investigation.route} />
+            {unconfirmed ? (
+              <section className="conclusion">
+                <h2>No confirmed decision</h2>
+                <p>The final check did not confirm a decision. The collected sources are available below.</p>
+                <p className="meta">This does not establish that evidence is insufficient or conflicting.</p>
+              </section>
+            ) : (
+              <>
+                <Conclusion investigation={investigation} result={result} />
+                <Findings result={result} route={investigation.route} />
+              </>
+            )}
             <Limitations result={result} />
             <Evidence />
           </>
