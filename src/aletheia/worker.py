@@ -3,14 +3,18 @@
 import asyncio
 
 from aletheia.orchestrator import Pipeline
+from aletheia.simple import SimplePipeline
 from aletheia.storage import Conflict, StorageError
 
 
 class Worker:
-    def __init__(self, storage, model, search, model_name, *, budget_factory=None):
+    def __init__(
+        self, storage, model, search, model_name, *, budget_factory=None, pipeline="staged"
+    ):
         self.storage = storage
         options = {"budget_factory": budget_factory} if budget_factory else {}
-        self.pipeline = Pipeline(storage, model, search, model_name, **options)
+        chosen = SimplePipeline if pipeline == "simple" else Pipeline
+        self.pipeline = chosen(storage, model, search, model_name, **options)
         self.stopping = asyncio.Event()
         self.task = None
         self.current = None

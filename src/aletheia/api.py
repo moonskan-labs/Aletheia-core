@@ -66,7 +66,14 @@ def create_app(
         app.state.worker = None
         if settings.research_enabled:
             async with provider_factory() as (model, search, model_name):
-                worker = Worker(storage, model, search, model_name, budget_factory=budget_factory)
+                worker = Worker(
+                    storage,
+                    model,
+                    search,
+                    model_name,
+                    budget_factory=budget_factory,
+                    pipeline=settings.pipeline,
+                )
                 app.state.worker = worker
                 worker.start()
                 app.state.initialized = True

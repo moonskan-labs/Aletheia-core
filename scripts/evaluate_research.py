@@ -2,6 +2,7 @@
 
 import argparse
 import asyncio
+import hashlib
 import json
 import os
 import subprocess
@@ -32,6 +33,7 @@ from aletheia.providers.errors import ProviderError
 from aletheia.providers.nebius import NebiusProvider
 from aletheia.providers.tavily import TavilyProvider
 from aletheia.research_contracts import Snapshot
+from aletheia.trusted_evaluation import ReplayProvider, load_pages, trusted_claims, validate_claims
 
 STOP_STATUS_CODES = {400, 401, 402, 403, 404, 422, 432, 433}
 
@@ -126,6 +128,7 @@ async def run(args, cases, *, settings=None):
         "max_retries": settings.max_retries,
         "case_ids": [c.id for c in cases],
         "refresh_first": args.refresh_first,
+        "pipeline": getattr(args, "pipeline", "staged"),
         "cost": "unknown; no pricing estimate substituted for billed cost",
         "human_review": "pending",
         "live": True,
@@ -137,7 +140,12 @@ async def run(args, cases, *, settings=None):
         write_json(args.output / "cases.json", [c.model_dump() for c in cases])
         database = args.output / "investigations.sqlite3"
         app = create_app(
-            Settings(database_path=database, research_enabled=True), provider_factory=providers
+            Settings(
+                database_path=database,
+                research_enabled=True,
+                pipeline=getattr(args, "pipeline", "staged"),
+            ),
+            provider_factory=providers,
         )
         async with (
             app.router.lifespan_context(app),
@@ -260,13 +268,24 @@ async def run_batch(args, claims, *, settings=None):
     Each lane owns a database, a worker and provider clients, so runs cannot share or
     reuse research. Labels stay in this process: only `claim.request()` is submitted.
     """
+    replay_dir = getattr(args, "replay_evidence", None)
+    if replay_dir:
+        if args.split not in (None, "tuning") or args.dotenv is not None:
+            raise ValueError("Replay requires tuning claims and environment-only settings")
+        validate_claims(claims)
+        # Fail before model setup or output creation if any archive is missing/invalid.
+        replay_pages = {c.id: load_pages(replay_dir, c.id) for c in claims}
     if settings is None:
         settings = ProviderSettings.from_environment(dotenv_path=args.dotenv)
     if args.model:
         settings = ProviderSettings.model_validate(
             {**settings.model_dump(), "nebius_model": args.model}
         )
-    if not settings.nebius_api_key or not settings.tavily_api_key or not settings.nebius_model:
+    if (
+        not settings.nebius_api_key
+        or (not replay_dir and not settings.tavily_api_key)
+        or not settings.nebius_model
+    ):
         raise ConfigurationError("Provider configuration is incomplete")
     settings.validate_model_controls()
     revision, dirty = await asyncio.to_thread(git_state)
@@ -277,12 +296,25 @@ async def run_batch(args, claims, *, settings=None):
         "nebius_thinking": settings.nebius_thinking,
         "response_format": settings.nebius_response_format,
         "max_output_tokens": settings.max_output_tokens,
+        "pipeline": getattr(args, "pipeline", "staged"),
     }
+    if replay_dir:
+        identity.update(
+            replay=True,
+            evidence_directory=str(replay_dir.resolve()),
+            evidence_sha256=hashlib.sha256(
+                json.dumps(replay_pages, sort_keys=True, ensure_ascii=False).encode("utf-8")
+            ).hexdigest(),
+        )
     output = args.output
     manifest_path = output / "manifest.json"
     if args.resume and manifest_path.exists():
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("replay", False) != bool(replay_dir):
+            raise ConfigurationError("Resume cannot switch between live search and replay.")
         # A batch is one code revision, one dataset and one model. Anything else is a new batch.
+        # Batches made before the pipeline option existed ran the staged pipeline.
+        manifest.setdefault("pipeline", "staged")
         if any(manifest.get(key) != value for key, value in identity.items()):
             raise ConfigurationError("Resume requires the same revision, dataset and model.")
     else:
@@ -322,6 +354,7 @@ async def run_batch(args, claims, *, settings=None):
     async def lane(number):
         nonlocal finished
         attempts, budgets = [], []
+        replay_search = ReplayProvider(settings) if replay_dir else None
 
         @asynccontextmanager
         async def providers():
@@ -332,13 +365,22 @@ async def run_batch(args, claims, *, settings=None):
                     budgets=budgets,
                     transport=MeteredTransport("nebius", attempts),
                 ) as model,
-                TavilyProvider(settings, transport=MeteredTransport("tavily", attempts)) as search,
+                (
+                    replay_search
+                    if replay_search is not None
+                    else TavilyProvider(settings, transport=MeteredTransport("tavily", attempts))
+                ) as search,
             ):
                 yield model, search, settings.nebius_model
 
         database = output / "db" / f"session-{session}-lane-{number}.sqlite3"
         app = create_app(
-            Settings(database_path=database, research_enabled=True), provider_factory=providers
+            Settings(
+                database_path=database,
+                research_enabled=True,
+                pipeline=getattr(args, "pipeline", "staged"),
+            ),
+            provider_factory=providers,
         )
         async with (
             app.router.lifespan_context(app),
@@ -351,6 +393,8 @@ async def run_batch(args, claims, *, settings=None):
                     claim = queue.get_nowait()
                 except asyncio.QueueEmpty:
                     return
+                if replay_search is not None:
+                    replay_search.set_pages(replay_pages[claim.id])
                 before, budget_start = len(attempts), len(budgets)
                 snapshots = []
                 try:
@@ -414,7 +458,14 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cases", type=Path)
     parser.add_argument("--claims-csv", type=Path, help="batch input; removes the 20-case cap")
+    parser.add_argument("--replay-evidence", type=Path, help="replay saved included tuning pages")
     parser.add_argument("--batch", action="store_true", help="run --cases through the batch runner")
+    parser.add_argument(
+        "--pipeline",
+        choices=["staged", "simple"],
+        default="staged",
+        help="simple runs the search-and-verdict loop",
+    )
     parser.add_argument("--split", choices=["tuning", "heldout"])
     parser.add_argument("--ids", help="comma-separated claim IDs")
     parser.add_argument("--parallel", type=int, default=4)
@@ -427,11 +478,15 @@ def main(argv=None):
     parser.add_argument("--refresh-first", action="store_true")
     args = parser.parse_args(argv)
     try:
-        if args.claims_csv or args.batch:
+        if args.claims_csv or args.batch or args.replay_evidence:
             ids = [i for i in (args.ids or "").split(",") if i] or None
             if not 1 <= args.parallel <= 12:
                 parser.error("--parallel must be 1 to 12")
-            if args.claims_csv:
+            if args.replay_evidence:
+                if args.cases or args.claims_csv or args.dotenv:
+                    parser.error("Replay uses fixed trusted tuning inputs and environment settings")
+                claims = trusted_claims(ids=ids, split=args.split)
+            elif args.claims_csv:
                 claims = load_claims_csv(args.claims_csv, split=args.split, ids=ids)
             elif args.cases:
                 claims = select_claims(claims_from_cases(load_cases(args.cases)), ids=ids)

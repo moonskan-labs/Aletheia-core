@@ -105,8 +105,13 @@ async def test_resume_runs_only_unfinished_claims_and_never_reruns_a_finished_on
     args.resume = True
     with pytest.raises(ConfigurationError):  # a different dataset is a different batch
         await runner.run_batch(args, [first, second])
+    args.pipeline = "simple"
+    with pytest.raises(ConfigurationError):  # a different pipeline is a different batch
+        await runner.run_batch(args, [first])
+    del args.pipeline
     manifest = args.output / "manifest.json"
     saved = json.loads(manifest.read_text())
+    assert saved["pipeline"] == "staged"
     saved["dataset_sha256"] = runner.dataset_hash([first, second])
     manifest.write_text(json.dumps(saved))
     calls = len(providers.calls)
