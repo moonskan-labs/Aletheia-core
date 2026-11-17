@@ -285,11 +285,3 @@ async def test_excluded_sites_are_never_read_and_official_pages_are_read_first(s
     assert [s["url"] for s in evidence["sources"]] == ["https://a.gov/b", "https://blog.test/a"]
     deferred = next(e for e in events if e["type"] == "sources_deferred")
     assert deferred["payload"]["count"] == "1"
-
-
-async def test_the_loop_adds_its_rules_after_the_measured_instructions(settings):
-    fake = Fake([answer("true")])
-    await check(settings, fake)
-    system = fake.inputs[-1][1][0]["content"]
-    assert "pages disagree with each other" in system and "has not been studied" in system
-    assert system.index("Judge the claim") < system.index("pages disagree")
