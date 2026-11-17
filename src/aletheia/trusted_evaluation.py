@@ -14,6 +14,7 @@ import httpx
 from pydantic import SecretStr
 
 from aletheia.evaluation import load_claims_csv
+from aletheia.one_call import collapse  # noqa: F401
 from aletheia.passages import terms
 from aletheia.providers.tavily import TavilyProvider
 
@@ -73,10 +74,6 @@ def load_pages(directory, claim_id):
         if not all(isinstance(page.get(k), str) for k in ("url", "title", "original_text")):
             raise ValueError("Invalid saved page")
     return pages
-
-
-def collapse(text):
-    return " ".join(text.split())
 
 
 def ranked_pages(query, pages):
