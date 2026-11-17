@@ -491,3 +491,22 @@ def test_one_page_preparation_serves_the_baseline_and_the_loop():
     assert [p["page"] for p in offered] == [1, 2, 3, 4, 5, 6]
     used, _ = offer_pages(CLAIM, [*matching, other], first=[other])
     assert other in used and len(used) == 6
+
+
+def test_quote_glyph_matching_preserves_source_text_offsets_and_hash():
+    from aletheia.evidence import digest
+
+    # Match glyph variants, but publish only the page's exact text and offsets.
+    text = "Header. The Archive’s name is “Museum”. Footer."
+    source = snapshot(
+        url="https://example.test/archive",
+        title="Archive",
+        text=text,
+        published_date=None,
+        retrieved_at=datetime.now(UTC),
+    )
+    excerpt = locate(source, "The Archive's name is 'Museum'.", "The Archive name")
+    assert excerpt is not None
+    assert excerpt.text == "The Archive’s name is “Museum”."
+    assert source.normalized_text[excerpt.start : excerpt.end] == excerpt.text
+    assert excerpt.quote_hash == digest(excerpt.text)

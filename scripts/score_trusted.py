@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from aletheia.source_check import interval
@@ -12,7 +13,13 @@ def decision(artifact):
     if artifact.get("kind") == "baseline":
         value = artifact.get("verdict")
         return value if value in {"true", "false", "cannot_settle"} else "no answer"
-    result = (artifact.get("investigation") or {}).get("result") or {}
+    investigation = artifact.get("investigation") or {}
+    if investigation.get("status") == "failed" or investigation.get("stop_reason") in {
+        "semantic_rejection",
+        "invalid_task_output",
+    }:
+        return "no answer"
+    result = investigation.get("result") or {}
     if result.get("outcome") == "unable_to_decide":
         return "cannot_settle"
     if result.get("outcome") == "decided" and result.get("verdict") in {"true", "false"}:
@@ -128,6 +135,9 @@ def report(scores):
 
 
 def main(argv=None):
+    # UTF-8 also when Windows redirects stdout through a legacy code page.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("runs", type=Path, nargs="+")
     parser.add_argument("--output", type=Path, help="new Markdown file")

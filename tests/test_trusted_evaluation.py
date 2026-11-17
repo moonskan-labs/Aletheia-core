@@ -451,3 +451,69 @@ def test_trusted_score_cli_keeps_77_denominator_and_refuses_to_overwrite(tmp_pat
     (folder / "manifest.json").write_text('{"claim_ids": ["t-01"]}')
     assert scoring.main([str(folder)]) == 2
     capsys.readouterr()
+
+
+@pytest.mark.parametrize(
+    "quoted", ["The Archive's name is 'Museum'.", "The Archive’s name is “Museum”."]
+)
+def test_quote_glyphs_match_without_changing_original_answer(quoted):
+    original = 'The Archive’s name is "Museum".'
+    answer = baseline.Answer(verdict="true", quotes=[{"page": 1, "text": quoted}], reason="r")
+    state = baseline.validate_answer(answer, [{"page": 1, "passages": [original]}], [original])
+    assert not state["downgraded"]
+    assert state["original_answer"]["quotes"][0]["text"] == quoted
+
+
+@pytest.mark.parametrize(
+    "quoted",
+    [
+        "The Archive opened in 1999.",
+        "The Archive did not open in 2000.",
+        "the Archive opened in 2000.",
+        "The Archive opened in 20.00.",
+    ],
+)
+def test_quote_normalization_preserves_facts_negation_case_and_numbers(quoted):
+    original = "The Archive opened in 2000."
+    answer = baseline.Answer(verdict="true", quotes=[{"page": 1, "text": quoted}], reason="r")
+    state = baseline.validate_answer(answer, [{"page": 1, "passages": [original]}], [original])
+    assert state["downgraded"]
+
+
+@pytest.mark.parametrize("stop", ["semantic_rejection", "invalid_task_output"])
+def test_rejected_final_check_is_not_scored_as_a_correct_abstention(stop):
+    artifact = {
+        "investigation": {
+            "status": "partial",
+            "stop_reason": stop,
+            "result": {
+                "outcome": "unable_to_decide",
+                "unable_to_decide_reason": "insufficient_evidence",
+            },
+        }
+    }
+    assert scoring.decision(artifact) == "no answer"
+    artifact["investigation"]["stop_reason"] = "budget_exhausted"
+    assert scoring.decision(artifact) == "cannot_settle"
+
+
+def test_scoring_stdout_is_utf8_under_a_legacy_windows_encoding(tmp_path):
+    import os
+    import subprocess
+
+    result = subprocess.run(
+        [sys.executable, str(Path(scoring.__file__)), str(tmp_path)],
+        env={**os.environ, "PYTHONIOENCODING": "cp1252"},
+        capture_output=True,
+        check=True,
+    )
+    assert "Wrong answers —" in result.stdout.decode("utf-8")
+
+
+def test_quote_normalization_does_not_turn_inches_into_feet():
+    answer = baseline.Answer(
+        verdict="true", quotes=[{"page": 1, "text": "The height is 6'."}], reason="r"
+    )
+    original = 'The height is 6".'
+    state = baseline.validate_answer(answer, [{"page": 1, "passages": [original]}], [original])
+    assert state["downgraded"]

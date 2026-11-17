@@ -18,7 +18,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from aletheia.budgets import CallBudget
 from aletheia.comparison import compare
 from aletheia.evidence import canonical_url, digest, snapshot
-from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, validate_answer
+from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, quote_characters, validate_answer
 from aletheia.passages import terms
 from aletheia.providers.errors import ErrorCode, ProviderError
 from aletheia.research_contracts import (
@@ -131,8 +131,10 @@ def locate(source, text, claim_text):
     if len(re.findall(r"\w+", text)) < 3 or not terms(text) & terms(claim_text):
         return None
     page = source.normalized_text
+    matched_page = quote_characters(page)
+    text = quote_characters(text)
     pattern = r"\s+".join(re.escape(token) for token in text.split())
-    for match in re.finditer(pattern, page):
+    for match in re.finditer(pattern, matched_page):
         start, end = match.span()
         inside_word = (start and page[start - 1].isalnum() and page[start].isalnum()) or (
             end < len(page) and page[end].isalnum() and page[end - 1].isalnum()

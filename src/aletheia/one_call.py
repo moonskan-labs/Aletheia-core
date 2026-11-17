@@ -12,6 +12,23 @@ from pydantic import BaseModel, ConfigDict, Field
 from aletheia.passages import select_passages, terms
 
 
+def quote_characters(text):
+    """Normalize quote glyphs without merging feet/inches or changing word contents.
+
+    The mapping is one character to one character so saved-page offsets survive.
+    Single/double delimiters are interchangeable only away from digits and inside-
+    word punctuation; numeric measurement marks retain their single/double meaning.
+    """
+    text = text.translate(str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"'}))
+    result = []
+    for index, char in enumerate(text):
+        before = text[index - 1] if index else ""
+        after = text[index + 1] if index + 1 < len(text) else ""
+        protected = before.isdigit() or after.isdigit() or (before.isalnum() and after.isalnum())
+        result.append("'" if char in "\"'" and not protected else char)
+    return "".join(result)
+
+
 def collapse(text):
     return " ".join(text.split())
 
@@ -41,15 +58,15 @@ Do not use outside knowledge or invent quotations."""
 def validate_answer(answer, pages, originals):
     valid, invalid = [], []
     for quote in answer.quotes:
-        text = collapse(quote.text)
+        text = collapse(quote_characters(quote.text))
         page = next((p for p in pages if p["page"] == quote.page), None)
         # It must appear both in the offered text and in the original saved page:
         # joining distant selected spans must not fabricate a contiguous quotation.
         accepted = bool(
             text
             and page
-            and text in collapse("\n".join(page["passages"]))
-            and text in collapse(originals[quote.page - 1])
+            and text in collapse(quote_characters("\n".join(page["passages"])))
+            and text in collapse(quote_characters(originals[quote.page - 1]))
         )
         (valid if accepted else invalid).append(quote.model_dump())
     downgraded = answer.verdict in {"true", "false"} and not valid

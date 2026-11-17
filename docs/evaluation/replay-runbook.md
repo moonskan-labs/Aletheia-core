@@ -65,7 +65,7 @@ Makes one model attempt per claim, with no retries, using at most six saved page
 about 6,000 selected characters per page. Produces `claims/<id>.json` with the offered
 passages, original answer, valid/invalid quotes, final verdict and usage, plus a
 `manifest.json` with model, revision, settings, totals and downgrade count. A true or
-false answer without a valid exact quote becomes `cannot_settle`; technical failures
+false answer without a valid quotation becomes `cannot_settle`; technical failures
 are kept as no answer. Allow roughly 1–10 minutes at six concurrent claims; this is a
 planning estimate, not a measured runtime for this new tool.
 
@@ -109,7 +109,11 @@ Usually seconds. Prints and saves a table of true/false answers, right answers a
 those, all matches (including `cannot_settle`) out of 77, Wilson 95% intervals, token
 usage for the included subset, and invalid/missing-quote downgrade counts. It lists
 wrong and missing answers and pairwise disagreements. Missing results count as
-**no answer**, not `cannot_settle`. Unknown token usage is flagged. Historical runs
+**no answer**, not `cannot_settle`. Failed investigations and rejected final checks
+(`semantic_rejection` or `invalid_task_output`) also count as no answer, even if a
+legacy artifact contains an undecided result. Valid partial abstentions remain
+`cannot_settle`. This scoring correction can change newly generated reports; keep
+historical reports unchanged. Unknown token usage is flagged. Historical runs
 contain 80 claims; their three excluded claims do not enter any count here.
 
 The 95% intervals describe one run's match proportion, not repeatability. To report
@@ -140,3 +144,46 @@ comparison is descriptive rather than a controlled replay experiment.
 on included tuning claims, not for this 77-claim protocol. Every production command
 above deliberately leaves it unset. The trusted score denominator remains 77 even
 when a folder contains fewer results.
+
+## Portability and quotation policy
+
+The commands above use Bash (including Git Bash on Windows). In PowerShell, set:
+
+```powershell
+$RUN_DATE = "YYYYMMDD"
+$env:ALETHEIA_NEBIUS_THINKING = "default"
+```
+
+The same `uv run` commands and double-quoted `${RUN_DATE}` paths then work in
+PowerShell. Replace YYYYMMDD once; use new output names. `score_trusted.py` writes
+UTF-8 to both stdout and the report file, including when stdout is redirected.
+
+Final-check diagnostics use private POSIX permissions or a protected current-user
+Windows ACL. Windows PowerShell is used to create and verify that ACL on Windows
+Python 3.12 and 3.13. Permissive existing directories, symlinks and junctions are
+refused; diagnostics never silently fall back to public files. If an older run left
+a permissive diagnostic directory, choose a fresh run folder. Diagnostic failures
+remain optional and do not change the verdict.
+
+Baseline and simple-loop quotation matching allows whitespace and straight/curly
+single/double quotation-mark differences away from numbers and within-word
+punctuation. Numeric measurement marks retain their feet/inches distinction.
+It does not remove punctuation, change
+case, numbers or negation, or join noncontiguous text. A match must exist in both the
+offered passages and the original page. The simple loop stores the page's exact
+excerpt, offsets and hash rather than the model's altered quotation. Original model
+answers remain in baseline artifacts. This is a quotation-integrity check, not proof
+that a quotation supports a verdict; do not rewrite historical scores under this rule.
+
+## Reference-label review still pending
+
+“Trusted” is the historical name of the frozen scoring file, not a claim that all
+labels have completed independent human review. [PR 27's preserved checklist](../../evals/claims/review-follow-up-27.md)
+and [decision tracker](../../evals/claims/recheck-review-decisions.csv) record the
+outstanding provenance, quote checks, human spot-checks, ambiguous wording and missing
+conflict cases. They do not change the 77-claim denominator or prompt inputs.
+
+The experimental simple pipeline from PR 30 is included in this branch but remains
+off by default. These replay commands use the staged pipeline unless `--pipeline
+simple` is explicitly supplied. Its saved pilot runs still contain errors on missing
+or conflicting evidence; software checks are not a claim of research readiness.

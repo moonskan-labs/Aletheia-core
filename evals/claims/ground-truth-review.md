@@ -1,4 +1,6 @@
-# Ground-truth review
+# Automated recheck comparison (historical record)
+
+The legacy filename is retained for reproducibility. This is an automated recheck, not a claim of independently human-verified ground truth. See [review follow-up](review-follow-up-27.md) and [pending decisions](recheck-review-decisions.csv). Historical counts below are preserved; “0 failed quote checks” has not been independently reproduced.
 
 | Count | Claims |
 | --- | ---: |
