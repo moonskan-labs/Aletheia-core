@@ -13,7 +13,8 @@ def assert_private_file(path):
 $ErrorActionPreference = 'Stop'
 $sid = [System.Security.Principal.WindowsIdentity]::GetCurrent().User
 $file = [System.IO.FileInfo]::new($env:ALETHEIA_TEST_DIAGNOSTIC)
-$rules = $file.GetAccessControl().GetAccessRules($true, $true, [System.Security.Principal.SecurityIdentifier])
+$security = $file.GetAccessControl()
+$rules = $security.GetAccessRules($true, $true, [System.Security.Principal.SecurityIdentifier])
 if ($rules.Count -ne 1 -or $rules[0].IdentityReference -ne $sid -or
     $rules[0].AccessControlType -ne 'Allow' -or $rules[0].FileSystemRights -ne 'FullControl') {
     throw 'Diagnostic file is not private to the current user'
