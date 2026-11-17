@@ -7,7 +7,6 @@ import time
 from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
-from types import SimpleNamespace
 
 from evaluate_research import git_state
 
@@ -15,8 +14,13 @@ from aletheia.budgets import CallBudget
 from aletheia.config import ConfigurationError, ProviderSettings
 from aletheia.evaluation import write_json
 from aletheia.evidence import snapshot
-from aletheia.one_call import INSTRUCTIONS, Answer, Quote, validate_answer  # noqa: F401
-from aletheia.passages import select_passages
+from aletheia.one_call import (  # noqa: F401
+    INSTRUCTIONS,
+    Answer,
+    Quote,
+    offer_pages,
+    validate_answer,
+)
 from aletheia.providers.errors import ProviderError
 from aletheia.providers.nebius import NebiusProvider
 from aletheia.trusted_evaluation import (
@@ -29,25 +33,17 @@ from aletheia.trusted_evaluation import (
 
 
 def prompt_pages(claim_text, saved_pages):
-    offered = []
-    for page in ranked_pages(claim_text, saved_pages)[:6]:
-        source = snapshot(
+    sources = [
+        snapshot(
             url=page["url"],
             title=page["title"],
             published_date=page.get("published_date"),
             retrieved_at=datetime.fromisoformat(page["retrieved_at"]),
             text=page["original_text"],
         )
-        passages = select_passages(SimpleNamespace(text=claim_text), source, max_chars=6000)
-        offered.append(
-            {
-                "page": len(offered) + 1,
-                "url": page["url"],
-                "title": page["title"],
-                "passages": [p.text for p in passages],
-            }
-        )
-    return offered
+        for page in saved_pages
+    ]
+    return offer_pages(claim_text, sources)[1]
 
 
 async def evaluate_claim(claim, pages, model, deadline_seconds):

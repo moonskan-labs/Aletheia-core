@@ -296,6 +296,7 @@ async def run_batch(args, claims, *, settings=None):
         "nebius_thinking": settings.nebius_thinking,
         "response_format": settings.nebius_response_format,
         "max_output_tokens": settings.max_output_tokens,
+        "pipeline": getattr(args, "pipeline", "staged"),
     }
     if replay_dir:
         identity.update(
@@ -312,6 +313,8 @@ async def run_batch(args, claims, *, settings=None):
         if manifest.get("replay", False) != bool(replay_dir):
             raise ConfigurationError("Resume cannot switch between live search and replay.")
         # A batch is one code revision, one dataset and one model. Anything else is a new batch.
+        # Batches made before the pipeline option existed ran the staged pipeline.
+        manifest.setdefault("pipeline", "staged")
         if any(manifest.get(key) != value for key, value in identity.items()):
             raise ConfigurationError("Resume requires the same revision, dataset and model.")
     else:
@@ -326,7 +329,6 @@ async def run_batch(args, claims, *, settings=None):
             "claim_ids": [c.id for c in claims],
             "split": args.split,
             "parallel": args.parallel,
-            "pipeline": getattr(args, "pipeline", "staged"),
             "cost": "unknown; no pricing estimate substituted for billed cost",
             "live": True,
             "sessions": [],

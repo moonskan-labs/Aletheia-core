@@ -4,9 +4,12 @@ Shared by the offline baseline runner and the simple live loop, so the product r
 the same call that the trusted evaluation scores.
 """
 
+from types import SimpleNamespace
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
+
+from aletheia.passages import select_passages, terms
 
 
 def collapse(text):
@@ -58,3 +61,32 @@ def validate_answer(answer, pages, originals):
         "downgraded": downgraded,
         "original_answer": answer.model_dump(),
     }
+
+
+def offer_pages(claim_text, sources, *, limit=6, max_chars=6000, first=()):
+    """Choose and number the pages one verdict call sees.
+
+    Sources are snapshots. They are ranked by words shared with the claim and the best
+    `limit` are offered. Sources in `first` are given a place before the others, so
+    pages read for a follow-up cannot be ranked out of the call made to judge them.
+    Returns the chosen snapshots and the offered pages, in the same order.
+    """
+    wanted = terms(claim_text)
+
+    def rank(source):
+        return -len(wanted & terms(source.title + " " + source.original_text))
+
+    kept = sorted(first, key=rank)[:limit]
+    others = sorted((s for s in sources if not any(s is k for k in kept)), key=rank)
+    used = sorted(kept + others[: limit - len(kept)], key=rank)
+    reader = SimpleNamespace(text=claim_text)
+    offered = [
+        {
+            "page": number,
+            "url": source.url,
+            "title": source.title,
+            "passages": [p.text for p in select_passages(reader, source, max_chars=max_chars)],
+        }
+        for number, source in enumerate(used, start=1)
+    ]
+    return used, offered

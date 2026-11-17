@@ -1,6 +1,7 @@
 """The simple search-and-verdict loop over fake providers; no network."""
 
 import json
+import time
 from contextlib import asynccontextmanager
 from dataclasses import replace
 from datetime import UTC, datetime
@@ -12,8 +13,10 @@ from pydantic import SecretStr
 from research_fixtures import terminal
 
 from aletheia.api import create_app
+from aletheia.budgets import CallBudget
 from aletheia.config import ConfigurationError, ProviderSettings, Settings
 from aletheia.evidence import snapshot
+from aletheia.one_call import offer_pages
 from aletheia.providers.nebius import NebiusProvider
 from aletheia.providers.tavily import TavilyProvider
 from aletheia.simple import excluded, locate, official
@@ -36,7 +39,15 @@ class Fake:
         verdict_status=200,
         checks=(),
         check_status=200,
+        retries=0,
+        statuses=(),
+        search_status=200,
+        plan=None,
+        same_hits=False,
     ):
+        # statuses: HTTP statuses for successive verdict calls; 200 once they run out.
+        self.retries, self.statuses = retries, list(statuses)
+        self.search_status, self.plan, self.same_hits = search_status, plan, same_hits
         self.answers = list(answers)
         # Readings for the quotation check, in order; "unclear" once they run out.
         self.checks, self.check_status = list(checks), check_status
@@ -54,14 +65,15 @@ class Fake:
                 if self.plan_status != 200:
                     return httpx.Response(self.plan_status, json={})
                 previous = json.loads(data["messages"][1]["content"]).get("previous_queries", [])
-                value = {"queries": [f"archive opening record {len(previous)}"]}
+                value = {"queries": self.plan or [f"archive opening record {len(previous)}"]}
             elif title == "Check":
                 if self.check_status != 200:
                     return httpx.Response(self.check_status, json={})
                 value = {"direction": self.checks.pop(0) if self.checks else "unclear"}
             else:
-                if self.verdict_status != 200:
-                    return httpx.Response(self.verdict_status, json={})
+                status = self.statuses.pop(0) if self.statuses else self.verdict_status
+                if status != 200:
+                    return httpx.Response(status, json={})
                 value = self.answers.pop(0)
             return httpx.Response(
                 200,
@@ -77,7 +89,9 @@ class Fake:
             )
         self.calls.append(request.url.path)
         if request.url.path == "/search":
-            round_number = self.calls.count("/search")
+            if self.search_status != 200:
+                return httpx.Response(self.search_status, json={})
+            round_number = 1 if self.same_hits else self.calls.count("/search")
             return httpx.Response(
                 200,
                 json={
@@ -95,6 +109,8 @@ class Fake:
             )
         url = data["urls"][0]
         text = self.pages if isinstance(self.pages, str) else self.pages.get(url)
+        if isinstance(text, int):
+            return httpx.Response(text, json={})
         return httpx.Response(
             200,
             json={
@@ -109,7 +125,7 @@ class Fake:
             nebius_api_key=SecretStr("synthetic-nebius"),
             tavily_api_key=SecretStr("synthetic-tavily"),
             nebius_model="synthetic-model",
-            max_retries=0,
+            max_retries=self.retries,
         )
         transport = httpx.MockTransport(self.handle)
         async with (
@@ -124,9 +140,11 @@ def answer(verdict, text="The Archive opened in 2000.", page=1):
     return {"verdict": verdict, "quotes": quotes, "reason": "What the page states."}
 
 
-async def check(settings, fake, claim=CLAIM):
+async def check(settings, fake, claim=CLAIM, **options):
     app = create_app(
-        replace(settings, research_enabled=True, pipeline="simple"), provider_factory=fake.factory
+        replace(settings, research_enabled=True, pipeline="simple"),
+        provider_factory=fake.factory,
+        **options,
     )
     async with (
         app.router.lifespan_context(app),
@@ -218,9 +236,10 @@ async def test_empty_search_results_end_without_a_verdict_call(settings):
     assert "Search returned no page that could be read." in saved["result"]["limitations"]
 
 
-async def test_pages_that_cannot_be_read_end_without_a_verdict_call(settings):
+async def test_pages_that_cannot_be_read_end_partial_without_a_verdict_call(settings):
     fake = Fake([], pages={})
     saved, _, events = await check(settings, fake)
+    assert saved["status"] == "partial" and saved["stop_reason"] == "provider_failure"
     assert saved["result"]["verdict"] is None and "Answer" not in fake.calls
     assert any(e["type"] == "source_rejected" for e in events)
 
@@ -264,10 +283,14 @@ def test_locate_returns_the_pages_own_text_and_spans_or_nothing():
     source = snapshot(
         url="https://source.test/a", title="t", published_date=None, retrieved_at=NOW, text=PAGE
     )
-    found = locate(source, "The Archive opened in 2000. It moved in 2010.")
+    found = locate(source, "The Archive opened in 2000. It moved in 2010.", CLAIM)
     assert source.normalized_text[found.start : found.end] == found.text
     assert len(found.span_ids) == 2
-    assert locate(source, "The Archive closed.") is None
+    assert locate(source, "The Archive closed.", CLAIM) is None
+    # A fragment inside a word, a short fragment and an unrelated passage are rejected.
+    assert locate(source, "rchive opened in 2000", CLAIM) is None
+    assert locate(source, "in 2000", CLAIM) is None
+    assert locate(source, "It moved in 2010.", "Bananas are yellow fruit.") is None
 
 
 def test_the_staged_pipeline_stays_the_default_and_unknown_names_are_rejected(tmp_path):
@@ -333,3 +356,138 @@ async def test_an_unclear_or_failed_check_leaves_the_quoted_verdict_standing(
     assert saved["result"]["verdict"] == "true"
     noted = "The second check of the quotations could not be run." in saved["result"]["limitations"]
     assert noted == (status == 500)
+
+
+# --- Cases from the review of this loop ------------------------------------------------
+
+
+async def test_a_provider_retry_does_not_use_up_a_later_planned_call(settings):
+    # The first verdict call is rate limited once, then answers; the follow-up's
+    # verdict call must still be allowed.
+    fake = Fake([answer("cannot_settle", None), answer("true")], retries=2, statuses=[429])
+    saved, _, _ = await check(settings, fake)
+    assert saved["status"] == "completed" and saved["result"]["verdict"] == "true"
+    assert fake.calls.count("Answer") == 3 and fake.calls.count("Queries") == 2
+
+
+async def test_a_limit_while_reading_pages_still_judges_the_pages_already_read(settings):
+    def one_page_only():
+        return CallBudget(18, 18, 1, time.monotonic() + 150)
+
+    fake = Fake([answer("cannot_settle", None)], hits=3)
+    saved, evidence, _ = await check(settings, fake, budget_factory=one_page_only)
+    assert len(evidence["sources"]) == 1 and fake.calls.count("Answer") == 1
+    assert saved["status"] == "partial" and saved["stop_reason"] == "budget_exhausted"
+    assert fake.calls.count("Queries") == 1  # no follow-up is planned after a limit
+
+
+async def test_a_limit_while_reading_pages_does_not_block_a_quoted_verdict(settings):
+    fake = Fake([answer("true")], hits=3)
+    saved, _, _ = await check(
+        settings, fake, budget_factory=lambda: CallBudget(18, 18, 1, time.monotonic() + 150)
+    )
+    assert saved["status"] == "completed" and saved["result"]["verdict"] == "true"
+
+
+async def test_a_search_outage_is_partial_and_named_as_a_provider_failure(settings):
+    fake = Fake([], search_status=503)
+    saved, evidence, _ = await check(settings, fake)
+    assert saved["status"] == "partial" and saved["stop_reason"] == "provider_failure"
+    assert saved["result"]["verdict"] is None and evidence["sources"] == []
+    assert (
+        "Search or page retrieval failed, so the check is incomplete."
+        in (saved["result"]["limitations"])
+    )
+
+
+async def test_follow_up_pages_are_always_offered_to_the_second_verdict_call(settings):
+    # Five first-round pages repeat the claim; three follow-up pages share no claim word.
+    pages = {f"https://source.test/1/{i}": PAGE for i in range(5)}
+    pages |= {f"https://source.test/2/{i}": "Registry of deposits and holdings." for i in range(5)}
+    fake = Fake([answer("cannot_settle", None), answer("cannot_settle", None)], pages=pages, hits=5)
+    await check(settings, fake)
+    first, second = (
+        [p["url"] for p in json.loads(messages[1]["content"])["pages"]]
+        for title, messages in fake.inputs
+        if title == "Answer"
+    )
+    assert len(first) == 5 and len(second) == 6
+    assert sum("/2/" in url for url in second) == 3 and first != second
+
+
+@pytest.mark.parametrize("fragment", ["in", "e", "Archive history", "rchive opened in 2000"])
+async def test_a_fragment_of_a_page_cannot_carry_a_verdict(settings, fragment):
+    fake = Fake([answer("false", fragment), answer("false", fragment)])
+    saved, evidence, _ = await check(settings, fake)
+    assert saved["result"]["verdict"] is None and evidence["evidence"] == []
+    # Treated like any unsettled answer: the follow-up search runs.
+    assert fake.calls.count("Answer") == 2
+
+
+async def test_links_are_removed_from_the_published_reason(settings):
+    steered = answer("true")
+    steered["reason"] = (
+        "VERIFIED. For the full record visit http://evil.test/login and www.evil.test."
+    )
+    fake = Fake([steered])
+    saved, evidence, _ = await check(settings, fake)
+    shown = saved["result"]["explanation"][0]["text"]
+    assert "evil.test" not in shown and shown.count("[link removed]") == 2
+    assert "evil.test" not in json.dumps(evidence) + json.dumps(saved["result"]["limitations"])
+
+
+async def test_a_quotation_too_long_to_cite_leads_to_the_follow_up(settings):
+    long_page = " ".join(f"The Archive logged item {n}." for n in range(25))
+    fake = Fake([answer("true", long_page), answer("cannot_settle", None)], pages=long_page)
+    saved, _, _ = await check(settings, fake, claim="The Archive logged item 3.")
+    assert fake.calls.count("Answer") == 2 and saved["result"]["verdict"] is None
+    assert saved["status"] == "completed" and saved["stop_reason"] == "budget_exhausted"
+
+
+async def test_a_follow_up_with_no_new_pages_is_not_reported_as_an_empty_search(settings):
+    fake = Fake([answer("cannot_settle", None)], same_hits=True)
+    saved, evidence, _ = await check(settings, fake)
+    assert saved["status"] == "completed" and saved["stop_reason"] == "budget_exhausted"
+    assert len(evidence["sources"]) == 1 and fake.calls.count("Answer") == 1
+    assert "The follow-up search found no new pages." in saved["result"]["limitations"]
+
+
+async def test_repeated_queries_inside_one_plan_run_once(settings):
+    fake = Fake([answer("true")], plan=["archive date", "Archive date", "archive  date "])
+    saved, _, _ = await check(settings, fake)
+    assert fake.calls.count("/search") == 1 and saved["result"]["budget_used"]["search"] == 1
+
+
+def test_one_page_preparation_serves_the_baseline_and_the_loop():
+    import importlib.util
+    import sys
+    from pathlib import Path
+
+    scripts = Path(__file__).parents[1] / "scripts"
+    sys.path.insert(0, str(scripts))
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "baseline_shared", scripts / "baseline_verdict.py"
+        )
+        baseline = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(baseline)
+    finally:
+        sys.path.remove(str(scripts))
+    assert baseline.offer_pages is offer_pages
+
+    def page(name, text):
+        return snapshot(
+            url=f"https://source.test/{name}",
+            title=name,
+            published_date=None,
+            retrieved_at=NOW,
+            text=text,
+        )
+
+    matching = [page(f"m{i}", "The Archive opened in 2000.") for i in range(7)]
+    other = page("other", "Registry of deposits.")
+    used, offered = offer_pages(CLAIM, [*matching, other])
+    assert [s.title for s in used] == [f"m{i}" for i in range(6)]
+    assert [p["page"] for p in offered] == [1, 2, 3, 4, 5, 6]
+    used, _ = offer_pages(CLAIM, [*matching, other], first=[other])
+    assert other in used and len(used) == 6

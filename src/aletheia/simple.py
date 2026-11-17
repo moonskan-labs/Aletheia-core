@@ -18,8 +18,8 @@ from pydantic import BaseModel, ConfigDict, Field
 from aletheia.budgets import CallBudget
 from aletheia.comparison import compare
 from aletheia.evidence import canonical_url, digest, snapshot
-from aletheia.one_call import INSTRUCTIONS, Answer, validate_answer
-from aletheia.passages import select_passages, terms
+from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, validate_answer
+from aletheia.passages import terms
 from aletheia.providers.errors import ErrorCode, ProviderError
 from aletheia.research_contracts import (
     Assertion,
@@ -38,6 +38,11 @@ MAX_ROUNDS = 2  # the first search, then at most one follow-up
 PAGES_PER_ROUND = (6, 3)
 PAGES_OFFERED = 6
 PASSAGE_CHARS = 6000
+# Planned work: per round one plan, one verdict and one check call; three searches;
+# and the round's pages plus two spare tries for pages that cannot be read.
+MODEL_CALLS, SEARCH_CALLS, SPARE_PAGE_TRIES = 6, 6, 2
+# The provider adapter charges every attempt, and one call may be tried three times.
+ATTEMPTS_PER_CALL = 3
 # The run cannot continue, and a retry by the user would fail the same way.
 FATAL = {ErrorCode.AUTHENTICATION, ErrorCode.QUOTA, ErrorCode.CONFIGURATION}
 LIMITS = {ErrorCode.BUDGET, ErrorCode.DEADLINE}
@@ -100,28 +105,46 @@ class Queries(BaseModel):
 
 
 def simple_budget():
-    # Per round: one planning call, one verdict call and one check of its quotations.
-    # Three searches and up to nine pages over both rounds, with one spare page attempt.
-    return CallBudget(6, 6, 10, time.monotonic() + 150)
-
-
-def locate(source, text):
-    """Map an accepted quotation to its exact place and spans in the saved page."""
-    pattern = r"\s+".join(re.escape(token) for token in text.split())
-    match = re.search(pattern, source.normalized_text)
-    if not match:
-        return None
-    ids = [s.id for s in source.spans if s.start < match.end() and s.end > match.start()]
-    if not ids or len(ids) > 20:
-        return None
-    quote = source.normalized_text[match.start() : match.end()]
-    return Excerpt(
-        span_ids=ids,
-        start=match.start(),
-        end=match.end(),
-        text=quote,
-        quote_hash=digest(quote),
+    # Sized in attempts, so a provider retry cannot use up a later planned call. The
+    # loop itself bounds the number of calls: two rounds, three queries, counted pages.
+    pages = sum(PAGES_PER_ROUND) + SPARE_PAGE_TRIES * MAX_ROUNDS
+    return CallBudget(
+        MODEL_CALLS * ATTEMPTS_PER_CALL,
+        SEARCH_CALLS * ATTEMPTS_PER_CALL,
+        pages * ATTEMPTS_PER_CALL,
+        time.monotonic() + 150,
     )
+
+
+def without_links(text):
+    """The model's reason is shown to the user; a page must not place a link in it."""
+    return re.sub(r"(?i)\b(?:https?://|www\.)\S+", "[link removed]", text)
+
+
+def locate(source, text, claim_text):
+    """Map a quotation to its exact place and spans in the saved page, or reject it.
+
+    A usable quotation has at least three words, shares a word with the claim, and
+    starts and ends on word boundaries in the page. A fragment of a word, a single
+    common word or an unrelated heading cannot carry a verdict.
+    """
+    if len(re.findall(r"\w+", text)) < 3 or not terms(text) & terms(claim_text):
+        return None
+    page = source.normalized_text
+    pattern = r"\s+".join(re.escape(token) for token in text.split())
+    for match in re.finditer(pattern, page):
+        start, end = match.span()
+        inside_word = (start and page[start - 1].isalnum() and page[start].isalnum()) or (
+            end < len(page) and page[end].isalnum() and page[end - 1].isalnum()
+        )
+        if inside_word:
+            continue
+        ids = [s.id for s in source.spans if s.start < end and s.end > start]
+        if not ids or len(ids) > 20:
+            return None
+        quote = page[start:end]
+        return Excerpt(span_ids=ids, start=start, end=end, text=quote, quote_hash=digest(quote))
+    return None
 
 
 class SimplePipeline:
@@ -188,8 +211,17 @@ class SimplePipeline:
             for round_index in range(MAX_ROUNDS):
                 await emit("stage_started", {"stage": "planning"}, stage="planning")
                 queries = await self.plan(ask, emit, claim, context, asked, state)
-                queries = [q for q in queries if q.casefold() not in {a.casefold() for a in asked}]
+                known = {a.casefold() for a in asked}
+                queries, planned = [], queries
+                for query in (" ".join(q.split()) for q in planned):
+                    # Drop repeats of earlier rounds and repeats inside this plan.
+                    if query and query.casefold() not in known:
+                        known.add(query.casefold())
+                        queries.append(query)
                 if not queries:
+                    if round_index:
+                        stop_reason = "budget_exhausted"
+                        limitations.append("The follow-up produced no new search to run.")
                     await emit(
                         "research_gate",
                         {"action": "stop", "reason": "no_useful_query", "round": str(round_index)},
@@ -200,18 +232,35 @@ class SimplePipeline:
                         "followup_planned", {"gap": state["reason"], "round": str(round_index)}
                     )
                 asked.extend(queries)
-                added = await self.gather(
+                found = await self.gather(
                     emit, budget, run_id, queries, sources, seen_urls, PAGES_PER_ROUND[round_index]
                 )
-                if not added:
+                if not found["added"]:
                     # Never judge without new pages: nothing new could change the answer.
+                    # Say why there were none: a limit, a provider failure, or the web.
+                    reason = "no_new_pages"
+                    if found["limit"]:
+                        partial, stop_reason = True, found["limit"]
+                        reason = found["limit"]
+                        limitations.append("Research stopped at a time or call limit.")
+                    elif found["failed"]:
+                        partial, stop_reason = True, "provider_failure"
+                        reason = "provider_failure"
+                        limitations.append(
+                            "Search or page retrieval failed, so the check is incomplete."
+                        )
+                    elif round_index:
+                        stop_reason = "budget_exhausted"
+                        limitations.append("The follow-up search found no new pages.")
                     await emit(
                         "research_gate",
-                        {"action": "stop", "reason": "no_new_pages", "round": str(round_index)},
+                        {"action": "stop", "reason": reason, "round": str(round_index)},
                     )
                     break
                 await emit("stage_started", {"stage": "verifying"}, stage="verifying")
-                state, used = await self.judge(ask, emit, assertion, context, sources)
+                state, used = await self.judge(
+                    ask, emit, assertion, context, sources, found["added"]
+                )
                 if state["verdict"] in {"true", "false"}:
                     stop_reason = "evidence_sufficient"
                     await emit(
@@ -221,6 +270,15 @@ class SimplePipeline:
                             "reason": "verdict_with_quotes",
                             "round": str(round_index),
                         },
+                    )
+                    break
+                if found["limit"]:
+                    # The pages read before the limit were judged; no follow-up can run.
+                    partial, stop_reason = True, found["limit"]
+                    limitations.append("Research stopped at a time or call limit.")
+                    await emit(
+                        "research_gate",
+                        {"action": "stop", "reason": stop_reason, "round": str(round_index)},
                     )
                     break
                 if round_index + 1 < MAX_ROUNDS:
@@ -286,11 +344,7 @@ class SimplePipeline:
         evidence = []
         if state:
             relation = {"true": "supports", "false": "contradicts"}.get(verdict, "context")
-            for quote in state["quotes"]:
-                source = used[quote["page"] - 1]
-                excerpt = locate(source, quote["text"])
-                if excerpt is None:
-                    continue
+            for source, excerpt in state["located"]:
                 evidence.append(
                     Evidence(
                         id=str(uuid4()),
@@ -315,10 +369,6 @@ class SimplePipeline:
                         rejection_reason=None,
                     )
                 )
-        if verdict in {"true", "false"} and not evidence:
-            # The same rule as the quote check: no located quotation, no verdict.
-            verdict, stop_reason = "cannot_settle", "invalid_task_output"
-            limitations.append("No valid supporting quotation was returned.")
         decided = verdict in {"true", "false"}
         if evidence:
             await storage.save_records(run_id, "evidence", evidence)
@@ -411,6 +461,13 @@ class SimplePipeline:
             return [] if asked else [claim[:300]]
 
     async def gather(self, emit, budget, run_id, queries, sources, seen_urls, page_limit):
+        """Search and read pages for one round.
+
+        Returns the pages added, whether any search or page failed, and the limit that
+        stopped the round, if one did. A limit ends gathering, not the round: the
+        pages already read are still judged.
+        """
+        found = {"added": [], "failed": False, "limit": None}
         batches = []
         for query in queries:
             query_id = budget.trace_id("q")
@@ -418,14 +475,18 @@ class SimplePipeline:
             try:
                 result = await self.search.search(query, budget=budget, max_results=5)
             except ProviderError as exc:
-                if exc.code in FATAL | LIMITS:
+                if exc.code in FATAL:
                     raise
-                # One failed search is reported and the other queries still run.
                 await emit(
                     "search_incomplete",
                     {"reason": exc.code.value, "query_id": query_id},
                     stage="searching",
                 )
+                if exc.code in LIMITS:
+                    found["limit"] = exc.code.value
+                    break
+                # One failed search is reported and the other queries still run.
+                found["failed"] = True
                 continue
             await emit(
                 "search_completed",
@@ -452,17 +513,22 @@ class SimplePipeline:
             (hit for hit in candidates if not excluded(hit.url)),
             key=lambda hit: not official(hit.url),
         )
-        added = 0
+        tried = 0
         for hit in candidates:
             key = canonical_url(hit.url)
             if key in seen_urls:
                 continue
-            if added == page_limit or budget.used["extract"] >= budget.extraction_attempts:
+            if len(found["added"]) == page_limit or tried == page_limit + SPARE_PAGE_TRIES:
                 break
+            tried += 1
             seen_urls.add(key)
             await emit(
                 "source_selected",
-                {"url": hit.url, "slot": str(added + 1), "selection_rule": "query_balanced_rank"},
+                {
+                    "url": hit.url,
+                    "slot": str(len(found["added"]) + 1),
+                    "selection_rule": "official_first_query_balanced",
+                },
                 stage="extracting",
             )
             page = None
@@ -471,15 +537,19 @@ class SimplePipeline:
                 page = extraction.pages[0]
                 reason = page.error or (None if page.content else "empty_content")
             except ProviderError as exc:
-                if exc.code in FATAL | LIMITS:
+                if exc.code in FATAL:
                     raise
                 reason = exc.code.value
             if reason:
                 await emit(
                     "source_rejected", {"url": hit.url, "reason": str(reason)}, stage="extracting"
                 )
-                if reason in FATAL | LIMITS:
+                if reason in FATAL:
                     raise ProviderError("tavily", ErrorCode(reason))
+                if reason in LIMITS:
+                    found["limit"] = str(reason)
+                    break
+                found["failed"] = True
                 continue
             source = snapshot(
                 url=hit.url,
@@ -498,59 +568,53 @@ class SimplePipeline:
             source.limitations.extend(page.limitations)
             await self.storage.save_records(run_id, "snapshot", [source])
             sources.append(source)
-            added += 1
+            found["added"].append(source)
             await emit(
                 "source_extracted",
                 {"snapshot_id": source.id, "url": hit.url, "duplicate": "false"},
                 stage="extracting",
             )
-        return added
+        return found
 
-    async def judge(self, ask, emit, assertion, context, sources):
-        wanted = terms(assertion.text)
-        ranked = sorted(
-            sources, key=lambda s: -len(wanted & terms(s.title + " " + s.original_text))
+    async def judge(self, ask, emit, assertion, context, sources, fresh):
+        # Pages read in this round are always offered: a follow-up must be judged on
+        # what it found, not on the first round's pages again.
+        used, offered = offer_pages(
+            assertion.text, sources, limit=PAGES_OFFERED, max_chars=PASSAGE_CHARS, first=fresh
         )
-        used, offered = [], []
-        for source in ranked:
-            passages = select_passages(assertion, source, max_chars=PASSAGE_CHARS)
-            if not passages:
-                continue
-            used.append(source)
-            offered.append(
-                {
-                    "page": len(offered) + 1,
-                    "url": source.url,
-                    "title": source.title,
-                    "passages": [p.text for p in passages],
-                }
-            )
-            if len(offered) == PAGES_OFFERED:
-                break
-        if not offered:
-            return {
-                "verdict": "cannot_settle",
-                "quotes": [],
-                "invalid_quotes": [],
-                "reason": "The retrieved pages had no readable text.",
-            }, used
         payload = {"claim": assertion.text, "pages": offered}
         if context:
             payload["context"] = context
         answer = await ask(INSTRUCTIONS, payload, Answer)
         state = validate_answer(answer, offered, [s.original_text for s in used])
+        state["reason"] = without_links(state["reason"])
+        # Locate inside the round, so a quotation that cannot carry a verdict leads to
+        # the follow-up search like any other unsettled answer.
+        state["located"] = []
+        for quote in state["quotes"]:
+            source = used[quote["page"] - 1]
+            excerpt = locate(source, quote["text"], assertion.text)
+            if excerpt is None:
+                state["invalid_quotes"].append(quote)
+            else:
+                state["located"].append((source, excerpt))
+        if state["verdict"] in {"true", "false"} and not state["located"]:
+            state.update(
+                verdict="cannot_settle", reason="No usable supporting quotation was returned."
+            )
         if state["verdict"] in {"true", "false"}:
-            await self.check(ask, emit, assertion, state, used)
+            await self.check(ask, emit, assertion, state)
         return state, used
 
-    async def check(self, ask, emit, assertion, state, used):
+    async def check(self, ask, emit, assertion, state):
         """A second reading of the accepted quotations alone; it can only veto.
 
         The verdict is withdrawn when the quotations point the opposite way. An
         unclear reading, or a check that could not run, leaves the verdict standing.
         """
         quotations = [
-            {"page_title": used[q["page"] - 1].title, "text": q["text"]} for q in state["quotes"]
+            {"page_title": source.title, "text": excerpt.text}
+            for source, excerpt in state["located"]
         ]
         try:
             reading = await ask(

@@ -23,14 +23,17 @@ keep working.
    measures) sees the claim and the most relevant passages of up to six pages. It
    returns `true`, `false` or `cannot_settle`, up to four quotations and a reason.
 4. **Check the quotations.** A quotation counts only if it is found word for word in
-   the saved page. A `true` or `false` answer with no such quotation is not published.
+   the saved page, has at least three words, shares a word with the claim, and starts
+   and ends on word boundaries. A `true` or `false` answer with no such quotation is
+   treated as `cannot_settle`. Links are removed from the model's reason.
 5. **Check the verdict against its quotations.** A second, small model call sees only
    the claim and the accepted quotations and says which way they point. If they point
    the opposite way to the verdict, the verdict is withdrawn and treated as
    `cannot_settle`. An unclear reading leaves the verdict standing.
 6. **Follow up once.** If the answer is `cannot_settle`, one more plan call gets the
    model's reason as "what is missing", up to three new pages are read, and the judge
-   call runs once more over all pages. Then the loop stops.
+   call runs once more. The new pages are always among the six it sees. Then the loop
+   stops.
 
 Page text reaches the model only as data in the user message. The instructions are
 fixed and tell the model not to follow instructions found inside pages.
@@ -39,20 +42,26 @@ fixed and tell the model not to follow instructions found inside pages.
 
 | Situation | Status | Stop reason | Verdict |
 | --- | --- | --- | --- |
-| True or false with a located quotation | completed | `evidence_sufficient` | true / false |
-| Not settled after the follow-up | completed | `budget_exhausted` | none |
-| Search found nothing, or no page could be read | completed | `no_useful_query` | none |
+| True or false with a usable quotation | completed | `evidence_sufficient` | true / false |
+| Not settled after the follow-up, or the follow-up found nothing new | completed | `budget_exhausted` | none |
+| The first search found no results | completed | `no_useful_query` | none |
+| No page was added because a search or page retrieval failed | partial | `provider_failure` | none |
 | The model's answer could not be used | partial | `invalid_task_output` | none |
-| Search or retrieval failed part-way | partial | `provider_failure` | none |
-| Time or call limit reached | partial | the limit's name | none |
+| Time or call limit reached | partial | the limit's name | from the pages read, if settled |
 | Credentials rejected or quota exhausted | failed | `provider_failure` | no result |
+
+A limit reached while searching or reading stops the gathering, not the round: the
+pages already read are still judged.
 
 Without a verdict the result is `unable_to_decide` with `insufficient_evidence`, and
 the model's reason is listed under limitations.
 
 ## Limits per claim
 
-At most 6 model calls, 6 searches and 10 page extractions, within 150 seconds.
+At most 6 model calls, 6 searches and 13 page reads (6 + 3 pages, with two spare tries
+per round for pages that cannot be read), within 150 seconds. The budget is counted in
+attempts and allows three attempts per call, so a provider retry does not use up a
+later call.
 
 ## What it does not do
 
