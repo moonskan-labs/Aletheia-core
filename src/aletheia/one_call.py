@@ -4,6 +4,7 @@ Shared by the offline baseline runner and the simple live loop, so the product r
 the same call that the trusted evaluation scores.
 """
 
+import re
 from types import SimpleNamespace
 from typing import Literal
 
@@ -33,6 +34,71 @@ def collapse(text):
     return " ".join(text.split())
 
 
+# Page text arrives from extraction as markdown, but a model quoting a page usually
+# drops the marks: "[Louisiana](https://...)" is quoted as "Louisiana", "**21 million**"
+# as "21 million". These marks are ignored when a quotation is matched; the words, their
+# order, their case and their punctuation must still be the page's own.
+LINK_TARGET = re.compile(r"\]\([^()\s]*(?:\([^()\s]*\)[^()\s]*)*(?:\s+\"[^\"]*\")?\)")
+LINE_MARK = re.compile(r"(?m)^[ \t]*(?:#{1,6}|>+|[-*+])[ \t]+")
+
+
+def skeleton(text):
+    """The text without markdown marks and with whitespace collapsed.
+
+    Returns the text, the index in `text` of each character kept, and a mask of the
+    characters dropped as marks, so a match can be mapped back to the page.
+    """
+    mark = bytearray(len(text))
+    for pattern in (LINK_TARGET, LINE_MARK):
+        for match in pattern.finditer(text):
+            mark[match.start() : match.end()] = b"\x01" * (match.end() - match.start())
+    chars, index = [], []
+    for i, char in enumerate(text):
+        before = text[i - 1] if i else ""
+        after = text[i + 1] if i + 1 < len(text) else ""
+        if (
+            mark[i]
+            or char in "*[]"
+            or (char == "_" and not (before.isalnum() and after.isalnum()))
+            or (char == "!" and after == "[")
+            or (char == "\\" and after and not after.isalnum() and not after.isspace())
+        ):
+            mark[i] = 1
+            continue
+        if char.isspace() or char == "|":
+            if not chars or chars[-1] == " ":
+                continue
+            char = " "
+        chars.append(char)
+        index.append(i)
+    return "".join(chars), index, mark
+
+
+def quote_matches(page, quote):
+    """Each (start, end) in `page` where `quote` appears, ignoring markdown marks.
+
+    Quote glyphs and whitespace are normalized as before. A match is widened over the
+    marks touching it, so "[Louisiana](...)" is cited whole rather than cut open.
+    """
+    target = skeleton(quote_characters(quote))[0].strip()
+    if not target:
+        return
+    text, index, mark = skeleton(quote_characters(page))
+    position = text.find(target)
+    while position != -1:
+        start, end = index[position], index[position + len(target) - 1] + 1
+        while start > 0 and mark[start - 1] and not page[start - 1].isspace():
+            start -= 1
+        while end < len(page) and mark[end] and not page[end].isspace():
+            end += 1
+        yield start, end
+        position = text.find(target, position + 1)
+
+
+def quoted_in(page, quote):
+    return next(quote_matches(page, quote), None) is not None
+
+
 class Quote(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     page: int = Field(ge=1)
@@ -58,15 +124,13 @@ Do not use outside knowledge or invent quotations."""
 def validate_answer(answer, pages, originals):
     valid, invalid = [], []
     for quote in answer.quotes:
-        text = collapse(quote_characters(quote.text))
         page = next((p for p in pages if p["page"] == quote.page), None)
         # It must appear both in the offered text and in the original saved page:
         # joining distant selected spans must not fabricate a contiguous quotation.
         accepted = bool(
-            text
-            and page
-            and text in collapse(quote_characters("\n".join(page["passages"])))
-            and text in collapse(quote_characters(originals[quote.page - 1]))
+            page
+            and quoted_in("\n".join(page["passages"]), quote.text)
+            and quoted_in(originals[quote.page - 1], quote.text)
         )
         (valid if accepted else invalid).append(quote.model_dump())
     downgraded = answer.verdict in {"true", "false"} and not valid

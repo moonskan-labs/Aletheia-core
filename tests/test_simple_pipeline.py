@@ -510,3 +510,49 @@ def test_quote_glyph_matching_preserves_source_text_offsets_and_hash():
     assert excerpt.text == "The Archive’s name is “Museum”."
     assert source.normalized_text[excerpt.start : excerpt.end] == excerpt.text
     assert excerpt.quote_hash == digest(excerpt.text)
+
+
+# --- Quotations from pages extracted as markdown ----------------------------------------
+
+MARKDOWN_PAGE = (
+    "## Archive history\n"
+    "The [Archive](https://example.test/archive_(building)) opened in **2000**. "
+    "It moved in 2010.\n"
+    "| Opened | 2000 |\n"
+)
+
+
+def test_markdown_marks_do_not_stop_a_quotation_matching():
+    from aletheia.one_call import quote_matches
+
+    page = MARKDOWN_PAGE
+    (start, end), *_ = quote_matches(page, "The Archive opened in 2000.")
+    # The excerpt is the page's own text, widened over the marks around the words.
+    cited = "The [Archive](https://example.test/archive_(building)) opened in **2000**."
+    assert page[start:end] == cited
+    assert list(quote_matches(page, "Archive history")) == [(3, 18)]
+    row = (page.index("Opened"), page.rindex("2000") + 4)
+    assert list(quote_matches(page, "Opened 2000")) == [row]
+    # Words, their order, case and punctuation still have to be the page's own.
+    for wrong in ("The Archive opened in 2001.", "the archive opened in 2000.", "Archive 2000"):
+        assert list(quote_matches(page, wrong)) == []
+
+
+async def test_a_quotation_without_the_pages_markdown_keeps_its_verdict(settings):
+    fake = Fake([answer("true")], pages=MARKDOWN_PAGE)
+    saved, evidence, events = await check(settings, fake)
+    assert saved["status"] == "completed" and saved["result"]["verdict"] == "true"
+    (item,) = evidence["evidence"]
+    assert item["excerpts"][0]["text"].startswith("The [Archive](")
+    assert not any(e["payload"].get("admissible") == "false" for e in events)
+
+
+async def test_rejected_quotations_are_recorded_with_the_reason(settings):
+    invented = answer("true", "The Archive opened in 1999 to great acclaim.")
+    fake = Fake([invented, answer("cannot_settle", None)])
+    saved, _, events = await check(settings, fake)
+    assert saved["result"]["verdict"] is None
+    (rejected,) = [e["payload"] for e in events if e["payload"].get("admissible") == "false"]
+    assert rejected["reason"] == "not_in_page"
+    assert rejected["quotation"] == "The Archive opened in 1999 to great acclaim."
+    assert rejected["snapshot_id"]

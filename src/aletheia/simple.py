@@ -18,7 +18,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from aletheia.budgets import CallBudget
 from aletheia.comparison import compare
 from aletheia.evidence import canonical_url, digest, snapshot
-from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, quote_characters, validate_answer
+from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, quote_matches, validate_answer
 from aletheia.passages import terms
 from aletheia.providers.errors import ErrorCode, ProviderError
 from aletheia.research_contracts import (
@@ -38,6 +38,7 @@ MAX_ROUNDS = 2  # the first search, then at most one follow-up
 PAGES_PER_ROUND = (6, 3)
 PAGES_OFFERED = 6
 PASSAGE_CHARS = 6000
+QUOTATION_LOGGED = 300  # characters of a rejected quotation kept in its event
 # Planned work: per round one plan, one verdict and one check call; three searches;
 # and the round's pages plus two spare tries for pages that cannot be read.
 MODEL_CALLS, SEARCH_CALLS, SPARE_PAGE_TRIES = 6, 6, 2
@@ -131,11 +132,9 @@ def locate(source, text, claim_text):
     if len(re.findall(r"\w+", text)) < 3 or not terms(text) & terms(claim_text):
         return None
     page = source.normalized_text
-    matched_page = quote_characters(page)
-    text = quote_characters(text)
-    pattern = r"\s+".join(re.escape(token) for token in text.split())
-    for match in re.finditer(pattern, matched_page):
-        start, end = match.span()
+    # Markdown marks from extraction are ignored, as in validate_answer; the excerpt
+    # saved is still the page's own text at those offsets, marks included.
+    for start, end in quote_matches(page, text):
         inside_word = (start and page[start - 1].isalnum() and page[start].isalnum()) or (
             end < len(page) and page[end].isalnum() and page[end - 1].isalnum()
         )
@@ -593,13 +592,29 @@ class SimplePipeline:
         # Locate inside the round, so a quotation that cannot carry a verdict leads to
         # the follow-up search like any other unsettled answer.
         state["located"] = []
+        unusable = []
         for quote in state["quotes"]:
             source = used[quote["page"] - 1]
             excerpt = locate(source, quote["text"], assertion.text)
             if excerpt is None:
-                state["invalid_quotes"].append(quote)
+                unusable.append(quote)
             else:
                 state["located"].append((source, excerpt))
+        # Record each rejected quotation, so a run shows why a verdict was not kept.
+        for reason, quotes in (("not_in_page", state["invalid_quotes"]), ("not_usable", unusable)):
+            for quote in quotes:
+                number = quote["page"]
+                await emit(
+                    "evidence_checked",
+                    {
+                        "snapshot_id": used[number - 1].id if 0 < number <= len(used) else "",
+                        "admissible": "false",
+                        "reason": reason,
+                        "quotation": without_links(quote["text"])[:QUOTATION_LOGGED],
+                    },
+                    stage="verifying",
+                )
+        state["invalid_quotes"].extend(unusable)
         if state["verdict"] in {"true", "false"} and not state["located"]:
             state.update(
                 verdict="cannot_settle", reason="No usable supporting quotation was returned."
