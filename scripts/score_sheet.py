@@ -32,7 +32,11 @@ def main(argv=None):
     try:
         rows = sheet_rows(args.claims_csv)
         text = report([score_run(folder, rows) for folder in args.runs])
-        print(text.replace("Tokens (trusted subset)", "Tokens"), end="")
+        text = text.replace("Tokens (trusted subset)", "Tokens").replace(
+            "Tokens cover only the included trusted claims; excluded historical claims are ignored. ",
+            "Tokens cover the claims in the sheet. ",
+        )
+        print(text, end="")
         return 0
     except (ValueError, KeyError, OSError):
         print("Sheet scoring stopped: check the claims CSV and run folders.")

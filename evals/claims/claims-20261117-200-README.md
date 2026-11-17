@@ -5,9 +5,11 @@ step 1). None of these claims appears in the other CSVs under `evals/claims/`.
 
 | Expected answer | Count |
 | --- | ---: |
-| true | 89 |
-| false | 81 |
-| cannot settle (`unable_to_decide`) | 30 (29 insufficient evidence, 1 conflicting evidence) |
+| true | 90 |
+| false | 82 |
+| cannot settle (`unable_to_decide`) | 28 (27 insufficient evidence, 1 conflicting evidence) |
+
+These counts include two labels corrected after the first live run (see "Corrections" below).
 
 Subjects: science 27, history 27, geography 23, technology 20, sports records 19, law and
 treaties 18, arts and culture 17, space 14, economics and statistics 12, public health 12,
@@ -47,6 +49,24 @@ deciding fact. It does not prove the claim's wording matches the source in every
 Sources are a mix of primary pages (NIST, NASA, UNESCO, national archives, UN, WHO, CDC, RFC
 Editor, central banks, museums) and Wikipedia, which was used where the primary page could
 not be fetched automatically.
+
+## Corrections after the first live run
+
+Reviewing the misses of the first live run (`evals/runs/20261117-s200-live-gptoss120-a`) showed
+that two cannot-settle labels were wrong. The model had found the evidence, so both were
+relabelled, and each row's `note` says so:
+
+- `s200-108` (Bolt took exactly 41 strides in the 9.58 s run): **true**. A peer-reviewed
+  biomechanics review (PMC10669785) reports 41 steps.
+- `s200-009` (exactly 1,212 workers on the Eiffel Tower site on completion day): **false**.
+  The official Tour Eiffel history gives 150 to 300 workers on site.
+
+The check in step 3 only confirmed that the claimed figure was absent. It could not catch a
+figure that is documented elsewhere, or a range on the page that rules it out. Three more
+cannot-settle labels are debatable, and were left unchanged: `s200-135`, `s200-147` and
+`s200-175` (see the run's `diagnosis.csv`). No other label was changed. Every run's own
+`labels.json` and `scores.json` keep the labels as they were when that run started;
+`scripts/score_sheet.py` scores against the current CSV.
 
 ## What the model sees
 
