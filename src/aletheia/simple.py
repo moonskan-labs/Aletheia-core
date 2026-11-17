@@ -122,14 +122,39 @@ def without_links(text):
     return re.sub(r"(?i)\b(?:https?://|www\.)\S+", "[link removed]", text)
 
 
+STEM = 5  # letters two words must share to count as forms of one word
+
+
+def related(text, claim_text):
+    """True when a quotation shares a word with the claim.
+
+    Forms of one word count ("headquarters", "headquartered"), as does an acronym of
+    the claim's capitalized words ("WTO" for "World Trade Organization").
+    """
+    quoted, claimed = terms(text), terms(claim_text)
+    if quoted & claimed:
+        return True
+    stems = {word[:STEM] for word in claimed if len(word) >= STEM}
+    if any(word[:STEM] in stems for word in quoted if len(word) >= STEM):
+        return True
+    capitals = re.findall(r"\b[A-Z]", claim_text)
+    acronyms = {
+        "".join(capitals[i:j]).casefold()
+        for i in range(len(capitals))
+        for j in range(i + 2, len(capitals) + 1)
+    }
+    # Only words written in capitals count, so "two" cannot stand for "The World Order".
+    return any(word.casefold() in acronyms for word in re.findall(r"\b[A-Z]{2,}\b", text))
+
+
 def locate(source, text, claim_text):
     """Map a quotation to its exact place and spans in the saved page, or reject it.
 
-    A usable quotation has at least three words, shares a word with the claim, and
-    starts and ends on word boundaries in the page. A fragment of a word, a single
-    common word or an unrelated heading cannot carry a verdict.
+    A usable quotation has at least three words, is related to the claim, and starts
+    and ends on word boundaries in the page. A fragment of a word, a single common word
+    or an unrelated heading cannot carry a verdict.
     """
-    if len(re.findall(r"\w+", text)) < 3 or not terms(text) & terms(claim_text):
+    if len(re.findall(r"\w+", text)) < 3 or not related(text, claim_text):
         return None
     page = source.normalized_text
     # Markdown marks from extraction are ignored, as in validate_answer; the excerpt

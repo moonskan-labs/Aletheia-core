@@ -556,3 +556,40 @@ async def test_rejected_quotations_are_recorded_with_the_reason(settings):
     assert rejected["reason"] == "not_in_page"
     assert rejected["quotation"] == "The Archive opened in 1999 to great acclaim."
     assert rejected["snapshot_id"]
+
+
+def test_a_shortened_quotation_is_kept_as_its_parts_when_each_is_the_pages_own():
+    from aletheia.one_call import Answer, validate_answer
+
+    page = (
+        "The **2016 Summer Olympics** (Portuguese: Jogos Olímpicos de Verão de 2016) "
+        "were held in Rio de Janeiro."
+    )
+    pages, originals = [{"page": 1, "passages": [page]}], [page]
+
+    def judged(text):
+        quotes = [{"page": 1, "text": text}]
+        return validate_answer(Answer(verdict="false", quotes=quotes, reason="r"), pages, originals)
+
+    state = judged("The 2016 Summer Olympics ... were held in Rio de Janeiro.")
+    assert [q["text"] for q in state["quotes"]] == [
+        "The 2016 Summer Olympics",
+        "were held in Rio de Janeiro.",
+    ]
+    assert state["verdict"] == "false"
+    # Short parts are dropped; a part that is not on the page rejects the whole quotation.
+    assert [q["text"] for q in judged("Olympics … were held in Rio de Janeiro.")["quotes"]] == [
+        "were held in Rio de Janeiro."
+    ]
+    assert judged("The 2016 Summer Olympics ... were held in Tokyo, Japan.")["downgraded"]
+    assert judged("Rio … Tokyo")["downgraded"]
+
+
+def test_a_rebuttal_in_other_words_still_counts_as_related():
+    from aletheia.simple import related
+
+    claim = "The World Trade Organization is headquartered in Brussels."
+    assert related("Its headquarters are in Geneva, Switzerland.", claim)
+    assert related("The WTO sits in Geneva, Switzerland.", claim)
+    assert not related("It moved to two new buildings.", claim)
+    assert not related("Bananas are yellow fruit.", claim)
