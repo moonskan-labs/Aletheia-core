@@ -59,7 +59,7 @@ class Fake:
         self.calls, self.inputs = [], []
         # read_delays: seconds a page read takes, by URL; reads in flight are counted.
         self.read_delays, self.reading, self.most_reading = read_delays or {}, 0, 0
-        self.read_done = []
+        self.read_done, self.read_timeouts = [], []
         self.search_delay, self.searching, self.most_searching = search_delay, 0, 0
 
     async def handle(self, request):
@@ -121,6 +121,7 @@ class Fake:
                 },
             )
         url = data["urls"][0]
+        self.read_timeouts.append(data["timeout"])
         self.reading += 1
         self.most_reading = max(self.most_reading, self.reading)
         try:
@@ -547,6 +548,7 @@ async def test_pages_are_read_together_and_kept_in_ranked_order(settings):
     assert kept == [f"https://source.test/1/{i}" for i in range(5)]
     slots = [e["payload"]["slot"] for e in events if e["type"] == "source_selected"]
     assert slots == ["1", "2", "3", "4", "5"]
+    assert set(fake.read_timeouts) == {20.0}  # a page read is given up after 20 s
 
 
 async def test_a_page_that_fails_is_replaced_from_the_spare_results(settings):

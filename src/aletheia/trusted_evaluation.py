@@ -142,8 +142,10 @@ class ReplayProvider(TavilyProvider):
             )
         raise AssertionError("Unexpected replay operation")
 
-    async def extract(self, urls, *, budget, depth="basic"):
-        result = await super().extract(urls, budget=budget, depth=depth)
+    async def extract(self, urls, *, budget, depth="basic", timeout_seconds=None):
+        result = await super().extract(
+            urls, budget=budget, depth=depth, timeout_seconds=timeout_seconds
+        )
         pages = []
         for outcome in result.pages:
             saved = self.by_url.get(outcome.url)

@@ -39,6 +39,9 @@ MAX_ROUNDS = 2  # the first search, then at most one follow-up
 PAGES_PER_ROUND = (6, 3)
 PAGES_OFFERED = 6
 PASSAGE_CHARS = 6000
+# Of 2,364 live page reads that returned a page (Nov 17 runs), 2 took over 20 s, while
+# 23 that returned nothing took over 45 s. A read is given up after 20 s.
+READ_TIMEOUT_SECONDS = 20.0
 # Planned work: per round one plan, one verdict and one check call; three searches;
 # and the round's pages plus two spare tries for pages that cannot be read.
 MODEL_CALLS, SEARCH_CALLS, SPARE_PAGE_TRIES = 6, 6, 2
@@ -572,7 +575,9 @@ class SimplePipeline:
         reads still in flight are cancelled at once.
         """
         try:
-            extraction = await self.search.extract([hit.url], budget=budget)
+            extraction = await self.search.extract(
+                [hit.url], budget=budget, timeout_seconds=READ_TIMEOUT_SECONDS
+            )
         except ProviderError as exc:
             if exc.code in FATAL:
                 raise

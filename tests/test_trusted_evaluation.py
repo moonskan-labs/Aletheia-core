@@ -517,3 +517,14 @@ def test_quote_normalization_does_not_turn_inches_into_feet():
     original = 'The height is 6".'
     state = baseline.validate_answer(answer, [{"page": 1, "passages": [original]}], [original])
     assert state["downgraded"]
+
+
+async def test_replay_accepts_the_simple_loops_read_timeout():
+    from aletheia.simple import READ_TIMEOUT_SECONDS
+
+    async with ReplayProvider(settings()) as search:
+        search.set_pages([page()])
+        result = await search.extract(
+            [page()["url"]], budget=budget(extract=1), timeout_seconds=READ_TIMEOUT_SECONDS
+        )
+        assert result.pages[0].content == page()["original_text"]
