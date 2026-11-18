@@ -40,7 +40,8 @@ Judging weights, and where the video covers each:
 "This is Aletheia. Say you're a health reporter, and a draft says 610,000 people died of
 malaria in 2024. Before that goes out, you need to know whether it's right, and you need
 to be able to show where the answer came from. Aletheia checks a claim against the live
-web and answers true, false or cannot settle, always with quotations from the pages it read."
+web and answers true, false or cannot settle. Every true or false verdict includes a
+quotation you can check."
 
 `[00:20–01:00]` **2–3. A live check, and how it works**
 
@@ -94,7 +95,8 @@ verdict: you can check it in one click."
 
 > The result: **Cannot settle**, with its limitation.
 
-"Cannot settle. Nobody recorded that number, so Aletheia says so, instead of guessing."
+"Cannot settle. The pages Aletheia found do not establish how many hikers reached the
+summit that day, so it leaves the claim unresolved."
 
 `[02:15–02:30]` **7. Saved and measured**
 
