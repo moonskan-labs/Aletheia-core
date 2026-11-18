@@ -38,8 +38,70 @@ def collapse(text):
 # drops the marks: "[Louisiana](https://...)" is quoted as "Louisiana", "**21 million**"
 # as "21 million". These marks are ignored when a quotation is matched; the words, their
 # order, their case and their punctuation must still be the page's own.
-LINK_TARGET = re.compile(r"\]\([^()\s]*(?:\([^()\s]*\)[^()\s]*)*(?:\s+\"[^\"]*\")?\)")
+LINK = re.compile(
+    r"!?\[(?P<label>[^\[\]\n]+)\]"
+    r"\([^()\s]*(?:\([^()\s]*\)[^()\s]*)*(?:\s+\"[^\"]*\")?\)"
+)
 LINE_MARK = re.compile(r"(?m)^[ \t]*(?:#{1,6}|>+|[-*+])[ \t]+")
+# Be conservative about emphasis: never treat operators inside words/numbers as
+# delimiters, or remove unmatched symbols. Code and escaped symbols stay literal.
+EMPHASIS = re.compile(
+    r"(?<![\w*_%\\])(?P<delimiter>\*{1,3}|_{1,3})(?![\s*_])"
+    r"(?P<body>[^\n]*?\S)(?P=delimiter)(?![\w*_])"
+)
+CODE = re.compile(r"(?<!`)(?P<ticks>`+)(?!`)[^`\n]*?(?P=ticks)(?!`)")
+FENCE = re.compile(r"(?ms)^ {0,3}(?P<fence>`{3,}|~{3,})[^\n]*\n.*?^ {0,3}(?P=fence)[ \t]*(?:\n|$)")
+ESCAPE = re.compile(r"\\[!\"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~]")
+TABLE_SEPARATOR = re.compile(r"^[ \t]*\|(?:[ \t]*:?-{3,}:?[ \t]*\|){2,}[ \t]*$")
+
+
+def markdown_marks(text):
+    """Mark only recognized formatting; ambiguous punctuation remains evidence."""
+    mark, protected, spaces = (bytearray(len(text)) for _ in range(3))
+
+    def flag(mask, start, end):
+        mask[start:end] = b"\x01" * (end - start)
+
+    for pattern in (FENCE, CODE, ESCAPE):
+        for match in pattern.finditer(text):
+            if any(protected[match.start() : match.end()]):
+                continue
+            flag(protected, match.start(), match.end())
+            if pattern is ESCAPE:
+                mark[match.start()] = 1
+    for match in LINK.finditer(text):
+        if not any(protected[match.start() : match.end()]):
+            flag(mark, match.start(), match.start("label"))
+            flag(mark, match.end("label"), match.end())
+    for pattern in (LINE_MARK, EMPHASIS):
+        for match in pattern.finditer(text):
+            if any(protected[match.start() : match.end()]) or any(
+                mark[match.start() : match.end()]
+            ):
+                continue
+            if pattern is EMPHASIS:
+                flag(mark, match.start(), match.start("body"))
+                flag(mark, match.end("body"), match.end())
+            else:
+                flag(mark, match.start(), match.end())
+    # Only table delimiters become spaces, not absolute values or other literal
+    # pipes. Require a Markdown separator row and whitespace around cell borders.
+    lines, offset, table = text.splitlines(keepends=True), 0, False
+    for number, line in enumerate(lines):
+        row = line.strip()
+        header = number + 1 < len(lines) and TABLE_SEPARATOR.fullmatch(lines[number + 1].strip())
+        table = bool((table or header) and row.startswith("|") and row.endswith("|"))
+        if table:
+            left, right = line.index("|"), line.rindex("|")
+            for i in range(left, right + 1):
+                if (
+                    line[i] == "|"
+                    and not protected[offset + i]
+                    and (i in (left, right) or (line[i - 1].isspace() and line[i + 1].isspace()))
+                ):
+                    spaces[offset + i] = 1
+        offset += len(line)
+    return mark, spaces
 
 
 def skeleton(text):
@@ -48,24 +110,12 @@ def skeleton(text):
     Returns the text, the index in `text` of each character kept, and a mask of the
     characters dropped as marks, so a match can be mapped back to the page.
     """
-    mark = bytearray(len(text))
-    for pattern in (LINK_TARGET, LINE_MARK):
-        for match in pattern.finditer(text):
-            mark[match.start() : match.end()] = b"\x01" * (match.end() - match.start())
+    mark, spaces = markdown_marks(text)
     chars, index = [], []
     for i, char in enumerate(text):
-        before = text[i - 1] if i else ""
-        after = text[i + 1] if i + 1 < len(text) else ""
-        if (
-            mark[i]
-            or char in "*[]"
-            or (char == "_" and not (before.isalnum() and after.isalnum()))
-            or (char == "!" and after == "[")
-            or (char == "\\" and after and not after.isalnum() and not after.isspace())
-        ):
-            mark[i] = 1
+        if mark[i]:
             continue
-        if char.isspace() or char == "|":
+        if char.isspace() or spaces[i]:
             if not chars or chars[-1] == " ":
                 continue
             char = " "
