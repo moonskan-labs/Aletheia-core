@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { InvestigationEvent } from '../api/types'
-import { describeEvent, elapsed } from '../labels'
+import { describeEvent, elapsed, runCounts } from '../labels'
 
 /** The research log: time since the first step, then what happened. */
 function EventList({ events }: { events: InvestigationEvent[] }) {
@@ -35,16 +35,30 @@ export function ResearchInProgress({ events, replay }: { events: InvestigationEv
   )
 }
 
-/** After research: the full log, collapsed below the answer. Key it by investigation ID. */
+/** Steps that only announce the next line: the finished call and the page read follow. */
+const ANNOUNCEMENTS = new Set<InvestigationEvent['type']>(['provider_attempt_started', 'source_selected'])
+
+/** After research: the log, collapsed below the answer. Key it by investigation ID. */
 export function ResearchActivity({ events }: { events: InvestigationEvent[] }) {
   const [open, setOpen] = useState(false)
   if (events.length === 0) return null
+  const steps = events.filter((event) => !ANNOUNCEMENTS.has(event.type))
+  const { searches, pages, modelCalls } = runCounts(events)
+  const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
+  // Only what the run reported: older recordings carry no provider events.
+  const facts = [
+    searches > 0 ? plural(searches, 'search', 'searches') : null,
+    pages > 0 ? plural(pages, 'page read', 'pages read') : null,
+    modelCalls > 0 ? plural(modelCalls, 'model call', 'model calls') : null,
+    events.length > 1 ? `${elapsed(events.at(-1)!.timestamp, events[0].timestamp)} elapsed` : null,
+  ].filter(Boolean)
   return (
     <details className="section activity" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
       <summary>
-        Research log · {events.length} step{events.length === 1 ? '' : 's'}
+        Research log · {steps.length} step{steps.length === 1 ? '' : 's'}
+        {facts.length > 0 && ` · ${facts.join(' · ')}`}
       </summary>
-      <EventList events={events} />
+      <EventList events={steps} />
     </details>
   )
 }

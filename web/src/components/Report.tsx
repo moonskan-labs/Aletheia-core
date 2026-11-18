@@ -252,7 +252,7 @@ export function Report(props: Props) {
                 )}
                 {finished && <ResearchActivity key={investigation.id} events={events} />}
               </div>
-              {result && <EvidencePane />}
+              {result && <EvidencePane sources={evidence?.sources ?? []} />}
             </div>
           )}
         </article>
