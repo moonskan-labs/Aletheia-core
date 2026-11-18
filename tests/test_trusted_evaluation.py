@@ -528,3 +528,57 @@ async def test_replay_accepts_the_simple_loops_read_timeout():
             [page()["url"]], budget=budget(extract=1), timeout_seconds=READ_TIMEOUT_SECONDS
         )
         assert result.pages[0].content == page()["original_text"]
+
+
+def test_sheet_scoring_maps_labels_and_scores_like_the_trusted_scorer(tmp_path, capsys):
+    import csv
+
+    import score_sheet
+
+    from aletheia.evaluation import CLAIM_COLUMNS
+
+    sheet = tmp_path / "claims.csv"
+    base = dict.fromkeys(CLAIM_COLUMNS, "")
+    labels = [
+        ("s-001", "decided", "true", ""),
+        ("s-002", "decided", "almost", ""),
+        ("s-003", "unable_to_decide", "", "insufficient_evidence"),
+    ]
+    with sheet.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=CLAIM_COLUMNS)
+        writer.writeheader()
+        for cid, outcome, verdict, reason in labels:
+            writer.writerow(
+                base
+                | {
+                    "id": cid,
+                    "split": "heldout",
+                    "claim": f"Claim {cid} about a public record.",
+                    "case_type": "direct_fact",
+                    "expected_outcome": outcome,
+                    "expected_verdict": verdict,
+                    "unable_reason": reason,
+                }
+            )
+    assert score_sheet.sheet_rows(sheet) == [
+        {"id": "s-001", "verdict": "true"},
+        {"id": "s-002", "verdict": "false"},
+        {"id": "s-003", "verdict": "cannot_settle"},
+    ]
+    run = tmp_path / "run"
+    (run / "claims").mkdir(parents=True)
+
+    def artifact(outcome, verdict=None):
+        result = {"outcome": outcome, "verdict": verdict}
+        return {"investigation": {"status": "completed", "result": result}, "events": []}
+
+    for cid, art in [
+        ("s-001", artifact("decided", "true")),
+        ("s-002", artifact("decided", "true")),
+        ("s-003", artifact("unable_to_decide")),
+    ]:
+        (run / "claims" / f"{cid}.json").write_text(json.dumps(art), encoding="utf-8")
+    assert score_sheet.main([str(sheet), str(run)]) == 0
+    out = capsys.readouterr().out
+    assert "| run | 2/3 | 1/2 | 2/3 |" in out
+    assert "s-002 (true; expected false)" in out

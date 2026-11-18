@@ -1,13 +1,13 @@
 # Aletheia web client
 
-Companion demo client for the backend described in the root [README](../README.md), sections 9 and 11. It is a static React + TypeScript app built with Vite. It never hosts or exposes the backend.
+Companion demo client for the backend described in the [design document](../docs/design.md), sections 9 and 11. It is a static React + TypeScript app built with Vite. It never hosts or exposes the backend.
 
 ## Modes
 
 | Mode | How to run | What it does |
 | --- | --- | --- |
 | Replay (default) | `npm run dev` | Plays bundled recordings from `src/fixtures/`. No backend calls; every view is labeled **Recorded investigation**. This is the only mode allowed on a hosted deploy. |
-| Live | `VITE_DATA_SOURCE=live npm run dev` | Talks to the local backend through the dev-server proxy at `/api`. Set `ALETHEIA_API_URL` if the backend is not on `http://127.0.0.1:8000`. Localhost only. This command starts only the client; run the backend separately (root README). On load the client calls `GET /health`, and the claim field is enabled only when the backend answers **and** reports `research_enabled: true`. Otherwise it explains why (unreachable, or research not enabled yet). |
+| Live | `VITE_DATA_SOURCE=live npm run dev` | Talks to the local backend through the dev-server proxy at `/api`. Set `ALETHEIA_API_URL` if the backend is not on `http://127.0.0.1:8000`. Localhost only. This command starts only the client; run the backend separately ([README](../README.md#quickstart)). On load the client calls `GET /health`, and the claim field is enabled only when the backend answers **and** reports `research_enabled: true`. Otherwise it explains why (unreachable, or research not enabled yet). |
 
 ## Commands
 
