@@ -186,7 +186,10 @@ class TavilyProvider(ProviderHTTP):
         *,
         budget: CallBudget,
         depth: Depth = "basic",
+        timeout_seconds: float | None = None,
     ) -> ExtractionResult:
+        """Read pages one request each. `timeout_seconds` caps how long Tavily works on
+        one page (at most 60, and never longer than the provider timeout)."""
         try:
             if not isinstance(urls, list) or not 1 <= len(urls) <= 20 or depth not in DEPTHS:
                 raise ValueError
@@ -202,7 +205,7 @@ class TavilyProvider(ProviderHTTP):
             "format": "markdown",
             "include_images": False,
             "include_usage": True,
-            "timeout": min(60.0, self.settings.timeout_seconds),
+            "timeout": min(60.0, self.settings.timeout_seconds, timeout_seconds or 60.0),
         }
 
         pages = []

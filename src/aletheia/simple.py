@@ -5,6 +5,7 @@ the pages do not settle the claim, search once more and judge once more. A true 
 false verdict is published only with a quotation found word for word in a saved page.
 """
 
+import asyncio
 import json
 import re
 import time
@@ -39,6 +40,11 @@ PAGES_PER_ROUND = (6, 3)
 PAGES_OFFERED = 6
 PASSAGE_CHARS = 6000
 QUOTATION_LOGGED = 300  # characters of a rejected quotation kept in its event
+
+
+# Of 2,364 live page reads that returned a page (Nov 17 runs), 2 took over 20 s, while
+# 23 that returned nothing took over 45 s. A read is given up after 20 s.
+READ_TIMEOUT_SECONDS = 20.0
 # Planned work: per round one plan, one verdict and one check call; three searches;
 # and the round's pages plus two spare tries for pages that cannot be read.
 MODEL_CALLS, SEARCH_CALLS, SPARE_PAGE_TRIES = 6, 6, 2
@@ -145,6 +151,20 @@ def related(text, claim_text):
     }
     # Only words written in capitals count, so "two" cannot stand for "The World Order".
     return any(word.casefold() in acronyms for word in re.findall(r"\b[A-Z]{2,}\b", text))
+
+
+async def together(*calls):
+    """Run calls at once and return their results in order.
+
+    If one raises, the others are cancelled and that error is raised as itself, so a
+    fatal provider error stops the run with nothing left writing to it.
+    """
+    try:
+        async with asyncio.TaskGroup() as group:
+            tasks = [group.create_task(call) for call in calls]
+    except ExceptionGroup as failed:
+        raise failed.exceptions[0] from None
+    return [task.result() for task in tasks]
 
 
 def locate(source, text, claim_text):
@@ -489,37 +509,23 @@ class SimplePipeline:
     async def gather(self, emit, budget, run_id, queries, sources, seen_urls, page_limit):
         """Search and read pages for one round.
 
-        Returns the pages added, whether any search or page failed, and the limit that
-        stopped the round, if one did. A limit ends gathering, not the round: the
-        pages already read are still judged.
+        The searches run together, then pages are read in waves: as many at once as
+        there are places left, in ranked order, until the round has its pages or runs
+        out of tries. Returns the pages added, whether any search or page failed, and
+        the limit that stopped the round, if one did. A limit ends gathering, not the
+        round: the pages already read are still judged.
         """
         found = {"added": [], "failed": False, "limit": None}
         batches = []
-        for query in queries:
-            query_id = budget.trace_id("q")
-            await emit("search_started", {"query": query, "query_id": query_id}, stage="searching")
-            try:
-                result = await self.search.search(query, budget=budget, max_results=5)
-            except ProviderError as exc:
-                if exc.code in FATAL:
-                    raise
-                await emit(
-                    "search_incomplete",
-                    {"reason": exc.code.value, "query_id": query_id},
-                    stage="searching",
-                )
-                if exc.code in LIMITS:
-                    found["limit"] = exc.code.value
-                    break
-                # One failed search is reported and the other queries still run.
-                found["failed"] = True
-                continue
-            await emit(
-                "search_completed",
-                {"query": query, "query_id": query_id, "result_count": str(len(result.results))},
-                stage="searching",
-            )
-            batches.append(sorted(result.results, key=lambda hit: -hit.score))
+        for outcome in await together(*(self.find(emit, budget, query) for query in queries)):
+            if isinstance(outcome, ProviderError):
+                if outcome.code in LIMITS:
+                    found["limit"] = found["limit"] or outcome.code.value
+                else:
+                    # One failed search is reported and the other queries still count.
+                    found["failed"] = True
+            else:
+                batches.append(outcome)
         # Take each query's best result before any query's second: no query crowds out another.
         candidates = [
             batch[rank]
@@ -539,68 +545,112 @@ class SimplePipeline:
             (hit for hit in candidates if not excluded(hit.url)),
             key=lambda hit: not official(hit.url),
         )
-        tried = 0
+        pending, keys = [], set()
         for hit in candidates:
             key = canonical_url(hit.url)
-            if key in seen_urls:
-                continue
-            if len(found["added"]) == page_limit or tried == page_limit + SPARE_PAGE_TRIES:
-                break
-            tried += 1
-            seen_urls.add(key)
-            await emit(
-                "source_selected",
-                {
-                    "url": hit.url,
-                    "slot": str(len(found["added"]) + 1),
-                    "selection_rule": "official_first_query_balanced",
-                },
-                stage="extracting",
-            )
-            page = None
-            try:
-                extraction = await self.search.extract([hit.url], budget=budget)
-                page = extraction.pages[0]
-                reason = page.error or (None if page.content else "empty_content")
-            except ProviderError as exc:
-                if exc.code in FATAL:
-                    raise
-                reason = exc.code.value
-            if reason:
+            if key not in seen_urls and key not in keys:
+                keys.add(key)
+                pending.append(hit)
+        tries = page_limit + SPARE_PAGE_TRIES
+        while pending and tries and len(found["added"]) < page_limit and not found["limit"]:
+            wave = pending[: min(page_limit - len(found["added"]), tries)]
+            pending, tries = pending[len(wave) :], tries - len(wave)
+            for slot, hit in enumerate(wave, start=len(found["added"]) + 1):
+                seen_urls.add(canonical_url(hit.url))
                 await emit(
-                    "source_rejected", {"url": hit.url, "reason": str(reason)}, stage="extracting"
-                )
-                if reason in FATAL:
-                    raise ProviderError("tavily", ErrorCode(reason))
-                if reason in LIMITS:
-                    found["limit"] = str(reason)
-                    break
-                found["failed"] = True
-                continue
-            source = snapshot(
-                url=hit.url,
-                title=hit.title[:2000],
-                published_date=hit.published_date,
-                retrieved_at=extraction.retrieved_at,
-                text=page.content,
-            )
-            if any(s.content_hash == source.content_hash for s in sources):
-                await emit(
-                    "source_rejected",
-                    {"url": hit.url, "reason": "duplicate_content"},
+                    "source_selected",
+                    {
+                        "url": hit.url,
+                        "slot": str(slot),
+                        "selection_rule": "official_first_query_balanced",
+                    },
                     stage="extracting",
                 )
-                continue
-            source.limitations.extend(page.limitations)
-            await self.storage.save_records(run_id, "snapshot", [source])
-            sources.append(source)
-            found["added"].append(source)
+            reads = await together(*(self.read(emit, budget, hit) for hit in wave))
+            # Results are kept in ranked order, whatever order the reads finished in.
+            for hit, (extraction, page, reason) in zip(wave, reads, strict=True):
+                await self.keep(emit, run_id, sources, found, hit, extraction, page, reason)
+        return found
+
+    async def find(self, emit, budget, query):
+        """One search: its results best first, or the error that stopped it."""
+        query_id = budget.trace_id("q")
+        await emit("search_started", {"query": query, "query_id": query_id}, stage="searching")
+        try:
+            result = await self.search.search(query, budget=budget, max_results=5)
+        except ProviderError as exc:
+            if exc.code in FATAL:
+                raise
             await emit(
-                "source_extracted",
-                {"snapshot_id": source.id, "url": hit.url, "duplicate": "false"},
+                "search_incomplete",
+                {"reason": exc.code.value, "query_id": query_id},
+                stage="searching",
+            )
+            return exc
+        await emit(
+            "search_completed",
+            {"query": query, "query_id": query_id, "result_count": str(len(result.results))},
+            stage="searching",
+        )
+        return sorted(result.results, key=lambda hit: -hit.score)
+
+    async def read(self, emit, budget, hit):
+        """One page read: the extraction, the page, and why it cannot be used, if so.
+
+        A rejected key or exhausted quota is raised here, not after the wave, so the
+        reads still in flight are cancelled at once.
+        """
+        try:
+            extraction = await self.search.extract(
+                [hit.url], budget=budget, timeout_seconds=READ_TIMEOUT_SECONDS
+            )
+        except ProviderError as exc:
+            if exc.code in FATAL:
+                raise
+            return None, None, exc.code.value
+        page = extraction.pages[0]
+        if page.error in FATAL:
+            rejected = {"url": hit.url, "reason": page.error}
+            await emit("source_rejected", rejected, stage="extracting")
+            raise ProviderError("tavily", ErrorCode(page.error))
+        return extraction, page, page.error or (None if page.content else "empty_content")
+
+    async def keep(self, emit, run_id, sources, found, hit, extraction, page, reason):
+        """Save a page that was read, or record why it was not kept."""
+        if reason:
+            await emit(
+                "source_rejected", {"url": hit.url, "reason": str(reason)}, stage="extracting"
+            )
+            if reason in FATAL:
+                raise ProviderError("tavily", ErrorCode(reason))
+            if reason in LIMITS:
+                found["limit"] = found["limit"] or str(reason)
+            else:
+                found["failed"] = True
+            return
+        source = snapshot(
+            url=hit.url,
+            title=hit.title[:2000],
+            published_date=hit.published_date,
+            retrieved_at=extraction.retrieved_at,
+            text=page.content,
+        )
+        if any(s.content_hash == source.content_hash for s in sources):
+            await emit(
+                "source_rejected",
+                {"url": hit.url, "reason": "duplicate_content"},
                 stage="extracting",
             )
-        return found
+            return
+        source.limitations.extend(page.limitations)
+        await self.storage.save_records(run_id, "snapshot", [source])
+        sources.append(source)
+        found["added"].append(source)
+        await emit(
+            "source_extracted",
+            {"snapshot_id": source.id, "url": hit.url, "duplicate": "false"},
+            stage="extracting",
+        )
 
     async def judge(self, ask, emit, assertion, context, sources, fresh):
         # Pages read in this round are always offered: a follow-up must be judged on

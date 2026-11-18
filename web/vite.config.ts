@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// Local backend address for live mode. Keep it on localhost: README section 10
+// Local backend address for live mode. Keep it on localhost: docs/design.md section 10
 // forbids exposing the unauthenticated API.
 const apiTarget = process.env.ALETHEIA_API_URL ?? 'http://127.0.0.1:8000'
 

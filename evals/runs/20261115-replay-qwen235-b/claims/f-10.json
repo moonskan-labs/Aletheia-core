@@ -1,0 +1,2138 @@
+{
+  "id": "f-10",
+  "live": true,
+  "investigation": {
+    "id": "61113dfd-4898-4508-833b-f10d453a6515",
+    "claim": "Colorado’s Mount Elbert reaches 14,494 feet in the 2001 USGS state elevation table.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-16T04:42:25.801071Z",
+    "started_at": "2026-11-16T04:42:25.883892Z",
+    "finished_at": "2026-11-16T04:43:27.194398Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "false",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "Colorado’s Mount Elbert reaches 14,494 feet in the 2001 USGS state elevation table.",
+        "analysis": {
+          "contract_version": "direct-v1",
+          "primary_type": "direct_fact",
+          "scope": "complete",
+          "required_method": "record_lookup",
+          "supported": true,
+          "reason": "The claim refers to a specific measurement (elevation) of a named geographic feature (Mount Elbert) recorded in an official dataset (2001 USGS state elevation table), which can be verified through direct lookup.",
+          "missing_scope": [],
+          "components": [
+            {
+              "id": "c1",
+              "text": "Colorado’s Mount Elbert reaches 14,494 feet",
+              "role": "essential",
+              "subject": "Colorado’s Mount Elbert",
+              "predicate": "reaches",
+              "timeframe": "2001",
+              "location_or_population": "Colorado",
+              "comparison": null
+            },
+            {
+              "id": "c2",
+              "text": "in the 2001 USGS state elevation table",
+              "role": "modifier",
+              "subject": "the 2001 USGS state elevation table",
+              "predicate": "in",
+              "timeframe": "2001",
+              "location_or_population": null,
+              "comparison": null
+            }
+          ]
+        },
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "The claim specifies a precise elevation value, location, and data source with a year, providing sufficient detail for direct verification against the cited USGS record.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "false",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [
+          {
+            "component_id": "c1",
+            "outcome": "contradicted",
+            "evidence_ids": [
+              "cb929551-5d73-4211-99b0-befa3a8a3c64",
+              "ec39faf1-8fde-4d1e-9c9c-907016395f94"
+            ]
+          },
+          {
+            "component_id": "c2",
+            "outcome": "supported",
+            "evidence_ids": [
+              "c691e22b-afa5-4ca1-b52f-ffa834d6301b",
+              "7f6180b2-391b-4d04-9bf6-5c2d25af9945"
+            ]
+          }
+        ],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "cb929551-5d73-4211-99b0-befa3a8a3c64",
+          "c691e22b-afa5-4ca1-b52f-ffa834d6301b",
+          "ec39faf1-8fde-4d1e-9c9c-907016395f94",
+          "7f6180b2-391b-4d04-9bf6-5c2d25af9945"
+        ],
+        "qualification_flags": [
+          {
+            "type": "misleading_comparison",
+            "dimension": "units",
+            "explanation": "Claimed elevation (14,494 ft) differs from USGS-recorded (14,433 ft) for same peak and timeframe",
+            "evidence_ids": [
+              "cb929551-5d73-4211-99b0-befa3a8a3c64"
+            ]
+          },
+          {
+            "type": "misleading_comparison",
+            "dimension": "timeframe",
+            "explanation": "Claim references 2001 table, but source provides 2002 data",
+            "evidence_ids": [
+              "ec39faf1-8fde-4d1e-9c9c-907016395f94"
+            ]
+          },
+          {
+            "type": "narrow_scope",
+            "dimension": "jurisdiction",
+            "explanation": "Source discusses USGS national data, not a state-specific table",
+            "evidence_ids": [
+              "7f6180b2-391b-4d04-9bf6-5c2d25af9945"
+            ]
+          }
+        ],
+        "qualification_check": "assessed",
+        "limitations": []
+      },
+      "explanation": [
+        {
+          "text": "The 2001 USGS document referenced in the claim was revised and reprinted in 2001, supporting its status as the 2001 USGS state elevation table.",
+          "evidence_ids": [
+            "c691e22b-afa5-4ca1-b52f-ffa834d6301b"
+          ]
+        }
+      ],
+      "limitations": [
+        "Only a relevant bounded selection of source spans was assessed.",
+        "Truncated source; publication history noted but no full metadata",
+        "Source states USGS 2002 data, not 2001",
+        "No mention of 2001 table",
+        "No reference to 'state elevation table'",
+        "Some search results were not extracted within per-round page limits."
+      ],
+      "model": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "prompt_version": "direct-claims-v5",
+      "application_version": "direct-research-v1",
+      "configuration": {
+        "response_format": "json_schema",
+        "nebius_thinking": "default",
+        "max_output_tokens": 4096,
+        "provider_max_retries": 2,
+        "provider_timeout_seconds": 45.0,
+        "max_request_bytes": 262144,
+        "max_response_bytes": 2097152,
+        "max_extracted_chars": 100000,
+        "model_attempt_limit": 10,
+        "search_attempt_limit": 4,
+        "extraction_attempt_limit": 4,
+        "finalization_reserve_seconds": 45.0,
+        "finalization_reserve_model_attempts": 4,
+        "duration_limit_seconds": 120.0,
+        "max_followup_rounds": 2,
+        "quick_initial_page_limit": 2,
+        "deep_initial_page_limit": 4,
+        "followup_page_limit": 2,
+        "refresh_recheck_page_limit": 2
+      },
+      "budget_used": {
+        "model": 6,
+        "search": 3,
+        "extract": 2
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 8.730920400004834,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 3.73049639997771,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 0.012945599970407784,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 0.012492300011217594,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 0.012779499986208975,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.0007785999914631248,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 13.609187000023667,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.0007317999843508005,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 14.418030700006057,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 17.438715099997353,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.6694836000096984,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 30107,
+        "completion_tokens": 2192,
+        "total_tokens": 32299
+      }
+    },
+    "claim_analysis": {
+      "contract_version": "direct-v1",
+      "primary_type": "direct_fact",
+      "scope": "complete",
+      "required_method": "record_lookup",
+      "supported": true,
+      "reason": "The claim refers to a specific measurement (elevation) of a named geographic feature (Mount Elbert) recorded in an official dataset (2001 USGS state elevation table), which can be verified through direct lookup.",
+      "missing_scope": [],
+      "components": [
+        {
+          "id": "c1",
+          "text": "Colorado’s Mount Elbert reaches 14,494 feet",
+          "role": "essential",
+          "subject": "Colorado’s Mount Elbert",
+          "predicate": "reaches",
+          "timeframe": "2001",
+          "location_or_population": "Colorado",
+          "comparison": null
+        },
+        {
+          "id": "c2",
+          "text": "in the 2001 USGS state elevation table",
+          "role": "modifier",
+          "subject": "the 2001 USGS state elevation table",
+          "predicate": "in",
+          "timeframe": "2001",
+          "location_or_population": null,
+          "comparison": null
+        }
+      ]
+    },
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/61113dfd-4898-4508-833b-f10d453a6515",
+      "events": "/investigations/61113dfd-4898-4508-833b-f10d453a6515/events",
+      "evidence": "/investigations/61113dfd-4898-4508-833b-f10d453a6515/evidence",
+      "comparison": "/investigations/61113dfd-4898-4508-833b-f10d453a6515/comparison",
+      "refresh": "/investigations/61113dfd-4898-4508-833b-f10d453a6515/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "url": "https://pubs.usgs.gov/gip/Elevations-Distances/elvadist.html",
+        "canonical_url": "https://pubs.usgs.gov/gip/Elevations-Distances/elvadist.html",
+        "title": "Elevations and Distances",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T04:42:38.678197Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "f63afb01000e4250a68d182b9b0a315cb51e80027f32530c2d4a7a7271c290a3",
+        "duplicate_group": "f63afb01000e4250a68d182b9b0a315cb51e80027f32530c2d4a7a7271c290a3",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed.",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      },
+      {
+        "id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "url": "https://thenextsummit.org/how-tall-is-mt-elbert-colorados-greatest-14er",
+        "canonical_url": "https://thenextsummit.org/how-tall-is-mt-elbert-colorados-greatest-14er",
+        "title": "How Tall is Mt Elbert? Unraveling the Height of Colorado's Greatest 14er | The Next Summit: A Mountain Blog",
+        "published_date": null,
+        "retrieved_at": "2026-11-16T04:42:52.452790Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "26f6028052a429a44eaf13e0d2e38c7f528eefd47565072c21aade5c48c767c0",
+        "duplicate_group": "26f6028052a429a44eaf13e0d2e38c7f528eefd47565072c21aade5c48c767c0",
+        "limitations": [
+          "Only a relevant bounded selection of source spans was assessed.",
+          "Only a relevant bounded selection of source spans was assessed."
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "cb929551-5d73-4211-99b0-befa3a8a3c64",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+            "span_ids": [
+              83,
+              160
+            ]
+          },
+          "rationale": "The source states Mount Elbert's elevation as 14,433 feet in both the state table and the summits list, not 14,494 feet.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "U.S. Geological Survey",
+          "origin": "USGS",
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [
+            "Truncated source; publication history noted but no full metadata"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "units",
+              "explanation": "Claimed elevation (14,494 ft) differs from USGS-recorded (14,433 ft) for same peak and timeframe"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              83
+            ],
+            "start": 4830,
+            "end": 4905,
+            "text": "| Colorado | Mount Elbert | Lake | 14,433 | Arikaree River | Yuma | 3,315 |",
+            "quote_hash": "86cf7a86fce4dc89c7d72c6ef946bb25da8eb5868d686f34fb4fa489c25b5e2e"
+          },
+          {
+            "span_ids": [
+              160
+            ],
+            "start": 10641,
+            "end": 10694,
+            "text": "| Mount Elbert | CO | Mount Elbert | 1967 | 114,433 |",
+            "quote_hash": "e1b70c3de7328528a29fd8a8d95c6c7c927d231a58ffd4faa62cd3e847680735"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "c691e22b-afa5-4ca1-b52f-ffa834d6301b",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+            "span_ids": [
+              459
+            ]
+          },
+          "rationale": "The source confirms the document was revised and reprinted in 2001, supporting its status as the 2001 USGS state elevation table.",
+          "relation": "supports",
+          "scope_match": true,
+          "authoritative_record": true,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "U.S. Geological Survey",
+          "origin": "USGS",
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              459
+            ],
+            "start": 29567,
+            "end": 29876,
+            "text": "*This booklet was originally published and printed in 1995 and revised and reprinted in 2001. The online edition contains the full text from the printed publication. This document has undergone official review and approval for publications established by the Eastern Region Geography, U.S. Geological Survey.*",
+            "quote_hash": "bc0584298bc687a9518972c3b3ac075fcd57fee5a467f045e7f8938615820ef2"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "ec39faf1-8fde-4d1e-9c9c-907016395f94",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c1",
+          "values": [],
+          "citation": {
+            "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+            "span_ids": [
+              16,
+              17,
+              60,
+              61
+            ]
+          },
+          "rationale": "The spans state that the USGS 2002 data lists Mount Elbert's elevation as 14,440 feet, not 14,494 feet as claimed. This is a direct contradiction of the asserted elevation.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "The Next Summit",
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [
+            "Source states USGS 2002 data, not 2001"
+          ],
+          "flags": [
+            {
+              "type": "misleading_comparison",
+              "dimension": "timeframe",
+              "explanation": "Claim references 2001 table, but source provides 2002 data"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              16,
+              17
+            ],
+            "start": 1206,
+            "end": 1366,
+            "text": "Their most recent data from 2002 puts [Mt. Elbert at 14,440 feet](https://thenextsummit.org/colorado-14ers/hiking-mount-elbert/) (4,401 meters) above sea level.",
+            "quote_hash": "b791ce42487f6bdf6e7e19fd28398850f98c61c052f04fd66b0a85497c5165c7"
+          },
+          {
+            "span_ids": [
+              60,
+              61
+            ],
+            "start": 6220,
+            "end": 6288,
+            "text": "A: According to USGS data from 2002, Mt. Elbert is 14,440 feet tall.",
+            "quote_hash": "c65596defb6d7c474853cb24afffda89fb38cafeeacc4e16dc68beddd0ed3209"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "7f6180b2-391b-4d04-9bf6-5c2d25af9945",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": "c2",
+          "values": [],
+          "citation": {
+            "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+            "span_ids": [
+              15,
+              16,
+              60,
+              61
+            ]
+          },
+          "rationale": "The spans reference USGS data from 2002, not 2001, and do not mention a 'state elevation table.' The source discusses USGS maps and the National Map Viewer, but not the specific document claimed.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": "The Next Summit",
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [
+            "No mention of 2001 table",
+            "No reference to 'state elevation table'"
+          ],
+          "flags": [
+            {
+              "type": "narrow_scope",
+              "dimension": "jurisdiction",
+              "explanation": "Source discusses USGS national data, not a state-specific table"
+            }
+          ]
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              15,
+              16
+            ],
+            "start": 1117,
+            "end": 1248,
+            "text": "The most ‘official’ elevation is provided by the United States Geological Survey (USGS). Their most recent data from 2002 puts [Mt.",
+            "quote_hash": "52b2e8b366f110be2475075ca49c8be79dd4ba3d1c8050379267467a11ea8517"
+          },
+          {
+            "span_ids": [
+              60,
+              61
+            ],
+            "start": 6220,
+            "end": 6288,
+            "text": "A: According to USGS data from 2002, Mt. Elbert is 14,440 feet tall.",
+            "quote_hash": "c65596defb6d7c474853cb24afffda89fb38cafeeacc4e16dc68beddd0ed3209"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 1,
+      "timestamp": "2026-11-16T04:42:25.801071Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 2,
+      "timestamp": "2026-11-16T04:42:25.883892Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 3,
+      "timestamp": "2026-11-16T04:42:25.892689Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "75.000",
+        "hard_remaining_seconds": "120.000",
+        "model": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+        "prompt_version": "direct-claims-v5",
+        "application_version": "direct-research-v1",
+        "response_format": "json_schema",
+        "thinking": "default",
+        "max_output_tokens": "4096",
+        "provider_timeout_seconds": "45.0",
+        "provider_max_retries": "2",
+        "max_request_bytes": "262144",
+        "max_response_bytes": "2097152",
+        "max_extracted_chars": "100000",
+        "reserve_seconds": "45.0",
+        "reserve_model_attempts": "4"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 4,
+      "timestamp": "2026-11-16T04:42:25.901818Z",
+      "type": "stage_started",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 5,
+      "timestamp": "2026-11-16T04:42:25.910031Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.983",
+        "hard_remaining_seconds": "119.983",
+        "attempt": "1",
+        "input_chars": "111"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 6,
+      "timestamp": "2026-11-16T04:42:25.920298Z",
+      "type": "provider_attempt_started",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "74.972",
+        "hard_remaining_seconds": "119.972",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10814"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 7,
+      "timestamp": "2026-11-16T04:42:34.680035Z",
+      "type": "provider_attempt_finished",
+      "stage": "interpreting",
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.232",
+        "hard_remaining_seconds": "111.232",
+        "provider_call_id": "p2",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "10814",
+        "elapsed_seconds": "8.731",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2010"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 8,
+      "timestamp": "2026-11-16T04:42:34.688450Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t1",
+        "task": "interpret",
+        "schema": "ClaimInterpretation",
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.204",
+        "hard_remaining_seconds": "111.204",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1147",
+        "elapsed_seconds": "8.779",
+        "finish_reason": "stop",
+        "prompt_tokens": "1712",
+        "completion_tokens": "301",
+        "total_tokens": "2013"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 9,
+      "timestamp": "2026-11-16T04:42:34.704118Z",
+      "type": "claim_interpreted",
+      "stage": null,
+      "payload": {
+        "assertion_id": "a1"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 10,
+      "timestamp": "2026-11-16T04:42:34.711594Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "A precise direct record may settle the claim."
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 11,
+      "timestamp": "2026-11-16T04:42:34.721224Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 12,
+      "timestamp": "2026-11-16T04:42:34.730305Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.163",
+        "hard_remaining_seconds": "111.163",
+        "attempt": "1",
+        "input_chars": "1351"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 13,
+      "timestamp": "2026-11-16T04:42:34.739129Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "66.153",
+        "hard_remaining_seconds": "111.153",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4421"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 14,
+      "timestamp": "2026-11-16T04:42:38.479184Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.415",
+        "hard_remaining_seconds": "107.415",
+        "provider_call_id": "p4",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "4421",
+        "elapsed_seconds": "3.730",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1278"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 15,
+      "timestamp": "2026-11-16T04:42:38.489272Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t3",
+        "task": "plan",
+        "schema": "SearchPlan",
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "0",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.404",
+        "hard_remaining_seconds": "107.403",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "475",
+        "elapsed_seconds": "3.759",
+        "finish_reason": "stop",
+        "prompt_tokens": "826",
+        "completion_tokens": "147",
+        "total_tokens": "973"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 16,
+      "timestamp": "2026-11-16T04:42:38.497460Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "2001 USGS state elevation table Mount Elbert Colorado",
+        "purpose": "support",
+        "query_id": "q5"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 17,
+      "timestamp": "2026-11-16T04:42:38.506182Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.387",
+        "hard_remaining_seconds": "107.387",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "261"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 18,
+      "timestamp": "2026-11-16T04:42:38.528761Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q5",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "1",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.364",
+        "hard_remaining_seconds": "107.364",
+        "provider_call_id": "p6",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "261",
+        "elapsed_seconds": "0.013",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "25166"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 19,
+      "timestamp": "2026-11-16T04:42:38.537454Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "2001 USGS state elevation table Mount Elbert Colorado",
+        "query_id": "q5",
+        "result_count": "4"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 20,
+      "timestamp": "2026-11-16T04:42:38.545592Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "Mount Elbert elevation 14494 feet USGS 2001 correction or update",
+        "purpose": "contradiction",
+        "query_id": "q7"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 21,
+      "timestamp": "2026-11-16T04:42:38.554184Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.339",
+        "hard_remaining_seconds": "107.339",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "272"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 22,
+      "timestamp": "2026-11-16T04:42:38.574916Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q7",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "2",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.318",
+        "hard_remaining_seconds": "107.318",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "272",
+        "elapsed_seconds": "0.012",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "25222"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 23,
+      "timestamp": "2026-11-16T04:42:38.583631Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "Mount Elbert elevation 14494 feet USGS 2001 correction or update",
+        "query_id": "q7",
+        "result_count": "4"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 24,
+      "timestamp": "2026-11-16T04:42:38.592637Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "USGS 2001 Colorado elevation data methodology Mount Elbert",
+        "purpose": "context",
+        "query_id": "q9"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 25,
+      "timestamp": "2026-11-16T04:42:38.600942Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.292",
+        "hard_remaining_seconds": "107.292",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 26,
+      "timestamp": "2026-11-16T04:42:38.622533Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "query_id": "q9",
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "0",
+        "extract_limit": "4",
+        "remaining_seconds": "62.271",
+        "hard_remaining_seconds": "107.271",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266",
+        "elapsed_seconds": "0.013",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "25166"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 27,
+      "timestamp": "2026-11-16T04:42:38.630563Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "USGS 2001 Colorado elevation data methodology Mount Elbert",
+        "query_id": "q9",
+        "result_count": "4"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 28,
+      "timestamp": "2026-11-16T04:42:38.638873Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "2",
+        "reason": "Per-round page or remaining extraction limit."
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 29,
+      "timestamp": "2026-11-16T04:42:38.647632Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "url": "https://pubs.usgs.gov/gip/Elevations-Distances/elvadist.html",
+        "slot": "1",
+        "query_ids": "q5,q7,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 30,
+      "timestamp": "2026-11-16T04:42:38.655954Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 31,
+      "timestamp": "2026-11-16T04:42:38.664230Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.228",
+        "hard_remaining_seconds": "107.228",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "187"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 32,
+      "timestamp": "2026-11-16T04:42:38.673313Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c11",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.219",
+        "hard_remaining_seconds": "107.219",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "187",
+        "elapsed_seconds": "0.001",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "30648"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 33,
+      "timestamp": "2026-11-16T04:42:38.698392Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "url": "https://pubs.usgs.gov/gip/Elevations-Distances/elvadist.html",
+        "candidate_id": "c11",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 34,
+      "timestamp": "2026-11-16T04:42:38.716242Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 35,
+      "timestamp": "2026-11-16T04:42:38.740572Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.160",
+        "hard_remaining_seconds": "107.160",
+        "attempt": "1",
+        "input_chars": "18051"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 36,
+      "timestamp": "2026-11-16T04:42:38.752952Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "62.140",
+        "hard_remaining_seconds": "107.140",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34756"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 37,
+      "timestamp": "2026-11-16T04:42:52.370317Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "48.522",
+        "hard_remaining_seconds": "93.522",
+        "provider_call_id": "p14",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "34756",
+        "elapsed_seconds": "13.609",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2374"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 38,
+      "timestamp": "2026-11-16T04:42:52.381705Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t13",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "1",
+        "extract_limit": "4",
+        "remaining_seconds": "48.511",
+        "hard_remaining_seconds": "93.511",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1506",
+        "elapsed_seconds": "13.649",
+        "finish_reason": "stop",
+        "prompt_tokens": "9812",
+        "completion_tokens": "491",
+        "total_tokens": "10303"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 39,
+      "timestamp": "2026-11-16T04:42:52.403994Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "cb929551-5d73-4211-99b0-befa3a8a3c64",
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 40,
+      "timestamp": "2026-11-16T04:42:52.412968Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "c691e22b-afa5-4ca1-b52f-ffa834d6301b",
+        "snapshot_id": "3120472c-1f47-48bb-95e2-53c58bf2c826",
+        "admissible": "true",
+        "relation": "supports"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 41,
+      "timestamp": "2026-11-16T04:42:52.420817Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "url": "https://thenextsummit.org/how-tall-is-mt-elbert-colorados-greatest-14er",
+        "slot": "2",
+        "query_ids": "q5,q7,q9",
+        "selection_rule": "purpose_balanced_search_rank"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 42,
+      "timestamp": "2026-11-16T04:42:52.429223Z",
+      "type": "stage_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 43,
+      "timestamp": "2026-11-16T04:42:52.438128Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "48.455",
+        "hard_remaining_seconds": "93.455",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "198"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 44,
+      "timestamp": "2026-11-16T04:42:52.448693Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "candidate_id": "c15",
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "48.444",
+        "hard_remaining_seconds": "93.444",
+        "provider_call_id": "p16",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "198",
+        "elapsed_seconds": "0.001",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "15436"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 45,
+      "timestamp": "2026-11-16T04:42:52.469728Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "url": "https://thenextsummit.org/how-tall-is-mt-elbert-colorados-greatest-14er",
+        "candidate_id": "c15",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 46,
+      "timestamp": "2026-11-16T04:42:52.478426Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 47,
+      "timestamp": "2026-11-16T04:42:52.490624Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "48.403",
+        "hard_remaining_seconds": "93.403",
+        "attempt": "1",
+        "input_chars": "21816"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 48,
+      "timestamp": "2026-11-16T04:42:52.502310Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "48.391",
+        "hard_remaining_seconds": "93.391",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38555"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 49,
+      "timestamp": "2026-11-16T04:43:06.927971Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "33.964",
+        "hard_remaining_seconds": "78.964",
+        "provider_call_id": "p18",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "38555",
+        "elapsed_seconds": "14.418",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2673"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 50,
+      "timestamp": "2026-11-16T04:43:06.938706Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t17",
+        "task": "assess",
+        "schema": "AssessmentBatch",
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "6",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "33.954",
+        "hard_remaining_seconds": "78.954",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1793",
+        "elapsed_seconds": "14.449",
+        "finish_reason": "stop",
+        "prompt_tokens": "9666",
+        "completion_tokens": "563",
+        "total_tokens": "10229"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 51,
+      "timestamp": "2026-11-16T04:43:06.958333Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "ec39faf1-8fde-4d1e-9c9c-907016395f94",
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 52,
+      "timestamp": "2026-11-16T04:43:06.967926Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "7f6180b2-391b-4d04-9bf6-5c2d25af9945",
+        "snapshot_id": "be2472ea-f5d1-48f1-8ddd-e7d5dd4e768f",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 53,
+      "timestamp": "2026-11-16T04:43:06.977475Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "evidence_sufficient",
+        "gap": "",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 54,
+      "timestamp": "2026-11-16T04:43:06.992600Z",
+      "type": "stage_started",
+      "stage": "synthesizing",
+      "payload": {
+        "stage": "synthesizing"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 55,
+      "timestamp": "2026-11-16T04:43:07.001332Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "4",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "78.891",
+        "hard_remaining_seconds": "78.891",
+        "attempt": "1",
+        "input_chars": "7935"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 56,
+      "timestamp": "2026-11-16T04:43:07.010537Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "78.882",
+        "hard_remaining_seconds": "78.882",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13637"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 57,
+      "timestamp": "2026-11-16T04:43:24.462112Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.435",
+        "hard_remaining_seconds": "61.435",
+        "provider_call_id": "p20",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13637",
+        "elapsed_seconds": "17.439",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2519"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 58,
+      "timestamp": "2026-11-16T04:43:24.472037Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t19",
+        "task": "synthesize",
+        "schema": "Synthesis",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.420",
+        "hard_remaining_seconds": "61.420",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "1675",
+        "elapsed_seconds": "17.471",
+        "finish_reason": "stop",
+        "prompt_tokens": "3880",
+        "completion_tokens": "652",
+        "total_tokens": "4532"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 59,
+      "timestamp": "2026-11-16T04:43:24.479400Z",
+      "type": "task_started",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "5",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.413",
+        "hard_remaining_seconds": "61.413",
+        "attempt": "1",
+        "input_chars": "9386"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 60,
+      "timestamp": "2026-11-16T04:43:24.486878Z",
+      "type": "provider_attempt_started",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "61.405",
+        "hard_remaining_seconds": "61.405",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13477"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 61,
+      "timestamp": "2026-11-16T04:43:27.162822Z",
+      "type": "provider_attempt_finished",
+      "stage": "synthesizing",
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.729",
+        "hard_remaining_seconds": "58.729",
+        "provider_call_id": "p22",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "13477",
+        "elapsed_seconds": "2.669",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "840"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 62,
+      "timestamp": "2026-11-16T04:43:27.171809Z",
+      "type": "task_finished",
+      "stage": null,
+      "payload": {
+        "task_call_id": "t21",
+        "task": "check_explanation",
+        "schema": "FalseExplanationCheck",
+        "stage": "synthesizing",
+        "phase": "finalization",
+        "model_used": "6",
+        "model_limit": "10",
+        "model_available_limit": "10",
+        "search_used": "3",
+        "search_limit": "4",
+        "extract_used": "2",
+        "extract_limit": "4",
+        "remaining_seconds": "58.721",
+        "hard_remaining_seconds": "58.721",
+        "attempt": "1",
+        "outcome": "success",
+        "validation_code": "unknown",
+        "schema_fields": "unknown",
+        "schema_error_types": "unknown",
+        "limit_reason": "unknown",
+        "reasoning_tokens": "unknown",
+        "output_chars": "89",
+        "elapsed_seconds": "2.692",
+        "finish_reason": "stop",
+        "prompt_tokens": "4211",
+        "completion_tokens": "38",
+        "total_tokens": "4249"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 63,
+      "timestamp": "2026-11-16T04:43:27.180297Z",
+      "type": "task_output_rejected",
+      "stage": null,
+      "payload": {
+        "task": "explanation_unit",
+        "reason": "unsupported_explanation",
+        "action": "dropped",
+        "affected_units": "0,1,3,4,5"
+      }
+    },
+    {
+      "investigation_id": "61113dfd-4898-4508-833b-f10d453a6515",
+      "sequence": 64,
+      "timestamp": "2026-11-16T04:43:27.194398Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 61.50004869996337,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 8.729
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.725
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 13.607
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 14.416
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 17.43
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.667
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 8.730920400004834,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 3.73049639997771,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 0.012945599970407784,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 0.012492300011217594,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 0.012779499986208975,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.0007785999914631248,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 13.609187000023667,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.0007317999843508005,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 14.418030700006057,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 17.438715099997353,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.6694836000096984,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}
