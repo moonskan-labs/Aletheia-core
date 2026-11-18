@@ -3,8 +3,8 @@
 > ODSC × Nebius Hackathon submission · Challenge: *Build a research agent that brings its sources*
 
 **One-line pitch:** Is this factual claim true? Aletheia checks it against the live web and
-answers **true**, **false** or **cannot settle**, with word-for-word quotations from the pages
-it read. It is for anyone who has to check a claim before repeating it, and has to show where
+answers **true**, **false** or **cannot settle**. Each true or false verdict includes a
+quotation checked against a page Aletheia read. It is for anyone who has to check a claim before repeating it, and has to show where
 the answer came from.
 
 - **Demo video (2–3 min):** <!-- TODO: link -->
