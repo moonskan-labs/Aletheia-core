@@ -81,6 +81,26 @@ VITE_DATA_SOURCE=live npm run dev   # http://127.0.0.1:5173
 Without `VITE_DATA_SOURCE=live`, the client plays recorded investigations and needs no
 backend or keys.
 
+On Windows (PowerShell), the same steps:
+
+```powershell
+Copy-Item .env.example .env          # then add your keys
+uv sync --locked
+uv run --locked aletheia
+
+# second terminal
+cd web
+npm install
+$env:VITE_DATA_SOURCE = "live"; npm run dev
+# $env: lasts for the whole terminal session. For replay mode afterwards:
+# Remove-Item Env:VITE_DATA_SOURCE; npm run dev
+```
+
+**Past investigations** are saved in `data/aletheia.sqlite3`. Submitting the same claim
+again returns the saved result at once (`reused: true`), with no new search or model
+calls. A saved investigation can also be opened by its ID through the API. The client
+has no list of past investigations yet.
+
 Or call the API directly:
 
 ```sh
