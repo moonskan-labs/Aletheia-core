@@ -15,7 +15,7 @@ export interface Unsubscribe {
 
 /**
  * Where the UI gets investigations from.
- * - live: the local backend (README section 9), localhost only.
+ * - live: the local backend (docs/design.md section 9), localhost only.
  * - replay: exported recordings bundled with the client; never calls a backend.
  */
 export interface DataSource {

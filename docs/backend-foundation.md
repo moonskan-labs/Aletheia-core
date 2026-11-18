@@ -14,7 +14,7 @@ not change this API's queued-only behavior or require credentials for foundation
 
 The accepted PR #5 build order places refresh/comparison after the working minimum.
 This branch starts from main; PR #5 was still open when implementation began.
-Sections in the root README describing the complete agent remain design targets.
+Sections in the [design document](design.md) describing the complete agent remain design targets.
 
 ## Local setup
 
