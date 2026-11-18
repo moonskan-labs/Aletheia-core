@@ -1,7 +1,8 @@
 # 200-claim sheet, Nov 17 (`claims-20261117-200.csv`)
 
 A second, independent claim set for measuring the simple loop with live search (issue #33,
-step 1). None of these claims appears in the other CSVs under `evals/claims/`.
+step 1). This is the step 1 sheet for that issue; no second Chandra-specific sheet
+is planned. None of these claims appears in the other CSVs under `evals/claims/`.
 
 | Expected answer | Count |
 | --- | ---: |
@@ -13,7 +14,18 @@ These counts include two labels corrected after the first live run (see "Correct
 
 Subjects: science 27, history 27, geography 23, technology 20, sports records 19, law and
 treaties 18, arts and culture 17, space 14, economics and statistics 12, public health 12,
-business 11. Every row is `split=heldout`: none of these claims was used to tune anything.
+business 11. The current split is **194 heldout / 6 tuning**.
+
+The six tuning claims are `s200-022`, `s200-036`, `s200-089`, `s200-100`,
+`s200-120` and `s200-130`. [PR #36](https://github.com/skanvish11/Aletheia-core/pull/36)
+used them to develop and check quotation matching after the original live runs.
+They are marked `split=tuning` now because that use has already happened, regardless
+of when #36 merges. The remaining 194 have not been used to tune the implementation.
+If further claims are used for tuning, update their split before reporting heldout results.
+
+The original 200-claim results remain historical full-sheet measurements; they are
+not scores on the current 194-claim heldout subset. Run artifacts retain the metadata
+recorded at run time, while the CSV records the current split.
 
 Same 17 columns as `claims-20261115.csv`; the file loads through
 `aletheia.evaluation.load_claims_csv`. IDs are `s200-001` to `s200-200`, in shuffled order.

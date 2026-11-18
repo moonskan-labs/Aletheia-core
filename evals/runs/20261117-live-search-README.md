@@ -17,6 +17,10 @@ Source URLs and labels stay in the scorer (`BatchClaim.request()` returns `{"cla
 
 **200-claim sheet** (`evals/claims/claims-20261117-200.csv`; `scripts/score_sheet.py`):
 
+These are historical full-sheet scores. Six claims were subsequently used to develop
+and check #36 and are now marked `tuning`; 194 remain `heldout` (see the sheet README).
+These totals are not accuracy estimates for the current 194-claim heldout subset.
+
 | Run | Model | True/false answers | Right among those | Total matches |
 | --- | --- | ---: | ---: | ---: |
 | 20261117-s200-live-gptoss120-a | gpt-oss-120b | 171/200 | 161/171 | **182/200 (91%)** |
