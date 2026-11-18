@@ -228,6 +228,17 @@ class Storage:
             ).fetchone()
             return self._record(row, reused=True) if row else None
 
+    async def recent(self, limit: int) -> list[Investigation]:
+        """The newest investigations first, every version, as saved results."""
+        async with self.connection() as db:
+            rows = await (
+                await db.execute(
+                    SELECT_INVESTIGATION + " ORDER BY i.created_at DESC, i.rowid DESC LIMIT ?",
+                    (limit,),
+                )
+            ).fetchall()
+            return [self._record(row, reused=True) for row in rows]
+
     async def events(self, investigation_id: UUID, *, after: int = 0) -> list[InvestigationEvent]:
         async with self.connection() as db:
             rows = await (

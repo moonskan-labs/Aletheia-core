@@ -1,6 +1,7 @@
 import { dataSource } from './api/source'
 import { canRecheck, unavailableReason, useBackendStatus } from './api/useBackendStatus'
 import { useInvestigation } from './api/useInvestigation'
+import { useRecent } from './api/useRecent'
 import { Home } from './components/Home'
 import { Report } from './components/Report'
 
@@ -9,6 +10,7 @@ const replay = dataSource.kind === 'replay'
 export default function App() {
   const { state, open, submit, retryLoad, close } = useInvestigation(dataSource)
   const backend = useBackendStatus(dataSource)
+  const recent = useRecent(dataSource, !state.investigation && !state.submitting, backend.status)
   const { investigation, evidence, events, submitting, researchDone, finished, loadError, error, reused } = state
   const recording = dataSource.recordings.find((r) => r.investigation.id === investigation?.id)
   const showingSample = recording ? recording.sample : dataSource.recordings.some((r) => r.sample)
@@ -61,6 +63,7 @@ export default function App() {
             submitting={submitting}
             error={error}
             recordings={dataSource.recordings}
+            recent={recent}
             onSubmit={(claim) => void submit(claim, {})}
             onOpen={(id) => void open(id)}
           />

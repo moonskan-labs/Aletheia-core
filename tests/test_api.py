@@ -175,3 +175,23 @@ async def test_terminal_reuse_never_requeues(client, app, status):
     assert response.status_code == 200
     assert response.json() == before
     assert len(await app.state.storage.events(UUID(original["id"]))) == 1
+
+
+async def test_recent_investigations_newest_first(client):
+    assert (await client.get("/investigations")).json() == {"investigations": []}
+    created = []
+    for claim in ("Everest is above sea level.", "Water boils at 100 C.", "Mars has two moons."):
+        created.append((await client.post("/investigations", json={"claim": claim})).json())
+    response = await client.get("/investigations", params={"limit": 2})
+    assert response.status_code == 200
+    listed = response.json()["investigations"]
+    assert [i["id"] for i in listed] == [created[2]["id"], created[1]["id"]]
+    assert listed[0] == {**created[2], "reused": True}
+    everything = (await client.get("/investigations")).json()["investigations"]
+    assert [i["claim"] for i in everything] == [c["claim"] for c in reversed(created)]
+
+
+@pytest.mark.parametrize("limit", ["0", "51", "x"])
+async def test_recent_investigations_limit_is_bounded(client, limit):
+    response = await client.get("/investigations", params={"limit": limit})
+    assert response.status_code == 422
