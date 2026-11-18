@@ -1,5 +1,6 @@
 """The simple search-and-verdict loop over fake providers; no network."""
 
+import asyncio
 import json
 import time
 from contextlib import asynccontextmanager
@@ -44,6 +45,8 @@ class Fake:
         search_status=200,
         plan=None,
         same_hits=False,
+        read_delays=None,
+        search_delay=0,
     ):
         # statuses: HTTP statuses for successive verdict calls; 200 once they run out.
         self.retries, self.statuses = retries, list(statuses)
@@ -54,6 +57,10 @@ class Fake:
         self.pages, self.hits = pages, hits
         self.plan_status, self.verdict_status = plan_status, verdict_status
         self.calls, self.inputs = [], []
+        # read_delays: seconds a page read takes, by URL; reads in flight are counted.
+        self.read_delays, self.reading, self.most_reading = read_delays or {}, 0, 0
+        self.read_done, self.read_timeouts = [], []
+        self.search_delay, self.searching, self.most_searching = search_delay, 0, 0
 
     async def handle(self, request):
         data = json.loads(request.content)
@@ -89,6 +96,12 @@ class Fake:
             )
         self.calls.append(request.url.path)
         if request.url.path == "/search":
+            self.searching += 1
+            self.most_searching = max(self.most_searching, self.searching)
+            try:
+                await asyncio.sleep(self.search_delay)
+            finally:
+                self.searching -= 1
             if self.search_status != 200:
                 return httpx.Response(self.search_status, json={})
             round_number = 1 if self.same_hits else self.calls.count("/search")
@@ -108,6 +121,14 @@ class Fake:
                 },
             )
         url = data["urls"][0]
+        self.read_timeouts.append(data["timeout"])
+        self.reading += 1
+        self.most_reading = max(self.most_reading, self.reading)
+        try:
+            await asyncio.sleep(self.read_delays.get(url, 0))
+        finally:
+            self.reading -= 1
+        self.read_done.append(url)
         text = self.pages if isinstance(self.pages, str) else self.pages.get(url)
         if isinstance(text, int):
             return httpx.Response(text, json={})
@@ -510,3 +531,49 @@ def test_quote_glyph_matching_preserves_source_text_offsets_and_hash():
     assert excerpt.text == "The Archive’s name is “Museum”."
     assert source.normalized_text[excerpt.start : excerpt.end] == excerpt.text
     assert excerpt.quote_hash == digest(excerpt.text)
+
+
+# --- Pages read together ------------------------------------------------------------------
+
+
+async def test_pages_are_read_together_and_kept_in_ranked_order(settings):
+    # The best-ranked page is the slowest; it must still come first.
+    delays = {f"https://source.test/1/{i}": 0.5 - 0.08 * i for i in range(5)}
+    fake = Fake([answer("true")], hits=5, plan=["archive date"], read_delays=delays)
+    saved, evidence, events = await check(settings, fake)
+    assert saved["result"]["verdict"] == "true"
+    assert fake.most_reading == 5  # all five reads were in flight at once
+    assert fake.read_done[0] == "https://source.test/1/4"  # finished first
+    kept = [e["payload"]["url"] for e in events if e["type"] == "source_extracted"]
+    assert kept == [f"https://source.test/1/{i}" for i in range(5)]
+    slots = [e["payload"]["slot"] for e in events if e["type"] == "source_selected"]
+    assert slots == ["1", "2", "3", "4", "5"]
+    assert set(fake.read_timeouts) == {20.0}  # a page read is given up after 20 s
+
+
+async def test_a_page_that_fails_is_replaced_from_the_spare_results(settings):
+    pages = {f"https://source.test/1/{i}": PAGE for i in range(5)}
+    pages["https://source.test/1/0"] = None  # cannot be read
+    fake = Fake([answer("true")], hits=5, plan=["archive date"], pages=pages)
+    saved, evidence, events = await check(settings, fake)
+    assert saved["result"]["verdict"] == "true"
+    assert len(evidence["sources"]) == 4 and fake.calls.count("/extract") == 5
+
+
+async def test_searches_run_together(settings):
+    plan = ["archive date", "archive opening", "archive 2000"]
+    fake = Fake([answer("true")], hits=2, plan=plan, search_delay=0.3)
+    saved, _, events = await check(settings, fake)
+    assert fake.most_searching == 3  # all three in flight at once
+    assert [e["type"] for e in events].count("search_completed") == 3
+    assert saved["result"]["budget_used"]["search"] == 3
+
+
+async def test_a_rejected_key_while_reading_stops_the_other_reads(settings):
+    slow = {f"https://source.test/1/{i}": 1.0 for i in range(1, 5)}
+    pages = {f"https://source.test/1/{i}": PAGE for i in range(5)}
+    pages["https://source.test/1/0"] = 401
+    fake = Fake([answer("true")], hits=5, plan=["archive date"], pages=pages, read_delays=slow)
+    saved, _, _ = await check(settings, fake)
+    assert saved["status"] == "failed" and "Answer" not in fake.calls
+    assert fake.read_done == ["https://source.test/1/0"]  # the slow reads were cancelled

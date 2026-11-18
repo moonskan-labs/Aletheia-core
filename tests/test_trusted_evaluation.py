@@ -519,6 +519,17 @@ def test_quote_normalization_does_not_turn_inches_into_feet():
     assert state["downgraded"]
 
 
+async def test_replay_accepts_the_simple_loops_read_timeout():
+    from aletheia.simple import READ_TIMEOUT_SECONDS
+
+    async with ReplayProvider(settings()) as search:
+        search.set_pages([page()])
+        result = await search.extract(
+            [page()["url"]], budget=budget(extract=1), timeout_seconds=READ_TIMEOUT_SECONDS
+        )
+        assert result.pages[0].content == page()["original_text"]
+
+
 def test_sheet_scoring_maps_labels_and_scores_like_the_trusted_scorer(tmp_path, capsys):
     import csv
 
