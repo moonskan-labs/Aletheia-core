@@ -6,6 +6,7 @@ import {
   type HealthStatus,
   type Investigation,
   type InvestigationEvent,
+  type InvestigationList,
 } from './types'
 import { RECORDINGS, type Recording } from '../fixtures'
 
@@ -28,6 +29,8 @@ export interface DataSource {
   getEvidence(id: string, signal?: AbortSignal): Promise<EvidenceResponse>
   /** All stored events at once. Replay only: lets a saved report open without animation. */
   getEvents?(id: string): Promise<InvestigationEvent[]>
+  /** Live only: the newest saved investigations, newest first. */
+  recent?(signal?: AbortSignal): Promise<Investigation[]>
   /** Live only: backend reachability and whether research is enabled. Takes an abort signal. */
   health?(signal?: AbortSignal): Promise<HealthStatus>
   subscribe(
@@ -38,6 +41,9 @@ export interface DataSource {
 }
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? '/api'
+
+/** How many past investigations the home page lists. */
+export const RECENT_LIMIT = 10
 
 export const UNREACHABLE =
   'Couldn’t reach the Aletheia backend. Start it on this computer (see the README), then try again.'
@@ -82,6 +88,8 @@ export const liveSource: DataSource = {
     }),
   getInvestigation: (id, signal) => getJson<Investigation>(`/investigations/${id}`, { signal }),
   getEvidence: (id, signal) => getJson<EvidenceResponse>(`/investigations/${id}/evidence`, { signal }),
+  recent: (signal) =>
+    getJson<InvestigationList>(`/investigations?limit=${RECENT_LIMIT}`, { signal }).then((list) => list.investigations),
   health: (signal) => getJson<HealthStatus>('/health', { signal }),
   subscribe(id, onEvent, onError) {
     // EventSource resends Last-Event-ID on reconnect; the server replays from there.

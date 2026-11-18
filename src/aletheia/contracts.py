@@ -102,6 +102,12 @@ class Investigation(Contract):
     links: InvestigationLinks
 
 
+class InvestigationList(Contract):
+    """The newest investigations first, for a client's recent list."""
+
+    investigations: list[Investigation]
+
+
 class InvestigationEvent(Contract):
     investigation_id: UUID
     sequence: int = Field(ge=1)

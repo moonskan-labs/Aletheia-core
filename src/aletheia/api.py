@@ -10,7 +10,12 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, StreamingResponse
 
 from aletheia.config import Settings
-from aletheia.contracts import ACTIVE_STATUSES, Investigation, InvestigationRequest
+from aletheia.contracts import (
+    ACTIVE_STATUSES,
+    Investigation,
+    InvestigationList,
+    InvestigationRequest,
+)
 from aletheia.research_contracts import Comparison, Evidence
 from aletheia.runtime import research_providers
 from aletheia.storage import Conflict, QueueFull, Storage, StorageError
@@ -133,6 +138,11 @@ def create_app(
         response.status_code = 202 if investigation.status in ACTIVE_STATUSES else 200
         response.headers["Location"] = investigation.links.self
         return investigation
+
+    @app.get("/investigations", response_model=InvestigationList)
+    async def recent(limit: Annotated[int, Query(ge=1, le=50)] = 20):
+        # Saved results only: listing never starts work or calls a provider.
+        return InvestigationList(investigations=await storage.recent(limit))
 
     @app.get("/investigations/{investigation_id}", response_model=Investigation)
     async def get_investigation(investigation_id: UUID):

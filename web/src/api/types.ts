@@ -170,6 +170,11 @@ export interface Investigation {
   links: InvestigationLinks
 }
 
+/** GET /investigations: the newest first, as saved results. */
+export interface InvestigationList {
+  investigations: Investigation[]
+}
+
 /** GET /health. research_enabled is false when the API keys are not configured. */
 export interface HealthStatus {
   status: string
