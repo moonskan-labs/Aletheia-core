@@ -1,0 +1,1697 @@
+{
+  "id": "s200-071",
+  "live": true,
+  "investigation": {
+    "id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+    "claim": "HTTP status code 404 means the server encountered an internal error.",
+    "context": {},
+    "version": 1,
+    "parent_id": null,
+    "status": "completed",
+    "stage": null,
+    "route": "quick",
+    "stop_reason": "evidence_sufficient",
+    "reused": true,
+    "created_at": "2026-11-17T17:29:05.568661Z",
+    "started_at": "2026-11-17T17:29:05.622839Z",
+    "finished_at": "2026-11-17T17:29:19.516701Z",
+    "result": {
+      "outcome": "decided",
+      "verdict": "false",
+      "unable_to_decide_reason": null,
+      "almost_correction": null,
+      "assertion": {
+        "id": "a1",
+        "text": "HTTP status code 404 means the server encountered an internal error.",
+        "analysis": null,
+        "kind": "direct_record",
+        "consequential": false,
+        "recommended_route": "quick"
+      },
+      "scope_note": "Checked as submitted, against the pages retrieved for this run.",
+      "finding": {
+        "outcome": "decided",
+        "verdict": "false",
+        "unable_to_decide_reason": null,
+        "almost_correction": null,
+        "components": [],
+        "assertion_id": "a1",
+        "evidence_ids": [
+          "a29ea093-75f9-4d9f-8774-9ba9aed90cc0",
+          "3cf15707-fd0f-4bf9-b350-a3c9499da918"
+        ],
+        "qualification_flags": [],
+        "qualification_check": "unknown",
+        "limitations": [
+          "Some pages were too long and were read only in part."
+        ]
+      },
+      "explanation": [
+        {
+          "text": "All cited pages define 404 as a client‑error/not‑found status, not as an internal server error, directly contradicting the claim.",
+          "evidence_ids": [
+            "a29ea093-75f9-4d9f-8774-9ba9aed90cc0",
+            "3cf15707-fd0f-4bf9-b350-a3c9499da918"
+          ]
+        }
+      ],
+      "limitations": [
+        "Some pages were too long and were read only in part."
+      ],
+      "model": "openai/gpt-oss-120b",
+      "prompt_version": "one-call-v1",
+      "application_version": "simple-loop-v1",
+      "configuration": {
+        "pipeline": "simple",
+        "max_rounds": 2,
+        "first_round_page_limit": 6,
+        "followup_page_limit": 3,
+        "pages_offered": 6,
+        "passage_chars_per_page": 6000,
+        "model_attempt_limit": 18,
+        "search_attempt_limit": 18,
+        "extraction_attempt_limit": 39,
+        "response_format": "json_schema",
+        "nebius_thinking": "default",
+        "max_output_tokens": 16384,
+        "provider_timeout_seconds": 120.0
+      },
+      "budget_used": {
+        "model": 3,
+        "search": 3,
+        "extract": 7
+      },
+      "provider_attempts": [
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.6138050909999038,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.023586238000007,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 3.4961637639999026,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "search",
+          "units": 1,
+          "elapsed_seconds": 2.4631561000001057,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.12918562400000155,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.07936732100006338,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.08712607400002526,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.4357568039999933,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.9372210180004004,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.08198814300021695,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "tavily",
+          "operation": "extract",
+          "units": 1,
+          "elapsed_seconds": 0.19251594199977262,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 2.3969874790000176,
+          "status_code": 200,
+          "outcome": "success"
+        },
+        {
+          "provider": "nebius",
+          "operation": "model",
+          "units": 1,
+          "elapsed_seconds": 0.5152945899999395,
+          "status_code": 200,
+          "outcome": "success"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 9374,
+        "completion_tokens": 763,
+        "total_tokens": 10137
+      }
+    },
+    "claim_analysis": null,
+    "method_limitation": null,
+    "clarification_questions": null,
+    "error": null,
+    "links": {
+      "self": "/investigations/00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "events": "/investigations/00055a8f-7763-46d3-ac79-96f6e5ef7c4f/events",
+      "evidence": "/investigations/00055a8f-7763-46d3-ac79-96f6e5ef7c4f/evidence",
+      "comparison": "/investigations/00055a8f-7763-46d3-ac79-96f6e5ef7c4f/comparison",
+      "refresh": "/investigations/00055a8f-7763-46d3-ac79-96f6e5ef7c4f/refresh"
+    }
+  },
+  "evidence": {
+    "sources": [
+      {
+        "id": "7760d8e8-a1d4-433a-9137-029e33c54dad",
+        "url": "https://law.resource.org/pub/us/cfr/regulations.gov.aera.case/gov.uscourts.dcd.166323.70.72.pdf",
+        "canonical_url": "https://law.resource.org/pub/us/cfr/regulations.gov.aera.case/gov.uscourts.dcd.166323.70.72.pdf",
+        "title": "RFC 7231 - Hypertext Transfer Protocol †HTTP/1.1",
+        "published_date": null,
+        "retrieved_at": "2026-11-17T17:29:14.441126Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "ceea25702633f25d293e3b914b848b9f48f0f50ffbc0ba716ddbe731b1631374",
+        "duplicate_group": "ceea25702633f25d293e3b914b848b9f48f0f50ffbc0ba716ddbe731b1631374",
+        "limitations": [
+          "page_text_truncated"
+        ]
+      },
+      {
+        "id": "1aa42944-ee68-4473-a48f-8fdf28a1787e",
+        "url": "https://www.techtarget.com/news/404-status-code/872214",
+        "canonical_url": "https://www.techtarget.com/news/404-status-code/872214",
+        "title": "404 error | TechTarget",
+        "published_date": null,
+        "retrieved_at": "2026-11-17T17:29:14.554233Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "934dd5786d0a04ba7b8ca5cb28cdf5a2b95fde8eca3b71f06fbe007a7b300fd1",
+        "duplicate_group": "934dd5786d0a04ba7b8ca5cb28cdf5a2b95fde8eca3b71f06fbe007a7b300fd1",
+        "limitations": []
+      },
+      {
+        "id": "4db2bdda-266d-4f4a-b020-d5dd34e36dff",
+        "url": "https://hyperping.com/blog/404-vs-500-error-client-vs-server-errors-explained",
+        "canonical_url": "https://hyperping.com/blog/404-vs-500-error-client-vs-server-errors-explained",
+        "title": "404 vs 500 Error: Client vs Server Errors Explained",
+        "published_date": null,
+        "retrieved_at": "2026-11-17T17:29:14.671596Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "ef087875c8e76d0aee1206afb914e7d1e4cb0a5fba31da741f58b876b442cbd4",
+        "duplicate_group": "ef087875c8e76d0aee1206afb914e7d1e4cb0a5fba31da741f58b876b442cbd4",
+        "limitations": []
+      },
+      {
+        "id": "99af6f8b-73c7-4a16-8dbf-117dca0e47d1",
+        "url": "https://discuss.jsonapi.org/t/404-to-patch-contradict-rfc-7231/331",
+        "canonical_url": "https://discuss.jsonapi.org/t/404-to-patch-contradict-rfc-7231/331",
+        "title": "404 to PATCH contradict RFC 7231 - Uncategorized - JSON API",
+        "published_date": null,
+        "retrieved_at": "2026-11-17T17:29:16.091639Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "b36c90811902aee69de6088f6494c0a4fe7e10cd22bc186d4aca35f8a69c0e5e",
+        "duplicate_group": "b36c90811902aee69de6088f6494c0a4fe7e10cd22bc186d4aca35f8a69c0e5e",
+        "limitations": []
+      },
+      {
+        "id": "e383a149-4ad0-4d6e-88db-468d7c887c4b",
+        "url": "https://error404.atomseo.com/blog/404-vs-500-errors",
+        "canonical_url": "https://error404.atomseo.com/blog/404-vs-500-errors",
+        "title": "404 vs 500 Errors: Difference, SEO Impact and Resolving Tips",
+        "published_date": null,
+        "retrieved_at": "2026-11-17T17:29:16.190413Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "143a82a48b885f94b1726c5bf070da177786d6c1f322d5b1283b06ed4c4be614",
+        "duplicate_group": "143a82a48b885f94b1726c5bf070da177786d6c1f322d5b1283b06ed4c4be614",
+        "limitations": []
+      },
+      {
+        "id": "9c87acf2-5d00-4c3d-89ec-0217f8b3b84d",
+        "url": "https://www.rfc-editor.org/info/rfc9110",
+        "canonical_url": "https://www.rfc-editor.org/info/rfc9110",
+        "title": "RFC 9110: HTTP Semantics | RFC Editor",
+        "published_date": null,
+        "retrieved_at": "2026-11-17T17:29:16.406693Z",
+        "normalization_version": "whitespace-v1",
+        "splitter_version": "blocks-sentences-v1",
+        "content_hash": "12245f6b94116c7abda2bebc966d606c221487a78727a0a80f98fb8762d64d74",
+        "duplicate_group": "12245f6b94116c7abda2bebc966d606c221487a78727a0a80f98fb8762d64d74",
+        "limitations": [
+          "page_text_truncated"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "a29ea093-75f9-4d9f-8774-9ba9aed90cc0",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": null,
+          "values": [],
+          "citation": {
+            "snapshot_id": "7760d8e8-a1d4-433a-9137-029e33c54dad",
+            "span_ids": [
+              73
+            ]
+          },
+          "rationale": "All cited pages define 404 as a client‑error/not‑found status, not as an internal server error, directly contradicting the claim.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              73
+            ],
+            "start": 7382,
+            "end": 7691,
+            "text": "Client Error 4xx ..........................................58 6.5.1. 400 Bad Request ....................................58 6.5.2. 402 Payment Required ...............................59 6.5.3. 403 Forbidden ......................................59 6.5.4. 404 Not Found ......................................59",
+            "quote_hash": "2115c96b32480e5e3475ac3671783b7bdde9a14b25d817dae7cb925c78bd1032"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      },
+      {
+        "id": "3cf15707-fd0f-4bf9-b350-a3c9499da918",
+        "assertion_id": "a1",
+        "assessment": {
+          "component_id": null,
+          "values": [],
+          "citation": {
+            "snapshot_id": "4db2bdda-266d-4f4a-b020-d5dd34e36dff",
+            "span_ids": [
+              6
+            ]
+          },
+          "rationale": "All cited pages define 404 as a client‑error/not‑found status, not as an internal server error, directly contradicting the claim.",
+          "relation": "contradicts",
+          "scope_match": true,
+          "authoritative_record": false,
+          "credible_synthesis": false,
+          "synthesis_coverage": null,
+          "publisher": null,
+          "origin": null,
+          "independence": "unknown",
+          "provenance_span_ids": [],
+          "provenance_note": null,
+          "limitations": [],
+          "flags": []
+        },
+        "excerpts": [
+          {
+            "span_ids": [
+              6
+            ],
+            "start": 387,
+            "end": 473,
+            "text": "A **404** means the client made a mistake (like requesting a page that doesn't exist).",
+            "quote_hash": "6579f0682cfb056dbf8a4ee6f8e29256b57c5baaf28cebff1189f67fb36b7905"
+          }
+        ],
+        "admissible": true,
+        "rejection_reason": null
+      }
+    ]
+  },
+  "comparison": {
+    "comparison_status": "not_applicable",
+    "baseline_id": null,
+    "scope_changed": false,
+    "sources": [],
+    "verdict_changed": false,
+    "decision_changed": false,
+    "same_relevant_evidence": false,
+    "consistency_status": "not_comparable",
+    "recheck_status": "disabled",
+    "baseline_fingerprint": null,
+    "current_fingerprint": null,
+    "algorithm": "relevant-evidence-v2",
+    "configuration_changed": false,
+    "limitations": []
+  },
+  "events": [
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 1,
+      "timestamp": "2026-11-17T17:29:05.568661Z",
+      "type": "investigation_queued",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 2,
+      "timestamp": "2026-11-17T17:29:05.622839Z",
+      "type": "investigation_started",
+      "stage": null,
+      "payload": {}
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 3,
+      "timestamp": "2026-11-17T17:29:05.627215Z",
+      "type": "run_configured",
+      "stage": "interpreting",
+      "payload": {
+        "stage": "interpreting",
+        "phase": "research",
+        "model_used": "0",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "0",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "150.000",
+        "hard_remaining_seconds": "150.000",
+        "model": "openai/gpt-oss-120b",
+        "prompt_version": "one-call-v1",
+        "application_version": "simple-loop-v1",
+        "max_rounds": "2"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 4,
+      "timestamp": "2026-11-17T17:29:05.631546Z",
+      "type": "route_selected",
+      "stage": null,
+      "payload": {
+        "route": "quick",
+        "reason": "One verdict call over the retrieved pages."
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 5,
+      "timestamp": "2026-11-17T17:29:05.634963Z",
+      "type": "stage_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 6,
+      "timestamp": "2026-11-17T17:29:05.642371Z",
+      "type": "provider_attempt_started",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "0",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "149.988",
+        "hard_remaining_seconds": "149.988",
+        "provider_call_id": "p1",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "1351"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 7,
+      "timestamp": "2026-11-17T17:29:06.261412Z",
+      "type": "provider_attempt_finished",
+      "stage": "planning",
+      "payload": {
+        "stage": "planning",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "0",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "149.366",
+        "hard_remaining_seconds": "149.366",
+        "provider_call_id": "p1",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "1351",
+        "elapsed_seconds": "0.614",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1358"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 8,
+      "timestamp": "2026-11-17T17:29:06.266353Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "RFC 7231 404 Not Found definition",
+        "query_id": "q2"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 9,
+      "timestamp": "2026-11-17T17:29:06.270713Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "1",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "149.357",
+        "hard_remaining_seconds": "149.357",
+        "provider_call_id": "p3",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "241"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 10,
+      "timestamp": "2026-11-17T17:29:08.297754Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "1",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "147.329",
+        "hard_remaining_seconds": "147.329",
+        "provider_call_id": "p3",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "241",
+        "elapsed_seconds": "2.024",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "11104"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 11,
+      "timestamp": "2026-11-17T17:29:08.302191Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "RFC 7231 404 Not Found definition",
+        "query_id": "q2",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 12,
+      "timestamp": "2026-11-17T17:29:08.306051Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "404 status code meaning internal server error",
+        "query_id": "q4"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 13,
+      "timestamp": "2026-11-17T17:29:08.308688Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "2",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "147.318",
+        "hard_remaining_seconds": "147.318",
+        "provider_call_id": "p5",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "253"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 14,
+      "timestamp": "2026-11-17T17:29:11.808257Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "2",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "143.819",
+        "hard_remaining_seconds": "143.819",
+        "provider_call_id": "p5",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "253",
+        "elapsed_seconds": "3.496",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "9823"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 15,
+      "timestamp": "2026-11-17T17:29:11.811753Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "404 status code meaning internal server error",
+        "query_id": "q4",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 16,
+      "timestamp": "2026-11-17T17:29:11.814227Z",
+      "type": "search_started",
+      "stage": "searching",
+      "payload": {
+        "query": "404 status code not found vs internal server error dispute",
+        "query_id": "q6"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 17,
+      "timestamp": "2026-11-17T17:29:11.817154Z",
+      "type": "provider_attempt_started",
+      "stage": "searching",
+      "payload": {
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "143.809",
+        "hard_remaining_seconds": "143.809",
+        "provider_call_id": "p7",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 18,
+      "timestamp": "2026-11-17T17:29:14.283927Z",
+      "type": "provider_attempt_finished",
+      "stage": "searching",
+      "payload": {
+        "stage": "searching",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "0",
+        "extract_limit": "39",
+        "remaining_seconds": "141.343",
+        "hard_remaining_seconds": "141.343",
+        "provider_call_id": "p7",
+        "provider": "tavily",
+        "operation": "search",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "266",
+        "elapsed_seconds": "2.463",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "8331"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 19,
+      "timestamp": "2026-11-17T17:29:14.288694Z",
+      "type": "search_completed",
+      "stage": "searching",
+      "payload": {
+        "query": "404 status code not found vs internal server error dispute",
+        "query_id": "q6",
+        "result_count": "5"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 20,
+      "timestamp": "2026-11-17T17:29:14.292718Z",
+      "type": "sources_deferred",
+      "stage": "extracting",
+      "payload": {
+        "count": "2",
+        "reason": "Social and video sites are not read."
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 21,
+      "timestamp": "2026-11-17T17:29:14.296417Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://law.resource.org/pub/us/cfr/regulations.gov.aera.case/gov.uscourts.dcd.166323.70.72.pdf",
+        "slot": "1",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 22,
+      "timestamp": "2026-11-17T17:29:14.305850Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "1",
+        "extract_limit": "39",
+        "remaining_seconds": "141.325",
+        "hard_remaining_seconds": "141.325",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "222"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 23,
+      "timestamp": "2026-11-17T17:29:14.438883Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "1",
+        "extract_limit": "39",
+        "remaining_seconds": "141.188",
+        "hard_remaining_seconds": "141.188",
+        "provider_call_id": "p8",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "222",
+        "elapsed_seconds": "0.129",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "217634"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 24,
+      "timestamp": "2026-11-17T17:29:14.459848Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "7760d8e8-a1d4-433a-9137-029e33c54dad",
+        "url": "https://law.resource.org/pub/us/cfr/regulations.gov.aera.case/gov.uscourts.dcd.166323.70.72.pdf",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 25,
+      "timestamp": "2026-11-17T17:29:14.463401Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.techtarget.com/news/404-status-code/872214",
+        "slot": "2",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 26,
+      "timestamp": "2026-11-17T17:29:14.467616Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "2",
+        "extract_limit": "39",
+        "remaining_seconds": "141.159",
+        "hard_remaining_seconds": "141.159",
+        "provider_call_id": "p9",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "181"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 27,
+      "timestamp": "2026-11-17T17:29:14.552214Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "2",
+        "extract_limit": "39",
+        "remaining_seconds": "141.075",
+        "hard_remaining_seconds": "141.075",
+        "provider_call_id": "p9",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "181",
+        "elapsed_seconds": "0.079",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "13841"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 28,
+      "timestamp": "2026-11-17T17:29:14.571123Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "1aa42944-ee68-4473-a48f-8fdf28a1787e",
+        "url": "https://www.techtarget.com/news/404-status-code/872214",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 29,
+      "timestamp": "2026-11-17T17:29:14.574480Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://hyperping.com/blog/404-vs-500-error-client-vs-server-errors-explained",
+        "slot": "3",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 30,
+      "timestamp": "2026-11-17T17:29:14.577872Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "3",
+        "extract_limit": "39",
+        "remaining_seconds": "141.049",
+        "hard_remaining_seconds": "141.049",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "204"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 31,
+      "timestamp": "2026-11-17T17:29:14.669427Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "3",
+        "extract_limit": "39",
+        "remaining_seconds": "140.957",
+        "hard_remaining_seconds": "140.957",
+        "provider_call_id": "p10",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "204",
+        "elapsed_seconds": "0.087",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "12708"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 32,
+      "timestamp": "2026-11-17T17:29:14.682501Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "4db2bdda-266d-4f4a-b020-d5dd34e36dff",
+        "url": "https://hyperping.com/blog/404-vs-500-error-client-vs-server-errors-explained",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 33,
+      "timestamp": "2026-11-17T17:29:14.690603Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.zerosday.com/post/others/rfc-9110-decoding-the-404-not-found-http-semantics-for-hackers",
+        "slot": "4",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 34,
+      "timestamp": "2026-11-17T17:29:14.694663Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "4",
+        "extract_limit": "39",
+        "remaining_seconds": "140.932",
+        "hard_remaining_seconds": "140.932",
+        "provider_call_id": "p11",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "226"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 35,
+      "timestamp": "2026-11-17T17:29:15.135120Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "4",
+        "extract_limit": "39",
+        "remaining_seconds": "140.492",
+        "hard_remaining_seconds": "140.492",
+        "provider_call_id": "p11",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "226",
+        "elapsed_seconds": "0.436",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "268"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 36,
+      "timestamp": "2026-11-17T17:29:15.140430Z",
+      "type": "source_rejected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.zerosday.com/post/others/rfc-9110-decoding-the-404-not-found-http-semantics-for-hackers",
+        "reason": "extraction_failed"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 37,
+      "timestamp": "2026-11-17T17:29:15.144805Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://discuss.jsonapi.org/t/404-to-patch-contradict-rfc-7231/331",
+        "slot": "4",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 38,
+      "timestamp": "2026-11-17T17:29:15.147949Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "5",
+        "extract_limit": "39",
+        "remaining_seconds": "140.479",
+        "hard_remaining_seconds": "140.479",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "193"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 39,
+      "timestamp": "2026-11-17T17:29:16.089385Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "5",
+        "extract_limit": "39",
+        "remaining_seconds": "139.538",
+        "hard_remaining_seconds": "139.538",
+        "provider_call_id": "p12",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "193",
+        "elapsed_seconds": "0.937",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2568"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 40,
+      "timestamp": "2026-11-17T17:29:16.097053Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "99af6f8b-73c7-4a16-8dbf-117dca0e47d1",
+        "url": "https://discuss.jsonapi.org/t/404-to-patch-contradict-rfc-7231/331",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 41,
+      "timestamp": "2026-11-17T17:29:16.099641Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://error404.atomseo.com/blog/404-vs-500-errors",
+        "slot": "5",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 42,
+      "timestamp": "2026-11-17T17:29:16.102720Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "6",
+        "extract_limit": "39",
+        "remaining_seconds": "139.524",
+        "hard_remaining_seconds": "139.524",
+        "provider_call_id": "p13",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "178"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 43,
+      "timestamp": "2026-11-17T17:29:16.187781Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "6",
+        "extract_limit": "39",
+        "remaining_seconds": "139.439",
+        "hard_remaining_seconds": "139.439",
+        "provider_call_id": "p13",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "178",
+        "elapsed_seconds": "0.082",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "12061"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 44,
+      "timestamp": "2026-11-17T17:29:16.197579Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "e383a149-4ad0-4d6e-88db-468d7c887c4b",
+        "url": "https://error404.atomseo.com/blog/404-vs-500-errors",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 45,
+      "timestamp": "2026-11-17T17:29:16.201861Z",
+      "type": "source_selected",
+      "stage": "extracting",
+      "payload": {
+        "url": "https://www.rfc-editor.org/info/rfc9110",
+        "slot": "6",
+        "selection_rule": "official_first_query_balanced"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 46,
+      "timestamp": "2026-11-17T17:29:16.205613Z",
+      "type": "provider_attempt_started",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "7",
+        "extract_limit": "39",
+        "remaining_seconds": "139.421",
+        "hard_remaining_seconds": "139.421",
+        "provider_call_id": "p14",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "166"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 47,
+      "timestamp": "2026-11-17T17:29:16.402764Z",
+      "type": "provider_attempt_finished",
+      "stage": "extracting",
+      "payload": {
+        "stage": "extracting",
+        "phase": "research",
+        "model_used": "1",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "7",
+        "extract_limit": "39",
+        "remaining_seconds": "139.224",
+        "hard_remaining_seconds": "139.224",
+        "provider_call_id": "p14",
+        "provider": "tavily",
+        "operation": "extract",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "166",
+        "elapsed_seconds": "0.193",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "780014"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 48,
+      "timestamp": "2026-11-17T17:29:16.425059Z",
+      "type": "source_extracted",
+      "stage": "extracting",
+      "payload": {
+        "snapshot_id": "9c87acf2-5d00-4c3d-89ec-0217f8b3b84d",
+        "url": "https://www.rfc-editor.org/info/rfc9110",
+        "duplicate": "false"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 49,
+      "timestamp": "2026-11-17T17:29:16.429257Z",
+      "type": "stage_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 50,
+      "timestamp": "2026-11-17T17:29:16.484389Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "7",
+        "extract_limit": "39",
+        "remaining_seconds": "139.143",
+        "hard_remaining_seconds": "139.143",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "37531"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 51,
+      "timestamp": "2026-11-17T17:29:18.885618Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "2",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "7",
+        "extract_limit": "39",
+        "remaining_seconds": "136.742",
+        "hard_remaining_seconds": "136.742",
+        "provider_call_id": "p15",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "37531",
+        "elapsed_seconds": "2.397",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "2999"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 52,
+      "timestamp": "2026-11-17T17:29:18.981244Z",
+      "type": "provider_attempt_started",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "7",
+        "extract_limit": "39",
+        "remaining_seconds": "136.652",
+        "hard_remaining_seconds": "136.652",
+        "provider_call_id": "p16",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "1752"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 53,
+      "timestamp": "2026-11-17T17:29:19.502885Z",
+      "type": "provider_attempt_finished",
+      "stage": "verifying",
+      "payload": {
+        "stage": "verifying",
+        "phase": "research",
+        "model_used": "3",
+        "model_limit": "18",
+        "model_available_limit": "18",
+        "search_used": "3",
+        "search_limit": "18",
+        "extract_used": "7",
+        "extract_limit": "39",
+        "remaining_seconds": "136.124",
+        "hard_remaining_seconds": "136.124",
+        "provider_call_id": "p16",
+        "provider": "nebius",
+        "operation": "model",
+        "attempt": "1",
+        "units": "1",
+        "request_bytes": "1752",
+        "elapsed_seconds": "0.515",
+        "status_code": "200",
+        "outcome": "success",
+        "validation_code": "none",
+        "limit_reason": "none",
+        "response_bytes": "1129"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 54,
+      "timestamp": "2026-11-17T17:29:19.505691Z",
+      "type": "research_gate",
+      "stage": null,
+      "payload": {
+        "action": "stop",
+        "reason": "verdict_with_quotes",
+        "round": "0"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 55,
+      "timestamp": "2026-11-17T17:29:19.511654Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "a29ea093-75f9-4d9f-8774-9ba9aed90cc0",
+        "snapshot_id": "7760d8e8-a1d4-433a-9137-029e33c54dad",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 56,
+      "timestamp": "2026-11-17T17:29:19.514450Z",
+      "type": "evidence_checked",
+      "stage": "verifying",
+      "payload": {
+        "evidence_id": "3cf15707-fd0f-4bf9-b350-a3c9499da918",
+        "snapshot_id": "4db2bdda-266d-4f4a-b020-d5dd34e36dff",
+        "admissible": "true",
+        "relation": "contradicts"
+      }
+    },
+    {
+      "investigation_id": "00055a8f-7763-46d3-ac79-96f6e5ef7c4f",
+      "sequence": 57,
+      "timestamp": "2026-11-17T17:29:19.516701Z",
+      "type": "investigation_completed",
+      "stage": null,
+      "payload": {
+        "stop_reason": "evidence_sufficient"
+      }
+    }
+  ],
+  "saved_checks": {
+    "same_saved_response": true,
+    "zero_provider_calls": true,
+    "ordered_events": true,
+    "reconnect_replay": true
+  },
+  "citation_review": "pending_human_review",
+  "elapsed_seconds": 14.228515121000328,
+  "network_attempts": [
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.613
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.023
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 3.495
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.462
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.074
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.076
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.086
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.435
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.936
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.081
+    },
+    {
+      "provider": "tavily",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.114
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 2.396
+    },
+    {
+      "provider": "nebius",
+      "status_code": 200,
+      "headers_elapsed_seconds": 0.514
+    }
+  ],
+  "budget_attempts": [
+    [
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.6138050909999038,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.023586238000007,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 3.4961637639999026,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "search",
+        "units": 1,
+        "elapsed_seconds": 2.4631561000001057,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.12918562400000155,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.07936732100006338,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.08712607400002526,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.4357568039999933,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.9372210180004004,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.08198814300021695,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "tavily",
+        "operation": "extract",
+        "units": 1,
+        "elapsed_seconds": 0.19251594199977262,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 2.3969874790000176,
+        "status_code": 200,
+        "outcome": "success"
+      },
+      {
+        "provider": "nebius",
+        "operation": "model",
+        "units": 1,
+        "elapsed_seconds": 0.5152945899999395,
+        "status_code": 200,
+        "outcome": "success"
+      }
+    ]
+  ]
+}
