@@ -21,7 +21,7 @@ npm test         # hook and form behavior (Vitest + jsdom)
 
 ## Screens
 
-- **Entry:** the claim field is always the first thing on the page. In live mode it submits; while a submission is pending the button reads "Starting investigation…" and further clicks are ignored. In replay mode the field is disabled, with a note that live investigation needs the backend, which is still being built. Sample investigations are listed below it.
+- **Entry:** the claim field is always the first thing on the page. In live mode it submits; while a submission is pending the button reads "Starting investigation…" and further clicks are ignored. In replay mode the field is disabled, with a note that live investigation needs the backend, which is still being built. Below it, in live mode, **Recent investigations** lists the 10 newest saved runs (`GET /investigations?limit=10`) with their result or status and time; choosing one opens its saved report without a new run. The list loads whenever the home page shows and whenever the backend becomes reachable (so "Retry connection" brings it in), and is left out when the backend can't answer. Sample investigations are listed below that.
 - **Researching:** the claim headline, the latest step, and the live progress log.
 - **Report** (saved samples open straight to it; "Replay research steps" plays the recorded progress), in visual direction B ([`design/visual-direction.md`](../design/visual-direction.md)): the claim, the result label just below it in its label colour (smaller than the claim), and one mono line of run facts. Below, the report on the left (the evidence-linked conclusion, any correction or caveat, what was checked, limitations, and the collapsed research log) and the evidence pane on the right.
 - **Results that fail to load:** if research ends but fetching the report fails, the page says so and offers "Retry loading results", which never starts a new investigation.
@@ -34,7 +34,7 @@ npm test         # hook and form behavior (Vitest + jsdom)
 - Two recordings in `src/fixtures/live/` are real, unedited runs of the search-and-verdict loop against Token Factory and Tavily (2026-11-16): one true, one false. They were checked for secrets before being added. The third recording is invented sample data (`sample: true`), and the page says so.
 - The research log names each provider call (Token Factory model call, Tavily search, Tavily page read) and its summary line counts searches, pages read and model calls. Two step types that only announce the next line are left out of the finished log.
 - Clarification, failed and partial results render in the shared layout, but their full designs and sample recordings come in a follow-up.
-- The refresh, saved-view and comparison screens are not built yet.
+- The refresh and comparison screens are not built yet.
 
 ### Phase 1 backend integration
 

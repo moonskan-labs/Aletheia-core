@@ -100,11 +100,11 @@ summit that day, so it leaves the claim unresolved."
 
 `[02:15–02:30]` **7. Saved and measured**
 
-> Resubmit the first claim: the saved result appears at once. Then switch to the README's
-> accuracy table.
+> Go back to the home page: the three claims are under **Recent investigations**. Click
+> the first one: its saved report opens at once. Then switch to the README's accuracy table.
 
-"Every run is saved. Ask again, and you get the same result instantly, with no new
-calls. We measured it with live search on 77 claims whose labels we checked: 66
+"Every run is saved. Your past checks are right here, and opening one shows the same
+result instantly, with no new calls. We measured it with live search on 77 claims whose labels we checked: 66
 right, in two separate runs. When it answers true or false, it's right about nine
 times in ten. Aletheia: evidence first."
 

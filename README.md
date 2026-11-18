@@ -140,8 +140,8 @@ curl -s -X POST http://127.0.0.1:8000/investigations \
 
 **Past investigations** are saved in `data/aletheia.sqlite3`. Submitting the same claim
 again returns the saved result at once (`reused: true`), with no new search or model
-calls. A saved investigation can also be opened by its ID through the API. The client
-has no list of past investigations yet.
+calls. The home page lists the 10 most recent investigations (`GET /investigations`);
+clicking one opens its saved report without a new run.
 
 ### Configuration
 
