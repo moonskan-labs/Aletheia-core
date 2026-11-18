@@ -19,7 +19,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from aletheia.budgets import CallBudget
 from aletheia.comparison import compare
 from aletheia.evidence import canonical_url, digest, snapshot
-from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, quote_characters, validate_answer
+from aletheia.one_call import INSTRUCTIONS, Answer, offer_pages, quote_matches, validate_answer
 from aletheia.passages import terms
 from aletheia.providers.errors import ErrorCode, ProviderError
 from aletheia.research_contracts import (
@@ -39,6 +39,9 @@ MAX_ROUNDS = 2  # the first search, then at most one follow-up
 PAGES_PER_ROUND = (6, 3)
 PAGES_OFFERED = 6
 PASSAGE_CHARS = 6000
+QUOTATION_LOGGED = 300  # characters of a rejected quotation kept in its event
+
+
 # Of 2,364 live page reads that returned a page (Nov 17 runs), 2 took over 20 s, while
 # 23 that returned nothing took over 45 s. A read is given up after 20 s.
 READ_TIMEOUT_SECONDS = 20.0
@@ -125,6 +128,31 @@ def without_links(text):
     return re.sub(r"(?i)\b(?:https?://|www\.)\S+", "[link removed]", text)
 
 
+STEM = 5  # letters two words must share to count as forms of one word
+
+
+def related(text, claim_text):
+    """True when a quotation shares a word with the claim.
+
+    Forms of one word count ("headquarters", "headquartered"), as does an acronym of
+    the claim's capitalized words ("WTO" for "World Trade Organization").
+    """
+    quoted, claimed = terms(text), terms(claim_text)
+    if quoted & claimed:
+        return True
+    stems = {word[:STEM] for word in claimed if len(word) >= STEM}
+    if any(word[:STEM] in stems for word in quoted if len(word) >= STEM):
+        return True
+    capitals = re.findall(r"\b[A-Z]", claim_text)
+    acronyms = {
+        "".join(capitals[i:j]).casefold()
+        for i in range(len(capitals))
+        for j in range(i + 2, len(capitals) + 1)
+    }
+    # Only words written in capitals count, so "two" cannot stand for "The World Order".
+    return any(word.casefold() in acronyms for word in re.findall(r"\b[A-Z]{2,}\b", text))
+
+
 async def together(*calls):
     """Run calls at once and return their results in order.
 
@@ -142,18 +170,16 @@ async def together(*calls):
 def locate(source, text, claim_text):
     """Map a quotation to its exact place and spans in the saved page, or reject it.
 
-    A usable quotation has at least three words, shares a word with the claim, and
-    starts and ends on word boundaries in the page. A fragment of a word, a single
-    common word or an unrelated heading cannot carry a verdict.
+    A usable quotation has at least three words, is related to the claim, and starts
+    and ends on word boundaries in the page. A fragment of a word, a single common word
+    or an unrelated heading cannot carry a verdict.
     """
-    if len(re.findall(r"\w+", text)) < 3 or not terms(text) & terms(claim_text):
+    if len(re.findall(r"\w+", text)) < 3 or not related(text, claim_text):
         return None
     page = source.normalized_text
-    matched_page = quote_characters(page)
-    text = quote_characters(text)
-    pattern = r"\s+".join(re.escape(token) for token in text.split())
-    for match in re.finditer(pattern, matched_page):
-        start, end = match.span()
+    # Markdown marks from extraction are ignored, as in validate_answer; the excerpt
+    # saved is still the page's own text at those offsets, marks included.
+    for start, end in quote_matches(page, text):
         inside_word = (start and page[start - 1].isalnum() and page[start].isalnum()) or (
             end < len(page) and page[end].isalnum() and page[end - 1].isalnum()
         )
@@ -641,13 +667,29 @@ class SimplePipeline:
         # Locate inside the round, so a quotation that cannot carry a verdict leads to
         # the follow-up search like any other unsettled answer.
         state["located"] = []
+        unusable = []
         for quote in state["quotes"]:
             source = used[quote["page"] - 1]
             excerpt = locate(source, quote["text"], assertion.text)
             if excerpt is None:
-                state["invalid_quotes"].append(quote)
+                unusable.append(quote)
             else:
                 state["located"].append((source, excerpt))
+        # Record each rejected quotation, so a run shows why a verdict was not kept.
+        for reason, quotes in (("not_in_page", state["invalid_quotes"]), ("not_usable", unusable)):
+            for quote in quotes:
+                number = quote["page"]
+                await emit(
+                    "evidence_checked",
+                    {
+                        "snapshot_id": used[number - 1].id if 0 < number <= len(used) else "",
+                        "admissible": "false",
+                        "reason": reason,
+                        "quotation": without_links(quote["text"])[:QUOTATION_LOGGED],
+                    },
+                    stage="verifying",
+                )
+        state["invalid_quotes"].extend(unusable)
         if state["verdict"] in {"true", "false"} and not state["located"]:
             state.update(
                 verdict="cannot_settle", reason="No usable supporting quotation was returned."

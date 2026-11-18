@@ -533,6 +533,151 @@ def test_quote_glyph_matching_preserves_source_text_offsets_and_hash():
     assert excerpt.quote_hash == digest(excerpt.text)
 
 
+# --- Quotations from pages extracted as markdown ----------------------------------------
+
+MARKDOWN_PAGE = (
+    "## Archive history\n"
+    "The [Archive](https://example.test/archive_(building)) opened in **2000**. "
+    "It moved in 2010.\n"
+    "| Event | Year |\n"
+    "| --- | --- |\n"
+    "| Opened | 2000 |\n"
+)
+
+
+def test_markdown_marks_do_not_stop_a_quotation_matching():
+    from aletheia.one_call import quote_matches
+
+    page = MARKDOWN_PAGE
+    (start, end), *_ = quote_matches(page, "The Archive opened in 2000.")
+    # The excerpt is the page's own text, widened over the marks around the words.
+    cited = "The [Archive](https://example.test/archive_(building)) opened in **2000**."
+    assert page[start:end] == cited
+    assert list(quote_matches(page, "Archive history")) == [(3, 18)]
+    row = (page.index("Opened"), page.rindex("2000") + 4)
+    assert list(quote_matches(page, "Opened 2000")) == [row]
+    # Words, their order, case and punctuation still have to be the page's own.
+    for wrong in ("The Archive opened in 2001.", "the archive opened in 2000.", "Archive 2000"):
+        assert list(quote_matches(page, wrong)) == []
+
+
+async def test_a_quotation_without_the_pages_markdown_keeps_its_verdict(settings):
+    fake = Fake([answer("true")], pages=MARKDOWN_PAGE)
+    saved, evidence, events = await check(settings, fake)
+    assert saved["status"] == "completed" and saved["result"]["verdict"] == "true"
+    (item,) = evidence["evidence"]
+    assert item["excerpts"][0]["text"].startswith("The [Archive](")
+    assert not any(e["payload"].get("admissible") == "false" for e in events)
+
+
+async def test_rejected_quotations_are_recorded_with_the_reason(settings):
+    invented = answer("true", "The Archive opened in 1999 to great acclaim.")
+    fake = Fake([invented, answer("cannot_settle", None)])
+    saved, _, events = await check(settings, fake)
+    assert saved["result"]["verdict"] is None
+    (rejected,) = [e["payload"] for e in events if e["payload"].get("admissible") == "false"]
+    assert rejected["reason"] == "not_in_page"
+    assert rejected["quotation"] == "The Archive opened in 1999 to great acclaim."
+    assert rejected["snapshot_id"]
+
+
+def test_a_shortened_quotation_is_kept_as_its_parts_when_each_is_the_pages_own():
+    from aletheia.one_call import Answer, validate_answer
+
+    page = (
+        "The **2016 Summer Olympics** (Portuguese: Jogos Olímpicos de Verão de 2016) "
+        "were held in Rio de Janeiro."
+    )
+    pages, originals = [{"page": 1, "passages": [page]}], [page]
+
+    def judged(text):
+        quotes = [{"page": 1, "text": text}]
+        return validate_answer(Answer(verdict="false", quotes=quotes, reason="r"), pages, originals)
+
+    state = judged("The 2016 Summer Olympics ... were held in Rio de Janeiro.")
+    assert [q["text"] for q in state["quotes"]] == [
+        "The 2016 Summer Olympics",
+        "were held in Rio de Janeiro.",
+    ]
+    assert state["verdict"] == "false"
+    # Short parts are dropped; a part that is not on the page rejects the whole quotation.
+    assert [q["text"] for q in judged("Olympics … were held in Rio de Janeiro.")["quotes"]] == [
+        "were held in Rio de Janeiro."
+    ]
+    assert judged("The 2016 Summer Olympics ... were held in Tokyo, Japan.")["downgraded"]
+    assert judged("Rio … Tokyo")["downgraded"]
+
+
+def test_a_rebuttal_in_other_words_still_counts_as_related():
+    from aletheia.simple import related
+
+    claim = "The World Trade Organization is headquartered in Brussels."
+    assert related("Its headquarters are in Geneva, Switzerland.", claim)
+    assert related("The WTO sits in Geneva, Switzerland.", claim)
+    assert not related("It moved to two new buildings.", claim)
+    assert not related("Bananas are yellow fruit.", claim)
+
+
+@pytest.mark.parametrize(
+    ("page", "quotation"),
+    [
+        ("The calculation is 2*3 = 6.", "The calculation is 23 = 6."),
+        ("The calculation is 2*3*4 = 24.", "The calculation is 234 = 24."),
+        ("The value is |−5| = 5.", "The value is −5 = 5."),
+        ("The interval is [0, 1].", "The interval is 0, 1."),
+        ("The field is _private.", "The field is private."),
+        ("The literal is `**2000**`.", "The literal is 2000."),
+        (r"The literal is \*2000\*.", "The literal is 2000."),
+        ("```text\nThe literal is **2000**.\n```", "The literal is 2000."),
+        ("| Value | Result |\n| --- | --- |\n| |−5| | 5 |", "−5 5"),
+    ],
+)
+def test_quotation_matching_preserves_meaningful_symbols(page, quotation):
+    from aletheia.one_call import Answer, quoted_in, validate_answer
+
+    assert not quoted_in(page, quotation)
+    state = validate_answer(
+        Answer(verdict="true", quotes=[{"page": 1, "text": quotation}], reason="r"),
+        [{"page": 1, "passages": [page]}],
+        [page],
+    )
+    assert state["downgraded"] and state["verdict"] == "cannot_settle"
+    assert not state["quotes"]
+
+
+@pytest.mark.parametrize("marked", ["**2000**", "*2000*", "__2000__", "_2000_"])
+def test_paired_emphasis_still_matches_and_preserves_source_offsets(marked):
+    from aletheia.evidence import digest
+    from aletheia.one_call import quoted_in
+
+    text = f"The Archive opened in {marked}."
+    assert quoted_in(text, CLAIM)
+    source = snapshot(
+        url="https://example.test",
+        title="Archive",
+        published_date=None,
+        retrieved_at=NOW,
+        text=text,
+    )
+    excerpt = locate(source, CLAIM, CLAIM)
+    assert excerpt is not None
+    assert source.normalized_text[excerpt.start : excerpt.end] == text
+    assert excerpt.text == text and excerpt.quote_hash == digest(text)
+
+
+async def test_changed_arithmetic_quotation_cannot_publish_a_verdict(settings):
+    fake = Fake(
+        [answer("true", "The Archive calculation is 23 = 6."), answer("cannot_settle", None)],
+        pages="The Archive calculation is 2*3 = 6.",
+    )
+    saved, _, events = await check(settings, fake)
+    assert saved["result"]["verdict"] is None
+    assert any(
+        event["type"] == "evidence_checked" and event["payload"].get("reason") == "not_in_page"
+        for event in events
+    )
+
+
 # --- Pages read together ------------------------------------------------------------------
 
 
