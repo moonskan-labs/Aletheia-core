@@ -1,26 +1,35 @@
-# Aletheia
+# Aletheia — Research Agent
 
-Aletheia checks a factual claim against the live web and answers **true**, **false** or
-**cannot settle**. Every answer comes with word-for-word quotations from the pages it read.
-If the pages it finds don't settle the claim, it says so instead of guessing.
+> ODSC × Nebius Hackathon submission · Challenge: *Build a research agent that brings its sources*
 
-Built for the [ODSC × Nebius hackathon](https://hackathon.odsc.ai/event). Reasoning runs
-on **Nebius Token Factory**, and search and page reading use **Tavily**.
+**One-line pitch:** Is this factual claim true? Aletheia checks it against the live web and
+answers **true**, **false** or **cannot settle**, with word-for-word quotations from the pages
+it read. It is for anyone who has to check a claim before repeating it, and has to show where
+the answer came from.
 
-<!-- TODO: demo video link -->
+- **Demo video (2–3 min):** <!-- TODO: link -->
+- **Team:** <!-- TODO: names --> [@skanvish11](https://github.com/skanvish11) · [@csalive](https://github.com/csalive)
 
-## Who it is for
+## The problem
 
 <!-- TODO: the demo's named user -->
 
-Anyone who has to check a factual claim before repeating it, and needs to show where the
-answer came from. Each result links every quotation to the page it came from, so a reader
-can check the evidence instead of trusting the verdict.
+A reporter, editor or analyst often has a claim in a draft: a figure, a date, a record. It
+has to be checked before it goes out. Search engines return pages, and chat assistants return
+answers. Neither gives a verdict that can be checked: one tied to the exact sentence on the
+exact page.
+
+Aletheia gives a verdict and the sentences it rests on, each linked to the page where it
+appears. Every quotation is checked word for word against the saved page before it counts.
+When the pages don't settle the claim, Aletheia says **cannot settle** instead of guessing.
+The reader doesn't have to trust the verdict. They can open the source and read it.
 
 ## How it works
 
-The demo runs the **simple loop** (`src/aletheia/simple.py`), with one claim per
-investigation:
+```
+claim → plan queries → Tavily search → read pages → Token Factory verdict + quotations
+      → quotations checked word for word → Token Factory check → answer with linked quotations
+```
 
 ```mermaid
 flowchart LR
@@ -36,43 +45,67 @@ flowchart LR
     U -. "once, if not settled" .-> P
 ```
 
-- **Python is in control.** The model writes queries, a verdict and quotations. Python
-  runs every search, enforces the limits and checks each quotation against the saved page.
-  A true or false verdict with no checked quotation becomes cannot settle.
-- **Page text is data, not instructions.** Pages reach the model only inside the user
-  message, and the fixed instructions tell it not to follow anything written on a page.
-- **Limits per claim:** at most 6 model calls, 6 searches and 13 page reads, within
-  150 seconds. A page read gives up after 20 seconds.
-- **Every run is saved.** Investigations, pages, quotations and a step-by-step event log
-  go to SQLite. Submitting the same claim again returns the saved result without new
-  provider calls.
+The demo runs the **simple loop** (`src/aletheia/simple.py`), with one claim per investigation.
+
+- **Query planning:** one model call writes up to 3 search queries for the claim. If the
+  first round doesn't settle the claim, the model plans one follow-up round with new
+  queries aimed at what the verdict said was missing. Then it stops. Python enforces the limits: at most 6 model calls,
+  6 searches and 13 page reads per claim, within 150 seconds.
+- **Evidence handling:**
+  - Results from the 3 searches are merged. Repeated URLs, and pages whose text matches
+    one already read, are dropped. Social and video sites are skipped, and official sites
+    (`.gov`, `.edu`, `.int`) are read first.
+  - Up to 6 pages are read in full and saved. The model must quote the sentences its
+    verdict rests on.
+  - Python checks each quotation, word for word, against the saved page. A quotation that
+    isn't on the page is rejected and logged.
+  - A true or false verdict with no checked quotation becomes **cannot settle**. A second
+    model call then checks that the quotations point the same way as the verdict.
+- **Safety:**
+  - The fixed instructions are the system message. Page text reaches the model only as
+    data in the user message, and the instructions tell the model never to follow
+    anything written on a page.
+  - The model only writes queries, a verdict and quotations. Python runs every search and
+    page read.
+  - API keys stay in `.env`, which is git-ignored. The API has no authentication and
+    listens on localhost only.
+- **Trade-offs:**
+  - *Latency:* the 3 searches and the page reads run in parallel. The median claim takes
+    28 s with DeepSeek V4 Pro, and about 1 in 15 claims takes over 100 s.
+  - *Cost:* a typical claim uses 3 model calls, 3 searches and 6 page reads.
+  - *Reliability:* answers vary between runs, because search results and model output
+    change. Every run is saved, and submitting the same claim again returns the saved
+    result with no new provider calls.
 
 More detail: [the simple loop](docs/simple-loop.md) and the
 [full design](docs/design.md), which also covers the earlier staged pipeline.
 
-### How it uses Token Factory and Tavily
+## Required services
 
-| Service | Calls | Used for |
-| --- | --- | --- |
-| Nebius Token Factory (`api.tokenfactory.nebius.com`, OpenAI-compatible chat) | 3 per round, JSON-schema output | Planning queries, the verdict with quotations, and the check that the quotations point the same way as the verdict |
-| Tavily search | 3 per round, `advanced` depth, 5 results each | Finding pages; social and video sites are skipped, official sites read first |
-| Tavily extract | up to 6 pages, then 3 in the follow-up | Full page text (markdown), saved as the evidence the quotations are checked against |
+| Requirement | How we use it |
+|---|---|
+| Nebius Token Factory (inference) | Model: `deepseek-ai/DeepSeek-V4-Pro-0813`, through the OpenAI-compatible chat API with JSON-schema output. 3 calls per round: plan the queries, give the verdict with quotations, and check that the quotations point the same way as the verdict. |
+| Tavily (real-time web search) | **Search:** 3 per round, `advanced` depth, 5 results each. **Extract:** up to 6 pages, then 3 in the follow-up. Each page's full text is saved with its URL. Quotations are checked against that saved text, and the answer links each quotation back to that URL, at the quoted passage. |
 
-## Quickstart
+The research log in the web client names every Token Factory and Tavily call, and the
+summary line counts them.
 
-Needs Python 3.12+, [uv](https://docs.astral.sh/uv/), and Node 20.19+ or 22.12+ for the web client.
+## Setup
 
-```sh
+Needs Python 3.12+, [uv](https://docs.astral.sh/uv/), and Node 20.19+ or 22.12+ for the
+web client.
+
+```bash
 git clone https://github.com/skanvish11/Aletheia-core.git
 cd Aletheia-core
-cp .env.example .env        # then add your NEBIUS_API_KEY and TAVILY_API_KEY
+cp .env.example .env        # add your NEBIUS_API_KEY and TAVILY_API_KEY — never commit them
 uv sync --locked
 uv run --locked aletheia    # API on http://127.0.0.1:8000
 ```
 
 In a second terminal, start the web client:
 
-```sh
+```bash
 cd web
 npm install
 VITE_DATA_SOURCE=live npm run dev   # http://127.0.0.1:5173
@@ -96,21 +129,19 @@ $env:VITE_DATA_SOURCE = "live"; npm run dev
 # Remove-Item Env:VITE_DATA_SOURCE; npm run dev
 ```
 
+Or call the API directly:
+
+```bash
+curl -s -X POST http://127.0.0.1:8000/investigations \
+  -H 'content-type: application/json' \
+  -d '{"claim": "An estimated 610,000 people died of malaria worldwide in 2024, according to WHO."}'
+# then: GET /investigations/{id}, GET /investigations/{id}/events (live progress), GET /investigations/{id}/evidence
+```
+
 **Past investigations** are saved in `data/aletheia.sqlite3`. Submitting the same claim
 again returns the saved result at once (`reused: true`), with no new search or model
 calls. A saved investigation can also be opened by its ID through the API. The client
 has no list of past investigations yet.
-
-Or call the API directly:
-
-```sh
-curl -s -X POST http://127.0.0.1:8000/investigations \
-  -H 'content-type: application/json' \
-  -d '{"claim": "The International Space Station has been continuously occupied since November 2000."}'
-# then: GET /investigations/{id}, GET /investigations/{id}/events (live progress), GET /investigations/{id}/evidence
-```
-
-The API has no authentication and listens on localhost only. Don't expose it publicly.
 
 ### Configuration
 
@@ -126,11 +157,64 @@ All settings are read from the environment or from `.env` in the repository root
 | `ALETHEIA_PROVIDER_TIMEOUT_SECONDS` | `120` | Per call; slower models need more than the 45 s default |
 | `ALETHEIA_MODEL_MAX_OUTPUT_TOKENS` | `16384` | Reasoning models use much of this before answering |
 
+## Example
+
+A live run with DeepSeek V4 Pro, from the evaluation (claim `t-14`, 15 seconds, 3 model
+calls, 3 searches, 6 pages read).
+
+**Question:** An estimated 610,000 people died of malaria worldwide in 2024, according to WHO.
+
+**Answer (excerpt):** **True.** Multiple WHO pages state that there were an estimated
+610,000 malaria deaths globally in 2024, matching the claim exactly.
+
+- "Globally in 2024, there were an estimated 282 million malaria cases and 610 000 malaria
+  deaths in 80 countries." [1]
+- "The estimated number of malaria deaths stood at 610 000 in 2024 compared to 598 000 in
+  2023." [1]
+- "Globally, in 2024, the number of deaths was estimated at 610 000, with a mortality rate
+  of 13.8 per 100 000 population at risk." [2]
+- "Despite this significant progress, there were an estimated 282 million malaria cases and
+  610 000 deaths in 2024 – roughly 9 million more cases than the previous year." [3]
+
+**Sources:**
+[1] https://www.who.int/news-room/fact-sheets/detail/malaria ·
+[2] https://www.who.int/data/gho/data/themes/malaria ·
+[3] https://www.who.int/news/item/04-12-2025-new-tools-saved-a-million-lives-from-malaria-last-year-but-progress-under-threat-as-drug-resistance-rises
+
+Each quotation was found word for word on the saved page. In the web client, clicking
+one opens the source at that passage.
+
+## Failure / insufficient-evidence case
+
+**When the pages don't settle the claim.** Claim `u-05` from the same run: *"Exactly 87
+hikers reached Mount Whitney's California summit on July 1, 2001."* No published record
+we know of gives a daily summit count like that.
+
+**Answer:** **Cannot settle** (insufficient evidence), after 40 seconds and one follow-up
+round.
+
+> The pages do not state that exactly 87 hikers reached Mount Whitney's summit on July 1,
+> 2001. The only 2001 data is an aggregate figure of 16,194 people traveling up the main
+> Whitney trail, which neither confirms nor contradicts a specific daily summit count.
+
+Limitation shown to the user: "One follow-up search was run and the claim was still not
+settled." The two passages it read are listed as context, not as evidence for a verdict.
+
+**When something else goes wrong:**
+
+| Situation | What you get |
+| --- | --- |
+| A quotation isn't on the page | It's rejected and logged. With no valid quotation left, the verdict becomes cannot settle |
+| The quotations point the other way from the verdict | The verdict is withdrawn: cannot settle |
+| A search or page read fails | The other pages are still judged. If nothing was read, the run ends **partial** with `provider_failure` |
+| Time or call limit reached | Judged on the pages already read. The run ends **partial**, with the limit named |
+| Key rejected or quota used up | The run **fails** with no verdict. A provider failure is never treated as evidence |
+
 ## Accuracy
 
-Measured on the 77 **trusted tuning claims** (`evals/claims/`: labels checked by the
-project owner, never shown to the model), with live Tavily search, the simple loop and
-the settings above. Scored with `scripts/score_trusted.py`.
+Measured on the 77 **trusted tuning claims** (`evals/claims/`), whose labels were checked by
+the project owner and are never shown to the model. Runs used live Tavily search, the simple
+loop and the settings above, and were scored with `scripts/score_trusted.py`.
 
 | Model | Runs | Correct of 77 | Right when it gave true/false | Median time per claim |
 | --- | ---: | ---: | ---: | ---: |
@@ -151,16 +235,15 @@ the settings above. Scored with `scripts/score_trusted.py`.
 Run records, per-claim results and a diagnosis of every miss are in
 [`evals/runs/`](evals/runs/) ([#35](https://github.com/skanvish11/Aletheia-core/pull/35)).
 
-## When things go wrong
+## Judging criteria map
 
-| Situation | What you get |
-| --- | --- |
-| The pages don't settle the claim | **Cannot settle** (insufficient evidence), with the model's reason listed as a limitation |
-| A quotation isn't on the page | It's rejected and logged; with no valid quotation left, the verdict becomes cannot settle |
-| The quotations point the other way from the verdict | The verdict is withdrawn: cannot settle |
-| A search or page read fails | The other pages are still judged; if nothing was read, the run ends **partial** with `provider_failure` |
-| Time or call limit reached | Judged on the pages already read; the run ends **partial**, with the limit named |
-| Key rejected or quota used up | The run **fails** with no verdict; a provider failure is never treated as evidence |
+| Criterion | Weight | Where to look |
+|---|---|---|
+| Sourced and verifiable answers | 30% | [Example](#example), [Failure case](#failure--insufficient-evidence-case); demo 1:00–2:15 |
+| Works end to end | 25% | [Setup](#setup), [Accuracy](#accuracy); demo 0:20–2:15 |
+| Usefulness | 20% | [The problem](#the-problem); demo 0:00–0:20 |
+| Agent design | 15% | [How it works](#how-it-works); demo 0:20–1:00 |
+| Use of Token Factory and Tavily | 10% | [Required services](#required-services); demo 0:20–1:00 |
 
 ## Repository
 
@@ -188,3 +271,7 @@ cd web && npm test && npm run build # web client
   verdict is still the model's judgment, checked by a second model call.
 - Some claims take over 100 seconds with DeepSeek V4 Pro (about 1 in 15 in the latest run).
 - Local, single-user. No accounts, no public hosting of the API.
+
+## License
+
+<!-- TODO: the template uses MIT; the repo has no LICENSE file yet -->
