@@ -274,4 +274,4 @@ cd web && npm test && npm run build # web client
 
 ## License
 
-<!-- TODO: the template uses MIT; the repo has no LICENSE file yet -->
+MIT. See [LICENSE](LICENSE).
