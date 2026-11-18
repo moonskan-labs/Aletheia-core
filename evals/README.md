@@ -14,6 +14,7 @@ Human-reviewed claims with expected decisions, used to measure whether Aletheia 
 | `labels/<labeler>/<id>.json` | One labeler's blind label for one claim: a single `draft` record. |
 | `claims.json` | The reconciled tuning set: an array of `reconciled` or `contested` records. |
 | `examples/example-claims.json` | Four illustrative records: True with a flag, False, Almost, and unable to decide. Invented, and not part of the set. |
+| `claims/claims-20261116-200.csv` | 200 tuning claims with AI-authored labels accepted by the user for evaluation. See [composition and provenance notes](claims/claims-20261116-200-README.md). |
 
 A file's **location** decides its kind: any JSON file under `evals/labels/` is a blind label and must sit exactly at `labels/<labeler>/<id>.json` as one draft object; every other file is an array of reconciled records. `claims.json` is required; it may be `[]`.
 
