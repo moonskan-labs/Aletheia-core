@@ -187,8 +187,8 @@ one opens the source at that passage.
 ## Failure / insufficient-evidence case
 
 **When the pages don't settle the claim.** Claim `u-05` from the same run: *"Exactly 87
-hikers reached Mount Whitney's California summit on July 1, 2001."* No published record
-we know of gives a daily summit count like that.
+hikers reached Mount Whitney's California summit on July 1, 2001."* The pages it read
+don't give a summit count for that day.
 
 **Answer:** **Cannot settle** (insufficient evidence), after 40 seconds and one follow-up
 round.
