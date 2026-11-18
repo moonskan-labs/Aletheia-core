@@ -47,7 +47,7 @@ export interface OpenOptions {
   animate?: boolean
 }
 
-/** Insert an event, dropping redelivered sequences (README section 9: clients deduplicate). */
+/** Insert an event, dropping redelivered sequences (docs/design.md section 9: clients deduplicate). */
 function addEvent(events: InvestigationEvent[], event: InvestigationEvent): InvestigationEvent[] {
   if (events.some((e) => e.sequence === event.sequence)) return events
   return [...events, event].sort((a, b) => a.sequence - b.sequence)

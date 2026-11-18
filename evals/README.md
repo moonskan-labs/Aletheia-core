@@ -1,6 +1,6 @@
 # Aletheia evaluation set
 
-Human-reviewed claims with expected decisions, used to measure whether Aletheia reaches the right decision, raises the right qualification flags, proposes a correct correction when a claim is Almost true, and cites evidence that actually supports what it says. This is the acceptance set described in the root [README](../README.md) section 12. It is evidence for the rubric's "sourced and verifiable answers" criterion, not a separate score.
+Human-reviewed claims with expected decisions, used to measure whether Aletheia reaches the right decision, raises the right qualification flags, proposes a correct correction when a claim is Almost true, and cites evidence that actually supports what it says. This is the acceptance set described in the [design document](../docs/design.md) section 12. It is evidence for the rubric's "sourced and verifiable answers" criterion, not a separate score.
 
 **Status:** format, validator and CI checks only. The tuning claims are added in a later PR. The decision shape follows the research decision contract introduced with the research pipeline (#11).
 
@@ -8,7 +8,7 @@ Human-reviewed claims with expected decisions, used to measure whether Aletheia 
 
 | Path | What it holds |
 | --- | --- |
-| `schema/claim.schema.json` | The record format. Decisions mirror the research decision contract; flag types and dimensions mirror README §6. |
+| `schema/claim.schema.json` | The record format. Decisions mirror the research decision contract; flag types and dimensions mirror [the design](../docs/design.md) §6. |
 | `validate.py` | Checks records against the schema plus the cross-field rules below. Standard library only. |
 | `test_validate.py` | Tests for the validator. |
 | `labels/<labeler>/<id>.json` | One labeler's blind label for one claim: a single `draft` record. |

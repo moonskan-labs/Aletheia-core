@@ -1,6 +1,6 @@
 # Aletheia system design and research flow
 
-This document explains the proposed V1 backend in two views: the research steps in order, and the modules, APIs, and storage that carry out those steps. The [README](../README.md) defines the detailed contracts and implementation plan.
+This document explains the proposed V1 backend in two views: the research steps in order, and the modules, APIs, and storage that carry out those steps. The [design document](design.md) defines the detailed contracts and implementation plan.
 
 **Build order:** first deliver one complete investigation, saved reads, and protection against duplicate initial submissions. Refresh versioning, comparison, and refresh-specific idempotency are the first follow-up after the minimum works. Their contracts remain below and are marked as follow-up features.
 

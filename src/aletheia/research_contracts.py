@@ -14,7 +14,7 @@ Outcome = Literal["decided", "unable_to_decide"]
 UndecidedReason = Literal["insufficient_evidence", "conflicting_evidence"]
 Route = Literal["quick", "deep"]
 Relation = Literal["supports", "contradicts", "context", "irrelevant"]
-# README section 6: what differs between the compared or scoped quantities.
+# docs/design.md section 6: what differs between the compared or scoped quantities.
 Dimension = Literal[
     "population",
     "timeframe",
