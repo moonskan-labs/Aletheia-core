@@ -10,7 +10,7 @@ const replay = dataSource.kind === 'replay'
 export default function App() {
   const { state, open, submit, retryLoad, close } = useInvestigation(dataSource)
   const backend = useBackendStatus(dataSource)
-  const recent = useRecent(dataSource, !state.investigation && !state.submitting)
+  const recent = useRecent(dataSource, !state.investigation && !state.submitting, backend.status)
   const { investigation, evidence, events, submitting, researchDone, finished, loadError, error, reused } = state
   const recording = dataSource.recordings.find((r) => r.investigation.id === investigation?.id)
   const showingSample = recording ? recording.sample : dataSource.recordings.some((r) => r.sample)
