@@ -41,7 +41,7 @@ from aletheia.research_contracts import (
 )
 
 APPLICATION_VERSION = "simple-loop-v2"
-PROMPT_VERSION = "one-call-v2"
+PROMPT_VERSION = "one-call-v3"
 MAX_ROUNDS = 2  # the first search, then at most one follow-up
 PAGES_PER_ROUND = (6, 3)
 PAGES_OFFERED = 6

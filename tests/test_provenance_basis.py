@@ -237,7 +237,7 @@ async def test_saved_evidence_carries_the_provenance_the_verdict_rested_on(setti
     assert assessment["origin"] == "The Archive" and assessment["publisher"] == "The Archive"
     assert assessment["provenance_span_ids"] == [1]
     assert assessment["provenance_note"].startswith("documented_record, original")
-    assert saved["result"]["prompt_version"] == "one-call-v2"
+    assert saved["result"]["prompt_version"] == "one-call-v3"
 
 
 def test_a_provenance_row_copied_from_a_table_is_matched_like_the_table():
@@ -249,3 +249,39 @@ def test_a_provenance_row_copied_from_a_table_is_matched_like_the_table():
     )
     assert provenance_on_page(page, "| 1 | Arvo-3 | 71.4% |")
     assert not provenance_on_page(page, "| 1 | Arvo-3 | 69.8% |")
+
+
+def test_an_official_reference_page_settles_a_fact_but_a_commercial_one_does_not():
+    from aletheia.one_call import reference_site
+
+    copy = lab(
+        1,
+        presentation="attributed",
+        producer_owns_page="no",
+        producer="Abraham Lincoln",
+        record="The Emancipation Proclamation",
+    )
+    answer = Answer.model_validate(
+        {
+            "claim_about": "the_fact_itself",
+            "named_source": "none",
+            "needs_test_conditions": False,
+            "sources": [copy],
+            "original_record_not_supplied": "none",
+            "verdict": "false",
+            "quotes": [{"page": 1, "text": QUOTE[1]}],
+            "reason": "r",
+        }
+    )
+    valid = [{"page": 1, "text": QUOTE[1]}]
+    archive = ["https://avalon.law.yale.edu/19th_century/emancipa.asp"]
+    blog = ["https://www.historyfacts.com/emancipation"]
+    assert basis_check(answer, valid, PAGES, archive, references="official")["qualifies"]
+    assert not basis_check(answer, valid, PAGES, blog, references="official")["qualifies"]
+    assert not basis_check(answer, valid, PAGES, archive, references="none")["qualifies"]
+    # The address decides, not the name: a look-alike domain is not official.
+    assert not reference_site("https://gov.example.com/page", "official")
+    assert reference_site("https://www.census.gov/x", "official")
+    assert reference_site("https://www.who.int/x", "official")
+    assert not reference_site("https://www.reuters.com/x", "official")
+    assert reference_site("https://www.reuters.com/x", "official_and_list")
