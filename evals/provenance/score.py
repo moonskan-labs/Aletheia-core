@@ -61,6 +61,32 @@ def decisive(runs, outcome):
     return run["reason"][:110]
 
 
+def withheld_rows(runs):
+    rows = []
+    for prefix, group in (("S", "Supported"), ("U", "Unsubstantiated")):
+        tally = Counter()
+        for cid, items in runs.items():
+            if not cid.startswith(prefix):
+                continue
+            for run in items:
+                if run["outcome"] == "true" or run["outcome"] == "execution_failure":
+                    continue
+                reasons = {e.get("reason") for e in run["events"]}
+                if "no_qualifying_basis" in reasons:
+                    tally["code"] += 1
+                elif "quotations_point_the_other_way" in reasons:
+                    tally["direction"] += 1
+                elif run["model_verdict"] == "cannot_settle":
+                    tally["model"] += 1
+                else:
+                    tally["quotes"] += 1
+        rows.append(
+            f"| {group} | {tally['model']} | {tally['code']} | {tally['direction']} "
+            f"| {tally['quotes']} |"
+        )
+    return rows
+
+
 def main(before_path, after_path):
     answers = {a["id"]: a for a in json.loads((HERE / "answers.json").read_text())}
     packets = {p["id"]: p for p in json.loads((HERE / "packets.json").read_text())}
@@ -103,8 +129,9 @@ def main(before_path, after_path):
         "",
         f"- Before: commit `{before_meta['commit'][:10]}`, "
         f"prompt `{before_meta['prompt_version']}`",
-        f"- After: prompt `{after_meta['prompt_version']}` (commit recorded in the run file: "
-        f"`{after_meta['commit'][:10]}`, with the change uncommitted in the working tree)",
+        f"- After: prompt `{after_meta['prompt_version']}`, run from a working tree on top of "
+        f"`{after_meta['commit'][:10]}` holding this branch's fix (the run file records "
+        "that commit)",
         f"- Stages: {after_meta['stages']}. Nothing is mocked.",
         "",
         "A case's outcome is the majority over its repeats; the letters in brackets are the "
@@ -128,6 +155,16 @@ def main(before_path, after_path):
         f"| Supported: individual runs (of {10 * n}) that returned True | "
         f"{counts[('supported', 'before_runs_true')]} | "
         f"{counts[('supported', 'after_runs_true')]} |",
+        "",
+        "## Who withheld the verdict (after)",
+        "",
+        "Runs where the outcome was not True, split by whether the model itself declined "
+        "or a code check withheld the model's True or False.",
+        "",
+        "| Group | Model declined | Code withheld | Direction check withdrew "
+        "| No usable quotation |",
+        "| --- | ---: | ---: | ---: | ---: |",
+        *withheld_rows(after),
         "",
         "## All cases",
         "",
