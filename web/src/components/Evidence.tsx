@@ -18,7 +18,9 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
       {a.publisher && <p className="evidence-meta">{a.publisher}</p>}
       {source?.published_date && <p className="evidence-meta">Published {source.published_date}</p>}
       {evidence.excerpts.map((excerpt) => (
-        <blockquote key={excerpt.start}>{excerpt.text}</blockquote>
+        <blockquote key={excerpt.start}>
+          <mark className="passage">{excerpt.text}</mark>
+        </blockquote>
       ))}
       {!evidence.admissible && evidence.rejection_reason && (
         <p>
