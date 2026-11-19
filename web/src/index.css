@@ -362,9 +362,18 @@ blockquote {
   font-weight: 600;
 }
 
+/* What we checked and Limitations share one body style; notes differ only in colour. */
+.section-note {
+  color: var(--text-2);
+}
+
 .limitations {
   padding-left: 20px;
   margin: 0;
+}
+
+.limitations li + li {
+  margin-top: 4px;
 }
 
 /* ---------- Citations ---------- */
@@ -523,7 +532,6 @@ blockquote {
   font-size: 14px;
 }
 
-.trace summary,
 .pane-rejected summary,
 .activity summary {
   min-height: 44px;
@@ -540,24 +548,8 @@ blockquote {
   text-transform: uppercase;
 }
 
-.trace dl {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  gap: 2px 12px;
-  margin: 4px 0 0;
-  font-size: 13px;
-}
 
-.trace dt {
-  color: var(--text-2);
-}
 
-.trace dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-  font-family: var(--mono);
-  font-size: 12px;
-}
 
 .pane-rejected {
   padding: 0 16px 8px;
@@ -594,11 +586,48 @@ blockquote {
   font: 600 13px var(--mono);
 }
 
-.pane-sources li {
-  padding: 8px 0;
-  border-top: 1px solid var(--rule);
+/* Pages read: the website in one column, the page on it in the other. */
+.pages-read {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 14px;
+}
+
+.pages-read th {
+  padding: 0 12px 6px 0;
+  text-align: left;
+  font: 500 11px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.pages-read td {
+  padding: 8px 12px 8px 0;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
   overflow-wrap: anywhere;
+}
+
+.pages-read td:last-child,
+.pages-read th:last-child {
+  padding-right: 0;
+}
+
+.pages-read-site {
+  width: 38%;
+  color: var(--text-2);
+}
+
+.pages-read-quoted {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: var(--accent-tint);
+  color: var(--accent);
+  font: 500 11px/1.7 var(--mono);
+  letter-spacing: 0.04em;
 }
 
 /* ---------- Research log ---------- */

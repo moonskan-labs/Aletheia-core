@@ -1,7 +1,7 @@
 import type { EvidenceEntry } from '../evidenceIndex'
 import { EVIDENCE_PANE_ID, useEvidenceIndex, useEvidenceSelection } from '../evidenceIndex'
 import type { SourceSnapshot } from '../api/types'
-import { RELATION_LABEL, formatTime } from '../labels'
+import { RELATION_LABEL } from '../labels'
 import { passageLink } from '../passageLink'
 
 /** One piece of evidence: relation, source, the exact excerpt, why it counts, the link. */
@@ -30,41 +30,17 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
         <span className="inline-label">Why it counts</span>
         {a.rationale}
       </p>
-      {a.limitations.length > 0 && <p className="meta">Limitations: {a.limitations.join(' ')}</p>}
+      {a.limitations.length > 0 && (
+        <p>
+          <span className="inline-label">Limitations</span>
+          {a.limitations.join(' ')}
+        </p>
+      )}
       {source && (
         <a className="open-original" href={passage ?? source.url} target="_blank" rel="noreferrer noopener">
           {passage ? 'Open the original at this passage' : 'Open the original'}
         </a>
       )}
-      <details className="trace">
-        <summary>Citation details</summary>
-        <dl>
-          <dt>Spans</dt>
-          <dd>{evidence.excerpts.map((e) => e.span_ids.join(', ')).join(' | ')}</dd>
-          <dt>Snapshot</dt>
-          <dd>{a.citation.snapshot_id}</dd>
-          <dt>Evidence ID</dt>
-          <dd>{evidence.id}</dd>
-          {a.origin && (
-            <>
-              <dt>Origin</dt>
-              <dd>{a.origin}</dd>
-            </>
-          )}
-          <dt>Independence</dt>
-          <dd>{a.independence}</dd>
-          {source && (
-            <>
-              <dt>Retrieved</dt>
-              <dd>{formatTime(source.retrieved_at)}</dd>
-              <dt>URL</dt>
-              <dd>{source.url}</dd>
-              <dt>Content hash</dt>
-              <dd>{source.content_hash}</dd>
-            </>
-          )}
-        </dl>
-      </details>
     </article>
   )
 }
@@ -81,7 +57,16 @@ function host(url: string): string {
   }
 }
 
-/** Every page the run read, quoted or not, so the reader can see what was consulted. */
+/**
+ * The page's own title without the site name it usually ends with
+ * ("Apollo 11 Timeline | National Air and Space Museum" → "Apollo 11 Timeline").
+ */
+function pageTitle(title: string): string {
+  const trimmed = title.replace(/\s+[|\u2013\u2014-]\s+[^|\u2013\u2014]*$/, '').trim()
+  return trimmed || title
+}
+
+/** Every page the run read, quoted or not: which website, and which page on it. */
 function PagesRead({ sources, quoted }: { sources: SourceSnapshot[]; quoted: Set<string> }) {
   if (sources.length === 0) return null
   return (
@@ -89,20 +74,27 @@ function PagesRead({ sources, quoted }: { sources: SourceSnapshot[]; quoted: Set
       <summary>
         {sources.length} page{sources.length === 1 ? '' : 's'} read
       </summary>
-      <ul>
-        {sources.map((source) => (
-          <li key={source.id}>
-            <a href={source.url} target="_blank" rel="noreferrer noopener">
-              {source.title || source.url}
-            </a>
-            <span className="meta">
-              {' '}
-              · {host(source.url)}
-              {quoted.has(source.id) ? ' · quoted' : ''}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <table className="pages-read">
+        <thead>
+          <tr>
+            <th scope="col">Website</th>
+            <th scope="col">Page</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sources.map((source) => (
+            <tr key={source.id}>
+              <td className="pages-read-site">{host(source.url)}</td>
+              <td>
+                <a href={source.url} target="_blank" rel="noreferrer noopener" title={source.title || source.url}>
+                  {source.title ? pageTitle(source.title) : source.url}
+                </a>
+                {quoted.has(source.id) && <span className="pages-read-quoted">quoted</span>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </details>
   )
 }

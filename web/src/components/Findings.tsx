@@ -89,10 +89,10 @@ export function Findings({ result, route }: { result: InvestigationResult; route
         What we checked
       </h2>
       <p>{assertion.text}</p>
-      {!route && <p className="meta">Recommended: {ROUTE_LABEL[assertion.recommended_route]}</p>}
-      {result.scope_note && <p className="meta">{result.scope_note}</p>}
+      {!route && <p className="section-note">Recommended: {ROUTE_LABEL[assertion.recommended_route]}</p>}
+      {result.scope_note && <p className="section-note">{result.scope_note}</p>}
       {finding.qualification_check === 'unknown' && (
-        <p className="meta">Comparisons and scope were not assessed for this claim.</p>
+        <p className="section-note">Comparisons and scope were not assessed for this claim.</p>
       )}
     </section>
   )
