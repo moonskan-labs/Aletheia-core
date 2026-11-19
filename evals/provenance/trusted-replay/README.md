@@ -19,3 +19,18 @@ treats every such page as a secondhand report of one source, so none qualifies.
 
 **This is a regression the change must not ship with.** See the pull request for the
 options.
+
+## Later versions
+
+| Version | Correct of 77 | True/false given | Right among those |
+| --- | ---: | ---: | ---: |
+| Before (`3c3e0af`) | 60 | 58 | 54 |
+| v2: strict basis check | 37 | 32 | 30 |
+| v3: + official addresses (`.gov`, `.edu`, `.int`…) + "quote the strongest page" | 34 | 30 | 27 |
+
+Re-scoring the v3 answers offline under looser rules reached at most 41. In v3 the
+model itself also declines more often (21 cannot settle, against 14 before), so part of
+the loss comes from the stricter instructions, not only the code check. The strict
+versions did not raise the share of right answers among true/false answers on these
+real claims (93% before, 90% in v3). The frozen cases (`../results.md`) show the
+opposite picture: fake claims marked True fell from 25 of 30 runs to 0.
