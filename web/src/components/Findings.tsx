@@ -7,7 +7,7 @@ import type {
   Route,
   UndecidedReason,
 } from '../api/types'
-import { DIMENSION_LABEL, FLAG_LABEL, UNDECIDED_FALLBACK, UNDECIDED_LABEL, VERDICT_LABEL } from '../labels'
+import { DIMENSION_LABEL, isSimpleLoop, FLAG_LABEL, UNDECIDED_FALLBACK, UNDECIDED_LABEL, VERDICT_LABEL } from '../labels'
 import { Citations } from './Cite'
 
 export function Units({ units }: { units: ExplanationUnit[] }) {
@@ -80,19 +80,43 @@ export function Correction({ correction }: { correction: AlmostCorrection }) {
 
 const ROUTE_LABEL: Record<Route, string> = { quick: 'Quick check', deep: 'Deeper research' }
 
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
+
 /** What was actually checked: the scoped assertion and how it was researched. */
-export function Findings({ result, route }: { result: InvestigationResult; route: Route | null }) {
+export function Findings({
+  result,
+  route,
+  queries = [],
+  pagesRead = 0,
+}: {
+  result: InvestigationResult
+  route: Route | null
+  queries?: string[]
+  pagesRead?: number
+}) {
   const { assertion, finding } = result
+  const simple = isSimpleLoop(result)
+  const notes = [
+    !route && `Recommended: ${ROUTE_LABEL[assertion.recommended_route]}`,
+    queries.length > 0 && `Searched the web for: ${queries.map((q) => `“${q}”`).join('; ')}`,
+    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; every page read is listed in the evidence pane.`,
+    result.scope_note,
+    // The simple loop never checks comparisons or scope, so saying it didn't is noise.
+    !simple && finding.qualification_check === 'unknown' && 'Comparisons and scope were not assessed for this claim.',
+  ].filter((n): n is string => Boolean(n))
   return (
     <section className="section" aria-labelledby="findings-heading">
       <h2 id="findings-heading" className="section-label">
         What we checked
       </h2>
-      <p>{assertion.text}</p>
-      {!route && <p className="meta">Recommended: {ROUTE_LABEL[assertion.recommended_route]}</p>}
-      {result.scope_note && <p className="meta">{result.scope_note}</p>}
-      {finding.qualification_check === 'unknown' && (
-        <p className="meta">Comparisons and scope were not assessed for this claim.</p>
+      {/* The simple loop checks the claim as submitted, already shown as the headline. */}
+      {!simple && <p>{assertion.text}</p>}
+      {notes.length > 0 && (
+        <ul className="checked-notes">
+          {notes.map((n) => (
+            <li key={n}>{n}</li>
+          ))}
+        </ul>
       )}
     </section>
   )

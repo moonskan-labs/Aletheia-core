@@ -3,6 +3,7 @@ import type {
   FlagDimension,
   FlagType,
   InvestigationEvent,
+  InvestigationResult,
   InvestigationStatus,
   Stage,
   UndecidedReason,
@@ -241,4 +242,18 @@ export function formatDate(iso: string | null): string | null {
 export function elapsed(iso: string, start: string): string {
   const seconds = Math.max(0, Math.round((Date.parse(iso) - Date.parse(start)) / 1000))
   return `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`
+}
+
+/** The search queries the run sent, in order, each once. */
+export function searchQueries(events: InvestigationEvent[]): string[] {
+  const queries = events
+    .filter((e) => e.type === 'search_started')
+    .map((e) => e.payload?.query)
+    .filter((q): q is string => typeof q === 'string' && q.trim() !== '')
+  return [...new Set(queries)]
+}
+
+/** The simple loop: it checks the claim as submitted, with no comparison or scope checks. */
+export function isSimpleLoop(result: InvestigationResult): boolean {
+  return result.configuration?.pipeline === 'simple'
 }

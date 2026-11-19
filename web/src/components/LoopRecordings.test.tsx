@@ -170,3 +170,24 @@ describe('a run that quoted nothing', () => {
     expect(page.textContent).toContain('Not settled: the pages do not state the date.')
   })
 })
+
+describe('what a loop result says it checked', () => {
+  const venus = live.find((r) => r.investigation.claim.startsWith('Venus'))!
+
+  it('lists the searches it ran and the pages it read, as bullets', () => {
+    const container = show(venus)
+    const checked = within(container.querySelector('[aria-labelledby="findings-heading"]') as HTMLElement)
+    const items = checked.getAllByRole('listitem').map((li) => li.textContent)
+    expect(items[0]).toContain('Searched the web for: “average orbital distance of Venus from the Sun”')
+    expect(items[1]).toBe('Read 6 pages; every page read is listed in the evidence pane.')
+    expect(items).toContain('Checked as submitted, against the pages retrieved for this run.')
+  })
+
+  it('leaves out the staged pipeline’s scope note and route name', () => {
+    const container = show(venus)
+    expect(container.textContent).not.toContain('Comparisons and scope were not assessed')
+    const facts = container.querySelector('.run-meta p')!.textContent
+    // The date is shown in local time, so it differs by time zone.
+    expect(facts).toMatch(/^2 quoted · 6 pages read · 15 s · 2026-11-1[67]$/)
+  })
+})
