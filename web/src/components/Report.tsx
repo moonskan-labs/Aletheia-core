@@ -242,13 +242,12 @@ export function Report(props: Props) {
                         <p className="meta">This does not establish that evidence is insufficient or conflicting.</p>
                       </section>
                     ) : (
-                      <Conclusion investigation={investigation} result={result} />
+                      <>
+                        <Conclusion investigation={investigation} result={result} />
+                        <Findings result={result} route={investigation.route} />
+                      </>
                     )}
-                    {/* Background to the answer, in a quieter band below it. */}
-                    <div className="report-details">
-                      {!unconfirmed && <Findings result={result} route={investigation.route} />}
-                      <Limitations result={result} />
-                    </div>
+                    <Limitations result={result} />
                   </>
                 )}
                 {finished && <ResearchActivity key={investigation.id} events={events} />}
