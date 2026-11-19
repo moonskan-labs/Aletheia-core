@@ -31,7 +31,7 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
         {a.rationale}
       </p>
       {a.limitations.length > 0 && (
-        <p>
+        <p className="meta">
           <span className="inline-label">Limitations</span>
           {a.limitations.join(' ')}
         </p>
