@@ -100,6 +100,12 @@ async def run_case(model, model_name, packet, repeat):
             {"page": pages[id(s)], "url": s.url, "text": e.text} for s, e in state["located"]
         ],
         basis=state.get("basis"),
+        readings=state["original_answer"].get("sources"),
+        claim_reading={
+            k: state["original_answer"][k]
+            for k in ("claim_about", "named_source", "needs_test_conditions")
+            if k in state["original_answer"]
+        },
         rejected_quotes=len(state["invalid_quotes"]),
         events=[e for e in events if e["event"] != "evidence_checked"],
         seconds=round(time.monotonic() - started, 1),
