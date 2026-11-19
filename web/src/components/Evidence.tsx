@@ -89,7 +89,7 @@ function PagesRead({ sources, quoted }: { sources: SourceSnapshot[]; quoted: Set
                 <a href={source.url} target="_blank" rel="noreferrer noopener" title={source.title || source.url}>
                   {source.title ? pageTitle(source.title) : source.url}
                 </a>
-                {quoted.has(source.id) && <span className="pages-read-quoted">quoted</span>}
+                {quoted.has(source.id) && <span className="pages-read-quoted"> · quoted</span>}
               </td>
             </tr>
           ))}
