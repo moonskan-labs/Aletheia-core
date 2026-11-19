@@ -4,7 +4,7 @@ import { UNREACHABLE, type DataSource } from './source'
 export type BackendStatus = 'replay' | 'checking' | 'ready' | 'research_disabled' | 'unreachable'
 
 export const REPLAY_UNAVAILABLE =
-  'Live investigation isn’t available in this demo yet: the Aletheia backend is still being built. Until then, explore the sample investigations below.'
+  'Live investigation needs the local Aletheia backend. Explore the sample investigations below.'
 
 const REASONS: Record<Exclude<BackendStatus, 'ready'>, string> = {
   replay: REPLAY_UNAVAILABLE,

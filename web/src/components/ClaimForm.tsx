@@ -33,7 +33,7 @@ export function ClaimForm({ onSubmit, submitting, unavailableReason, onRetry }: 
         rows={3}
         disabled={unavailable}
         aria-describedby={unavailable ? noteId : undefined}
-        placeholder="One factual claim, e.g. “Model X scores 90% on MMLU, ahead of Model Y.”"
+        placeholder="One factual claim, e.g. “An estimated 610,000 people died of malaria worldwide in 2024.”"
         onChange={(e) => setClaim(e.target.value)}
       />
       <div className="claim-form-actions">

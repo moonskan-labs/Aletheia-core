@@ -20,7 +20,7 @@ function SampleRow({ recording, onOpen }: { recording: Recording; onOpen: () => 
           {recording.sample && ' · invented sample'}
         </span>
         <span className="sample-open" aria-hidden="true">
-          View investigation →
+          →
         </span>
       </button>
     </li>
@@ -41,7 +41,7 @@ function RecentRow({ investigation, onOpen }: { investigation: Investigation; on
           {` · ${WHEN.format(new Date(investigation.created_at))}`}
         </span>
         <span className="sample-open" aria-hidden="true">
-          View investigation →
+          →
         </span>
       </button>
     </li>
