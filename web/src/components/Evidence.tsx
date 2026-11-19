@@ -10,61 +10,68 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
   const passage = source && evidence.excerpts[0] ? passageLink(source.url, evidence.excerpts[0].text) : null
   return (
     <article className="evidence" aria-label={`Source ${number}`}>
-      <p className={`relation relation-${a.relation}`}>
-        {RELATION_LABEL[a.relation]}
-        {!evidence.admissible && ' · not admitted'}
-      </p>
-      <h3 className="evidence-title">{source ? source.title || source.url : 'Source unavailable'}</h3>
-      {a.publisher && <p className="evidence-meta">{a.publisher}</p>}
-      {source?.published_date && <p className="evidence-meta">Published {source.published_date}</p>}
+      <div className="evidence-source">
+        <p className={`relation relation-${a.relation}`}>
+          {RELATION_LABEL[a.relation]}
+          {!evidence.admissible && ' · not admitted'}
+        </p>
+        <h3 className="evidence-title">{source ? source.title || source.url : 'Source unavailable'}</h3>
+        {(a.publisher || source?.published_date) && (
+          <p className="evidence-meta">
+            {[a.publisher, source?.published_date && `Published ${source.published_date}`].filter(Boolean).join(' · ')}
+          </p>
+        )}
+      </div>
       {evidence.excerpts.map((excerpt) => (
         <blockquote key={excerpt.start}>{excerpt.text}</blockquote>
       ))}
-      {!evidence.admissible && evidence.rejection_reason && (
+      <div className="evidence-foot">
+        {!evidence.admissible && evidence.rejection_reason && (
+          <p>
+            <span className="inline-label">Not admitted</span>
+            {evidence.rejection_reason}
+          </p>
+        )}
         <p>
-          <span className="inline-label">Not admitted</span>
-          {evidence.rejection_reason}
+          <span className="inline-label">Why it counts</span>
+          {a.rationale}
         </p>
-      )}
-      <p>
-        <span className="inline-label">Why it counts</span>
-        {a.rationale}
-      </p>
-      {a.limitations.length > 0 && <p className="meta">Limitations: {a.limitations.join(' ')}</p>}
-      {source && (
-        <a className="open-original" href={passage ?? source.url} target="_blank" rel="noreferrer noopener">
-          {passage ? 'Open the original at this passage' : 'Open the original'}
-        </a>
-      )}
-      <details className="trace">
-        <summary>Citation details</summary>
-        <dl>
-          <dt>Spans</dt>
-          <dd>{evidence.excerpts.map((e) => e.span_ids.join(', ')).join(' | ')}</dd>
-          <dt>Snapshot</dt>
-          <dd>{a.citation.snapshot_id}</dd>
-          <dt>Evidence ID</dt>
-          <dd>{evidence.id}</dd>
-          {a.origin && (
-            <>
-              <dt>Origin</dt>
-              <dd>{a.origin}</dd>
-            </>
-          )}
-          <dt>Independence</dt>
-          <dd>{a.independence}</dd>
-          {source && (
-            <>
-              <dt>Retrieved</dt>
-              <dd>{formatTime(source.retrieved_at)}</dd>
-              <dt>URL</dt>
-              <dd>{source.url}</dd>
-              <dt>Content hash</dt>
-              <dd>{source.content_hash}</dd>
-            </>
-          )}
-        </dl>
-      </details>
+        {a.limitations.length > 0 && <p className="meta">Limitations: {a.limitations.join(' ')}</p>}
+        {source && (
+          <a className="open-original" href={passage ?? source.url} target="_blank" rel="noreferrer noopener">
+            {passage ? 'Open the original at this passage' : 'Open the original'}
+          </a>
+        )}
+        <details className="trace">
+          <summary>Citation details</summary>
+          <dl>
+            <dt>Spans</dt>
+            <dd>{evidence.excerpts.map((e) => e.span_ids.join(', ')).join(' | ')}</dd>
+            <dt>Snapshot</dt>
+            <dd>{a.citation.snapshot_id}</dd>
+            <dt>Evidence ID</dt>
+            <dd>{evidence.id}</dd>
+            {a.origin && (
+              <>
+                <dt>Origin</dt>
+                <dd>{a.origin}</dd>
+              </>
+            )}
+            <dt>Independence</dt>
+            <dd>{a.independence}</dd>
+            {source && (
+              <>
+                <dt>Retrieved</dt>
+                <dd>{formatTime(source.retrieved_at)}</dd>
+                <dt>URL</dt>
+                <dd>{source.url}</dd>
+                <dt>Content hash</dt>
+                <dd>{source.content_hash}</dd>
+              </>
+            )}
+          </dl>
+        </details>
+      </div>
     </article>
   )
 }
