@@ -47,15 +47,15 @@ true or false verdict includes a quotation you can check."
 `[00:20–01:00]` **2–3. A live check, and how it works**
 
 > Type: `An estimated 610,000 people died of malaria worldwide in 2024, according to WHO.`
-> Click **Verify**. Show the progress log as it runs.
+> Click **Verify**, then click **Research steps** so the progress log shows as it runs.
 
 "It's running live now. One model call on Nebius Token Factory plans up to three
 searches. Tavily runs them at the same time and reads the best pages. Then one more
 model call reads those pages and gives a verdict, with quotations copied word for word."
 
 > While it runs, point at the log lines that name Token Factory and Tavily calls. (Once
-> the run finishes, the log folds into one line under **What we checked**: click
-> **Research log** to open it again.)
+> the run finishes, the log is under **Evidence and research details** → **Research
+> log**.)
 
 "Python stays in control throughout. The model only writes queries and a verdict. The
 code runs every search, enforces the limits, and checks every quotation against the
@@ -64,8 +64,9 @@ valid quotation becomes 'can't settle'."
 
 `[01:00–01:30]` **4. The answer, and its evidence**
 
-> The result: **True**. Click citation **[1]** in the summary: the **Evidence** box
-> below shows that quotation, highlighted.
+> The result: **True**, and the whole report fits on one screen. Click citation **[1]**:
+> **Evidence and research details** opens, and the **Evidence** box shows that
+> quotation, highlighted.
 
 "True. Here's the quotation it relied on, word for word from the page."
 
@@ -98,7 +99,8 @@ you can check it in one click."
 
 "And when the web doesn't have the answer?"
 
-> The result: **Insufficient evidence**, with its limitation.
+> The result: **Insufficient evidence**. Open **Evidence and research details** to show
+> its limitation.
 
 "Insufficient evidence. The pages it found don't give a summit count for that day, so
 it doesn't guess."
