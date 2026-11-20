@@ -15,9 +15,8 @@ Judging weights, and where the video covers each:
 
 ## Before recording
 
-- **Branch:** record after #43, #44 and #47 merge into `main`; they hold the current web
-  client (centred search, one-column report, highlighted quotations). If they haven't
-  merged by recording time, record from the `ui/merge-layout-c` branch.
+- **Branch:** record from `main`. It has the current web client: centred search,
+  one-column report, highlighted quotations.
 - **Settings:** `.env` from `.env.example` (DeepSeek V4 Pro, simple loop, 120 s timeout).
   Never show `.env` or a terminal that prints it.
 - **Start fresh:** point `ALETHEIA_DATABASE_PATH` at a new file, for example
