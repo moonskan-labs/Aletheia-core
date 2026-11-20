@@ -1,19 +1,20 @@
 /*
- * Visual direction B, "Lab instrument" (design/visual-direction.md): cool near-white,
- * graphite text, one cobalt accent. IBM Plex Sans for reading, Plex Mono for run facts,
- * section labels and the research log. The report sits left; the evidence pane beside
- * it follows the selected citation, and stacks below the report on narrow screens.
+ * Merged with Skanda's layout C (#46): his near-black palette and mint accent, the
+ * fingerprint wordmark, and the centred search on the home page. IBM Plex Sans for
+ * reading; a serif only for the home headline. The report is one column: the answer,
+ * what was checked, the evidence, limitations, then the research log.
  */
 :root {
-  --bg: #f5f6f8;
+  --bg: #f6f7f9;
   --surface: #ffffff;
-  --text: #15181d;
-  --text-2: #4b5361;
-  --rule: #dce0e6;
-  --accent: #1f4fd1;
-  --accent-hover: #163ca3;
-  --accent-tint: #e6ecfb;
-  --quote: #f5f6f8;
+  --text: #121821;
+  --text-2: #4d5664;
+  --rule: #dfe3e9;
+  --accent: #17694a;
+  --accent-hover: #10533a;
+  --accent-tint: #e1f3ea;
+  --on-accent: #ffffff;
+  --quote: #f6f7f9;
   /* Highlighter behind an accepted quotation: the passage the verdict rests on. */
   --highlight: #fbeeb0;
 
@@ -28,6 +29,7 @@
 
   --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+  --serif: Baskerville, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
 
   color-scheme: light dark;
   font-family: var(--sans);
@@ -37,19 +39,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1216;
-    --surface: #171b21;
-    --text: #e6e9ee;
-    --text-2: #9ba4b1;
-    --rule: #2b313a;
-    --accent: #86a6ff;
-    --accent-hover: #abc2ff;
-    --accent-tint: #1c2640;
-    --quote: #12161b;
+    --bg: #0b0f17;
+    --surface: #131926;
+    --text: #f3f5f7;
+    --text-2: #a6afbc;
+    --rule: #1e293b;
+    --accent: #80e7b6;
+    --accent-hover: #a6f4d0;
+    --accent-tint: #1d322b;
+    --on-accent: #0a261c;
+    --quote: #0f141e;
     --highlight: #3d3720;
 
-    --true: #7dc6a8;
-    --false: #ef9c8d;
+    --true: #8ff1bc;
+    --false: #ff99aa;
     --almost: #ddb563;
     --almost-tint: #30281a;
     --insufficient: #afb7c0;
@@ -92,6 +95,15 @@ p {
   margin: 0 0 0.75em;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* ---------- Top bar ---------- */
 
 .topbar {
@@ -103,17 +115,22 @@ p {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
-  min-height: 52px;
+  min-height: 64px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 4px 20px;
 }
 
+/* Skanda's wordmark: the fingerprint in the accent, the name in spaced capitals. */
 .wordmark {
   min-height: 44px;
-  font: 600 18px var(--sans);
-  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font: 600 16px var(--sans);
+  letter-spacing: 0.22em;
   color: var(--text);
   background: none;
   border: 0;
@@ -121,15 +138,21 @@ p {
   cursor: pointer;
 }
 
-.notice {
+.wordmark svg {
+  color: var(--accent);
+}
+
+.mode {
   margin: 0;
-  font: 12px var(--sans);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
   color: var(--text-2);
 }
 
-.notice strong {
-  color: var(--text);
-  font-weight: 600;
+.mode.live svg {
+  color: var(--accent);
 }
 
 main {
@@ -271,15 +294,16 @@ blockquote {
   color: var(--conflicting);
 }
 
-/* ---------- Report body: report left, evidence pane right ---------- */
+/* The report reads as one centred column, like the home page. */
+main:has(> .report) {
+  max-width: 808px;
+}
+
+/* ---------- Report body: one column ---------- */
 
 .report-body {
   margin-top: 32px;
-  display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(320px, 420px);
-  justify-content: start;
-  align-items: start;
-  gap: 48px;
+  max-width: 760px;
 }
 
 .report-main {
@@ -409,7 +433,7 @@ blockquote {
 
 .cite[aria-pressed='true'] {
   background: var(--accent);
-  color: var(--surface);
+  color: var(--on-accent);
   border-color: var(--accent);
 }
 
@@ -423,10 +447,7 @@ blockquote {
 /* ---------- Evidence pane ---------- */
 
 .evidence-pane {
-  position: sticky;
-  top: 16px;
-  max-height: calc(100vh - 32px);
-  overflow: auto;
+  margin-top: 32px;
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: 6px;
@@ -466,7 +487,7 @@ blockquote {
 
 .pane-tab[aria-pressed='true'] {
   background: var(--accent);
-  color: var(--surface);
+  color: var(--on-accent);
   border-color: var(--accent);
 }
 
@@ -657,15 +678,90 @@ blockquote {
   color: var(--text-2);
 }
 
-/* ---------- Home ---------- */
+/* ---------- Home: Skanda's layout C, without the fingerprint art ---------- */
 
 .home {
-  margin-top: 32px;
-  max-width: 720px;
+  padding: 64px 0 40px;
 }
 
-.home h2 {
-  margin-top: 40px;
+.hero {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home h1 {
+  margin: 0;
+  font: 400 clamp(36px, 5vw, 60px) / 1.05 var(--serif);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.home h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.examples {
+  margin-top: 32px;
+}
+
+.sample-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+.sample-label::before,
+.sample-label::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sample-pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 8px;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sample-pill .meta {
+  font-size: 12px;
+}
+
+.sample-pill:hover {
+  border-color: var(--accent);
+}
+
+.recent {
+  max-width: 760px;
+  margin: 56px auto 0;
 }
 
 .samples {
@@ -725,61 +821,79 @@ pre {
   font: 12px var(--mono);
 }
 
-/* ---------- Claim form ---------- */
+/* ---------- Claim form: layout C's search box ---------- */
 
 .claim-form {
-  display: grid;
-  gap: 8px;
-  margin-top: 24px;
+  max-width: 690px;
+  margin: 32px auto 0;
+  text-align: left;
 }
 
-.claim-form label {
-  font: 500 12px var(--sans);
-  letter-spacing: 0.02em;
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 20px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--surface);
+  transition: border-color 120ms ease-out;
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+}
+
+.search-box > svg {
+  flex: none;
   color: var(--text-2);
 }
 
-.claim-form textarea {
-  font: 18px/1.45 var(--sans);
-  padding: 12px 16px;
-  border-radius: 6px;
-  border: 1px solid var(--rule);
-  background: var(--surface);
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  outline: none;
+  background: transparent;
   color: var(--text);
-  resize: vertical;
+  font: 17px var(--sans);
 }
 
-.claim-form button[type='submit'] {
+.search-box input::placeholder {
+  color: var(--text-2);
+}
+
+.search-box input:disabled {
+  cursor: not-allowed;
+}
+
+.verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   min-height: 44px;
-  font-weight: 600;
-  padding: 0 24px;
-  border-radius: 4px;
+  padding: 0 20px;
   border: 0;
+  border-radius: 8px;
   background: var(--accent);
-  color: var(--surface);
+  color: var(--on-accent);
+  font-weight: 600;
   cursor: pointer;
 }
 
-.claim-form button[type='submit']:disabled {
+.verify:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.verify:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.claim-form textarea:disabled {
-  background: var(--quote);
-  cursor: not-allowed;
-}
-
-.claim-form-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 16px;
-}
-
 .claim-form-note {
-  flex: 1 1 280px;
-  margin: 0;
+  margin: 8px 0 0;
+  text-align: center;
 }
 
 .link-button {
@@ -813,19 +927,7 @@ pre {
   font-weight: 600;
 }
 
-/* ---------- Narrow screens: the pane stacks under the report ---------- */
-
-@media (max-width: 899px) {
-  .report-body {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-  }
-
-  .evidence-pane {
-    position: static;
-    max-height: none;
-  }
-}
+/* ---------- Narrow screens ---------- */
 
 @media (max-width: 520px) {
   main,
@@ -836,6 +938,23 @@ pre {
 
   .claim {
     font-size: 22px;
+  }
+
+  .home {
+    padding-top: 40px;
+  }
+
+  .search-box {
+    padding-left: 12px;
+    gap: 8px;
+  }
+
+  .verify {
+    padding: 0 14px;
+  }
+
+  .mode-detail {
+    display: none;
   }
 
   .result-label {
@@ -849,4 +968,65 @@ pre {
   .correction dd {
     margin-bottom: 8px;
   }
+}
+
+/* ---------- Compact report: the log under What we checked, a tighter evidence box ---------- */
+
+.activity.section {
+  margin-top: 8px;
+}
+
+.activity summary {
+  gap: 8px;
+  font-size: 14px;
+  list-style: none;
+}
+
+.activity summary::-webkit-details-marker {
+  display: none;
+}
+
+.activity summary::before {
+  content: '▸';
+  color: var(--accent);
+  transition: transform 120ms ease-out;
+}
+
+.activity[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.activity summary:hover {
+  color: var(--text);
+}
+
+.evidence-pane .pane-head {
+  padding: 4px 4px 4px 16px;
+}
+
+.evidence-pane .pane-tab {
+  min-width: 36px;
+  height: 36px;
+}
+
+.evidence-pane .pane-body {
+  padding: 12px 16px 8px;
+}
+
+.evidence-pane .evidence {
+  gap: 8px;
+}
+
+.evidence-pane .evidence-title {
+  font-size: 16px;
+}
+
+.evidence-pane blockquote {
+  padding: 8px 12px;
+}
+
+.evidence-pane .open-original,
+.evidence-pane .trace summary,
+.evidence-pane .pane-rejected summary {
+  min-height: 32px;
 }

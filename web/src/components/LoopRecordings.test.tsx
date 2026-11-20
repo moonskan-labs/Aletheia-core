@@ -179,7 +179,7 @@ describe('what a loop result says it checked', () => {
     const checked = within(container.querySelector('[aria-labelledby="findings-heading"]') as HTMLElement)
     const items = checked.getAllByRole('listitem').map((li) => li.textContent)
     expect(items[0]).toContain('Searched the web for: “average orbital distance of Venus from the Sun”')
-    expect(items[1]).toBe('Read 6 pages; every page read is listed in the evidence pane.')
+    expect(items[1]).toBe('Read 6 pages; each one is listed under Evidence below.')
     // The claim is checked as submitted; the headline already shows it.
     expect(items).toHaveLength(2)
   })
@@ -190,5 +190,15 @@ describe('what a loop result says it checked', () => {
     const facts = container.querySelector('.run-meta p')!.textContent
     // The date is shown in local time, so it differs by time zone.
     expect(facts).toMatch(/^2 quoted · 6 pages read · 15 s · 2026-11-1[67]$/)
+  })
+})
+
+describe('the evidence pane under a loop result', () => {
+  it('does not repeat the explanation as each quotation’s rationale', () => {
+    const apollo = live.find((r) => r.investigation.claim.startsWith('The Apollo'))!
+    const container = show(apollo)
+    const pane = container.querySelector('.evidence-pane') as HTMLElement
+    expect(pane.textContent).not.toContain('Why it counts')
+    expect(pane.textContent).toContain('The lunar module touched down on the surface on the Moon.')
   })
 })

@@ -5,7 +5,7 @@ import { RELATION_LABEL, formatTime } from '../labels'
 import { passageLink } from '../passageLink'
 
 /** One piece of evidence: relation, source, the exact excerpt, why it counts, the link. */
-function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry }) {
+function Detail({ entry: { number, evidence, source }, repeated }: { entry: EvidenceEntry; repeated: Set<string> }) {
   const a = evidence.assessment
   const passage = source && evidence.excerpts[0] ? passageLink(source.url, evidence.excerpts[0].text) : null
   return (
@@ -28,10 +28,13 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
           {evidence.rejection_reason}
         </p>
       )}
-      <p>
-        <span className="inline-label">Why it counts</span>
-        {a.rationale}
-      </p>
+      {/* The simple loop gives every quotation the explanation as its rationale; don't repeat it. */}
+      {!repeated.has(a.rationale.trim()) && (
+        <p>
+          <span className="inline-label">Why it counts</span>
+          {a.rationale}
+        </p>
+      )}
       {a.limitations.length > 0 && <p className="meta">Limitations: {a.limitations.join(' ')}</p>}
       {source && (
         <a className="open-original" href={passage ?? source.url} target="_blank" rel="noreferrer noopener">
@@ -72,8 +75,8 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
 }
 
 /**
- * The evidence pane: one entry at a time, numbered as cited. Beside the report on wide
- * screens, below it on narrow ones. Passages checked but not admitted sit collapsed.
+ * The evidence pane: one entry at a time, numbered as cited, below what was checked.
+ * Passages checked but not admitted sit collapsed.
  */
 function host(url: string): string {
   try {
@@ -109,7 +112,15 @@ function PagesRead({ sources, quoted }: { sources: SourceSnapshot[]; quoted: Set
   )
 }
 
-export function EvidencePane({ sources = [] }: { sources?: SourceSnapshot[] }) {
+export function EvidencePane({
+  sources = [],
+  explanation = [],
+}: {
+  sources?: SourceSnapshot[]
+  /** The report's explanation text, already on the page above. */
+  explanation?: string[]
+}) {
+  const repeated = new Set(explanation.map((t) => t.trim()))
   const index = useEvidenceIndex()
   const { selected, select } = useEvidenceSelection()
   const entries = [...index.values()]
@@ -159,7 +170,7 @@ export function EvidencePane({ sources = [] }: { sources?: SourceSnapshot[] }) {
       </div>
       <div className="pane-body" aria-live="polite">
         {admitted.length === 0 && <p className="meta">No passage was admitted as evidence.</p>}
-        <Detail entry={current} />
+        <Detail entry={current} repeated={repeated} />
       </div>
       {rejected.length > 0 && (
         <details className="pane-rejected">
