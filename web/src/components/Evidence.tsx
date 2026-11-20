@@ -72,8 +72,8 @@ function Detail({ entry: { number, evidence, source } }: { entry: EvidenceEntry 
 }
 
 /**
- * The evidence pane: one entry at a time, numbered as cited. Beside the report on wide
- * screens, below it on narrow ones. Passages checked but not admitted sit collapsed.
+ * The evidence pane: one entry at a time, numbered as cited, below what was checked.
+ * Passages checked but not admitted sit collapsed.
  */
 function host(url: string): string {
   try {

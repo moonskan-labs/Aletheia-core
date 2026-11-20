@@ -99,7 +99,7 @@ export function Findings({
   const notes = [
     !route && `Recommended: ${ROUTE_LABEL[assertion.recommended_route]}`,
     queries.length > 0 && `Searched the web for: ${queries.map((q) => `“${q}”`).join('; ')}`,
-    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; every page read is listed in the evidence pane.`,
+    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; each one is listed under Evidence below.`,
     // The simple loop checks the claim as submitted, already shown as the headline.
     !simple && result.scope_note,
     // The simple loop never checks comparisons or scope, so saying it didn't is noise.

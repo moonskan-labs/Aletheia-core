@@ -251,7 +251,7 @@ export function Report(props: Props) {
                   <>
                     {unconfirmed ? (
                       <section className="conclusion" aria-labelledby="result-label">
-                        <p>The final check did not confirm a decision. The collected sources are available in the evidence pane.</p>
+                        <p>The final check did not confirm a decision. The collected sources are listed under Evidence below.</p>
                         <p className="meta">This does not establish that evidence is insufficient or conflicting.</p>
                       </section>
                     ) : (
@@ -265,12 +265,13 @@ export function Report(props: Props) {
                         />
                       </>
                     )}
+                    {/* Evidence follows what was checked, before limitations and the log. */}
+                    <EvidencePane sources={evidence?.sources ?? []} />
                     <Limitations result={result} />
                   </>
                 )}
                 {finished && <ResearchActivity key={investigation.id} events={events} />}
               </div>
-              {result && <EvidencePane sources={evidence?.sources ?? []} />}
             </div>
           )}
         </article>

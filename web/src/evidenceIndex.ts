@@ -43,14 +43,13 @@ export function useEvidenceSelection(): EvidenceSelection {
 
 export const EVIDENCE_PANE_ID = 'evidence-pane'
 
-/** Matches the CSS breakpoint where the pane stops sitting beside the report. */
-const STACKED = '(max-width: 899px)'
-
+/** Brings the evidence pane into view when a citation is chosen, if it isn't already. */
 export function revealEvidencePane(): void {
-  if (typeof window.matchMedia !== 'function' || !window.matchMedia(STACKED).matches) return
   const pane = document.getElementById(EVIDENCE_PANE_ID)
-  pane?.scrollIntoView({ block: 'start' })
-  pane?.focus({ preventScroll: true })
+  if (!pane) return
+  const top = pane.getBoundingClientRect().top
+  if (top < 0 || top > window.innerHeight - 160) pane.scrollIntoView?.({ block: 'start' })
+  pane.focus({ preventScroll: true })
 }
 
 /** The entry to show first: the first one the report cites, else the first admitted. */

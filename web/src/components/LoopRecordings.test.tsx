@@ -179,7 +179,7 @@ describe('what a loop result says it checked', () => {
     const checked = within(container.querySelector('[aria-labelledby="findings-heading"]') as HTMLElement)
     const items = checked.getAllByRole('listitem').map((li) => li.textContent)
     expect(items[0]).toContain('Searched the web for: “average orbital distance of Venus from the Sun”')
-    expect(items[1]).toBe('Read 6 pages; every page read is listed in the evidence pane.')
+    expect(items[1]).toBe('Read 6 pages; each one is listed under Evidence below.')
     // The claim is checked as submitted; the headline already shows it.
     expect(items).toHaveLength(2)
   })
