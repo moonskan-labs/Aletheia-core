@@ -1,7 +1,5 @@
 import { useLayoutEffect } from 'react'
-import nebiusLogo from './assets/providers/nebius.svg?inline'
-import tavilyDarkLogo from './assets/providers/tavily-dark.svg?inline'
-import tavilyLogo from './assets/providers/tavily.svg?inline'
+import { nebiusLogo, tavilyLogo, tavilyDarkLogo } from './providerLogos'
 import { dataSource } from './api/source'
 import { canRecheck, unavailableReason, useBackendStatus } from './api/useBackendStatus'
 import { useInvestigation } from './api/useInvestigation'
