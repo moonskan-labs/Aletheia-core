@@ -265,12 +265,16 @@ export function Report(props: Props) {
                         />
                       </>
                     )}
-                    {/* Evidence follows what was checked, before limitations and the log. */}
+                  </>
+                )}
+                {/* The log closes what was checked, so it stays near the top of the page. */}
+                {finished && <ResearchActivity key={investigation.id} events={events} />}
+                {result && (
+                  <>
                     <EvidencePane sources={evidence?.sources ?? []} />
                     <Limitations result={result} />
                   </>
                 )}
-                {finished && <ResearchActivity key={investigation.id} events={events} />}
               </div>
             </div>
           )}

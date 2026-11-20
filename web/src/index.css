@@ -969,3 +969,64 @@ pre {
     margin-bottom: 8px;
   }
 }
+
+/* ---------- Compact report: the log under What we checked, a tighter evidence box ---------- */
+
+.activity.section {
+  margin-top: 8px;
+}
+
+.activity summary {
+  gap: 8px;
+  font-size: 14px;
+  list-style: none;
+}
+
+.activity summary::-webkit-details-marker {
+  display: none;
+}
+
+.activity summary::before {
+  content: '▸';
+  color: var(--accent);
+  transition: transform 120ms ease-out;
+}
+
+.activity[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.activity summary:hover {
+  color: var(--text);
+}
+
+.evidence-pane .pane-head {
+  padding: 4px 4px 4px 16px;
+}
+
+.evidence-pane .pane-tab {
+  min-width: 36px;
+  height: 36px;
+}
+
+.evidence-pane .pane-body {
+  padding: 12px 16px 8px;
+}
+
+.evidence-pane .evidence {
+  gap: 8px;
+}
+
+.evidence-pane .evidence-title {
+  font-size: 16px;
+}
+
+.evidence-pane blockquote {
+  padding: 8px 12px;
+}
+
+.evidence-pane .open-original,
+.evidence-pane .trace summary,
+.evidence-pane .pane-rejected summary {
+  min-height: 32px;
+}
