@@ -8,7 +8,7 @@ import {
   revealEvidencePane,
   type EvidenceIndex,
 } from '../evidenceIndex'
-import { STATUS_LABEL, UNDECIDED_REASON, formatDate, reason } from '../labels'
+import { STATUS_LABEL, UNDECIDED_REASON, formatDate, isSimpleLoop, reason, searchQueries } from '../labels'
 import { Citations } from './Cite'
 import { EvidencePane } from './Evidence'
 import { Correction, DecisionLabel, Findings, Flag, Units } from './Findings'
@@ -38,21 +38,33 @@ function sourceCount(index: EvidenceIndex): number {
 function RunMeta({
   investigation,
   index,
+  pagesRead,
   finished,
   reused,
   onReplay,
 }: {
   investigation: Investigation
   index: EvidenceIndex
+  pagesRead: number
   finished: boolean
   reused: boolean
   onReplay?: () => void
 }) {
   const sources = sourceCount(index)
+  const result = finished ? investigation.result : null
+  // The simple loop always takes the quick route, so its name says nothing; count the
+  // quoted pages against the pages read, as the evidence pane does, plus the run time.
+  const simple = result ? isSimpleLoop(result) : false
+  const seconds =
+    investigation.started_at && investigation.finished_at
+      ? Math.round((Date.parse(investigation.finished_at) - Date.parse(investigation.started_at)) / 1000)
+      : null
   const facts = [
     !finished ? 'researching' : investigation.status !== 'completed' ? STATUS_LABEL[investigation.status].toLowerCase() : null,
-    investigation.route,
-    finished && investigation.result ? `${sources} source${sources === 1 ? '' : 's'}` : null,
+    simple ? null : investigation.route,
+    result && simple ? `${sources} quoted` : result ? `${sources} source${sources === 1 ? '' : 's'}` : null,
+    result && simple && pagesRead > 0 ? `${pagesRead} page${pagesRead === 1 ? '' : 's'} read` : null,
+    result && simple && seconds !== null && seconds >= 0 ? `${seconds} s` : null,
     formatDate(investigation.started_at ?? investigation.created_at),
     reused ? 'saved result' : null,
     investigation.version > 1 ? `version ${investigation.version}` : null,
@@ -180,6 +192,7 @@ export function Report(props: Props) {
             <RunMeta
               investigation={investigation}
               index={index}
+              pagesRead={evidence?.sources.length ?? 0}
               finished={finished}
               reused={reused}
               onReplay={onReplay}
@@ -244,7 +257,12 @@ export function Report(props: Props) {
                     ) : (
                       <>
                         <Conclusion investigation={investigation} result={result} />
-                        <Findings result={result} route={investigation.route} />
+                        <Findings
+                          result={result}
+                          route={investigation.route}
+                          queries={isSimpleLoop(result) ? searchQueries(events) : []}
+                          pagesRead={isSimpleLoop(result) ? (evidence?.sources.length ?? 0) : 0}
+                        />
                       </>
                     )}
                     <Limitations result={result} />
