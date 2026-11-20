@@ -1,3 +1,7 @@
+import { useLayoutEffect } from 'react'
+import nebiusLogo from './assets/providers/nebius.svg?inline'
+import tavilyDarkLogo from './assets/providers/tavily-dark.svg?inline'
+import tavilyLogo from './assets/providers/tavily.svg?inline'
 import { dataSource } from './api/source'
 import { canRecheck, unavailableReason, useBackendStatus } from './api/useBackendStatus'
 import { useInvestigation } from './api/useInvestigation'
@@ -15,6 +19,21 @@ export default function App() {
   const { investigation, evidence, events, submitting, researchDone, finished, loadError, error, reused } = state
   const recording = dataSource.recordings.find((r) => r.investigation.id === investigation?.id)
   const live = backend.status === 'ready'
+
+  // Refit automatic disclosures on navigation or resize. Manual disclosure clicks
+  // are intentionally allowed to grow the document.
+  useLayoutEffect(() => {
+    function fitOverview() {
+      const root = document.documentElement
+      for (const panel of document.querySelectorAll<HTMLDetailsElement>('details[data-fit]')) {
+        panel.open = window.innerHeight >= 560 && (panel.dataset.fit !== 'samples' || window.innerWidth >= 620)
+        if (root.scrollHeight > root.clientHeight + 1) panel.open = false
+      }
+    }
+    fitOverview()
+    window.addEventListener('resize', fitOverview)
+    return () => window.removeEventListener('resize', fitOverview)
+  }, [investigation, finished, recent?.length, error])
 
   return (
     <>
@@ -77,6 +96,21 @@ export default function App() {
           />
         )}
       </main>
+      <footer className="provider-footer">
+        <span className="provider-label">Powered by</span>
+        <div className="provider-logos">
+          <a href="https://nebius.com/services/token-factory">
+            <img src={nebiusLogo} alt="Nebius" height="20" />
+            <span>Token Factory</span>
+          </a>
+          <a href="https://www.tavily.com">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcSet={tavilyDarkLogo} />
+              <img src={tavilyLogo} alt="Tavily" height="21" />
+            </picture>
+          </a>
+        </div>
+      </footer>
     </>
   )
 }

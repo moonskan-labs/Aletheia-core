@@ -47,6 +47,8 @@ export const EVIDENCE_PANE_ID = 'evidence-pane'
 export function revealEvidencePane(): void {
   const pane = document.getElementById(EVIDENCE_PANE_ID)
   if (!pane) return
+  const disclosure = pane.closest<HTMLDetailsElement>('details.research-details')
+  if (disclosure) disclosure.open = true
   const top = pane.getBoundingClientRect().top
   if (top < 0 || top > window.innerHeight - 160) pane.scrollIntoView?.({ block: 'start' })
   pane.focus({ preventScroll: true })
