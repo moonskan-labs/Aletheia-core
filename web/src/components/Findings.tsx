@@ -8,15 +8,25 @@ import type {
   UndecidedReason,
 } from '../api/types'
 import { DIMENSION_LABEL, isSimpleLoop, FLAG_LABEL, UNDECIDED_FALLBACK, UNDECIDED_LABEL, VERDICT_LABEL } from '../labels'
+import { useEvidenceIndex } from '../evidenceIndex'
+import { citeSentences } from '../sentenceCites'
 import { Citations } from './Cite'
 
+/** Explanation paragraphs, each sentence followed by the citations it rests on. */
 export function Units({ units }: { units: ExplanationUnit[] }) {
+  const index = useEvidenceIndex()
+  const quoted = (id: string) => index.get(id)?.evidence.excerpts.map((e) => e.text).join(' ') ?? ''
   return (
     <>
       {units.map((unit, i) => (
         <p key={i}>
-          {unit.text}
-          <Citations ids={unit.evidence_ids} />
+          {citeSentences(unit.text, unit.evidence_ids, quoted).map((part, j) => (
+            <span key={j}>
+              {j > 0 && ' '}
+              {part.text}
+              {part.ids.length > 0 && <Citations ids={part.ids} />}
+            </span>
+          ))}
         </p>
       ))}
     </>
