@@ -1,4 +1,5 @@
 import { useId, useState, type FormEvent } from 'react'
+import { Icon } from './Icon'
 
 const MAX_CLAIM_LENGTH = 500
 
@@ -12,6 +13,7 @@ interface Props {
   onRetry?: () => void
 }
 
+/** Layout C's search box: one line, a search icon, and Verify. */
 export function ClaimForm({ onSubmit, submitting, unavailableReason, onRetry }: Props) {
   const [claim, setClaim] = useState('')
   const noteId = useId()
@@ -25,35 +27,39 @@ export function ClaimForm({ onSubmit, submitting, unavailableReason, onRetry }: 
 
   return (
     <form className="claim-form" onSubmit={handle} aria-busy={submitting}>
-      <label htmlFor="claim">Claim to check</label>
-      <textarea
-        id="claim"
-        value={claim}
-        maxLength={MAX_CLAIM_LENGTH}
-        rows={3}
-        disabled={unavailable}
-        aria-describedby={unavailable ? noteId : undefined}
-        placeholder="One factual claim, e.g. “Model X scores 90% on MMLU, ahead of Model Y.”"
-        onChange={(e) => setClaim(e.target.value)}
-      />
-      <div className="claim-form-actions">
-        <button type="submit" disabled={unavailable || submitting || !trimmed}>
-          {submitting ? 'Starting investigation…' : 'Investigate'}
+      <label htmlFor="claim" className="sr-only">
+        Claim to check
+      </label>
+      <div className="search-box">
+        <Icon name="search" size={22} />
+        <input
+          id="claim"
+          value={claim}
+          maxLength={MAX_CLAIM_LENGTH}
+          disabled={unavailable}
+          aria-describedby={unavailable ? noteId : undefined}
+          placeholder="Enter a claim to verify"
+          autoComplete="off"
+          onChange={(e) => setClaim(e.target.value)}
+        />
+        <button type="submit" className="verify" disabled={unavailable || submitting || !trimmed}>
+          {submitting ? 'Verifying…' : 'Verify'}
+          <Icon name="enter" size={16} />
         </button>
-        {unavailable && (
-          <p id={noteId} className="meta claim-form-note">
-            {unavailableReason}
-            {onRetry && (
-              <>
-                {' '}
-                <button type="button" className="link-button" onClick={onRetry}>
-                  Retry connection
-                </button>
-              </>
-            )}
-          </p>
-        )}
       </div>
+      {unavailable && (
+        <p id={noteId} className="meta claim-form-note">
+          {unavailableReason}
+          {onRetry && (
+            <>
+              {' '}
+              <button type="button" className="link-button" onClick={onRetry}>
+                Retry connection
+              </button>
+            </>
+          )}
+        </p>
+      )}
     </form>
   )
 }

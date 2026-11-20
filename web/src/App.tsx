@@ -3,6 +3,7 @@ import { canRecheck, unavailableReason, useBackendStatus } from './api/useBacken
 import { useInvestigation } from './api/useInvestigation'
 import { useRecent } from './api/useRecent'
 import { Home } from './components/Home'
+import { Icon } from './components/Icon'
 import { Report } from './components/Report'
 
 const replay = dataSource.kind === 'replay'
@@ -13,22 +14,29 @@ export default function App() {
   const recent = useRecent(dataSource, !state.investigation && !state.submitting, backend.status)
   const { investigation, evidence, events, submitting, researchDone, finished, loadError, error, reused } = state
   const recording = dataSource.recordings.find((r) => r.investigation.id === investigation?.id)
-  const showingSample = recording ? recording.sample : dataSource.recordings.some((r) => r.sample)
+  const live = backend.status === 'ready'
 
   return (
     <>
       <header className="topbar">
         <div className="topbar-inner">
           <button type="button" className="wordmark" onClick={close} aria-label="Aletheia home">
-            Aletheia
+            <Icon name="fingerprint" size={28} />
+            <span>ALETHEIA</span>
           </button>
-          {replay && (
-            <p className="notice" role="status">
-              <strong>Recorded investigation</strong>
-              {showingSample && ' · Invented sample data'}
-              <span className="notice-detail"> · New research isn’t available on this page.</span>
-            </p>
-          )}
+          <p className={`mode${live ? ' live' : ''}`} role="status">
+            <Icon name="globe" size={15} />
+            {replay ? (
+              <span>
+                Sample mode
+                <span className="mode-detail">{recording?.sample ? ' · invented sample data' : ' · recorded investigations'}</span>
+              </span>
+            ) : live ? (
+              'Live research'
+            ) : (
+              'Research offline'
+            )}
+          </p>
         </div>
       </header>
 

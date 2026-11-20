@@ -129,7 +129,7 @@ describe('sample rows on the home page', () => {
     render(
       <Home submitting={false} error={null} recordings={recordings} onSubmit={() => {}} onOpen={() => {}} />,
     )
-    const labels = [...document.querySelectorAll('.sample .verdict')].map((el) => el.textContent)
+    const labels = [...document.querySelectorAll('.sample-pill .verdict')].map((el) => el.textContent)
     expect(labels).toEqual(['Insufficient evidence', 'Conflicting evidence'])
   })
 })

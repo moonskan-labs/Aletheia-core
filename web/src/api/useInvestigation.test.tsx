@@ -111,17 +111,17 @@ describe('submitting a claim', () => {
       )
     }
     render(<Harness />)
-    const field = screen.getByLabelText('Claim to check') as HTMLTextAreaElement
+    const field = screen.getByLabelText('Claim to check') as HTMLInputElement
     fireEvent.change(field, { target: { value: 'Model X beats Model Y' } })
-    fireEvent.click(screen.getByRole('button', { name: 'Investigate' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Verify' }))
 
-    const button = screen.getByRole('button', { name: 'Starting investigation…' }) as HTMLButtonElement
+    const button = screen.getByRole('button', { name: 'Verifying…' }) as HTMLButtonElement
     expect(button.disabled).toBe(true)
 
     await act(async () => pending.reject(new Error('Couldn’t reach the Aletheia backend.')))
     expect(screen.getByRole('alert').textContent).toContain('Couldn’t reach')
     expect(field.value).toBe('Model X beats Model Y')
-    expect((screen.getByRole('button', { name: 'Investigate' }) as HTMLButtonElement).disabled).toBe(false)
+    expect((screen.getByRole('button', { name: 'Verify' }) as HTMLButtonElement).disabled).toBe(false)
   })
 })
 

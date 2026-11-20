@@ -10,6 +10,7 @@ import type {
 import { DIMENSION_LABEL, isSimpleLoop, FLAG_LABEL, UNDECIDED_FALLBACK, UNDECIDED_LABEL, VERDICT_LABEL } from '../labels'
 import { Citations } from './Cite'
 
+/** The API assigns citations to each complete explanation unit. */
 export function Units({ units }: { units: ExplanationUnit[] }) {
   return (
     <>
@@ -99,8 +100,9 @@ export function Findings({
   const notes = [
     !route && `Recommended: ${ROUTE_LABEL[assertion.recommended_route]}`,
     queries.length > 0 && `Searched the web for: ${queries.map((q) => `“${q}”`).join('; ')}`,
-    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; every page read is listed in the evidence pane.`,
-    result.scope_note,
+    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; each one is listed under Evidence below.`,
+    // The simple loop checks the claim as submitted, already shown as the headline.
+    !simple && result.scope_note,
     // The simple loop never checks comparisons or scope, so saying it didn't is noise.
     !simple && finding.qualification_check === 'unknown' && 'Comparisons and scope were not assessed for this claim.',
   ].filter((n): n is string => Boolean(n))
