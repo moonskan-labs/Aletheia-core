@@ -192,3 +192,13 @@ describe('what a loop result says it checked', () => {
     expect(facts).toMatch(/^2 quoted · 6 pages read · 15 s · 2026-11-1[67]$/)
   })
 })
+
+describe('the evidence pane under a loop result', () => {
+  it('does not repeat the explanation as each quotation’s rationale', () => {
+    const apollo = live.find((r) => r.investigation.claim.startsWith('The Apollo'))!
+    const container = show(apollo)
+    const pane = container.querySelector('.evidence-pane') as HTMLElement
+    expect(pane.textContent).not.toContain('Why it counts')
+    expect(pane.textContent).toContain('The lunar module touched down on the surface on the Moon.')
+  })
+})

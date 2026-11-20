@@ -271,7 +271,7 @@ export function Report(props: Props) {
                 {finished && <ResearchActivity key={investigation.id} events={events} />}
                 {result && (
                   <>
-                    <EvidencePane sources={evidence?.sources ?? []} />
+                    <EvidencePane sources={evidence?.sources ?? []} explanation={result.explanation.map((u) => u.text)} />
                     <Limitations result={result} />
                   </>
                 )}
