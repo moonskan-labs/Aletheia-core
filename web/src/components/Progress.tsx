@@ -30,7 +30,7 @@ export function ResearchInProgress({ events, replay }: { events: InvestigationEv
         {latest ? `${describeEvent(latest)}.` : 'Waiting for the first step.'} The answer appears when research finishes.
         {replay && ' Times are from the original run.'}
       </p>
-      <EventList events={events} />
+      <details className="compact-details"><summary>Research steps</summary><EventList events={events} /></details>
     </section>
   )
 }

@@ -175,7 +175,11 @@ export function Report(props: Props) {
         <article className="report">
           <header className="report-head">
             <p className="section-label">Claim</p>
-            <h1 className="claim">{investigation.claim}</h1>
+            {investigation.claim.length > 180 ? (
+              <details className="compact-details long-claim">
+                <summary><h1 className="claim">{investigation.claim}</h1></summary>
+              </details>
+            ) : <h1 className="claim">{investigation.claim}</h1>}
             {result && (
               <>
                 <h2 id="result-label" className="result-label">
@@ -256,25 +260,31 @@ export function Report(props: Props) {
                       </section>
                     ) : (
                       <>
-                        <Conclusion investigation={investigation} result={result} />
-                        <Findings
-                          result={result}
-                          route={investigation.route}
-                          queries={isSimpleLoop(result) ? searchQueries(events) : []}
-                          pagesRead={isSimpleLoop(result) ? (evidence?.sources.length ?? 0) : 0}
-                        />
+                        <details className="compact-details conclusion-details" data-fit="explanation">
+                          <summary>Explanation and citations</summary>
+                          <Conclusion investigation={investigation} result={result} />
+                        </details>
+
                       </>
                     )}
                   </>
                 )}
-                {/* The log closes what was checked, so it stays near the top of the page. */}
-                {finished && <ResearchActivity key={investigation.id} events={events} />}
-                {result && (
-                  <>
-                    <EvidencePane sources={evidence?.sources ?? []} explanation={result.explanation.map((u) => u.text)} />
-                    <Limitations result={result} />
-                  </>
-                )}
+                <details className="compact-details research-details">
+                  <summary>Evidence and research details</summary>
+                  {result && !unconfirmed && (<Findings
+                          result={result}
+                          route={investigation.route}
+                          queries={isSimpleLoop(result) ? searchQueries(events) : []}
+                          pagesRead={isSimpleLoop(result) ? (evidence?.sources.length ?? 0) : 0}
+                        />)}
+                  {finished && <ResearchActivity key={investigation.id} events={events} />}
+                  {result && (
+                    <>
+                      <EvidencePane sources={evidence?.sources ?? []} explanation={result.explanation.map((u) => u.text)} />
+                      <Limitations result={result} />
+                    </>
+                  )}
+                </details>
               </div>
             </div>
           )}
