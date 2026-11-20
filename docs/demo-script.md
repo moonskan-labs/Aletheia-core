@@ -88,11 +88,9 @@ you can check it in one click."
 
 "Now a figure that's close, but wrong."
 
-> The result: **False**. Click the citation that follows the real share (if the summary
-> has one sentence, the citations all follow it).
+> The result: **False**. Click the citation for the quotation that gives the real share.
 
-"False. Each number sits after the sentence it supports, and this quotation shows the
-share the source actually gives."
+"False. This quotation shows the share the source actually gives."
 
 `[01:55–02:15]` **6. When it can't tell**
 
