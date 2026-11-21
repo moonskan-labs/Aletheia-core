@@ -42,40 +42,42 @@ export default function App() {
       </header>
 
       <main>
-        {investigation ? (
-          <>
-            <button type="button" className="back" onClick={close}>
-              ← {replay ? 'All sample investigations' : 'Check another claim'}
-            </button>
-            <Report
-              investigation={investigation}
-              evidence={evidence}
-              events={events}
-              researchDone={researchDone}
-              finished={finished}
-              loadError={loadError}
-              replay={replay}
-              reused={reused}
-              onRetry={retryLoad}
+        <div className="reading-column">
+          {investigation ? (
+            <>
+              <button type="button" className="back" onClick={close}>
+                ← {replay ? 'All sample investigations' : 'Check another claim'}
+              </button>
+              <Report
+                investigation={investigation}
+                evidence={evidence}
+                events={events}
+                researchDone={researchDone}
+                finished={finished}
+                loadError={loadError}
+                replay={replay}
+                reused={reused}
+                onRetry={retryLoad}
+              />
+              {error && (
+                <p className="error" role="alert">
+                  {error}
+                </p>
+              )}
+            </>
+          ) : (
+            <Home
+              unavailableReason={unavailableReason(backend.status)}
+              onRetryBackend={canRecheck(backend.status) ? backend.recheck : undefined}
+              submitting={submitting}
+              error={error}
+              recordings={dataSource.recordings}
+              recent={recent}
+              onSubmit={(claim) => void submit(claim, {})}
+              onOpen={(id) => void open(id)}
             />
-            {error && (
-              <p className="error" role="alert">
-                {error}
-              </p>
-            )}
-          </>
-        ) : (
-          <Home
-            unavailableReason={unavailableReason(backend.status)}
-            onRetryBackend={canRecheck(backend.status) ? backend.recheck : undefined}
-            submitting={submitting}
-            error={error}
-            recordings={dataSource.recordings}
-            recent={recent}
-            onSubmit={(claim) => void submit(claim, {})}
-            onOpen={(id) => void open(id)}
-          />
-        )}
+          )}
+        </div>
       </main>
       <footer className="provider-footer">
         <span>Powered by</span>
