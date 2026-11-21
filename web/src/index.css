@@ -163,10 +163,11 @@ p {
   color: var(--accent);
 }
 
-main {
+.reading-column {
+  min-height: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 16px 24px 80px;
+  padding: 12px 24px;
 }
 
 .back {
@@ -303,7 +304,7 @@ blockquote {
 }
 
 /* The report reads as one centred column, like the home page. */
-main:has(> .report) {
+.reading-column:has(> .report) {
   max-width: 808px;
 }
 
@@ -930,7 +931,7 @@ pre {
 /* ---------- Narrow screens ---------- */
 
 @media (max-width: 520px) {
-  main,
+  .reading-column,
   .topbar-inner {
     padding-left: 16px;
     padding-right: 16px;
@@ -1039,11 +1040,11 @@ pre {
   width: 100%;
   min-height: 0;
   overflow-y: auto;
-  padding-block: 12px;
+  scrollbar-gutter: stable both-edges;
   scroll-padding-block: 12px;
 }
-#root > main:has(> .home) { display: flex; flex-direction: column; }
-#root > main > .home { margin-block: auto; padding-block: 16px; }
+.reading-column:has(> .home) { display: flex; flex-direction: column; }
+.reading-column > .home { margin-block: auto; padding-block: 16px; }
 .provider-footer {
   display: flex;
   align-items: center;
@@ -1095,12 +1096,12 @@ pre {
 
 /* The report starts at the top; available height sets the reading rhythm. */
 @media (min-width: 720px) {
-  main:has(> .report) {
+  .reading-column:has(> .report) {
     --space: clamp(10px, calc(4vh - 18px), 26px);
     max-width: 1200px;
     padding-inline: clamp(24px, 4vw, 56px);
   }
-  #root > main:has(> .report) { padding-block: var(--space); }
+  .reading-column:has(> .report) { padding-block: var(--space); }
   .topbar-inner { min-height: 48px; }
   .back { min-height: 28px; }
   .report-head { margin-top: var(--space); padding: 0; border: 0; }
@@ -1267,7 +1268,7 @@ pre {
 }
 #root:has(.report) .topbar { background: #0e1219; }
 #root:has(.report) .topbar-inner { max-width: 1152px; min-height: 56px; }
-#root > main:has(> .report) { max-width: 920px; padding: 24px clamp(16px,3.5vw,32px); }
+.reading-column:has(> .report) { max-width: 920px; padding: 24px clamp(16px,3.5vw,32px); }
 .report-head { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 12px; margin-top: 20px; border: 0; padding: 0; }
 .report-head > * { grid-column: 1 / -1; margin: 0; }
 .report-head .result-label { grid-column: 1; margin: 0; }
@@ -1313,7 +1314,7 @@ pre {
 }
 /* Spend extra viewport height on whitespace progressively, including on laptops. */
 @media (min-width: 720px) and (max-height: 1080px) {
-  #root > main:has(.report) {
+  .reading-column:has(> .report) {
     --report-space: clamp(8px, calc(5vh - 34px), 24px);
     max-width: 1080px;
     padding-block: var(--report-space);
