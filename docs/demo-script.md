@@ -47,15 +47,15 @@ true or false verdict includes a quotation you can check."
 `[00:20–01:00]` **2–3. A live check, and how it works**
 
 > Type: `An estimated 610,000 people died of malaria worldwide in 2024, according to WHO.`
-> Click **Verify**, then click **Research steps** so the progress log shows as it runs.
+> Click **Verify**. Show the progress log as it runs.
 
 "It's running live now. One model call on Nebius Token Factory plans up to three
 searches. Tavily runs them at the same time and reads the best pages. Then one more
 model call reads those pages and gives a verdict, with quotations copied word for word."
 
 > While it runs, point at the log lines that name Token Factory and Tavily calls. (Once
-> the run finishes, the log is under **Evidence and research details** → **Research
-> log**.)
+> the run finishes, the log is under **Investigation Audit Trail** → **Research log** at
+> the bottom of the report.)
 
 "Python stays in control throughout. The model only writes queries and a verdict. The
 code runs every search, enforces the limits, and checks every quotation against the
@@ -64,20 +64,19 @@ valid quotation becomes 'can't settle'."
 
 `[01:00–01:30]` **4. The answer, and its evidence**
 
-> The result: **True**, and the whole report fits on one screen. Click citation **[1]**:
-> **Evidence and research details** opens, and the **Evidence** box shows that
-> quotation, highlighted.
+> The result: **True**. Under the explanation, the **Evidence** card shows quotation
+> **[1]**, highlighted. Click **2**, **3**, **4** to step through the others.
 
 "True. Here's the quotation it relied on, word for word from the page."
 
-> Click **Open the original at this passage**: the source page opens with the sentence
+> Click **Link to source**: the source page opens with the sentence
 > highlighted. Say the source's name as it appears on the day, for example "the WHO's
 > World Malaria Report".
 
 "That's the source page, at the exact sentence. You don't have to trust the verdict:
 you can check it in one click."
 
-> Back in the report, open **N pages read** at the bottom of the Evidence box.
+> Back in the report, click **Pages Read N** in the **Investigation Audit Trail**.
 
 "It also lists every page it read, not just the ones it quoted."
 
@@ -99,8 +98,8 @@ you can check it in one click."
 
 "And when the web doesn't have the answer?"
 
-> The result: **Insufficient evidence**. Open **Evidence and research details** to show
-> its limitation.
+> The result: **Insufficient evidence**, with its limitation in the box under the
+> explanation.
 
 "Insufficient evidence. The pages it found don't give a summit count for that day, so
 it doesn't guess."
