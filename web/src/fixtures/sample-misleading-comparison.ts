@@ -56,8 +56,8 @@ const evidence: Evidence[] = [
       relation: 'supports',
       publisher: 'Northwind (sample)',
       authoritative_record: true,
-      rationale: 'Directly reports a 3× ratio, but against the 2019 model.',
-      limitations: ['Maker’s own test at 150-nit brightness.'],
+      rationale: 'The launch notes compare 18 hours on the X2 with 6 on the 2019 X0. That supports a 3× gain for this pair of models.',
+      limitations: ['Northwind ran the test at 150-nit brightness, so the figure applies to that test condition.'],
     }),
     excerpts: [
       excerpt(
@@ -76,8 +76,8 @@ const evidence: Evidence[] = [
       relation: 'context',
       publisher: 'Example Reviews (sample)',
       independence: 'established',
-      rationale: 'Shows the gain over the direct predecessor is about 1.4×.',
-      limitations: [],
+      rationale: 'The review compares the X2 with its direct predecessor, the X1. Its video test gives 18 hours versus 13, a gain of about 1.4×.',
+      limitations: ['The review tested video playback against the X1. It does not establish battery life across other workloads or earlier models.'],
     }),
     excerpts: [
       excerpt([31], 4120, 'In our video-playback test the X2 lasted 18 hours, compared with 13 hours for last year’s X1.'),
@@ -92,7 +92,7 @@ const evidence: Evidence[] = [
       relation: 'irrelevant',
       publisher: 'Example Deals (sample)',
       scope_match: false,
-      rationale: 'A retailer listing that repeats the 3× claim without a test.',
+      rationale: 'The retailer advertises “up to” 3× battery life without naming the comparison model.',
       limitations: [],
     }),
     excerpts: [excerpt([7], 610, 'Up to 3x the battery life of previous Northwind laptops!')],
@@ -153,20 +153,16 @@ export const sampleMisleadingComparison: Recording = {
             type: 'misleading_comparison',
             dimension: 'baseline',
             explanation:
-              'Compares the X2 with the 2019 X0 rather than the 2023 X1; against the X1 the gain is about 1.4×, not 3×.',
-            evidence_ids: ['ev1', 'ev2'],
+              'An independent review compared the X2 with its direct predecessor, the 2023 X1, and found a smaller gain: 18 hours versus 13, or about 1.4×.',
+            evidence_ids: ['ev2'],
           },
         ],
         limitations: ['The maker’s figure is from its own lab test at reduced screen brightness.'],
       },
       explanation: [
         {
-          text: 'Northwind’s launch notes report 18 hours for the X2 versus 6 hours for the 2019 X0, a 3× gain.',
+          text: 'Northwind’s 3× figure uses the 2019 X0 as its baseline: the X2 lasted 18 hours versus 6 in the company’s test.',
           evidence_ids: ['ev1'],
-        },
-        {
-          text: 'An independent review measured the X2 at 18 hours against 13 hours for the 2023 X1, its direct predecessor.',
-          evidence_ids: ['ev2'],
         },
       ],
       limitations: ['Both measurements are single lab tests; real-world battery life was not assessed.'],

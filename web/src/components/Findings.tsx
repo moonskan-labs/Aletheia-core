@@ -12,15 +12,16 @@ import { Citations } from './Cite'
 
 /** The API assigns citations to each complete explanation unit. */
 export function Units({ units }: { units: ExplanationUnit[] }) {
+  if (units.length === 0) return null
   return (
-    <>
+    <p>
       {units.map((unit, i) => (
-        <p key={i}>
-          {unit.text}
+        <span key={i}>
+          {i > 0 && ' '}{unit.text}
           <Citations ids={unit.evidence_ids} />
-        </p>
+        </span>
       ))}
-    </>
+    </p>
   )
 }
 
@@ -99,8 +100,7 @@ export function Findings({
   const simple = isSimpleLoop(result)
   const notes = [
     !route && `Recommended: ${ROUTE_LABEL[assertion.recommended_route]}`,
-    queries.length > 0 && `Searched the web for: ${queries.map((q) => `“${q}”`).join('; ')}`,
-    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; each one is listed under Evidence below.`,
+    pagesRead > 0 && `Read ${plural(pagesRead, 'page', 'pages')}; see the Pages Read tab for the list.`,
     // The simple loop checks the claim as submitted, already shown as the headline.
     !simple && result.scope_note,
     // The simple loop never checks comparisons or scope, so saying it didn't is noise.
@@ -113,8 +113,16 @@ export function Findings({
       </h2>
       {/* The simple loop checks the claim as submitted, already shown as the headline. */}
       {!simple && <p>{assertion.text}</p>}
-      {notes.length > 0 && (
+      {(queries.length > 0 || notes.length > 0) && (
         <ul className="checked-notes">
+          {queries.length > 0 && (
+            <li>
+              <details className="checked-queries">
+                <summary>{queries.length} search {queries.length === 1 ? 'query' : 'queries'} used</summary>
+                <ul>{queries.map((query, i) => <li key={i}>{query}</li>)}</ul>
+              </details>
+            </li>
+          )}
           {notes.map((n) => (
             <li key={n}>{n}</li>
           ))}

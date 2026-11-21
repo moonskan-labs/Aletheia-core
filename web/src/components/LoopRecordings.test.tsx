@@ -75,10 +75,13 @@ describe('recorded loop runs', () => {
     // The excerpt on screen is the saved page's own text.
     const first = recording.evidence.evidence[0]
     expect(pane.querySelector('blockquote')?.textContent).toBe(first.excerpts[0].text)
-    const read = within(pane).getByText(`${recording.evidence.sources.length} pages read`)
-    const links = [...read.closest('details')!.querySelectorAll('a')].map((a) => a.getAttribute('href'))
-    expect(links).toEqual(recording.evidence.sources.map((s) => s.url))
-    expect(read.closest('details')!.textContent).toContain('quoted')
+    const name = `Pages Read ${recording.evidence.sources.length}`
+    const trigger = within(page).getByRole('button', { name })
+    expect(trigger.getAttribute('aria-expanded')).toBe('false')
+    fireEvent.click(trigger)
+    const list = within(page).getByRole('region', { name })
+    expect(within(list).getAllByRole('link').map(link => link.getAttribute('href'))).toEqual(recording.evidence.sources.map(s => s.url))
+    expect(list.textContent).toContain('Quoted in verdict')
   })
 
   it.each(live)('$label: every quotation links to its own source, at the passage where possible', (recording) => {
@@ -89,9 +92,9 @@ describe('recorded loop runs', () => {
       fireEvent.click(within(pane).getByRole('button', { name: `Source ${i + 1}` }))
       const source = sources.get(item.assessment.citation.snapshot_id)!
       const expected = passageLink(source.url, item.excerpts[0].text)
-      const link = within(pane).getByRole('link', { name: /^Open the original/ })
+      const link = within(pane).getByRole('link', { name: 'Link to source' })
       expect(link.getAttribute('href')).toBe(expected ?? source.url)
-      expect(link.textContent).toBe(expected ? 'Open the original at this passage' : 'Open the original')
+      expect(within(pane).queryByText('Citation details')).toBeNull()
     }
   })
 
@@ -99,7 +102,8 @@ describe('recorded loop runs', () => {
     const page = show(recording)
     const counts = runCounts(recording.events)
     expect(counts).toEqual({ searches: 3, pages: recording.evidence.sources.length, modelCalls: 3 })
-    const summary = page.querySelector('details.activity summary')!.textContent
+    fireEvent.click(within(page).getByRole('button', { name: 'Research log' }))
+    const summary = within(page).getByRole('region', { name: 'Research log' }).querySelector('p')!.textContent
     expect(summary).toContain('3 searches')
     expect(summary).toContain(`${counts.pages} pages read`)
     expect(summary).toContain('3 model calls')
@@ -166,7 +170,7 @@ describe('a run that quoted nothing', () => {
     expect(within(page).getByRole('heading', { level: 2, name: 'Insufficient evidence' })).toBeTruthy()
     const pane = within(page).getByRole('complementary')
     expect(pane.textContent).toContain('No passage was quoted as evidence.')
-    expect(within(pane).getByText(`${recording.evidence.sources.length} pages read`)).toBeTruthy()
+    expect(within(page).getByRole('button', { name: `Pages Read ${recording.evidence.sources.length}` })).toBeTruthy()
     expect(page.textContent).toContain('Not settled: the pages do not state the date.')
   })
 })
@@ -174,22 +178,23 @@ describe('a run that quoted nothing', () => {
 describe('what a loop result says it checked', () => {
   const venus = live.find((r) => r.investigation.claim.startsWith('Venus'))!
 
-  it('lists the searches it ran and the pages it read, as bullets', () => {
-    const container = show(venus)
-    const checked = within(container.querySelector('[aria-labelledby="findings-heading"]') as HTMLElement)
-    const items = checked.getAllByRole('listitem').map((li) => li.textContent)
-    expect(items[0]).toContain('Searched the web for: “average orbital distance of Venus from the Sun”')
-    expect(items[1]).toBe('Read 6 pages; each one is listed under Evidence below.')
-    // The claim is checked as submitted; the headline already shows it.
-    expect(items).toHaveLength(2)
+  it('shows the assessment and limitations for the selected source', () => {
+    const page = show(venus)
+    const analysis = within(page).getByRole('region', { name: 'Analysis' })
+    expect(within(analysis).getByRole('heading', { name: 'What we checked' })).toBeTruthy()
+    expect(within(analysis).getByRole('heading', { name: 'Limitations' })).toBeTruthy()
+    const first = analysis.textContent
+    fireEvent.click(within(page).getByRole('button', { name: 'Source 2' }))
+    expect(analysis.textContent).not.toBe(first)
   })
 
   it('leaves out the staged pipeline’s scope note and route name', () => {
     const container = show(venus)
     expect(container.textContent).not.toContain('Comparisons and scope were not assessed')
-    const facts = container.querySelector('.run-meta p')!.textContent
-    // The date is shown in local time, so it differs by time zone.
-    expect(facts).toMatch(/^2 quoted · 6 pages read · 15 s · 2026-11-1[67]$/)
+    const metrics = container.querySelector('.metrics-bar dl')!
+    expect(Array.from(metrics.children, (metric) => metric.textContent)).toEqual([
+      'Sources Quoted2', 'Time Taken15s',
+    ])
   })
 })
 

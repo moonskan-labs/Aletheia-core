@@ -1,3 +1,4 @@
+import { nebiusLogo, tavilyLogo, tavilyDarkLogo } from './providerLogos'
 import { dataSource } from './api/source'
 import { canRecheck, unavailableReason, useBackendStatus } from './api/useBackendStatus'
 import { useInvestigation } from './api/useInvestigation'
@@ -56,7 +57,6 @@ export default function App() {
               replay={replay}
               reused={reused}
               onRetry={retryLoad}
-              onReplay={replay ? () => void open(investigation.id, { animate: true }) : undefined}
             />
             {error && (
               <p className="error" role="alert">
@@ -77,6 +77,19 @@ export default function App() {
           />
         )}
       </main>
+      <footer className="provider-footer">
+        <span>Powered by</span>
+        <a href="https://nebius.com/services/token-factory">
+          <img src={nebiusLogo} alt="Nebius" height="20" />
+          Token Factory
+        </a>
+        <a href="https://www.tavily.com">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcSet={tavilyDarkLogo} />
+            <img src={tavilyLogo} alt="Tavily" height="21" />
+          </picture>
+        </a>
+      </footer>
     </>
   )
 }
