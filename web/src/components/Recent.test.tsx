@@ -77,6 +77,24 @@ describe('recent investigations on the home page', () => {
     expect(onOpen).toHaveBeenCalledWith(decided.id)
   })
 
+  it('shows the three newest, and the rest behind Show all', async () => {
+    const many = Array.from({ length: 5 }, (_, i) => ({ ...decided, id: `r${i}`, claim: `Claim number ${i}.` }))
+    const recent = vi.fn().mockResolvedValue(many)
+    const health = vi.fn().mockResolvedValue(healthy(true))
+    render(<Harness source={{ ...liveSource, health, recent }} />)
+    await act(async () => {})
+
+    const rows = () => screen.getAllByRole('button').filter((b) => b.classList.contains('sample'))
+    expect(rows().map((r) => r.textContent)).toEqual([0, 1, 2].map((i) => expect.stringContaining(`Claim number ${i}.`)))
+
+    const more = screen.getByRole('button', { name: 'Show all 5' })
+    expect(more.getAttribute('aria-expanded')).toBe('false')
+    fireEvent.click(more)
+    expect(rows()).toHaveLength(5)
+    fireEvent.click(screen.getByRole('button', { name: 'Show fewer' }))
+    expect(rows()).toHaveLength(3)
+  })
+
   it('shows no recent section when the backend cannot list investigations', async () => {
     const recent = vi.fn().mockRejectedValue(new Error('That investigation wasn’t found.'))
     const health = vi.fn().mockResolvedValue(healthy(true))

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Investigation } from '../api/types'
 import type { Recording } from '../fixtures'
 import { FLAG_LABEL, STATUS_LABEL } from '../labels'
@@ -21,6 +22,9 @@ function SamplePill({ recording, onOpen }: { recording: Recording; onOpen: () =>
     </li>
   )
 }
+
+/** How many past investigations show before "Show all". */
+export const RECENT_SHOWN = 3
 
 const WHEN = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'short' })
 
@@ -57,6 +61,9 @@ interface Props {
 }
 
 export function Home({ unavailableReason, onRetryBackend, submitting, error, recordings, recent = [], onSubmit, onOpen }: Props) {
+  const [showAll, setShowAll] = useState(false)
+  const hidden = recent.length - RECENT_SHOWN
+  const shown = showAll ? recent : recent.slice(0, RECENT_SHOWN)
   return (
     <section className="home">
       <div className="hero">
@@ -90,11 +97,22 @@ export function Home({ unavailableReason, onRetryBackend, submitting, error, rec
       {recent.length > 0 && (
         <div className="recent">
           <h2>Recent investigations</h2>
-          <ul className="samples">
-            {recent.map((i) => (
+          <ul className="samples" id="recent-list">
+            {shown.map((i) => (
               <RecentRow key={i.id} investigation={i} onOpen={() => onOpen(i.id)} />
             ))}
           </ul>
+          {hidden > 0 && (
+            <button
+              type="button"
+              className="link-button recent-more"
+              aria-expanded={showAll}
+              aria-controls="recent-list"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? 'Show fewer' : `Show all ${recent.length}`}
+            </button>
+          )}
         </div>
       )}
     </section>

@@ -22,7 +22,7 @@ export default function App() {
       <header className="topbar">
         <div className="topbar-inner">
           <button type="button" className="wordmark" onClick={close} aria-label="Aletheia home">
-            <Icon name="fingerprint" size={28} />
+            <Icon name="fingerprint" size={31} />
             <span>ALETHEIA</span>
           </button>
           <p className={`mode${live ? ' live' : ''}`} role="status">
