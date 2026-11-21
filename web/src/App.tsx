@@ -1,4 +1,4 @@
-import { nebiusLogo, tavilyLogo, tavilyDarkLogo } from './providerLogos'
+import { nebiusLogo, tavilyDarkLogo } from './providerLogos'
 import { dataSource } from './api/source'
 import { canRecheck, unavailableReason, useBackendStatus } from './api/useBackendStatus'
 import { useInvestigation } from './api/useInvestigation'
@@ -86,10 +86,7 @@ export default function App() {
           Token Factory
         </a>
         <a href="https://www.tavily.com">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcSet={tavilyDarkLogo} />
-            <img src={tavilyLogo} alt="Tavily" height="21" />
-          </picture>
+          <img src={tavilyDarkLogo} alt="Tavily" height="21" />
         </a>
       </footer>
     </>
