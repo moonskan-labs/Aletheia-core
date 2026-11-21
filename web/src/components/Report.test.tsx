@@ -38,10 +38,8 @@ describe('Report conclusion', () => {
   it('shows True with the misleading-comparison caveat and its citations', () => {
     const conclusion = renderWith({ outcome: 'decided', verdict: 'true', ...decided })
     expect(resultLabel().textContent).toBe('True, with a caveat')
-    const flag = within(conclusion).getByRole('note')
-    expect(flag.textContent).toContain('Misleading comparison')
-    expect(flag.textContent).toContain('baseline')
-    expect(within(flag).getAllByRole('button').map((a) => a.textContent)).toEqual(['1', '2'])
+    expect(conclusion.textContent).toContain('about 1.4×')
+    expect(within(conclusion).getAllByRole('button').map(a => a.textContent)).toEqual(['1', '2'])
   })
 
   it('shows the three-part correction for Almost', () => {
@@ -106,9 +104,9 @@ describe('Report evidence pane', () => {
   })
 
   it('shows the cited evidence when a citation is chosen', () => {
-    renderWith({ outcome: 'decided', verdict: 'true', ...decided })
+    const conclusion = renderWith({ outcome: 'decided', verdict: 'true', ...decided })
     const pane = screen.getByRole('complementary', { name: 'Evidence' })
-    const cite = within(screen.getByRole('note')).getAllByRole('button')[1]
+    const cite = within(conclusion).getAllByRole('button')[1]
     fireEvent.click(cite)
     expect(cite.getAttribute('aria-pressed')).toBe('true')
     expect(within(pane).getByRole('article').getAttribute('aria-label')).toBe('Source 2')

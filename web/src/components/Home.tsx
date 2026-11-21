@@ -76,26 +76,26 @@ export function Home({ unavailableReason, onRetryBackend, submitting, error, rec
         )}
 
         {recordings.length > 0 && (
-          <details className="examples compact-details" data-fit="samples">
-            <summary>Try a sample claim</summary>
+          <div className="examples">
+            <h2 className="sample-label">Try a sample claim</h2>
             <ul className="pills">
               {recordings.map((r) => (
                 <SamplePill key={r.investigation.id} recording={r} onOpen={() => onOpen(r.investigation.id)} />
               ))}
             </ul>
-          </details>
+          </div>
         )}
       </div>
 
       {recent.length > 0 && (
-        <details className="recent compact-details">
-          <summary><h2>Recent investigations</h2></summary>
+        <div className="recent">
+          <h2>Recent investigations</h2>
           <ul className="samples">
             {recent.map((i) => (
               <RecentRow key={i.id} investigation={i} onOpen={() => onOpen(i.id)} />
             ))}
           </ul>
-        </details>
+        </div>
       )}
     </section>
   )

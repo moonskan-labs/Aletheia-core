@@ -8,10 +8,11 @@ import {
   revealEvidencePane,
   type EvidenceIndex,
 } from '../evidenceIndex'
-import { STATUS_LABEL, UNDECIDED_REASON, formatDate, isSimpleLoop, reason, searchQueries } from '../labels'
+import { STATUS_LABEL, UNDECIDED_REASON, reason } from '../labels'
 import { Citations } from './Cite'
+import { AuditTrail } from './AuditTrail'
 import { EvidencePane } from './Evidence'
-import { Correction, DecisionLabel, Findings, Flag, Units } from './Findings'
+import { Correction, DecisionLabel, Units } from './Findings'
 import { ResearchActivity, ResearchInProgress } from './Progress'
 
 interface Props {
@@ -25,8 +26,6 @@ interface Props {
   /** The submission returned an existing investigation rather than starting one. */
   reused: boolean
   onRetry: () => void
-  /** Replay only: play the recorded research steps again. */
-  onReplay?: () => void
 }
 
 function sourceCount(index: EvidenceIndex): number {
@@ -34,50 +33,33 @@ function sourceCount(index: EvidenceIndex): number {
   return new Set(ids).size
 }
 
-/** One line of run facts in mono: route, sources, date, and anything unusual about the run. */
-function RunMeta({
-  investigation,
-  index,
-  pagesRead,
-  finished,
-  reused,
-  onReplay,
-}: {
+function RunMeta({ investigation, index, sources, finished, reused }: {
   investigation: Investigation
   index: EvidenceIndex
-  pagesRead: number
+  sources?: EvidenceResponse['sources']
   finished: boolean
   reused: boolean
-  onReplay?: () => void
 }) {
-  const sources = sourceCount(index)
-  const result = finished ? investigation.result : null
-  // The simple loop always takes the quick route, so its name says nothing; count the
-  // quoted pages against the pages read, as the evidence pane does, plus the run time.
-  const simple = result ? isSimpleLoop(result) : false
-  const seconds =
-    investigation.started_at && investigation.finished_at
-      ? Math.round((Date.parse(investigation.finished_at) - Date.parse(investigation.started_at)) / 1000)
-      : null
-  const facts = [
-    !finished ? 'researching' : investigation.status !== 'completed' ? STATUS_LABEL[investigation.status].toLowerCase() : null,
-    simple ? null : investigation.route,
-    result && simple ? `${sources} quoted` : result ? `${sources} source${sources === 1 ? '' : 's'}` : null,
-    result && simple && pagesRead > 0 ? `${pagesRead} page${pagesRead === 1 ? '' : 's'} read` : null,
-    result && simple && seconds !== null && seconds >= 0 ? `${seconds} s` : null,
-    formatDate(investigation.started_at ?? investigation.created_at),
-    reused ? 'saved result' : null,
-    investigation.version > 1 ? `version ${investigation.version}` : null,
+  const seconds = investigation.started_at && investigation.finished_at
+    ? Math.round((Date.parse(investigation.finished_at) - Date.parse(investigation.started_at)) / 1000)
+    : NaN
+  const notes = [
+    !finished ? 'Researching' : investigation.status !== 'completed' ? STATUS_LABEL[investigation.status] : null,
+    reused && 'Saved result',
+    investigation.version > 1 && `Version ${investigation.version}`,
   ].filter(Boolean)
   return (
-    <div className="run-meta">
-      <p>{facts.join(' · ')}</p>
-      {finished && onReplay && (
-        <button type="button" className="secondary-button" onClick={onReplay}>
-          Replay research steps
-        </button>
+    <>
+      {notes.length > 0 && <p className="meta">{notes.join(' · ')}</p>}
+      {finished && (
+        <div className="metrics-bar">
+          <dl aria-label="Investigation metrics">
+            <div><dt>Sources Quoted</dt><dd>{sources === undefined ? '—' : sourceCount(index)}</dd></div>
+            <div><dt>Time Taken</dt><dd>{Number.isFinite(seconds) && seconds >= 0 ? `${seconds}s` : '—'}</dd></div>
+          </dl>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 
@@ -99,41 +81,30 @@ function DecisionEvidence({ result }: { result: InvestigationResult }) {
 
 /** The written answer and its essential caveat or correction, before any detail. */
 function Conclusion({ investigation, result }: { investigation: Investigation; result: InvestigationResult }) {
-  const flags = result.finding.qualification_flags
+  const summary = [...result.explanation]
+  for (const flag of result.finding.qualification_flags) {
+    const existing = summary.findIndex(unit => unit.text.trim() === flag.explanation.trim())
+    if (existing < 0) {
+      summary.push({ text: flag.explanation, evidence_ids: flag.evidence_ids })
+    } else {
+      const unit = summary[existing]
+      summary[existing] = { ...unit, evidence_ids: [...new Set([...unit.evidence_ids, ...flag.evidence_ids])] }
+    }
+  }
   return (
     <section className="conclusion" aria-labelledby="result-label">
       {investigation.status === 'partial' && (
         <p className="notice-box">
           Partial result: the run stopped before every step finished
           {reason(investigation.stop_reason) ? ` (${reason(investigation.stop_reason)})` : ''}. The decision comes from
-          the steps that completed; Limitations says what was left unfinished.
+          the steps that completed.
         </p>
       )}
       <div className="summary">
-        <Units units={result.explanation} />
+        <Units units={summary} />
         <DecisionEvidence result={result} />
       </div>
       {result.almost_correction && <Correction correction={result.almost_correction} />}
-      {flags.map((flag, i) => (
-        <Flag key={i} flag={flag} />
-      ))}
-    </section>
-  )
-}
-
-function Limitations({ result }: { result: InvestigationResult }) {
-  const items = [...new Set([...result.limitations, ...result.finding.limitations])]
-  if (items.length === 0) return null
-  return (
-    <section className="section" aria-labelledby="limitations-heading">
-      <h2 id="limitations-heading" className="section-label">
-        Limitations
-      </h2>
-      <ul className="limitations">
-        {items.map((l, i) => (
-          <li key={i}>{l}</li>
-        ))}
-      </ul>
     </section>
   )
 }
@@ -148,10 +119,13 @@ function citedIds(result: InvestigationResult | null): string[] {
 }
 
 export function Report(props: Props) {
-  const { investigation, evidence, events, researchDone, finished, loadError, replay, reused, onRetry, onReplay } = props
+  const { investigation, evidence, events, researchDone, finished, loadError, replay, reused, onRetry } = props
   const result = finished ? investigation.result : null
   const unconfirmed = result?.outcome === 'unable_to_decide' &&
     (investigation.stop_reason === 'semantic_rejection' || investigation.stop_reason === 'invalid_task_output')
+  const runLimitations = result && (!replay || investigation.status === 'partial' || result.outcome === 'unable_to_decide')
+    ? [...new Set([...result.limitations, ...result.finding.limitations])]
+    : []
   const index = useMemo(() => buildEvidenceIndex(evidence), [evidence])
   const [choice, setChoice] = useState<{ investigation: string; id: string } | null>(null)
   const selected =
@@ -175,11 +149,7 @@ export function Report(props: Props) {
         <article className="report">
           <header className="report-head">
             <p className="section-label">Claim</p>
-            {investigation.claim.length > 180 ? (
-              <details className="compact-details long-claim">
-                <summary><h1 className="claim">{investigation.claim}</h1></summary>
-              </details>
-            ) : <h1 className="claim">{investigation.claim}</h1>}
+            <h1 className="claim">{investigation.claim}</h1>
             {result && (
               <>
                 <h2 id="result-label" className="result-label">
@@ -196,10 +166,9 @@ export function Report(props: Props) {
             <RunMeta
               investigation={investigation}
               index={index}
-              pagesRead={evidence?.sources.length ?? 0}
+              sources={evidence?.sources}
               finished={finished}
               reused={reused}
-              onReplay={onReplay}
             />
           </header>
 
@@ -259,32 +228,21 @@ export function Report(props: Props) {
                         <p className="meta">This does not establish that evidence is insufficient or conflicting.</p>
                       </section>
                     ) : (
-                      <>
-                        <details className="compact-details conclusion-details" data-fit="explanation">
-                          <summary>Explanation and citations</summary>
-                          <Conclusion investigation={investigation} result={result} />
-                        </details>
-
-                      </>
+                      <Conclusion investigation={investigation} result={result} />
                     )}
+                    {runLimitations.length > 0 && (
+                      <section className="notice-box" aria-label="Investigation limitations">
+                        <ul className="limitations">{runLimitations.map(note => <li key={note}>{note}</li>)}</ul>
+                      </section>
+                    )}
+                    <EvidencePane sources={evidence?.sources ?? []} explanation={result.explanation.map((u) => u.text)} />
                   </>
                 )}
-                <details className="compact-details research-details">
-                  <summary>Evidence and research details</summary>
-                  {result && !unconfirmed && (<Findings
-                          result={result}
-                          route={investigation.route}
-                          queries={isSimpleLoop(result) ? searchQueries(events) : []}
-                          pagesRead={isSimpleLoop(result) ? (evidence?.sources.length ?? 0) : 0}
-                        />)}
-                  {finished && <ResearchActivity key={investigation.id} events={events} />}
-                  {result && (
-                    <>
-                      <EvidencePane sources={evidence?.sources ?? []} explanation={result.explanation.map((u) => u.text)} />
-                      <Limitations result={result} />
-                    </>
-                  )}
-                </details>
+
+                <AuditTrail key={investigation.id} sources={evidence?.sources} index={index}>
+                  <ResearchActivity events={events} />
+                </AuditTrail>
+
               </div>
             </div>
           )}

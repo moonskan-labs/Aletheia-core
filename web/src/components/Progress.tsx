@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import type { InvestigationEvent } from '../api/types'
 import { describeEvent, elapsed, runCounts } from '../labels'
 
@@ -30,7 +29,7 @@ export function ResearchInProgress({ events, replay }: { events: InvestigationEv
         {latest ? `${describeEvent(latest)}.` : 'Waiting for the first step.'} The answer appears when research finishes.
         {replay && ' Times are from the original run.'}
       </p>
-      <details className="compact-details"><summary>Research steps</summary><EventList events={events} /></details>
+      <EventList events={events} />
     </section>
   )
 }
@@ -38,10 +37,8 @@ export function ResearchInProgress({ events, replay }: { events: InvestigationEv
 /** Steps that only announce the next line: the finished call and the page read follow. */
 const ANNOUNCEMENTS = new Set<InvestigationEvent['type']>(['provider_attempt_started', 'source_selected'])
 
-/** After research: the log, collapsed below the answer. Key it by investigation ID. */
+/** After research: the log, collapsed in the metrics bar. Key it by investigation ID. */
 export function ResearchActivity({ events }: { events: InvestigationEvent[] }) {
-  const [open, setOpen] = useState(false)
-  if (events.length === 0) return null
   const steps = events.filter((event) => !ANNOUNCEMENTS.has(event.type))
   const { searches, pages, modelCalls } = runCounts(events)
   const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
@@ -53,12 +50,9 @@ export function ResearchActivity({ events }: { events: InvestigationEvent[] }) {
     events.length > 1 ? `${elapsed(events.at(-1)!.timestamp, events[0].timestamp)} elapsed` : null,
   ].filter(Boolean)
   return (
-    <details className="section activity" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
-      <summary>
-        Research log · {steps.length} step{steps.length === 1 ? '' : 's'}
-        {facts.length > 0 && ` · ${facts.join(' · ')}`}
-      </summary>
-      <EventList events={steps} />
-    </details>
+    <div>
+        <p className="meta">{[plural(steps.length, 'step', 'steps'), ...facts].join(' · ')}</p>
+        <EventList events={steps} />
+    </div>
   )
 }
