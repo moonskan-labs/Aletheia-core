@@ -140,8 +140,8 @@ curl -s -X POST http://127.0.0.1:8000/investigations \
 
 **Past investigations** are saved in `data/aletheia.sqlite3`. Submitting the same claim
 again returns the saved result at once (`reused: true`), with no new search or model
-calls. A saved investigation can also be opened by its ID through the API. The client
-has no list of past investigations yet.
+calls. The home page lists the 10 most recent investigations (`GET /investigations`);
+clicking one opens its saved report without a new run.
 
 ### Configuration
 
@@ -187,8 +187,8 @@ one opens the source at that passage.
 ## Failure / insufficient-evidence case
 
 **When the pages don't settle the claim.** Claim `u-05` from the same run: *"Exactly 87
-hikers reached Mount Whitney's California summit on July 1, 2001."* No published record
-we know of gives a daily summit count like that.
+hikers reached Mount Whitney's California summit on July 1, 2001."* The pages it read
+don't give a summit count for that day.
 
 **Answer:** **Cannot settle** (insufficient evidence), after 40 seconds and one follow-up
 round.
