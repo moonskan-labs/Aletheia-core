@@ -5,7 +5,7 @@
 > ODSC × Nebius Hackathon submission · Challenge: *Build a research agent that brings its sources*
 
 - **Demo video (2:30):** [Watch on YouTube](https://www.youtube.com/watch?v=AjspUOpncBo), three live runs recorded in the web client.
-- **Team:** [@skanvish11](https://github.com/skanvish11) · [@csalive](https://github.com/csalive)
+- **Team:** Moonskan Labs · [@skanvish11](https://github.com/skanvish11) · [@csalive](https://github.com/csalive)
 
 ## The problem
 
@@ -40,10 +40,12 @@ Claim → plan queries → search and read pages → propose a verdict with quot
 Use Python 3.12+, uv, and Node.js 22.12+ with npm. Clone the repo and create your local configuration:
 
 ```bash
-git clone https://github.com/skanvish11/Aletheia-core.git
+git clone https://github.com/moonskan-labs/Aletheia-core.git
 cd Aletheia-core
 cp .env.example .env
 ```
+
+On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
 
 Add your `NEBIUS_API_KEY` and `TAVILY_API_KEY` to `.env`. The example already selects DeepSeek and enables the simple research loop. Start the API:
 
@@ -51,6 +53,8 @@ Add your `NEBIUS_API_KEY` and `TAVILY_API_KEY` to `.env`. The example already se
 uv sync --locked
 uv run --locked aletheia
 ```
+
+The API is ready when it prints `Uvicorn running on http://127.0.0.1:8000`. To confirm, open http://127.0.0.1:8000/health: it should show `"research_enabled":true`.
 
 In a second terminal, start from the cloned repository root:
 
@@ -60,7 +64,15 @@ npm ci
 VITE_DATA_SOURCE=live npm run dev
 ```
 
+On Windows PowerShell, set the variable on its own: `$env:VITE_DATA_SOURCE="live"; npm run dev`.
+
 Open the URL printed by Vite and enter a claim. The research log shows the searches and page reads. The finished report links to the source passages. To explore the bundled examples without keys, run `npm run dev` from `web/` in a fresh terminal. [Web client guide](web/README.md)
+
+If something doesn't start:
+
+- **API exits with “Invalid provider settings”:** a value in `.env` is missing or malformed. Check that `NEBIUS_API_KEY` and `TAVILY_API_KEY` are both filled in.
+- **The page says research is turned off:** `.env` is missing `ALETHEIA_RESEARCH_ENABLED=true`. Copy the settings from `.env.example`, then restart the API.
+- **Port 8000 or 5173 is already in use:** the API always uses port 8000, so stop whatever else is using it. Vite picks the next free port by itself and prints the URL.
 
 ## Example
 
