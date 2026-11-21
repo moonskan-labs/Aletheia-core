@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import type { SourceSnapshot } from '../api/types'
 import type { EvidenceIndex } from '../evidenceIndex'
 import { PagesRead } from './PagesRead'
@@ -10,12 +10,19 @@ export function AuditTrail({ sources, index, children }: {
 }) {
   const id = useId()
   const [active, setActive] = useState<string | null>(null)
+  const section = useRef<HTMLElement>(null)
+  // An opened panel starts below the fold: bring the trail up so the click shows something.
+  useEffect(() => {
+    if (!active) return
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    section.current?.scrollIntoView?.({ block: 'start', behavior: reduce ? 'auto' : 'smooth' })
+  }, [active])
   const views = [
     { name: 'Pages Read', label: `Pages Read ${sources?.length ?? '—'}`, heading: `All ${sources?.length ?? 0} pages reviewed`, content: <PagesRead sources={sources} index={index} /> },
     { name: 'Research log', label: 'Research log', heading: 'Research log', content: children },
   ]
   return (
-    <section className="audit-trail" aria-label="Investigation Audit Trail">
+    <section ref={section} className="audit-trail" aria-label="Investigation Audit Trail">
       <div className="audit-row">
         <strong>Investigation Audit Trail</strong>
         <div className="audit-actions">
