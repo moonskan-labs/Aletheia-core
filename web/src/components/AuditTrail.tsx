@@ -18,7 +18,6 @@ export function AuditTrail({ sources, index, children }: {
     <section className="audit-trail" aria-label="Investigation Audit Trail">
       <div className="audit-row">
         <strong>Investigation Audit Trail</strong>
-        <small>— Inspect full search trace &amp; unquoted sources</small>
         <div className="audit-actions">
           {views.map((view, i) => (
             <button key={view.name} type="button" id={`${id}-button-${i}`}
